@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download Slice of Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .download-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .download-card {
+      background: #061422;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 56px 48px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .download-card .app-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      display: block;
+    }
+
+    .download-card .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7FB8FF;
+      background: rgba(127,184,255,0.10);
+      border: 1px solid rgba(127,184,255,0.20);
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 24px;
+    }
+
+    .download-card h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .download-card .sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(50,110,225,0.52);
+      border: 1px solid rgba(120,185,255,0.38);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 24px rgba(50,110,225,0.35);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
+      margin-bottom: 16px;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 0 36px rgba(50,110,225,0.5);
+    }
+
+    .download-btn:active {
+      transform: scale(0.97);
+    }
+
+    .download-version {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 40px;
+    }
+
+    .steps {
+      text-align: left;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(127,184,255,0.12);
+      border: 1px solid rgba(127,184,255,0.25);
+      color: #7FB8FF;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.90);
+      margin-bottom: 2px;
+    }
+
+    .step-text span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 32px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.30);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: rgba(255,255,255,0.60);
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="glow-canvas"></canvas>
+
+  <div class="download-page">
+    <div class="download-card">
+      <img src="assets/icon.png" alt="Slice of Life" class="app-icon" />
+      <div class="badge">Purchase confirmed</div>
+      <h1>You're in.<br>Let's get you set up.</h1>
+      <p class="sub">Check your email for your license key — you'll need it in step 3.</p>
+
+      <a href="https://github.com/sliceoflifeapp/slice-of-life/releases/latest/download/Slice%20of%20Life-0.1.32-arm64.dmg" class="download-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download Slice of Life
+      </a>
+      <p class="download-version">v0.1.32 · macOS 13+ · Apple Silicon &amp; Intel</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Open the DMG</strong>
+            <span>Drag Slice of Life into your Applications folder.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Launch the app</strong>
+            <span>Double-click Slice of Life in Applications. If macOS asks, click Open.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Enter your license key</strong>
+            <span>Open Settings (gear icon, bottom left), paste the key from your email, and hit Activate.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <strong>Drop in your footage</strong>
+            <span>You're ready. Film yourself. Post today.</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="/" class="back-link">← Back to sliceoflife-app.com</a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
