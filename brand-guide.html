@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Slice of Life — Brand Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    body { font-family: 'Montserrat', sans-serif; background: #0a1628; }
+
+    @page { size: 8.5in 11in; margin: 0; }
+
+    /* ── Page shell ─────────────────────────────────────────────────────── */
+    .page {
+      width: 8.5in;
+      height: 11in;
+      overflow: hidden;
+      page-break-after: always;
+      position: relative;
+      background: #020C18;
+      color: #fff;
+    }
+    .page:last-child { page-break-after: auto; }
+
+    /* Screen preview spacing */
+    @media screen {
+      body { padding: 32px; display: flex; flex-direction: column; gap: 28px; background: #0d1b2e; }
+      .page { box-shadow: 0 8px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05); border-radius: 4px; }
+    }
+
+    /* ── Glow backgrounds — origin-aware, no edge cutoff ─────────────── */
+    .glow-tr {
+      background-image: radial-gradient(ellipse 72% 58% at 100% 0%, rgba(25,70,180,0.32) 0%, rgba(15,50,140,0.09) 45%, transparent 70%);
+    }
+    .glow-bl {
+      background-image: radial-gradient(ellipse 65% 54% at 0% 100%, rgba(20,55,150,0.18) 0%, transparent 70%);
+    }
+    .glow-tr.glow-bl {
+      background-image:
+        radial-gradient(ellipse 72% 58% at 100% 0%, rgba(25,70,180,0.32) 0%, rgba(15,50,140,0.09) 45%, transparent 70%),
+        radial-gradient(ellipse 65% 54% at 0% 100%, rgba(20,55,150,0.18) 0%, transparent 70%);
+    }
+    .glow-center {
+      background-image: radial-gradient(ellipse 82% 62% at 50% 28%, rgba(20,60,170,0.22) 0%, transparent 70%);
+    }
+
+    /* ── Consistent page header ───────────────────────────────────────── */
+    .page-head {
+      position: absolute;
+      top: 0.38in;
+      left: 0.55in;
+      right: 0.55in;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ph-brand {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(127,184,255,0.35);
+    }
+    .ph-right {
+      display: flex;
+      align-items: center;
+      gap: 10pt;
+    }
+    .ph-section {
+      font-size: 7.5pt;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+    }
+
+    /* ── Page footer ──────────────────────────────────────────────────── */
+    .page-foot {
+      position: absolute;
+      bottom: 0.33in;
+      left: 0.55in;
+      right: 0.55in;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .pf-num {
+      font-size: 8pt;
+      font-weight: 700;
+      color: rgba(255,255,255,0.12);
+      letter-spacing: 0.06em;
+    }
+    .pf-version {
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.1);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── Content area ─────────────────────────────────────────────────── */
+    .content {
+      position: absolute;
+      top: 0.88in;
+      left: 0.55in;
+      right: 0.55in;
+      bottom: 0.65in;
+    }
+
+    /* ── Type helpers ─────────────────────────────────────────────────── */
+    .label {
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7FB8FF;
+      margin-bottom: 10pt;
+    }
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03) 80%, transparent);
+      margin: 14pt 0;
+    }
+    .rule-short {
+      width: 0.5in;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(106,171,255,0.55), transparent);
+      margin-bottom: 16pt;
+    }
+    .col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18pt; }
+    .col-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14pt; }
+
+    /* ── Cover ────────────────────────────────────────────────────────── */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .cover-eyebrow {
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(127,184,255,0.5);
+      margin-bottom: 26pt;
+    }
+    .cover-icon {
+      width: 68pt;
+      height: 68pt;
+      object-fit: contain;
+      margin-bottom: 26pt;
+      filter: drop-shadow(0 0 28px rgba(74,143,255,0.38));
+    }
+    .cover-title {
+      font-size: 58pt;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 14pt;
+    }
+    .cover-sub {
+      font-size: 12pt;
+      font-weight: 300;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(127,184,255,0.45);
+      margin-bottom: 46pt;
+    }
+    .cover-rule {
+      width: 52pt;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(106,171,255,0.55), transparent);
+      margin-bottom: 18pt;
+    }
+    .cover-version {
+      font-size: 8.5pt;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.16);
+    }
+
+    /* ── Table of contents ────────────────────────────────────────────── */
+    .toc-section {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #7FB8FF;
+      margin-top: 18pt;
+      margin-bottom: 4pt;
+    }
+    .toc-row {
+      display: flex;
+      align-items: baseline;
+      padding: 8pt 0;
+      border-bottom: 1px solid rgba(255,255,255,0.045);
+    }
+    .toc-n {
+      font-size: 9pt;
+      font-weight: 700;
+      color: rgba(106,171,255,0.45);
+      width: 32pt;
+      flex-shrink: 0;
+    }
+    .toc-t {
+      font-size: 10pt;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      flex: 1;
+    }
+    .toc-p {
+      font-size: 9pt;
+      font-weight: 600;
+      color: rgba(255,255,255,0.18);
+      width: 22pt;
+      text-align: right;
+    }
+
+    /* ── Section intro pages ──────────────────────────────────────────── */
+    .sec-intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 0.58in 0.7in;
+    }
+    .sec-bg-num {
+      position: absolute;
+      bottom: 0.5in;
+      right: -0.1in;
+      font-size: 240pt;
+      font-weight: 900;
+      color: rgba(74,143,255,0.035);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .sec-num {
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: rgba(106,171,255,0.4);
+      margin-bottom: 10pt;
+    }
+    .sec-name {
+      font-size: 52pt;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.015em;
+      line-height: 0.98;
+      color: #fff;
+      margin-bottom: 18pt;
+    }
+    .sec-desc {
+      font-size: 11pt;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.7;
+      max-width: 4.6in;
+      font-weight: 400;
+    }
+
+    /* ── Mission page ─────────────────────────────────────────────────── */
+    .mission-why {
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(106,171,255,0.5);
+      margin-bottom: 8pt;
+    }
+    .mission-headline {
+      font-size: 22pt;
+      font-weight: 800;
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 14pt;
+    }
+    .mission-body {
+      font-size: 10pt;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      max-width: 5in;
+      margin-bottom: 0;
+    }
+    .mission-block {
+      background: rgba(50,110,225,0.09);
+      border: 1px solid rgba(120,185,255,0.14);
+      border-radius: 8pt;
+      padding: 16pt 20pt;
+    }
+    .mission-block-label {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(127,184,255,0.5);
+      margin-bottom: 7pt;
+    }
+    .mission-block-text {
+      font-size: 11pt;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ── Value cards ──────────────────────────────────────────────────── */
+    .val-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(120,185,255,0.1);
+      border-radius: 8pt;
+      padding: 20pt;
+    }
+    .val-name {
+      font-size: 9pt;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6AABFF;
+      margin-bottom: 5pt;
+    }
+    .val-desc {
+      font-size: 9pt;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+    }
+
+    /* ── Voice spectrum ───────────────────────────────────────────────── */
+    .voice-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 9pt;
+    }
+    .vl { font-size: 7pt; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.28); width: 1.05in; text-align: right; padding-right: 9pt; }
+    .vtrack {
+      flex: 1;
+      height: 3pt;
+      background: rgba(255,255,255,0.07);
+      border-radius: 2pt;
+      position: relative;
+    }
+    .vdot {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 9pt;
+      height: 9pt;
+      border-radius: 50%;
+      background: #6AABFF;
+      box-shadow: 0 0 8px rgba(106,171,255,0.55);
+    }
+    .vr { font-size: 7pt; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.28); width: 1.05in; padding-left: 9pt; }
+    .voice-active-l { color: rgba(255,255,255,0.7) !important; }
+    .voice-active-r { color: rgba(255,255,255,0.7) !important; }
+
+    /* ── Messaging ────────────────────────────────────────────────────── */
+    .msg-primary {
+      background: linear-gradient(135deg, rgba(50,110,225,0.18) 0%, rgba(20,60,160,0.08) 100%);
+      border: 1px solid rgba(120,185,255,0.22);
+      border-radius: 10pt;
+      padding: 18pt 22pt;
+      margin-bottom: 14pt;
+    }
+    .msg-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7FB8FF;
+      margin-bottom: 8pt;
+    }
+    .msg-text {
+      font-size: 22pt;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .msg-hooks {
+      display: flex;
+      flex-direction: column;
+      gap: 8pt;
+    }
+    .msg-hook {
+      display: flex;
+      align-items: center;
+      gap: 10pt;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 7pt;
+      padding: 10pt 14pt;
+    }
+    .hook-dot {
+      width: 5pt; height: 5pt;
+      border-radius: 50%;
+      background: #6AABFF;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+    .hook-text {
+      font-size: 10pt;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      font-style: italic;
+    }
+    .hook-note {
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.28);
+      margin-left: auto;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ── Do / Don't ───────────────────────────────────────────────────── */
+    .do-col h3, .dont-col h3 {
+      font-size: 10pt;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12pt;
+      padding-bottom: 8pt;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .do-col h3 { color: rgba(106,171,255,0.8); }
+    .dont-col h3 { color: rgba(255,90,90,0.65); }
+    .dd-item {
+      display: flex;
+      gap: 8pt;
+      margin-bottom: 9pt;
+      align-items: flex-start;
+    }
+    .dd-dot-b {
+      width: 5pt; height: 5pt;
+      border-radius: 50%;
+      background: #6AABFF;
+      margin-top: 3.5pt;
+      flex-shrink: 0;
+    }
+    .dd-dot-r {
+      width: 5pt; height: 5pt;
+      border-radius: 50%;
+      background: rgba(255,90,90,0.55);
+      margin-top: 3.5pt;
+      flex-shrink: 0;
+    }
+    .dd-item p {
+      font-size: 9pt;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Logo page ────────────────────────────────────────────────────── */
+    .logo-usage-row {
+      display: flex;
+      gap: 14pt;
+      margin-bottom: 14pt;
+    }
+    .logo-box {
+      flex: 1;
+      border-radius: 8pt;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .logo-preview {
+      height: 90pt;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12pt;
+    }
+    .logo-preview img { object-fit: contain; }
+    .logo-preview-dark { background: #020C18; }
+    .logo-preview-mid  { background: #061422; }
+    .logo-caption {
+      padding: 8pt 12pt;
+      background: rgba(255,255,255,0.03);
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .logo-name-preview {
+      font-size: 13pt;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.85);
+    }
+    .logo-dont-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10pt;
+    }
+    .logo-dont-item {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 7pt;
+      overflow: hidden;
+    }
+    .logo-dont-preview {
+      height: 80pt;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-dont-label {
+      padding: 6pt 8pt;
+      font-size: 7.5pt;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,90,90,0.5);
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* ── Color swatches ───────────────────────────────────────────────── */
+    .swatch-row { display: flex; gap: 14pt; margin-bottom: 14pt; }
+    .swatch { flex: 1; border-radius: 8pt; overflow: hidden; }
+    .swatch-color { height: 100pt; width: 100%; }
+    .swatch-info {
+      padding: 10pt 12pt;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.055);
+      border-top: none;
+      border-radius: 0 0 8pt 8pt;
+    }
+    .sw-name { font-size: 8.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 4pt; }
+    .sw-hex  { font-size: 10pt; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; margin-bottom: 2pt; }
+    .sw-rgb  { font-size: 7.5pt; color: rgba(255,255,255,0.22); letter-spacing: 0.02em; margin-bottom: 2pt; }
+    .sw-use  { font-size: 7.5pt; color: rgba(127,184,255,0.45); font-weight: 600; }
+
+    .swatch-sm-row { display: flex; gap: 10pt; flex-wrap: wrap; margin-bottom: 12pt; }
+    .swatch-sm {
+      display: flex;
+      align-items: center;
+      gap: 9pt;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.055);
+      border-radius: 7pt;
+      padding: 8pt 12pt 8pt 8pt;
+      flex: 1;
+      min-width: 120pt;
+    }
+    .sm-dot { width: 30pt; height: 30pt; border-radius: 5pt; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.08); }
+    .sm-name { font-size: 8.5pt; font-weight: 600; color: rgba(255,255,255,0.65); }
+    .sm-hex  { font-size: 8pt; color: rgba(255,255,255,0.28); }
+
+    .glass-demo {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8pt;
+      padding: 14pt 16pt;
+    }
+    .glass-row { display: flex; align-items: center; gap: 12pt; margin-bottom: 8pt; }
+    .glass-swatch {
+      width: 44pt; height: 24pt;
+      border-radius: 5pt;
+      border: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+    .glass-label { font-size: 9pt; font-weight: 600; color: rgba(255,255,255,0.6); }
+    .glass-value { font-size: 8pt; color: rgba(255,255,255,0.28); font-family: 'Courier New', monospace; margin-left: auto; }
+
+    /* ── Typography ───────────────────────────────────────────────────── */
+    .type-sample {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 18pt 0;
+    }
+    .type-weight-tag {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(127,184,255,0.45);
+      margin-bottom: 5pt;
+    }
+    .type-sample-text { color: #fff; letter-spacing: 0.01em; }
+    .type-use-note {
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.22);
+      margin-top: 3pt;
+    }
+    .type-usage-row {
+      display: flex;
+      gap: 14pt;
+      margin-bottom: 14pt;
+    }
+    .type-usage-card {
+      flex: 1;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.055);
+      border-radius: 8pt;
+      padding: 14pt;
+    }
+    .tuc-label { font-size: 8pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(127,184,255,0.45); margin-bottom: 10pt; }
+    .tuc-spec  { font-size: 8pt; color: rgba(255,255,255,0.35); line-height: 1.85; }
+    .tuc-spec span { color: rgba(255,255,255,0.65); font-weight: 600; }
+    .tuc-example { margin-top: 10pt; padding-top: 10pt; border-top: 1px solid rgba(255,255,255,0.05); }
+
+    /* ── Application ──────────────────────────────────────────────────── */
+    .app-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8pt;
+      padding: 14pt;
+      margin-bottom: 10pt;
+    }
+    .app-card-label { font-size: 8pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(127,184,255,0.4); margin-bottom: 10pt; }
+    .app-rule { width: 100%; height: 1px; background: rgba(255,255,255,0.05); margin: 9pt 0; }
+
+    /* Glass button */
+    .btn-demo {
+      display: inline-flex;
+      align-items: center;
+      gap: 7pt;
+      padding: 9pt 20pt;
+      background: rgba(50,110,225,0.52);
+      border: 1px solid rgba(120,185,255,0.38);
+      border-radius: 9pt;
+      color: #fff;
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 5px 20px rgba(30,80,200,0.28);
+    }
+    .btn-demo-ghost {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: none;
+    }
+
+    /* Mock card */
+    .mock-card {
+      background: rgba(50,110,225,0.12);
+      border: 1px solid rgba(120,185,255,0.2);
+      border-radius: 10pt;
+      padding: 14pt 16pt;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .mock-card-title { font-size: 9pt; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin-bottom: 4pt; }
+    .mock-card-desc  { font-size: 8pt; color: rgba(127,184,255,0.8); line-height: 1.55; }
+
+    /* Nav preview */
+    .nav-demo {
+      background: rgba(2,12,24,0.94);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 7pt;
+      padding: 9pt 16pt;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-demo-logo { display: flex; align-items: center; gap: 8pt; font-size: 9pt; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+    .nav-demo-logo img { width: 18pt; height: 18pt; object-fit: contain; opacity: 0.8; }
+
+    /* Social media post */
+    .social-post {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #040F1D 0%, #061422 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8pt;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16pt;
+      gap: 10pt;
+      position: relative;
+      overflow: hidden;
+    }
+    .social-post::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(25,70,180,0.18) 0%, transparent 65%);
+    }
+    .sp-eyebrow { font-size: 6.5pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(127,184,255,0.55); position: relative; z-index: 1; }
+    .sp-headline { font-size: 14pt; font-weight: 800; letter-spacing: 0.025em; text-transform: uppercase; text-align: center; color: #fff; line-height: 1.1; position: relative; z-index: 1; }
+    .sp-sub { font-size: 7.5pt; color: rgba(255,255,255,0.4); text-align: center; position: relative; z-index: 1; }
+    .sp-logo { position: relative; z-index: 1; }
+    .sp-logo img { width: 22pt; height: 22pt; object-fit: contain; opacity: 0.55; }
+
+    .social-story {
+      aspect-ratio: 9/16;
+      background: linear-gradient(160deg, #040F1D 0%, #061a30 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8pt;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16pt;
+      gap: 8pt;
+      position: relative;
+      overflow: hidden;
+    }
+    .social-story::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -20%;
+      width: 90%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(25,70,180,0.2) 0%, transparent 65%);
+    }
+    .ss-label { font-size: 6pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(127,184,255,0.45); position: relative; z-index: 1; }
+    .ss-headline { font-size: 16pt; font-weight: 900; letter-spacing: 0.02em; text-transform: uppercase; text-align: center; color: #fff; line-height: 1.05; position: relative; z-index: 1; }
+    .ss-sub { font-size: 7pt; color: rgba(255,255,255,0.38); text-align: center; line-height: 1.55; position: relative; z-index: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 1: COVER                                                        -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page glow-tr glow-bl cover">
+  <div class="cover-eyebrow">Slice of Life</div>
+  <img src="assets/icon.png" alt="Slice of Life" class="cover-icon" />
+  <div class="cover-title">Brand<br>Guide</div>
+  <div class="cover-sub">Brand Style Guide</div>
+  <div class="cover-rule"></div>
+  <div class="cover-version">Version 1.0 &nbsp;·&nbsp; 2025</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 2: TABLE OF CONTENTS                                            -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">Brand Style Guide</span></div>
+  </div>
+  <div class="content">
+    <div class="label">Contents</div>
+    <div class="toc-section">The Brand</div>
+    <div class="toc-row"><span class="toc-n">1.1</span><span class="toc-t">Mission &amp; Vision</span><span class="toc-p">04</span></div>
+    <div class="toc-row"><span class="toc-n">1.2</span><span class="toc-t">Brand Values</span><span class="toc-p">05</span></div>
+    <div class="toc-row"><span class="toc-n">1.3</span><span class="toc-t">Brand Voice</span><span class="toc-p">06</span></div>
+    <div class="toc-row"><span class="toc-n">1.4</span><span class="toc-t">Messaging</span><span class="toc-p">07</span></div>
+    <div class="toc-row"><span class="toc-n">1.5</span><span class="toc-t">Do's &amp; Don'ts</span><span class="toc-p">08</span></div>
+    <div class="toc-section" style="margin-top:16pt;">Logo</div>
+    <div class="toc-row"><span class="toc-n">2.1</span><span class="toc-t">Logo Usage</span><span class="toc-p">10</span></div>
+    <div class="toc-row"><span class="toc-n">2.2</span><span class="toc-t">Logo Don'ts</span><span class="toc-p">11</span></div>
+    <div class="toc-section" style="margin-top:16pt;">Color</div>
+    <div class="toc-row"><span class="toc-n">3.1</span><span class="toc-t">Primary Palette</span><span class="toc-p">13</span></div>
+    <div class="toc-row"><span class="toc-n">3.2</span><span class="toc-t">Secondary Palette &amp; Effects</span><span class="toc-p">14</span></div>
+    <div class="toc-section" style="margin-top:16pt;">Typography</div>
+    <div class="toc-row"><span class="toc-n">4.1</span><span class="toc-t">Typeface</span><span class="toc-p">16</span></div>
+    <div class="toc-row"><span class="toc-n">4.2</span><span class="toc-t">Use of Type</span><span class="toc-p">17</span></div>
+    <div class="toc-section" style="margin-top:16pt;">Application</div>
+    <div class="toc-row"><span class="toc-n">5.1</span><span class="toc-t">UI Patterns</span><span class="toc-p">19</span></div>
+    <div class="toc-row"><span class="toc-n">5.2</span><span class="toc-t">Website</span><span class="toc-p">20</span></div>
+    <div class="toc-row"><span class="toc-n">5.3</span><span class="toc-t">Social Media</span><span class="toc-p">21</span></div>
+  </div>
+  <div class="page-foot"><span class="pf-num">02</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 3: SECTION 1 INTRO — THE BRAND                                 -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page glow-tr sec-intro">
+  <div class="sec-bg-num">1</div>
+  <div class="sec-num">Section One</div>
+  <div class="rule-short"></div>
+  <div class="sec-name">The<br>Brand</div>
+  <div class="sec-desc">Why Slice of Life exists, what it stands for, how it speaks, and the words it uses to move people from curious to converted.</div>
+  <div class="page-foot"><span class="pf-num">03</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 4: 1.1 MISSION & VISION                                         -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">1.1 &nbsp;·&nbsp; Mission &amp; Vision</span></div>
+  </div>
+  <div class="content">
+    <div class="label">1.1 &nbsp; Mission &amp; Vision</div>
+    <div class="mission-why">Why</div>
+    <div class="mission-headline">Because the best days of your<br>life deserve more than a hard drive.</div>
+    <p style="max-width:5.2in; margin-bottom:20pt; font-size:11pt;">Most people have thousands of hours of footage they've never watched. Not because they don't care — because the gap between filming and finishing a video feels impossibly wide. Slice of Life closes that gap. Drop in your clips, pick your length, and walk away with something worth watching.</p>
+    <div class="col-2" style="margin-bottom:16pt;">
+      <div class="mission-block">
+        <div class="mission-block-label">Mission</div>
+        <p class="mission-block-text" style="margin:0;">To turn everyday footage into something worth watching — automatically, privately, and personally.</p>
+      </div>
+      <div class="mission-block">
+        <div class="mission-block-label">Vision</div>
+        <p class="mission-block-text" style="margin:0;">To become the default way people preserve the moments that matter.</p>
+      </div>
+    </div>
+    <div class="mission-block" style="margin-bottom:16pt;">
+      <div class="mission-block-label">The Idea in One Line</div>
+      <p class="mission-block-text" style="font-size:16pt; font-weight:800; letter-spacing:0.02em; margin:0;">"Document your day. Watch it back."</p>
+    </div>
+    <div class="col-2">
+      <div class="mission-block" style="background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.07);">
+        <div class="mission-block-label">Target User</div>
+        <p class="mission-block-text" style="font-size:10pt; margin:0; color:rgba(255,255,255,0.65); font-weight:400; line-height:1.6;">iPhone users, casual videographers, journalers, and memory-keepers who film often but never finish the edit.</p>
+      </div>
+      <div class="mission-block" style="background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.07);">
+        <div class="mission-block-label">Platform</div>
+        <p class="mission-block-text" style="font-size:10pt; margin:0; color:rgba(255,255,255,0.65); font-weight:400; line-height:1.6;">Mac app (Apple Silicon &amp; Intel). One-time purchase. No subscription. Everything runs on-device.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">04</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 5: 1.2 BRAND VALUES                                             -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">1.2 &nbsp;·&nbsp; Brand Values</span></div>
+  </div>
+  <div class="content">
+    <div class="label">1.2 &nbsp; Brand Values</div>
+    <p style="margin-bottom:18pt; max-width:5in;">Four principles that inform every product decision, every line of copy, and every pixel of interface.</p>
+    <div class="col-2" style="gap:12pt;">
+      <div class="val-card">
+        <div class="val-name">Effortless</div>
+        <div class="val-desc">The effort should be in the living, not the editing. If a user has to think too hard, we've failed. Every interaction should feel like the obvious next step.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-name">Private</div>
+        <div class="val-desc">Your footage never leaves your machine. In a world where every app wants your data, we protect it by design — not as a feature, but as a foundation.</div>
+      </div>
+      <div class="val-card" style="margin-top:12pt;">
+        <div class="val-name">Personal</div>
+        <div class="val-desc">Every Slice reflects how you filmed, not what an algorithm wants. The app learns your rhythm, your pacing, your style — and gets better every time.</div>
+      </div>
+      <div class="val-card" style="margin-top:12pt;">
+        <div class="val-name">Lasting</div>
+        <div class="val-desc">We exist to make something permanent out of something fleeting. The footage you take today will mean more in ten years than it does right now. We hold that seriously.</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">05</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 6: 1.3 BRAND VOICE                                              -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">1.3 &nbsp;·&nbsp; Brand Voice</span></div>
+  </div>
+  <div class="content">
+    <div class="label">1.3 &nbsp; Brand Voice</div>
+    <p style="margin-bottom:18pt; max-width:5.2in;">Slice of Life speaks like a friend who happens to know a lot about film — warm, direct, and quietly confident. We lead with feeling before features. We don't over-explain. We trust the reader.</p>
+    <div class="rule"></div>
+    <!-- Voice spectrum -->
+    <div style="margin-bottom:10pt;">
+      <div class="voice-row">
+        <span class="vl">Technical</span>
+        <div class="vtrack"><div class="vdot" style="left:82%;"></div></div>
+        <span class="vr voice-active-r">Personal</span>
+      </div>
+      <div class="voice-row">
+        <span class="vl">Corporate</span>
+        <div class="vtrack"><div class="vdot" style="left:78%;"></div></div>
+        <span class="vr voice-active-r">Human</span>
+      </div>
+      <div class="voice-row">
+        <span class="vl">Loud</span>
+        <div class="vtrack"><div class="vdot" style="left:72%;"></div></div>
+        <span class="vr voice-active-r">Quiet Premium</span>
+      </div>
+      <div class="voice-row">
+        <span class="vl voice-active-l">Feeling-first</span>
+        <div class="vtrack"><div class="vdot" style="left:22%;"></div></div>
+        <span class="vr">Feature-first</span>
+      </div>
+      <div class="voice-row">
+        <span class="vl voice-active-l">Warm</span>
+        <div class="vtrack"><div class="vdot" style="left:25%;"></div></div>
+        <span class="vr">Clinical</span>
+      </div>
+      <div class="voice-row">
+        <span class="vl voice-active-l">Concise</span>
+        <div class="vtrack"><div class="vdot" style="left:18%;"></div></div>
+        <span class="vr">Verbose</span>
+      </div>
+      <div class="voice-row">
+        <span class="vl">Trendy</span>
+        <div class="vtrack"><div class="vdot" style="left:68%;"></div></div>
+        <span class="vr voice-active-r">Timeless</span>
+      </div>
+      <div class="voice-row">
+        <span class="vl">Hype</span>
+        <div class="vtrack"><div class="vdot" style="left:75%;"></div></div>
+        <span class="vr voice-active-r">Understated</span>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <p style="font-size:9.5pt; color:rgba(255,255,255,0.45); font-style:italic; line-height:1.7; max-width:5in; margin:0;">"The tone is personal and direct. We don't lead with AI — we lead with the day you filmed. We never describe the technology unless we're answering a question about it."</p>
+  </div>
+  <div class="page-foot"><span class="pf-num">06</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 7: 1.4 MESSAGING                                                -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">1.4 &nbsp;·&nbsp; Messaging</span></div>
+  </div>
+  <div class="content">
+    <div class="label">1.4 &nbsp; Messaging</div>
+    <div class="msg-primary">
+      <div class="msg-label">Primary Tagline</div>
+      <div class="msg-text">Document your day.<br>Watch it back.</div>
+    </div>
+    <div class="col-2" style="margin-bottom:14pt;">
+      <div class="msg-primary" style="margin-bottom:0;">
+        <div class="msg-label">Download CTA</div>
+        <div class="msg-text" style="font-size:15pt;">Your memories deserve<br>to be watched.</div>
+      </div>
+      <div class="msg-primary" style="margin-bottom:0; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);">
+        <div class="msg-label">Privacy Line</div>
+        <div class="msg-text" style="font-size:15pt; color:rgba(255,255,255,0.7);">Everything stays<br>on your Mac.</div>
+      </div>
+    </div>
+    <div class="label" style="margin-bottom:8pt;">Pain-point hooks</div>
+    <div class="msg-hooks">
+      <div class="msg-hook">
+        <div class="hook-dot"></div>
+        <span class="hook-text">"You filmed it. Now what?"</span>
+        <span class="hook-note">Hero · Opening line</span>
+      </div>
+      <div class="msg-hook">
+        <div class="hook-dot"></div>
+        <span class="hook-text">"No timeline. No tutorials. No $500 editor."</span>
+        <span class="hook-note">How it works · Step 2</span>
+      </div>
+      <div class="msg-hook">
+        <div class="hook-dot"></div>
+        <span class="hook-text">"No sorting, no renaming, no prep."</span>
+        <span class="hook-note">How it works · Step 1</span>
+      </div>
+      <div class="msg-hook">
+        <div class="hook-dot"></div>
+        <span class="hook-text">"A finished MP4 lands in your folder within minutes."</span>
+        <span class="hook-note">How it works · Step 3</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">07</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 8: 1.5 DO'S & DON'TS                                            -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">1.5 &nbsp;·&nbsp; Do's &amp; Don'ts</span></div>
+  </div>
+  <div class="content">
+    <div class="label">1.5 &nbsp; Do's &amp; Don'ts</div>
+    <div class="col-2" style="gap:20pt;">
+      <div class="do-col">
+        <h3>Do</h3>
+        <div class="dd-item"><div class="dd-dot-b"></div><p>Lead with the feeling before the feature. "Your day, remembered" before "AI-powered editing."</p></div>
+        <div class="dd-item"><div class="dd-dot-b"></div><p>Use personal pronouns — "your footage," "your day," "your story." Make it about them, not the app.</p></div>
+        <div class="dd-item"><div class="dd-dot-b"></div><p>Keep sentences short and declarative. One idea per sentence.</p></div>
+        <div class="dd-item"><div class="dd-dot-b"></div><p>Mention privacy often. It's a genuine differentiator and a real concern for our users.</p></div>
+        <div class="dd-item"><div class="dd-dot-b"></div><p>Reference specific moments — a trip, an ordinary Tuesday, a kid's birthday. Specificity creates feeling.</p></div>
+        <div class="dd-item"><div class="dd-dot-b"></div><p>Say "footage," "clips," "memories." These are the words our users use.</p></div>
+        <div class="dd-item"><div class="dd-dot-b"></div><p>Write in American English. "Analyzing," not "Analysing."</p></div>
+      </div>
+      <div class="dont-col">
+        <h3>Don't</h3>
+        <div class="dd-item"><div class="dd-dot-r"></div><p>Don't lead with "AI-powered." Let the result speak first; the technology is secondary.</p></div>
+        <div class="dd-item"><div class="dd-dot-r"></div><p>Don't name Whisper or Claude in user-facing copy. Describe what they do, not what they are.</p></div>
+        <div class="dd-item"><div class="dd-dot-r"></div><p>Don't say "content." Say "footage," "clips," or "memories."</p></div>
+        <div class="dd-item"><div class="dd-dot-r"></div><p>Don't use startup jargon — "leverage," "seamless," "robust," "solution."</p></div>
+        <div class="dd-item"><div class="dd-dot-r"></div><p>Don't over-explain the technology. Users don't need to know how it works to appreciate that it works.</p></div>
+        <div class="dd-item"><div class="dd-dot-r"></div><p>Don't use exclamation points in product copy. Confidence doesn't shout.</p></div>
+        <div class="dd-item"><div class="dd-dot-r"></div><p>Don't say "Premier Pro" — say "your editor" or "XML file."</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">08</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 9: SECTION 2 INTRO — LOGO                                       -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page glow-tr sec-intro">
+  <div class="sec-bg-num">2</div>
+  <div class="sec-num">Section Two</div>
+  <div class="rule-short"></div>
+  <div class="sec-name">Logo</div>
+  <div class="sec-desc">The Slice of Life mark, its approved uses, minimum sizing, and the things that should never be done to it.</div>
+  <div class="page-foot"><span class="pf-num">09</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 10: 2.1 LOGO USAGE                                              -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">2.1 &nbsp;·&nbsp; Logo Usage</span></div>
+  </div>
+  <div class="content">
+    <div class="label">2.1 &nbsp; Logo Usage</div>
+    <div class="logo-usage-row">
+      <div class="logo-box">
+        <div class="logo-preview logo-preview-dark" style="height:110pt;">
+          <img src="assets/icon.png" alt="" style="width:44pt; height:44pt;" />
+          <span class="logo-name-preview">Slice of Life</span>
+        </div>
+        <div class="logo-caption">Primary — Icon + Wordmark</div>
+      </div>
+      <div class="logo-box">
+        <div class="logo-preview logo-preview-dark" style="height:110pt;">
+          <img src="assets/icon.png" alt="" style="width:44pt; height:44pt;" />
+        </div>
+        <div class="logo-caption">Icon only — App icon, favicon, avatars</div>
+      </div>
+      <div class="logo-box">
+        <div class="logo-preview logo-preview-mid" style="height:110pt;">
+          <img src="assets/icon.png" alt="" style="width:22pt; height:22pt;" />
+          <span style="font-size:9pt; font-weight:700; letter-spacing:0.04em; color:rgba(255,255,255,0.55);">Slice of Life</span>
+        </div>
+        <div class="logo-caption">Compact — Nav, headers, footers</div>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <div class="col-2" style="gap:14pt; margin-bottom:16pt;">
+      <div>
+        <div class="label" style="margin-bottom:10pt;">Clear Space</div>
+        <p style="font-size:9.5pt; line-height:1.7;">Always maintain clear space equal to the icon height on all four sides. Never crowd the mark with other elements, borders, or competing imagery.</p>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:10pt;">Backgrounds</div>
+        <p style="font-size:9.5pt; line-height:1.7;">The white icon is designed for dark surfaces only (#020C18–#0A1628). Never place on white, light, or non-brand-color backgrounds.</p>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <div class="col-2" style="gap:14pt;">
+      <div>
+        <div class="label" style="margin-bottom:10pt;">File Formats</div>
+        <div style="display:flex; flex-direction:column; gap:7pt;">
+          <div class="dd-item" style="margin:0;"><div class="dd-dot-b"></div><p style="font-size:9pt;">PNG — App icon, presentations, social media</p></div>
+          <div class="dd-item" style="margin:0;"><div class="dd-dot-b"></div><p style="font-size:9pt;">SVG — Website, scalable use, print-ready exports</p></div>
+          <div class="dd-item" style="margin:0;"><div class="dd-dot-b"></div><p style="font-size:9pt;">PDF — Formal documents, brand materials</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:10pt;">Minimum Size</div>
+        <div style="display:flex; flex-direction:column; gap:7pt;">
+          <div class="dd-item" style="margin:0;"><div class="dd-dot-b"></div><p style="font-size:9pt;">Digital: 16 × 16px (icon only) / 80px wide (lockup)</p></div>
+          <div class="dd-item" style="margin:0;"><div class="dd-dot-b"></div><p style="font-size:9pt;">Print: 0.25in (icon only) / 1in wide (lockup)</p></div>
+          <div class="dd-item" style="margin:0;"><div class="dd-dot-b"></div><p style="font-size:9pt;">Below minimum, use the icon-only version</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">10</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 11: 2.2 LOGO DON'TS                                             -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">2.2 &nbsp;·&nbsp; Logo Don'ts</span></div>
+  </div>
+  <div class="content">
+    <div class="label">2.2 &nbsp; Logo Don'ts</div>
+    <p style="margin-bottom:18pt;">These usages dilute the mark and undermine brand recognition. None are approved.</p>
+    <div class="logo-dont-grid">
+      <div class="logo-dont-item">
+        <div class="logo-dont-preview" style="background:#fff;">
+          <img src="assets/icon.png" alt="" style="width:32pt; height:32pt; opacity:0.9;" />
+        </div>
+        <div class="logo-dont-label">× Light background</div>
+      </div>
+      <div class="logo-dont-item">
+        <div class="logo-dont-preview logo-preview-dark">
+          <img src="assets/icon.png" alt="" style="width:32pt; height:32pt; transform:scaleX(1.4);" />
+        </div>
+        <div class="logo-dont-label">× Stretched / distorted</div>
+      </div>
+      <div class="logo-dont-item">
+        <div class="logo-dont-preview logo-preview-dark">
+          <img src="assets/icon.png" alt="" style="width:32pt; height:32pt; opacity:0.2;" />
+        </div>
+        <div class="logo-dont-label">× Low opacity</div>
+      </div>
+      <div class="logo-dont-item">
+        <div class="logo-dont-preview logo-preview-dark">
+          <img src="assets/icon.png" alt="" style="width:32pt; height:32pt; transform:rotate(45deg);" />
+        </div>
+        <div class="logo-dont-label">× Rotated</div>
+      </div>
+      <div class="logo-dont-item">
+        <div class="logo-dont-preview logo-preview-dark" style="background: linear-gradient(135deg, #e44, #f80);">
+          <img src="assets/icon.png" alt="" style="width:32pt; height:32pt;" />
+        </div>
+        <div class="logo-dont-label">× Non-brand background</div>
+      </div>
+      <div class="logo-dont-item">
+        <div class="logo-dont-preview logo-preview-dark">
+          <img src="assets/icon.png" alt="" style="width:32pt; height:32pt; filter:hue-rotate(120deg) saturate(2);" />
+        </div>
+        <div class="logo-dont-label">× Recolored</div>
+      </div>
+      <div class="logo-dont-item">
+        <div class="logo-dont-preview logo-preview-dark">
+          <img src="assets/icon.png" alt="" style="width:32pt; height:32pt; filter:drop-shadow(3px 3px 6px rgba(255,100,0,0.8));" />
+        </div>
+        <div class="logo-dont-label">× Effects / shadows</div>
+      </div>
+      <div class="logo-dont-item">
+        <div class="logo-dont-preview logo-preview-dark">
+          <img src="assets/icon.png" alt="" style="width:14pt; height:14pt;" />
+        </div>
+        <div class="logo-dont-label">× Below minimum size</div>
+      </div>
+    </div>
+    <div class="rule" style="margin:20pt 0 16pt;"></div>
+    <div class="col-2" style="gap:18pt;">
+      <div>
+        <div class="label" style="margin-bottom:8pt;">Clear Space Rule</div>
+        <p style="font-size:9.5pt; color:rgba(255,255,255,0.45); line-height:1.75;">Always maintain a minimum clear zone equal to the height of the icon on all four sides of the mark. No text, borders, competing imagery, or decorative elements should enter this zone. When in doubt, give the logo more room.</p>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:8pt;">Background Guidance</div>
+        <p style="font-size:9.5pt; color:rgba(255,255,255,0.45); line-height:1.75;">The white icon is designed exclusively for dark brand surfaces — #020C18 through #0A1628. If a background is ambiguous in darkness, default to the full lockup (icon + wordmark) to preserve legibility. Never apply the icon to white, light, or non-brand-color surfaces.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">11</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 12: SECTION 3 INTRO — COLOR                                     -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page glow-center sec-intro">
+  <div class="sec-bg-num">3</div>
+  <div class="sec-num">Section Three</div>
+  <div class="rule-short"></div>
+  <div class="sec-name">Color</div>
+  <div class="sec-desc">A dark, deep navy palette with a signature electric blue. Every color choice reinforces the feeling of a quiet, premium tool — not a consumer app.</div>
+  <div class="page-foot"><span class="pf-num">12</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 13: 3.1 PRIMARY PALETTE                                          -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">3.1 &nbsp;·&nbsp; Primary Palette</span></div>
+  </div>
+  <div class="content">
+    <div class="label">3.1 &nbsp; Primary Palette</div>
+    <div class="swatch-row">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#020C18;"></div>
+        <div class="swatch-info">
+          <div class="sw-name">Navy</div>
+          <div class="sw-hex">#020C18</div>
+          <div class="sw-rgb">RGB &nbsp; 2 / 12 / 24</div>
+          <div class="sw-use">Page backgrounds</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4A8FFF;"></div>
+        <div class="swatch-info">
+          <div class="sw-name">Primary Blue</div>
+          <div class="sw-hex">#4A8FFF</div>
+          <div class="sw-rgb">RGB &nbsp; 74 / 143 / 255</div>
+          <div class="sw-use">Buttons, links, accents</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6AABFF;"></div>
+        <div class="swatch-info">
+          <div class="sw-name">Blue Bright</div>
+          <div class="sw-hex">#6AABFF</div>
+          <div class="sw-rgb">RGB &nbsp; 106 / 171 / 255</div>
+          <div class="sw-use">Labels, icons, highlights</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FFFFFF; border:1px solid rgba(0,0,0,0.08);"></div>
+        <div class="swatch-info">
+          <div class="sw-name">White</div>
+          <div class="sw-hex">#FFFFFF</div>
+          <div class="sw-rgb">RGB &nbsp; 255 / 255 / 255</div>
+          <div class="sw-use">Headlines, primary text</div>
+        </div>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <p style="font-size:9pt; color:rgba(255,255,255,0.4); line-height:1.7;">The navy background is the foundation of every surface. Blue Bright should never be used at full opacity for large fills — it works as a text color, icon color, or accent on dark surfaces. White is reserved for headlines and primary UI text only.</p>
+    <div class="rule" style="margin:20pt 0 16pt;"></div>
+    <div class="label" style="margin-bottom:12pt;">Approved Combinations</div>
+    <div style="display:flex; gap:12pt;">
+      <div style="flex:1; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.055); border-radius:7pt; padding:12pt; display:flex; flex-direction:column; gap:9pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.4);">Headline on Navy</div>
+        <div style="background:#020C18; border-radius:5pt; padding:10pt 12pt;">
+          <div style="font-size:12pt; font-weight:900; text-transform:uppercase; letter-spacing:0.02em; color:#fff; line-height:1.1;">Your Day</div>
+        </div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.22);">#FFFFFF on #020C18</div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.055); border-radius:7pt; padding:12pt; display:flex; flex-direction:column; gap:9pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.4);">Label on Navy</div>
+        <div style="background:#020C18; border-radius:5pt; padding:10pt 12pt;">
+          <div style="font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:#7FB8FF;">How It Works</div>
+        </div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.22);">#7FB8FF on #020C18</div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.055); border-radius:7pt; padding:12pt; display:flex; flex-direction:column; gap:9pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.4);">Body on Navy</div>
+        <div style="background:#020C18; border-radius:5pt; padding:10pt 12pt;">
+          <div style="font-size:8.5pt; font-weight:400; color:rgba(255,255,255,0.65); line-height:1.55;">Drop your footage. Done.</div>
+        </div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.22);">White 65% on #020C18</div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.055); border-radius:7pt; padding:12pt; display:flex; flex-direction:column; gap:9pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.4);">Button on Navy</div>
+        <div style="background:#020C18; border-radius:5pt; padding:10pt 12pt;">
+          <div class="btn-demo" style="font-size:7pt; padding:6pt 12pt;">Buy — $49</div>
+        </div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.22);">Glass fill on #020C18</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">13</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 14: 3.2 SECONDARY PALETTE & EFFECTS                             -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">3.2 &nbsp;·&nbsp; Secondary Palette &amp; Effects</span></div>
+  </div>
+  <div class="content">
+    <div class="label">3.2 &nbsp; Secondary Palette</div>
+    <div class="swatch-sm-row">
+      <div class="swatch-sm"><div class="sm-dot" style="background:#7FB8FF;"></div><div><div class="sm-name">Blue Muted</div><div class="sm-hex">#7FB8FF &nbsp;·&nbsp; Section labels, secondary text</div></div></div>
+      <div class="swatch-sm"><div class="sm-dot" style="background:#061422;"></div><div><div class="sm-name">Card Background</div><div class="sm-hex">#061422 &nbsp;·&nbsp; Cards, elevated surfaces</div></div></div>
+    </div>
+    <div class="swatch-sm-row">
+      <div class="swatch-sm"><div class="sm-dot" style="background:#040F1D;"></div><div><div class="sm-name">Inner Background</div><div class="sm-hex">#040F1D &nbsp;·&nbsp; Panels, secondary surfaces</div></div></div>
+      <div class="swatch-sm"><div class="sm-dot" style="background:rgba(255,255,255,0.55); border-color:rgba(0,0,0,0.1);"></div><div><div class="sm-name">White 55%</div><div class="sm-hex">rgba(255,255,255,0.55) &nbsp;·&nbsp; Body copy</div></div></div>
+    </div>
+    <div class="rule"></div>
+    <div class="label" style="margin-bottom:10pt;">Glass Effects</div>
+    <div class="glass-demo">
+      <div class="glass-row">
+        <div class="glass-swatch" style="background:rgba(50,110,225,0.52); border-color:rgba(120,185,255,0.38);"></div>
+        <span class="glass-label">Glass Button Fill</span>
+        <span class="glass-value">rgba(50, 110, 225, 0.52)</span>
+      </div>
+      <div class="app-rule"></div>
+      <div class="glass-row">
+        <div class="glass-swatch" style="background:rgba(120,185,255,0.38);"></div>
+        <span class="glass-label">Glass Border</span>
+        <span class="glass-value">rgba(120, 185, 255, 0.38)</span>
+      </div>
+      <div class="app-rule"></div>
+      <div class="glass-row">
+        <div class="glass-swatch" style="background:rgba(30,80,200,0.4);"></div>
+        <span class="glass-label">Blue Glow / Shadow</span>
+        <span class="glass-value">rgba(30, 80, 200, 0.4)</span>
+      </div>
+      <div class="app-rule"></div>
+      <div class="glass-row">
+        <div class="glass-swatch" style="background:rgba(255,255,255,0.18);"></div>
+        <span class="glass-label">Inset Top Highlight</span>
+        <span class="glass-value">rgba(255, 255, 255, 0.18)</span>
+      </div>
+    </div>
+    <div class="rule" style="margin:18pt 0 16pt;"></div>
+    <div class="col-2" style="gap:16pt;">
+      <div>
+        <div class="label" style="margin-bottom:10pt;">Glass — When to Use</div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-b"></div><p style="font-size:9pt;">Primary CTAs, download buttons, and key purchase actions.</p></div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-b"></div><p style="font-size:9pt;">Mode selection cards and prominent UI controls in the app.</p></div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-r"></div><p style="font-size:9pt;">Never on large background panels or full-width sections.</p></div>
+        <div class="dd-item" style="margin:0;"><div class="dd-dot-r"></div><p style="font-size:9pt;">Never stack two glass elements directly — always separate with a dark surface.</p></div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:10pt;">Glow Elevation Scale</div>
+        <div style="display:flex; flex-direction:column; gap:8pt;">
+          <div style="background:#020C18; border:1px solid rgba(255,255,255,0.06); border-radius:6pt; padding:9pt 12pt; box-shadow:0 2px 8px rgba(30,80,200,0.15);">
+            <div style="font-size:7.5pt; font-weight:600; color:rgba(255,255,255,0.45);">Resting &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.25); font-weight:400;">0 2px 8px rgba(30,80,200,0.15)</span></div>
+          </div>
+          <div style="background:#020C18; border:1px solid rgba(120,185,255,0.22); border-radius:6pt; padding:9pt 12pt; box-shadow:0 5px 20px rgba(30,80,200,0.28);">
+            <div style="font-size:7.5pt; font-weight:600; color:rgba(255,255,255,0.45);">Active &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.25); font-weight:400;">0 5px 20px rgba(30,80,200,0.28)</span></div>
+          </div>
+          <div style="background:#020C18; border:1px solid rgba(120,185,255,0.35); border-radius:6pt; padding:9pt 12pt; box-shadow:0 8px 32px rgba(30,80,200,0.38);">
+            <div style="font-size:7.5pt; font-weight:600; color:rgba(255,255,255,0.45);">Hover / Focus &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.25); font-weight:400;">0 8px 32px rgba(30,80,200,0.38)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">14</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 15: SECTION 4 INTRO — TYPOGRAPHY                                -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page glow-bl sec-intro">
+  <div class="sec-bg-num">4</div>
+  <div class="sec-num">Section Four</div>
+  <div class="rule-short"></div>
+  <div class="sec-name">Typography</div>
+  <div class="sec-desc">One typeface. Every weight, every size, every use case — all Montserrat. Consistency in type is what makes the brand feel considered rather than cobbled together.</div>
+  <div class="page-foot"><span class="pf-num">15</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 16: 4.1 TYPEFACE                                                -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">4.1 &nbsp;·&nbsp; Typeface</span></div>
+  </div>
+  <div class="content">
+    <div class="label">4.1 &nbsp; Typeface &nbsp;—&nbsp; Montserrat</div>
+    <div class="type-sample">
+      <div class="type-weight-tag">900 Black</div>
+      <div class="type-sample-text" style="font-size:32pt; font-weight:900; text-transform:uppercase; letter-spacing:0.02em;">ABCDEFGHIJKLMNOP</div>
+      <div class="type-use-note">Hero headlines, section titles, cover displays</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-weight-tag">700 Bold</div>
+      <div class="type-sample-text" style="font-size:22pt; font-weight:700; text-transform:uppercase; letter-spacing:0.025em;">ABCDEFGHIJKLMNOPQRST</div>
+      <div class="type-use-note">Section headings, card titles, CTAs</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-weight-tag">600 SemiBold</div>
+      <div class="type-sample-text" style="font-size:14pt; font-weight:600; letter-spacing:0.04em;">Abcdefghijklmnopqrstuvwxyz 0123456789</div>
+      <div class="type-use-note">Subheadings, labels, nav items, badges</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-weight-tag">400 Regular</div>
+      <div class="type-sample-text" style="font-size:11pt; font-weight:400; color:rgba(255,255,255,0.65);">Abcdefghijklmnopqrstuvwxyz 0123456789 — The quick brown fox jumps over the lazy dog.</div>
+      <div class="type-use-note">Body copy, descriptions, FAQ answers</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-weight-tag">300 Light</div>
+      <div class="type-sample-text" style="font-size:11pt; font-weight:300; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.4);">Brand Style Guide &nbsp;·&nbsp; Version 1.0 &nbsp;·&nbsp; 2025</div>
+      <div class="type-use-note">Subtitles, version labels, eyebrows</div>
+    </div>
+    <div class="rule" style="margin:6pt 0 16pt;"></div>
+    <div class="label" style="margin-bottom:12pt;">Character Set</div>
+    <div style="display:flex; flex-direction:column; gap:9pt;">
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.05); border-radius:7pt; padding:12pt 16pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.38); margin-bottom:7pt;">Uppercase</div>
+        <div style="font-size:15pt; font-weight:700; letter-spacing:0.06em; color:rgba(255,255,255,0.72); line-height:1.5;">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.05); border-radius:7pt; padding:12pt 16pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.38); margin-bottom:7pt;">Numerals &amp; Symbols</div>
+        <div style="font-size:15pt; font-weight:400; letter-spacing:0.05em; color:rgba(255,255,255,0.55); line-height:1.5;">0 &nbsp;1 &nbsp;2 &nbsp;3 &nbsp;4 &nbsp;5 &nbsp;6 &nbsp;7 &nbsp;8 &nbsp;9 &nbsp;&nbsp;·&nbsp;&nbsp; . , : ; — " " ' ' ? $</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">16</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 17: 4.2 USE OF TYPE                                             -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">4.2 &nbsp;·&nbsp; Use of Type</span></div>
+  </div>
+  <div class="content">
+    <div class="label">4.2 &nbsp; Use of Type</div>
+    <div class="type-usage-row">
+      <div class="type-usage-card">
+        <div class="tuc-label">Hero Headline</div>
+        <div class="tuc-spec">
+          Font: <span>Montserrat 700–900</span><br>
+          Case: <span>UPPERCASE</span><br>
+          Size: <span>clamp(36px, 4.8vw, 58px)</span><br>
+          Tracking: <span>0.025em</span><br>
+          Line height: <span>1.1</span><br>
+          Color: <span>White or gradient</span>
+        </div>
+        <div class="tuc-example">
+          <div style="font-size:18pt; font-weight:800; text-transform:uppercase; letter-spacing:0.025em; line-height:1.1;">Document<br>Your Day.</div>
+        </div>
+      </div>
+      <div class="type-usage-card">
+        <div class="tuc-label">Section Label</div>
+        <div class="tuc-spec">
+          Font: <span>Montserrat 700</span><br>
+          Case: <span>UPPERCASE</span><br>
+          Size: <span>11px</span><br>
+          Tracking: <span>0.16em</span><br>
+          Color: <span>#7FB8FF</span>
+        </div>
+        <div class="tuc-example">
+          <div style="font-size:8pt; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#7FB8FF;">How It Works</div>
+        </div>
+      </div>
+    </div>
+    <div class="type-usage-row">
+      <div class="type-usage-card">
+        <div class="tuc-label">Body Copy</div>
+        <div class="tuc-spec">
+          Font: <span>Montserrat 400</span><br>
+          Size: <span>13–16px</span><br>
+          Line height: <span>1.7</span><br>
+          Color: <span>rgba(255,255,255,0.65)</span>
+        </div>
+        <div class="tuc-example">
+          <div style="font-size:8.5pt; color:rgba(255,255,255,0.6); line-height:1.7; font-weight:400;">You filmed it. Now what? Slice of Life finds the story in your footage, cuts the highlights, and hands you a finished video.</div>
+        </div>
+      </div>
+      <div class="type-usage-card">
+        <div class="tuc-label">Card Title</div>
+        <div class="tuc-spec">
+          Font: <span>Montserrat 700</span><br>
+          Size: <span>18px</span><br>
+          Tracking: <span>0.03em</span><br>
+          Line height: <span>1.25</span><br>
+          Color: <span>White</span>
+        </div>
+        <div class="tuc-example">
+          <div style="font-size:11pt; font-weight:700; letter-spacing:0.03em; line-height:1.25;">Your voice leads<br>the story.</div>
+        </div>
+      </div>
+    </div>
+    <div class="type-usage-row">
+      <div class="type-usage-card">
+        <div class="tuc-label">Button / CTA</div>
+        <div class="tuc-spec">
+          Font: <span>Montserrat 700</span><br>
+          Case: <span>UPPERCASE</span><br>
+          Size: <span>11–13px</span><br>
+          Tracking: <span>0.08em</span><br>
+          Color: <span>White</span>
+        </div>
+        <div class="tuc-example">
+          <div class="btn-demo" style="font-size:8pt; padding:7pt 16pt;">Buy for Mac — $49</div>
+        </div>
+      </div>
+      <div class="type-usage-card">
+        <div class="tuc-label">Caption / Meta</div>
+        <div class="tuc-spec">
+          Font: <span>Montserrat 600</span><br>
+          Case: <span>UPPERCASE</span><br>
+          Size: <span>10–11px</span><br>
+          Tracking: <span>0.1em</span><br>
+          Color: <span>rgba(255,255,255,0.28)</span>
+        </div>
+        <div class="tuc-example">
+          <div style="font-size:7pt; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28);">v0.1.26 Beta &nbsp;·&nbsp; Apple Silicon &amp; Intel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">17</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 18: SECTION 5 INTRO — APPLICATION                               -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page glow-tr sec-intro">
+  <div class="sec-bg-num">5</div>
+  <div class="sec-num">Section Five</div>
+  <div class="rule-short"></div>
+  <div class="sec-name">Application</div>
+  <div class="sec-desc">How the brand shows up in the app, on the website, and across social media — the visual language in real contexts.</div>
+  <div class="page-foot"><span class="pf-num">18</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 19: 5.1 UI PATTERNS                                             -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">5.1 &nbsp;·&nbsp; UI Patterns</span></div>
+  </div>
+  <div class="content">
+    <div class="label">5.1 &nbsp; UI Patterns</div>
+    <div class="col-2" style="gap:14pt; margin-bottom:14pt;">
+      <div class="app-card">
+        <div class="app-card-label">Glass Button — Primary</div>
+        <div style="margin-bottom:10pt;">
+          <div class="btn-demo">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Buy for Mac — $49
+          </div>
+        </div>
+        <div class="app-rule"></div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.35); line-height:1.7;">
+          Fill: rgba(50,110,225,0.52)<br>
+          Border: rgba(120,185,255,0.38)<br>
+          Inset highlight: rgba(255,255,255,0.18)<br>
+          Glow: 0 8px 28px rgba(30,80,200,0.35)
+        </div>
+      </div>
+      <div class="app-card">
+        <div class="app-card-label">Glass Button — Secondary</div>
+        <div style="margin-bottom:10pt;">
+          <div class="btn-demo btn-demo-ghost">Settings</div>
+        </div>
+        <div class="app-rule"></div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.35); line-height:1.7;">
+          Fill: rgba(255,255,255,0.05)<br>
+          Border: rgba(255,255,255,0.12)<br>
+          Used for: non-primary actions, nav items
+        </div>
+      </div>
+    </div>
+    <div class="app-card">
+      <div class="app-card-label">Feature Card</div>
+      <div class="col-2">
+        <div class="mock-card">
+          <div class="mock-card-title">Build Your Slice</div>
+          <div class="mock-card-desc">Drop in your footage — one day or many. Narrated by you, assembled automatically.</div>
+        </div>
+        <div style="font-size:8pt; color:rgba(255,255,255,0.35); line-height:1.8; padding-top:2pt;">
+          Background: rgba(50,110,225,0.12–0.16)<br>
+          Border: rgba(120,185,255,0.20–0.24)<br>
+          Inset: rgba(255,255,255,0.10)<br>
+          Radius: 14px<br>
+          Always: dark background behind card
+        </div>
+      </div>
+    </div>
+    <div class="col-2" style="gap:14pt; margin-top:14pt;">
+      <div class="app-card">
+        <div class="app-card-label">Navigation Bar</div>
+        <div class="nav-demo" style="margin-bottom:10pt;">
+          <div class="nav-demo-logo"><img src="assets/icon.png" alt="" /><span>Slice of Life</span></div>
+          <div class="btn-demo" style="padding:6pt 14pt; font-size:7.5pt;">Buy — $49</div>
+        </div>
+        <div class="app-rule"></div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.35); line-height:1.75;">
+          Background: rgba(2,12,24,0.92) + backdrop blur<br>
+          Border: 1px solid rgba(255,255,255,0.06)<br>
+          Scroll state: darkens to 0.97 opacity + shadow
+        </div>
+      </div>
+      <div class="app-card">
+        <div class="app-card-label">Spacing System</div>
+        <div style="display:flex; flex-direction:column; gap:7pt; margin-bottom:10pt;">
+          <div style="display:flex; align-items:center; gap:10pt;">
+            <div style="width:4pt; height:14pt; background:rgba(106,171,255,0.3); border-radius:2pt; flex-shrink:0;"></div>
+            <div style="font-size:8pt; color:rgba(255,255,255,0.4);">4pt — Tight gaps, icon padding</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10pt;">
+            <div style="width:8pt; height:14pt; background:rgba(106,171,255,0.4); border-radius:2pt; flex-shrink:0;"></div>
+            <div style="font-size:8pt; color:rgba(255,255,255,0.4);">8pt — Component internal spacing</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10pt;">
+            <div style="width:16pt; height:14pt; background:rgba(106,171,255,0.55); border-radius:2pt; flex-shrink:0;"></div>
+            <div style="font-size:8pt; color:rgba(255,255,255,0.4);">14–16pt — Card padding</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10pt;">
+            <div style="width:28pt; height:14pt; background:rgba(106,171,255,0.7); border-radius:2pt; flex-shrink:0;"></div>
+            <div style="font-size:8pt; color:rgba(255,255,255,0.4);">24–32pt — Section spacing</div>
+          </div>
+        </div>
+        <div class="app-rule"></div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.35);">Base unit: 4pt — matches Montserrat vertical rhythm</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">19</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 20: 5.2 WEBSITE                                                 -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">5.2 &nbsp;·&nbsp; Website</span></div>
+  </div>
+  <div class="content">
+    <div class="label">5.2 &nbsp; Website</div>
+    <!-- Nav demo -->
+    <div style="margin-bottom:10pt;">
+      <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(127,184,255,0.4); margin-bottom:6pt;">Navigation</div>
+      <div class="nav-demo">
+        <div class="nav-demo-logo"><img src="assets/icon.png" alt="" /><span>Slice of Life</span></div>
+        <div class="btn-demo" style="padding:6pt 14pt; font-size:7.5pt;">Buy — $49</div>
+      </div>
+    </div>
+    <div class="rule" style="margin:10pt 0;"></div>
+    <!-- Section structure -->
+    <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(127,184,255,0.4); margin-bottom:10pt;">Page Structure</div>
+    <div class="col-2" style="gap:10pt;">
+      <div>
+        <div style="display:flex; flex-direction:column; gap:6pt;">
+          <div style="background:rgba(50,110,225,0.14); border:1px solid rgba(120,185,255,0.18); border-radius:5pt; padding:7pt 10pt; font-size:7.5pt; font-weight:700; color:rgba(255,255,255,0.6); letter-spacing:0.06em;">01 · Hero</div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:5pt; padding:7pt 10pt; font-size:7.5pt; color:rgba(255,255,255,0.35);">02 · Promo Video</div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:5pt; padding:7pt 10pt; font-size:7.5pt; color:rgba(255,255,255,0.35);">03 · Testimonials</div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:5pt; padding:7pt 10pt; font-size:7.5pt; color:rgba(255,255,255,0.35);">04 · How It Works</div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:5pt; padding:7pt 10pt; font-size:7.5pt; color:rgba(255,255,255,0.35);">05 · Feature Showcase</div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:5pt; padding:7pt 10pt; font-size:7.5pt; color:rgba(255,255,255,0.35);">06 · FAQ</div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:5pt; padding:7pt 10pt; font-size:7.5pt; color:rgba(255,255,255,0.35);">07 · Download CTA</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8pt;">
+        <div style="font-size:8pt; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(127,184,255,0.35); margin-bottom:2pt;">Design Rules</div>
+        <div class="dd-item" style="margin:0 0 6pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Max content width: 1080px, centered</p></div>
+        <div class="dd-item" style="margin:0 0 6pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Section padding: 110px top/bottom, 48px sides</p></div>
+        <div class="dd-item" style="margin:0 0 6pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Background: #020C18 throughout. No white sections.</p></div>
+        <div class="dd-item" style="margin:0 0 6pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Ambient glow: canvas radial gradient, upper-right</p></div>
+        <div class="dd-item" style="margin:0 0 6pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Section labels always in #7FB8FF, uppercase, 11px</p></div>
+        <div class="dd-item" style="margin:0 0 6pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Scroll reveal: 0.9s ease-out, per-section stagger</p></div>
+      </div>
+    </div>
+    <div class="rule" style="margin:16pt 0 14pt;"></div>
+    <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(127,184,255,0.4); margin-bottom:10pt;">Hero Anatomy</div>
+    <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:8pt; padding:13pt 16pt; display:flex; flex-direction:column; gap:8pt;">
+      <div style="display:flex; align-items:flex-start; gap:12pt;">
+        <div style="width:6pt; height:6pt; border-radius:50%; background:rgba(106,171,255,0.4); flex-shrink:0; margin-top:3pt;"></div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.45); line-height:1.6;"><span style="color:rgba(127,184,255,0.7); font-weight:600;">Badge</span> &nbsp;— Section label · 11px · #7FB8FF · letter-spacing 0.14em · UPPERCASE</div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12pt;">
+        <div style="width:6pt; height:6pt; border-radius:50%; background:rgba(106,171,255,0.4); flex-shrink:0; margin-top:3pt;"></div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.45); line-height:1.6;"><span style="color:rgba(127,184,255,0.7); font-weight:600;">Headline</span> &nbsp;— Montserrat 900 · UPPERCASE · clamp(36px, 4.8vw, 58px) · letter-spacing 0.025em · gradient optional</div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12pt;">
+        <div style="width:6pt; height:6pt; border-radius:50%; background:rgba(106,171,255,0.4); flex-shrink:0; margin-top:3pt;"></div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.45); line-height:1.6;"><span style="color:rgba(127,184,255,0.7); font-weight:600;">Subhead</span> &nbsp;— Montserrat 400 · 18–20px · rgba(255,255,255,0.65) · line-height 1.7</div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12pt;">
+        <div style="width:6pt; height:6pt; border-radius:50%; background:rgba(106,171,255,0.4); flex-shrink:0; margin-top:3pt;"></div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.45); line-height:1.6;"><span style="color:rgba(127,184,255,0.7); font-weight:600;">Actions</span> &nbsp;— Primary glass button + ghost secondary · 48px min-height · 12px gap between</div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12pt;">
+        <div style="width:6pt; height:6pt; border-radius:50%; background:rgba(106,171,255,0.4); flex-shrink:0; margin-top:3pt;"></div>
+        <div style="font-size:7.5pt; color:rgba(255,255,255,0.45); line-height:1.6;"><span style="color:rgba(127,184,255,0.7); font-weight:600;">App Mockup</span> &nbsp;— Max 460px wide · floats 4.5s ease-in-out loop ±7px · no drop shadow</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">20</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 21: 5.3 SOCIAL MEDIA                                            -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-head">
+    <span class="ph-brand">Slice of Life</span>
+    <div class="ph-right"><span class="ph-section">5.3 &nbsp;·&nbsp; Social Media</span></div>
+  </div>
+  <div class="content">
+    <div class="label">5.3 &nbsp; Social Media</div>
+    <div style="display:flex; gap:18pt; margin-bottom:16pt;">
+      <!-- Square post -->
+      <div style="flex:1;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(127,184,255,0.4); margin-bottom:8pt;">Feed Post &nbsp; 1:1</div>
+        <div class="social-post">
+          <div class="sp-eyebrow">Slice of Life</div>
+          <div class="sp-headline">Your day,<br>remembered.</div>
+          <div class="sp-sub">Document your day.<br>Watch it back.</div>
+          <div class="sp-logo"><img src="assets/icon.png" alt="" /></div>
+        </div>
+      </div>
+      <!-- Story -->
+      <div style="flex:0.58;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(127,184,255,0.4); margin-bottom:8pt;">Story / Reel &nbsp; 9:16</div>
+        <div class="social-story">
+          <div class="ss-label">New</div>
+          <div class="ss-headline">Drop your<br>footage.<br>Done.</div>
+          <div class="ss-sub">AI finds the story.<br>You hit export.</div>
+        </div>
+      </div>
+      <!-- Rules -->
+      <div style="flex:1; padding-top:24pt;">
+        <div style="font-size:8pt; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(127,184,255,0.35); margin-bottom:10pt;">Rules</div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Always dark background. Never light.</p></div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Headline in uppercase, Montserrat Bold or Black.</p></div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Blue glow in upper-right — consistent with website.</p></div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-b"></div><p style="font-size:8.5pt;">Include the icon or wordmark on every post.</p></div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-r"></div><p style="font-size:8.5pt;">No stock photos on light backgrounds.</p></div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-r"></div><p style="font-size:8.5pt;">No colored text on non-brand colors.</p></div>
+        <div class="dd-item" style="margin:0 0 8pt;"><div class="dd-dot-r"></div><p style="font-size:8.5pt;">No scripts or serif typefaces.</p></div>
+      </div>
+    </div>
+    <div class="rule" style="margin:16pt 0 14pt;"></div>
+    <div class="label" style="margin-bottom:12pt;">Format Reference</div>
+    <div style="display:flex; gap:10pt; margin-bottom:14pt;">
+      <div style="flex:1; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.05); border-radius:7pt; padding:10pt 12pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.4); margin-bottom:7pt;">Feed Post</div>
+        <div style="font-size:8.5pt; color:rgba(255,255,255,0.45); line-height:1.75;">1080 × 1080 px<br>Ratio: 1:1<br>Caption: ≤125 chars visible</div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.05); border-radius:7pt; padding:10pt 12pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.4); margin-bottom:7pt;">Story / Reel</div>
+        <div style="font-size:8.5pt; color:rgba(255,255,255,0.45); line-height:1.75;">1080 × 1920 px<br>Ratio: 9:16<br>Safe zone: 250px top &amp; bottom</div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.05); border-radius:7pt; padding:10pt 12pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.4); margin-bottom:7pt;">Twitter / X</div>
+        <div style="font-size:8.5pt; color:rgba(255,255,255,0.45); line-height:1.75;">1600 × 900 px<br>Ratio: 16:9<br>Header: 1500 × 500 px</div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.05); border-radius:7pt; padding:10pt 12pt;">
+        <div style="font-size:7.5pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(127,184,255,0.4); margin-bottom:7pt;">App Store</div>
+        <div style="font-size:8.5pt; color:rgba(255,255,255,0.45); line-height:1.75;">Various (see ASC)<br>Dark background required<br>Same brand language</div>
+      </div>
+    </div>
+    <div style="background:rgba(50,110,225,0.07); border:1px solid rgba(120,185,255,0.12); border-radius:7pt; padding:12pt 16pt;">
+      <div style="font-size:8pt; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(127,184,255,0.45); margin-bottom:7pt;">Caption Tone</div>
+      <p style="font-size:9pt; color:rgba(255,255,255,0.5); line-height:1.75; margin:0;">Lead with the moment, not the app. "You filmed dinner with your parents. Now it's a film." beats "Slice of Life turns footage into narrated videos." Keep captions to 1–2 sentences. No hashtag spam — 3–5 relevant tags only.</p>
+    </div>
+  </div>
+  <div class="page-foot"><span class="pf-num">21</span><span class="pf-version">Version 1.0</span></div>
+</div>
+
+</body>
+</html>
