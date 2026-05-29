@@ -1071,6 +1071,17 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   color: rgba(255,255,255,0.18);
 }
 
+.footer-legal {
+  font-size: 12px;
+  color: rgba(255,255,255,0.18);
+  margin-top: 6px;
+}
+.footer-legal a {
+  color: rgba(255,255,255,0.25);
+  text-decoration: none;
+}
+.footer-legal a:hover { color: rgba(255,255,255,0.50); }
+
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
 @media (max-width: 960px) {

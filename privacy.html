@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Slice of Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .legal-page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    .legal-page .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #7FB8FF;
+      text-decoration: none;
+      margin-bottom: 48px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .legal-page .back:hover { opacity: 1; }
+
+    .legal-page h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .legal-page .meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.40);
+      margin-bottom: 56px;
+    }
+
+    .legal-page h2 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7FB8FF;
+      margin: 40px 0 12px;
+    }
+
+    .legal-page p, .legal-page li {
+      font-size: 15px;
+      color: rgba(255,255,255,0.70);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .legal-page ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .legal-page a {
+      color: #7FB8FF;
+      text-decoration: none;
+    }
+    .legal-page a:hover { text-decoration: underline; }
+
+    .legal-page hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      margin: 48px 0;
+    }
+
+    .highlight-box {
+      background: rgba(74, 143, 255, 0.06);
+      border: 1px solid rgba(74, 143, 255, 0.18);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .highlight-box p {
+      margin-bottom: 0;
+      color: rgba(255,255,255,0.80);
+    }
+  </style>
+</head>
+<body>
+  <div class="legal-page">
+    <a class="back" href="/">← sliceoflife-app.com</a>
+
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective date: May 28, 2026 &nbsp;·&nbsp; Slice of Life by Nathan Griffey</p>
+
+    <div class="highlight-box">
+      <p><strong>Short version:</strong> Your footage never leaves your Mac. We collect only basic, anonymized usage analytics and purchase information. We do not sell your data to anyone.</p>
+    </div>
+
+    <h2>1. What We Collect</h2>
+
+    <p><strong>Purchase information.</strong> When you buy the app, Lemon Squeezy (our payment processor) collects your name, email address, and payment details. We receive only a license key and a masked record of your purchase — we never see your full payment details.</p>
+
+    <p><strong>License key.</strong> Your license key is stored locally on your Mac in the app's data directory. It is sent to our Cloudflare proxy server solely to verify your license when the app makes AI calls. It is never stored on our servers beyond a short-lived cache used to avoid redundant verification requests.</p>
+
+    <p><strong>Usage analytics.</strong> The app and website use PostHog to collect anonymized usage events — things like "render started", "render completed", and "credits remaining". These events help us understand how the app is used and where to improve it. Analytics are tied to a random device identifier, not your name or email. The website uses memory-only persistence (no cookies, no localStorage tracking).</p>
+
+    <p><strong>Bug reports.</strong> If you use the in-app bug report button, your message is sent directly via your email client to sliceoflifetech@gmail.com. We receive only what you choose to type.</p>
+
+    <h2>2. What We Do Not Collect</h2>
+    <ul>
+      <li>Your video footage — it never leaves your Mac.</li>
+      <li>Your transcripts or narration text.</li>
+      <li>Your exported videos.</li>
+      <li>Any personally identifying information beyond your purchase email (held by Lemon Squeezy).</li>
+    </ul>
+
+    <h2>3. AI Processing</h2>
+    <p>To perform AI editing functions, the app sends small image frames (extracted from your footage) and short text prompts to Anthropic's API via our Cloudflare proxy. These requests are used only to generate editing decisions in real time. Anthropic's data handling is governed by <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's Privacy Policy</a>. We do not instruct Anthropic to retain or use your data for training.</p>
+
+    <h2>4. Third-Party Services</h2>
+    <ul>
+      <li><strong>Lemon Squeezy</strong> — payment processing and license key issuance. <a href="https://www.lemonsqueezy.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
+      <li><strong>Cloudflare</strong> — API proxy and license verification cache. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Privacy policy</a>.</li>
+      <li><strong>PostHog</strong> — anonymized analytics. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
+      <li><strong>Anthropic</strong> — AI model API (frames and prompts only). <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
+    </ul>
+
+    <h2>5. Data Retention</h2>
+    <p>Local app data (config, credits, export history, thumbnails) lives in your Mac's Application Support folder and is entirely under your control. Deleting the app removes this data. Our Cloudflare license cache expires after 24 hours. PostHog analytics are retained per PostHog's standard retention policy.</p>
+
+    <h2>6. Your Rights</h2>
+    <p>You may request deletion of any personal data we hold (your purchase email, as held by Lemon Squeezy) by contacting us. We will forward deletion requests to Lemon Squeezy on your behalf. For analytics data, PostHog anonymizes data such that it cannot be linked back to an individual.</p>
+
+    <h2>7. Children</h2>
+    <p>The app is not directed at children under 13. We do not knowingly collect information from children under 13.</p>
+
+    <h2>8. Changes to This Policy</h2>
+    <p>Material changes to this policy will be noted in the app's release notes and reflected with an updated effective date above.</p>
+
+    <hr>
+
+    <p>Questions or data requests: <a href="mailto:sliceoflifetech@gmail.com">sliceoflifetech@gmail.com</a></p>
+  </div>
+</body>
+</html>
