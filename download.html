@@ -99,13 +99,17 @@
     .steps {
       border-top: 1px solid rgba(255,255,255,0.07);
       padding-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
+      width: 100%;
     }
 
     .step {
+      width: 100%;
       text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .step:last-child {
+      margin-bottom: 0;
     }
 
     .step-num {
@@ -123,18 +127,26 @@
       margin: 0 auto 10px;
     }
 
+    .step-text {
+      width: 100%;
+      text-align: center;
+    }
+
     .step-text strong {
       display: block;
       font-size: 14px;
       font-weight: 600;
       color: rgba(255,255,255,0.90);
       margin-bottom: 4px;
+      text-align: center;
     }
 
     .step-text span {
+      display: block;
       font-size: 13px;
       color: rgba(255,255,255,0.45);
       line-height: 1.5;
+      text-align: center;
     }
 
     .back-link {
@@ -187,7 +199,7 @@
           <div class="step-num">3</div>
           <div class="step-text">
             <strong>Enter your license key</strong>
-            <span>Open Settings (gear icon, bottom left), paste the key from your email, and hit Activate.</span>
+            <span>Open Settings (gear icon, top right), paste the key from your email, and hit Activate.</span>
           </div>
         </div>
         <div class="step">
