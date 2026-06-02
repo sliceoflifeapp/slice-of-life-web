@@ -1086,6 +1086,19 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   margin-top: 4px;
 }
 
+.download-refund {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 12px;
+}
+
+.testimonial-disclaimer {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.22);
+  padding: 10px 24px 0;
+}
+
 /* ── Footer ───────────────────────────────────────────────────────────────── */
 
 .footer {
