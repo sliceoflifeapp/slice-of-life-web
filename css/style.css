@@ -433,7 +433,6 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 .video-facade {
   position: absolute;
   inset: 0;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
