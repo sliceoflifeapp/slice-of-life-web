@@ -90,16 +90,13 @@
   <!-- ── Video section ─────────────────────────────────────────────────────── -->
   <section class="video-section">
     <div class="video-section-inner">
-      <div class="video-embed-wrapper" id="video-wrapper">
-        <div class="video-facade" id="video-facade">
-          <img
-            src="https://i.ytimg.com/vi/KOL9lQcSu3E/maxresdefault.jpg"
-            alt="Slice of Life — demo video"
-            class="video-facade-thumb"
-            onerror="this.style.display='none'"
-          />
-          <div class="video-facade-overlay"></div>
-        </div>
+      <div class="video-embed-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/KOL9lQcSu3E?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=KOL9lQcSu3E&controls=1"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </section>
@@ -413,26 +410,6 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script>
-    var videoWrapper = document.getElementById('video-wrapper');
-    var videoObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var facade = document.getElementById('video-facade');
-          if (!facade) return;
-          facade.remove();
-          var iframe = document.createElement('iframe');
-          iframe.src = 'https://www.youtube.com/embed/KOL9lQcSu3E?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=KOL9lQcSu3E';
-          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-          iframe.allowFullscreen = true;
-          iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
-          videoWrapper.appendChild(iframe);
-          videoObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.4 });
-    videoObserver.observe(videoWrapper);
-  </script>
 
   <!-- PostHog — anonymous page/funnel tracking -->
   <script>
