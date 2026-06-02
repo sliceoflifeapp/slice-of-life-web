@@ -91,12 +91,18 @@
   <section class="video-section">
     <div class="video-section-inner">
       <div class="video-embed-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/KOL9lQcSu3E?rel=0&modestbranding=1"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+        <div class="video-facade" id="video-facade" onclick="loadPromoVideo()">
+          <img
+            src="https://i.ytimg.com/vi/KOL9lQcSu3E/maxresdefault.jpg"
+            alt="Slice of Life — demo video"
+            class="video-facade-thumb"
+            onerror="this.style.display='none'"
+          />
+          <div class="video-facade-overlay"></div>
+          <div class="video-play-btn">
+            <svg width="22" height="26" viewBox="0 0 22 26" fill="none"><path d="M2 2l18 11L2 24V2z" fill="white" fill-opacity="0.95"/></svg>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -410,6 +416,19 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    function loadPromoVideo() {
+      var facade = document.getElementById('video-facade');
+      var wrapper = facade.parentElement;
+      facade.remove();
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/KOL9lQcSu3E?rel=0&modestbranding=1&autoplay=1';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
+      wrapper.appendChild(iframe);
+    }
+  </script>
 
   <!-- PostHog — anonymous page/funnel tracking -->
   <script>
