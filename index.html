@@ -92,12 +92,11 @@
     <div class="video-section-inner">
       <div class="video-embed-wrapper">
         <iframe
-          src="https://www.youtube.com/embed/KOL9lQcSu3E?rel=0&autoplay=1&mute=1&loop=1&playlist=KOL9lQcSu3E&controls=0&disablekb=1"
+          src="https://player.vimeo.com/video/1197808806?autoplay=1&loop=1&background=1&quality=auto"
           frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen>
         </iframe>
-        <div class="video-cover" id="video-cover"></div>
       </div>
     </div>
   </section>
@@ -411,15 +410,6 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script>
-    setTimeout(function() {
-      var cover = document.getElementById('video-cover');
-      if (!cover) return;
-      cover.style.transition = 'opacity 1s ease-out';
-      cover.style.opacity = '0';
-      setTimeout(function() { cover.style.display = 'none'; }, 1000);
-    }, 3500);
-  </script>
 
   <!-- PostHog — anonymous page/funnel tracking -->
   <script>
