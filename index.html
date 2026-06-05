@@ -105,26 +105,26 @@
   <!-- ── Video section ─────────────────────────────────────────────────────── -->
   <section class="video-section">
     <div class="video-section-inner">
-      <div class="video-embed-wrapper" id="main-video-wrapper">
+      <div class="video-embed-wrapper">
         <iframe
           id="vimeo-player"
-          src="https://player.vimeo.com/video/1198858629?controls=1&title=0&byline=0&portrait=0"
+          src="https://player.vimeo.com/video/1197808806?autoplay=1&loop=1&background=1"
           frameborder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen>
         </iframe>
-        <div class="video-thumb" id="main-video-thumb">
-          <div class="vt-glow"></div>
-          <div class="vt-content">
-            <img src="assets/icon.png" alt="" class="vt-logo" />
-            <span class="vt-label">App Walkthrough</span>
-          </div>
-          <div class="vt-play-btn">
-            <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
-              <path d="M1 1.5l17.5 10.5L1 22.5V1.5z" fill="white" fill-opacity="0.95"/>
-            </svg>
-          </div>
-        </div>
+        <button class="video-mute-btn" id="video-mute-btn" title="Unmute">
+          <!-- muted icon -->
+          <svg id="icon-muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+          <!-- unmuted icon (hidden by default) -->
+          <svg id="icon-unmuted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -458,15 +458,26 @@
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script src="js/main.js"></script>
   <script>
-    // Main walkthrough video — click thumbnail to play
-    var mainPlayer = new Vimeo.Player('vimeo-player');
-    var mainThumb  = document.getElementById('main-video-thumb');
-    mainThumb.addEventListener('click', function () {
-      mainThumb.classList.add('vt-hidden');
-      mainPlayer.play();
+    // Promo video — mute toggle
+    var vimeoPlayer = new Vimeo.Player('vimeo-player');
+    var videoMuted = true;
+
+    document.getElementById('video-mute-btn').addEventListener('click', function() {
+      if (videoMuted) {
+        vimeoPlayer.setVolume(0.18);
+        vimeoPlayer.setMuted(false);
+        document.getElementById('icon-muted').style.display = 'none';
+        document.getElementById('icon-unmuted').style.display = 'block';
+      } else {
+        vimeoPlayer.setVolume(0);
+        vimeoPlayer.setMuted(true);
+        document.getElementById('icon-muted').style.display = 'block';
+        document.getElementById('icon-unmuted').style.display = 'none';
+      }
+      videoMuted = !videoMuted;
     });
 
-    // Showcase card video — click thumbnail to play
+    // Showcase walkthrough — click thumbnail to play
     var showcasePlayer = new Vimeo.Player('vimeo-showcase');
     var showcaseThumb  = document.getElementById('showcase-video-thumb');
     showcaseThumb.addEventListener('click', function () {
