@@ -567,7 +567,32 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   object-fit: cover;
   display: block;
   border-radius: inherit;
-  transition: transform 0.55s var(--ease-out), filter 0.3s var(--ease-out);
+  transition: filter 0.3s var(--ease-out);
+}
+
+/* Looping light streak that sweeps across the frame */
+.video-thumb--image::after {
+  content: '';
+  position: absolute;
+  top: -25%;
+  left: -75%;
+  width: 55%;
+  height: 150%;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(190, 220, 255, 0.16) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-22deg);
+  animation: shineSweep 6s ease-in-out infinite;
+}
+
+@keyframes shineSweep {
+  0%   { left: -75%; }
+  45%  { left: 135%; }
+  100% { left: 135%; }
 }
 
 /* Hover affordance — signals the frame is a playable video */
@@ -581,8 +606,11 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 }
 
 .showcase-card--video:hover .vt-image {
-  transform: scale(1.045);
-  filter: brightness(1.07);
+  filter: brightness(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-thumb--image::after { animation: none; opacity: 0; }
 }
 
 .vt-glow {
