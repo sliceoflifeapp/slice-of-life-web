@@ -612,6 +612,13 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   animation: shineSweep 3s ease-in-out infinite;
 }
 
+/* Touch devices (no hover): one-time sweep when the card scrolls in */
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .showcase-card--video.in-view .video-thumb--image::after {
+    animation: shineSweep 2.6s ease-in-out 0.5s 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .video-thumb--image::after { animation: none; opacity: 0; }
 }
