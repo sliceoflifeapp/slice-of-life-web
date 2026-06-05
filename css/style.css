@@ -570,7 +570,7 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   transition: filter 0.3s var(--ease-out);
 }
 
-/* Looping light streak that sweeps across the frame */
+/* Light streak — sweeps across the frame on hover */
 .video-thumb--image::after {
   content: '';
   position: absolute;
@@ -586,12 +586,11 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
     rgba(255, 255, 255, 0) 100%
   );
   transform: skewX(-22deg);
-  animation: shineSweep 6s ease-in-out infinite;
 }
 
 @keyframes shineSweep {
   0%   { left: -75%; }
-  45%  { left: 135%; }
+  55%  { left: 135%; }
   100% { left: 135%; }
 }
 
@@ -607,6 +606,10 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 
 .showcase-card--video:hover .vt-image {
   filter: brightness(1.06);
+}
+
+.showcase-card--video:hover .video-thumb--image::after {
+  animation: shineSweep 3s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1352,6 +1355,9 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 
   .showcase-row { flex-direction: column; }
   .showcase-card--large { flex: 1; }
+  /* Stacked column: video card must span full width (its contents are
+     absolutely positioned, so without this it collapses to zero width) */
+  .showcase-card--video { align-self: stretch; }
 
   .proof-strip-inner { flex-wrap: wrap; justify-content: center; gap: 28px 40px; }
   .proof-divider { display: none; }
