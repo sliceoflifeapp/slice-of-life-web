@@ -150,6 +150,25 @@
       line-height: 1.5;
     }
 
+    .trouble-note {
+      margin-top: 24px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: rgba(127,184,255,0.06);
+      border: 1px solid rgba(127,184,255,0.15);
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.55);
+      text-align: left;
+    }
+
+    .trouble-note strong {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      font-size: 12.5px;
+      margin-bottom: 4px;
+    }
+
     .back-link {
       display: block;
       margin-top: 32px;
@@ -179,15 +198,15 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Download Slice of Life
       </a>
-      <p class="download-version">v0.1.38 · macOS 13+ · Apple Silicon</p>
+      <p class="download-version">v0.1.41 · macOS 13+ · Apple Silicon (M1 or later)</p>
 
       <div class="setup-steps">
         <div class="setup-step">
           <div class="setup-step-row">
             <div class="setup-step-num">1</div>
             <div class="setup-step-text">
-              <strong>Open the DMG</strong>
-              <span>Drag Slice of Life into your Applications folder.</span>
+              <strong>Open the DMG &amp; drag to Applications</strong>
+              <span>Let the download finish completely, open the DMG, and drag Slice of Life into your Applications folder. Don't launch it from the DMG window.</span>
             </div>
           </div>
         </div>
@@ -195,8 +214,8 @@
           <div class="setup-step-row">
             <div class="setup-step-num">2</div>
             <div class="setup-step-text">
-              <strong>Launch the app</strong>
-              <span>Double-click Slice of Life in Applications. If macOS asks, click Open.</span>
+              <strong>Launch from Applications</strong>
+              <span>Double-click Slice of Life in your Applications folder. If macOS asks, click Open.</span>
             </div>
           </div>
         </div>
@@ -218,6 +237,11 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="trouble-note">
+        <strong>Seeing a "could not verify" warning?</strong>
+        The app is notarized by Apple — that message means the download didn't finish cleanly or the app was launched from inside the DMG. Move the app and the DMG to Trash, re-download on a stable connection, drag to Applications, then launch from there.
       </div>
 
       <a href="/" class="back-link">← Back to sliceoflife-app.com</a>
