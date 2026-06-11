@@ -93,7 +93,27 @@
     .download-version {
       font-size: 12px;
       color: rgba(255,255,255,0.25);
+      margin-bottom: 14px;
+    }
+
+    .whats-new-link {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #7FB8FF;
+      text-decoration: none;
+      background: rgba(127,184,255,0.08);
+      border: 1px solid rgba(127,184,255,0.22);
+      border-radius: 20px;
+      padding: 8px 18px;
       margin-bottom: 40px;
+      transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
+    }
+
+    .whats-new-link:hover {
+      background: rgba(127,184,255,0.14);
+      border-color: rgba(127,184,255,0.40);
+      transform: translateY(-1px);
     }
 
     .setup-steps {
@@ -198,7 +218,8 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Download the latest version
       </a>
-      <p class="download-version">v0.1.42 · macOS 13+ · Apple Silicon (M1 or later) · <a href="/changelog" style="color: rgba(127,184,255,0.6); text-decoration: none;">See what's new →</a></p>
+      <p class="download-version">v0.1.42 · macOS 13+ · Apple Silicon (M1 or later)</p>
+      <a href="/changelog" class="whats-new-link">See what's new in this update →</a>
 
       <div class="setup-steps">
         <div class="setup-step">
