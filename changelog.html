@@ -148,9 +148,23 @@
 
       <div class="release">
         <div class="release-header">
+          <span class="release-version">v0.1.43</span>
+          <span class="release-date">June 13, 2026</span>
+          <span class="release-tag">Latest</span>
+        </div>
+        <ul>
+          <li><strong>Review your Slice before it renders.</strong> After analysis, you can reorder or remove b-roll clips in each section before the video is built.</li>
+          <li><strong>Smarter clip ordering for mixed-camera setups.</strong> Footage from cameras that mislabel timestamps (like DJI) now sorts into the right place in your story.</li>
+          <li><strong>Sign-offs don't get cut off.</strong> The last narration clip now trims to your natural closing words instead of the densest speech window.</li>
+          <li><strong>Activity breaks land in the right section.</strong> B-roll filmed between activities now groups with the section it belongs to, not the one before it.</li>
+          <li><strong>Sparse clips stay as b-roll.</strong> A clip where you say 7 words across a 58-second clip no longer gets mistakenly treated as narration.</li>
+        </ul>
+      </div>
+
+      <div class="release">
+        <div class="release-header">
           <span class="release-version">v0.1.42</span>
           <span class="release-date">June 11, 2026</span>
-          <span class="release-tag">Latest</span>
         </div>
         <ul>
           <li><strong>Fixed the macOS "could not verify" warning</strong> some users saw on first launch. The app now sails through Gatekeeper on every macOS version.</li>
