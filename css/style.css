@@ -405,7 +405,7 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 /* ── Video section ────────────────────────────────────────────────────────── */
 
 .video-section {
-  padding: 0 48px 80px;
+  padding: 80px 48px;
 }
 
 .video-section-inner {
@@ -535,7 +535,7 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 }
 
 @media (max-width: 960px) {
-  .video-section { padding: 0 28px 64px; }
+  .video-section { padding: 64px 28px; }
 }
 
 /* ── Video thumbnail overlay ──────────────────────────────────────────────── */
