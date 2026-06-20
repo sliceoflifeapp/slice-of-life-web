@@ -4,3 +4,8 @@
 CLAUDE.md
 .DS_Store
 brand-guide.html
+_sol_render_*.html
+_cfg_*.html
+.claude/
+assets/sol_loop_v1_backup.*
+assets/app-icon-1024.png
