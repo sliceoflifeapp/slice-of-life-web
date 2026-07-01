@@ -1,11 +1,22 @@
 // ── FAQ accordion ─────────────────────────────────────────────────────────
 
+function syncFaqAria() {
+  document.querySelectorAll('.faq-q').forEach(q => {
+    const open = q.closest('.faq-item').classList.contains('open');
+    q.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+}
+
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
+  syncFaqAria();
 }
+
+// Initialise aria-expanded state on load.
+document.addEventListener('DOMContentLoaded', syncFaqAria);
 
 // ── Ambient glow ──────────────────────────────────────────────────────────
 

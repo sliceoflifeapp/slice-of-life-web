@@ -1387,3 +1387,49 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   .download-title { font-size: 32px; }
   .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Accessibility (WCAG 2.1 AA)
+   ───────────────────────────────────────────────────────────── */
+
+/* Contrast: raise small muted text to >= 4.5:1 on the near-black bg
+   (0.6 white ≈ 7.3:1). Footer legal links use blue for both contrast
+   and link affordance. */
+.mockup-tagline,
+.vt-label,
+.vis-track-label,
+.spc-label,
+.download-version,
+.download-refund,
+.testimonial-disclaimer,
+.footer-name,
+.footer-copy,
+.footer-legal { color: rgba(255, 255, 255, 0.6); }
+.footer-legal a { color: var(--blue-muted); }
+
+/* Visible keyboard focus (2.4.7) — shown only during keyboard nav. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--blue-muted);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content link (2.4.1) — hidden until focused. */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 2000;
+  padding: 8px 16px;
+  background: var(--blue-glass);
+  color: var(--white);
+  border: 1px solid var(--blue-border);
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus { top: 12px; }
