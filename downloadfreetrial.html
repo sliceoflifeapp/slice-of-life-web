@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Download Slice of Life — Free Trial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .download-page {
+      width: 100%;
+      padding: 80px 24px;
+    }
+
+    .download-card {
+      background: #061422;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 56px 48px;
+      max-width: 520px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .download-card .app-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      display: block;
+    }
+
+    .download-card .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7FB8FF;
+      background: rgba(127,184,255,0.10);
+      border: 1px solid rgba(127,184,255,0.20);
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 24px;
+    }
+
+    .download-card h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .download-card .sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(50,110,225,0.52);
+      border: 1px solid rgba(120,185,255,0.38);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 24px rgba(50,110,225,0.35);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
+      margin-bottom: 16px;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 0 36px rgba(50,110,225,0.5);
+    }
+
+    .download-btn:active {
+      transform: scale(0.97);
+    }
+
+    .download-version {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 40px;
+    }
+
+    .setup-steps {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 24px;
+    }
+
+    .setup-step {
+      display: block;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .setup-step:last-child { margin-bottom: 0; }
+
+    .setup-step-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .setup-step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(127,184,255,0.12);
+      border: 1px solid rgba(127,184,255,0.25);
+      color: #7FB8FF;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .setup-step-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.90);
+      margin-bottom: 2px;
+    }
+
+    .setup-step-text span {
+      display: block;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
+    .trial-note {
+      margin-top: 24px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: rgba(127,184,255,0.06);
+      border: 1px solid rgba(127,184,255,0.15);
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.55);
+      text-align: left;
+    }
+
+    .trial-note strong {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      font-size: 12.5px;
+      margin-bottom: 4px;
+    }
+
+    .trial-note a {
+      color: #7FB8FF;
+      text-decoration: none;
+    }
+
+    .trial-note a:hover {
+      text-decoration: underline;
+    }
+
+    .trouble-note {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: rgba(127,184,255,0.06);
+      border: 1px solid rgba(127,184,255,0.15);
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.55);
+      text-align: left;
+    }
+
+    .trouble-note strong {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      font-size: 12.5px;
+      margin-bottom: 4px;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 32px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.30);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: rgba(255,255,255,0.60);
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="glow-canvas"></canvas>
+
+  <div class="download-page">
+    <div class="download-card">
+      <img src="assets/icon.png" alt="Slice of Life" class="app-icon" />
+      <div class="badge">Free trial</div>
+      <h1>You're in.<br>Let's get you set up.</h1>
+      <p class="sub">Check your email for your license key.</p>
+
+      <a href="https://github.com/sliceoflifeapp/slice-of-life-releases/releases/latest/download/Slice-of-Life.dmg" class="download-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download Slice of Life
+      </a>
+      <p class="download-version">v0.1.58 · macOS 13+ · Apple Silicon (M1 or later)</p>
+
+      <div class="setup-steps">
+        <div class="setup-step">
+          <div class="setup-step-row">
+            <div class="setup-step-num">1</div>
+            <div class="setup-step-text">
+              <strong>Open the DMG &amp; drag to Applications</strong>
+              <span>Let the download finish completely, open the DMG, and drag Slice of Life into your Applications folder. Don't launch it from the DMG window.</span>
+            </div>
+          </div>
+        </div>
+        <div class="setup-step">
+          <div class="setup-step-row">
+            <div class="setup-step-num">2</div>
+            <div class="setup-step-text">
+              <strong>Launch from Applications</strong>
+              <span>Double-click Slice of Life in your Applications folder. If macOS asks, click Open.</span>
+            </div>
+          </div>
+        </div>
+        <div class="setup-step">
+          <div class="setup-step-row">
+            <div class="setup-step-num">3</div>
+            <div class="setup-step-text">
+              <strong>Enter your license key</strong>
+              <span>Open Settings (gear icon, top right), paste the key from your email, and hit Activate.</span>
+            </div>
+          </div>
+        </div>
+        <div class="setup-step">
+          <div class="setup-step-row">
+            <div class="setup-step-num">4</div>
+            <div class="setup-step-text">
+              <strong>Drop in your footage</strong>
+              <span>You're ready. Film yourself. Post today.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trial-note">
+        <strong>You're on the free trial</strong>
+        Your key unlocks a handful of credits to try a real render, valid for 30 days. When you're ready for more, you can upgrade any time from <a href="https://sliceoflife-app.com/#download">sliceoflife-app.com</a> — just activate your new license key in Settings.
+      </div>
+
+      <div class="trouble-note">
+        <strong>Seeing a "could not verify" warning?</strong>
+        You likely have an older version — this was fixed in v0.1.42 and later. Move the app and the DMG to Trash, download the latest version above, drag to Applications, and launch from there.
+      </div>
+
+      <a href="/" class="back-link">← Back to sliceoflife-app.com</a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+
+  <!-- PostHog — anonymous page/funnel tracking -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_CPkXBiAaHJCLEoKHgWy9Hiu3m3uPuoH66SQMNUuxLVFr', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'never',
+      capture_pageview: true,
+      capture_pageleave: true,
+      persistence: 'memory',
+    });
+
+    posthog.register({ platform: 'website' });
+
+    // This page = confirmed free-trial signup — tracked separately from the paid funnel
+    posthog.capture('trial_confirmed_page_view');
+
+    // Track the actual DMG download click
+    var dlBtn = document.querySelector('.download-btn');
+    if (dlBtn) {
+      dlBtn.addEventListener('click', function() {
+        posthog.capture('trial_dmg_download_click');
+      });
+    }
+  </script>
+</body>
+</html>
