@@ -1052,6 +1052,79 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   flex: 1.5;
 }
 
+/* "What makes this different" — comparison table, us vs. a typical SaaS editor */
+.diff-table {
+  border: 1px solid var(--white-10);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.diff-table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 24px 26px;
+  border-bottom: 1px solid var(--white-06);
+  align-items: center;
+}
+.diff-table-row:last-child { border-bottom: none; }
+
+.diff-table-head {
+  padding: 16px 26px;
+  background: var(--white-04);
+}
+.diff-table-head .diff-table-them,
+.diff-table-head .diff-table-us {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.diff-table-head .diff-table-them { color: var(--white-30); }
+.diff-table-head .diff-table-us   { color: var(--blue-muted); }
+
+.diff-table-us strong {
+  color: var(--blue-bright);
+  font-weight: 700;
+}
+
+.diff-table-them {
+  font-size: 13px;
+  color: var(--white-55);
+  line-height: 1.55;
+}
+
+.diff-table-us {
+  font-size: 13px;
+  color: var(--white-80);
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.diff-x {
+  color: var(--white-30);
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+.diff-check {
+  color: var(--blue-bright);
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .diff-table-row { grid-template-columns: 1fr; gap: 10px; padding: 20px; }
+  .diff-table-them::before { content: 'Typical SaaS: '; color: var(--white-30); }
+  .diff-table-us::before   { content: 'Slice of Life: '; color: var(--white-30); }
+  .diff-table-head { display: none; }
+}
+
+@media (max-width: 720px) {
+  .diff-table-row { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
+}
+
 .showcase-card--video {
   padding: 0;
   overflow: hidden;
