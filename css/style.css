@@ -1053,10 +1053,11 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 }
 
 /* "What makes this different" — comparison table, us vs. a typical SaaS editor */
-/* Tighter spacing so it reads as connected to "What it does" below
-   (avoids ~220px of stacked section padding between the two). Scoped to this
-   pairing so other sections keep their normal breathing room. */
-.diff-section { padding-bottom: 24px; }
+/* Tighter spacing above and below so it reads as connected to "How it works"
+   above and "What it does" below (avoids ~220px of stacked section padding on
+   each side). Scoped to this pairing so other sections keep normal breathing room. */
+.diff-section { padding-top: 24px; padding-bottom: 24px; }
+.steps-section:has(+ .diff-section) { padding-bottom: 40px; }
 .diff-section + .feature-showcase-section { padding-top: 40px; }
 
 .diff-table {
