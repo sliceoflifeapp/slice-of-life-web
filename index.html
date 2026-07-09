@@ -551,6 +551,8 @@
       capture_pageview: true,
       capture_pageleave: true,
       persistence: 'memory',          // no cookies, no localStorage fingerprinting
+      disable_session_recording: false,
+      session_recording: { maskAllInputs: true },
     });
 
     // Tag all website events so they're filterable separately from app events

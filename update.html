@@ -280,6 +280,8 @@
       capture_pageview: true,
       capture_pageleave: true,
       persistence: 'memory',
+      disable_session_recording: false,
+      session_recording: { maskAllInputs: true },
     });
 
     posthog.register({ platform: 'website' });
