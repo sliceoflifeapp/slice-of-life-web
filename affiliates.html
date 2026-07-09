@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18242668467"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18242668467');
+  </script>
+
+  <title>Affiliate Program — Slice of Life</title>
+  <meta name="description" content="Earn 30% recurring commission — every month, for as long as your referral stays subscribed — promoting Slice of Life." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <style>
+    .aff-page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    .aff-page .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #7FB8FF;
+      text-decoration: none;
+      margin-bottom: 48px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .aff-page .back:hover { opacity: 1; }
+
+    .aff-hero { text-align: center; margin-bottom: 56px; }
+
+    .aff-hero h1 {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .aff-hero p {
+      font-size: 16px;
+      color: var(--white-55);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    .aff-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin: 40px 0 48px;
+      padding: 28px 20px;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+    }
+    .aff-stat { text-align: center; }
+    .aff-stat-num {
+      display: block;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--blue-bright);
+      margin-bottom: 4px;
+    }
+    .aff-stat-label {
+      font-size: 12px;
+      color: var(--white-55);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .aff-page h2 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7FB8FF;
+      margin: 48px 0 20px;
+    }
+
+    .aff-page p, .aff-page li {
+      font-size: 15px;
+      color: rgba(255,255,255,0.70);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .aff-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 8px;
+    }
+    .aff-step {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 22px 20px;
+    }
+    .aff-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--blue-glass);
+      border: 1px solid var(--blue-border);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .aff-step p { margin-bottom: 0; font-size: 14px; }
+
+    .aff-cta-block {
+      text-align: center;
+      margin: 56px 0 40px;
+      padding: 40px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--blue-border);
+      border-radius: 20px;
+      box-shadow: 0 0 0 1px rgba(106,171,255,0.10), 0 8px 40px rgba(30,80,200,0.20);
+    }
+    .aff-cta-block h2 { margin-top: 0; }
+    .aff-cta-block p { max-width: 440px; margin-left: auto; margin-right: auto; }
+
+    .aff-faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 18px 0;
+    }
+    .aff-faq-item strong {
+      display: block;
+      color: var(--white);
+      font-size: 14.5px;
+      margin-bottom: 6px;
+    }
+    .aff-faq-item p { margin-bottom: 0; font-size: 14px; }
+
+    @media (max-width: 640px) {
+      .aff-steps { grid-template-columns: 1fr; }
+      .aff-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="aff-page">
+    <a class="back" href="/">← sliceoflife-app.com</a>
+
+    <div class="aff-hero">
+      <h1>Promote Slice of Life. Get paid every month.</h1>
+      <p>You talk about editing gear, workflow, and vlogging tools. If your audience is already interested in that, this pays you recurring commission for every subscriber you send — for as long as they stay subscribed.</p>
+      <a href="#join" class="btn-primary btn-large">Become an Affiliate</a>
+    </div>
+
+    <div class="aff-stats">
+      <div class="aff-stat">
+        <span class="aff-stat-num">30%</span>
+        <span class="aff-stat-label">Recurring Commission</span>
+      </div>
+      <div class="aff-stat">
+        <span class="aff-stat-num">Every Month</span>
+        <span class="aff-stat-label">Not Just First Sale</span>
+      </div>
+      <div class="aff-stat">
+        <span class="aff-stat-num">$20</span>
+        <span class="aff-stat-label">Minimum Payout</span>
+      </div>
+    </div>
+
+    <h2>How Much You Earn</h2>
+    <p>Slice of Life is a subscription — <strong>Basic is $10/month, Pro is $20/month</strong>. You earn 30% of every payment your referral makes, every billing cycle, for as long as they keep their subscription. That's roughly <strong>$3/month per Basic subscriber</strong> and <strong>$6/month per Pro subscriber</strong> — not a one-time bounty. Refer 20 people who stick around on Pro and that's $120/month, recurring, without doing anything else.</p>
+
+    <h2>How It Works</h2>
+    <div class="aff-steps">
+      <div class="aff-step">
+        <span class="aff-step-num">1</span>
+        <p>Apply through the Lemon Squeezy affiliate portal below — approval is quick.</p>
+      </div>
+      <div class="aff-step">
+        <span class="aff-step-num">2</span>
+        <p>Get your unique referral link and share it in a video, description, or post — however fits your audience.</p>
+      </div>
+      <div class="aff-step">
+        <span class="aff-step-num">3</span>
+        <p>Get paid monthly once you clear the $20 minimum. Commission keeps paying out as long as your referral stays subscribed.</p>
+      </div>
+    </div>
+
+    <div class="aff-cta-block" id="join">
+      <h2>Ready to Join?</h2>
+      <p>Sign up through Lemon Squeezy — it manages your link, tracking, and payouts.</p>
+      <a href="https://app.lemonsqueezy.com/affiliates/signup" class="btn-primary btn-large">Join via Lemon Squeezy</a>
+    </div>
+
+    <h2>Questions</h2>
+    <div class="aff-faq-item">
+      <strong>Who is this a good fit for?</strong>
+      <p>Anyone whose audience shoots and edits their own video — vloggers, GoPro/action-cam creators, "how I edit my videos" channels, Mac/productivity-app reviewers.</p>
+    </div>
+    <div class="aff-faq-item">
+      <strong>How long does the commission last?</strong>
+      <p>As long as the subscriber you referred stays subscribed. If they cancel, commission stops from that point — there's no clawback on months already paid out.</p>
+    </div>
+    <div class="aff-faq-item">
+      <strong>How do I get paid?</strong>
+      <p>Lemon Squeezy handles payouts directly once your balance clears $20, on their standard payout schedule.</p>
+    </div>
+    <div class="aff-faq-item">
+      <strong>Can I get a free license to try it first?</strong>
+      <p>Yes — email <a href="mailto:sliceoflifetech@gmail.com">sliceoflifetech@gmail.com</a> for a free Pro license before you promote it.</p>
+    </div>
+  </div>
+</body>
+</html>
