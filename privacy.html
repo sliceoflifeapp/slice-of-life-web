@@ -100,6 +100,14 @@
     }
   </style>
   <link rel="canonical" href="https://sliceoflife-app.com/privacy" />
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1044905178498684');
+  fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1044905178498684&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
 </head>
 <body>
   <div class="legal-page">
@@ -118,9 +126,11 @@
 
     <p><strong>License key.</strong> Your license key is stored locally on your Mac in the app's data directory. It is sent to our Cloudflare proxy server to verify your license when the app makes AI calls and to check your subscription status and credit balance. A one-way hash of your license key (not the key itself) is used to store your credit balance, plan tier, and subscription status server-side, so your balance stays accurate and tamper-resistant across devices — this record persists for as long as your subscription is active, unlike the short-lived 24-hour verification cache described in Section 5.</p>
 
-    <p><strong>Usage analytics.</strong> The app and website use PostHog to collect anonymized usage events — things like "render started", "render completed", and "credits remaining". These events help us understand how the app is used and where to improve it. Analytics are tied to a random device identifier, not your name or email. The website uses memory-only persistence (no cookies, no localStorage tracking).</p>
+    <p><strong>Usage analytics.</strong> The app and website use PostHog to collect anonymized usage events — things like "render started", "render completed", and "credits remaining". These events help us understand how the app is used and where to improve it. Analytics are tied to a random device identifier, not your name or email. Our PostHog analytics use memory-only persistence (no cookies). Our advertising pixels — described under "Advertising and conversion measurement" below — do set cookies.</p>
 
     <p><strong>Session replay.</strong> The website also uses PostHog session replay to record anonymized mouse movement, clicks, and scrolling on our public marketing pages, so we can see where visitors get stuck. There are no forms or input fields on the site — all input fields are masked regardless as a precaution — and checkout happens entirely on Lemon Squeezy's site, which this does not record. Replay data is tied to the same anonymous identifier as other analytics, never your name or email.</p>
+
+    <p><strong>Advertising and conversion measurement.</strong> When we run ads, our website loads the Meta (Facebook) Pixel and the Google Ads tag to measure which ads lead to visits and sign-ups, and to build audiences for retargeting. These set cookies and share a limited set of events (such as page views, and when someone reaches a download or checkout page) with Meta and Google. They never receive your footage, and no payment details pass through them.</p>
 
     <p><strong>Bug reports.</strong> If you use the in-app bug report button, your message is sent directly via your email client to sliceoflifetech@gmail.com. We receive only what you choose to type.</p>
 
@@ -140,6 +150,8 @@
       <li><strong>Cloudflare</strong> — API proxy, license verification cache, and the credit/subscription ledger (keyed by a hash of your license key, not the key itself). <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Privacy policy</a>.</li>
       <li><strong>PostHog</strong> — anonymized analytics. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
       <li><strong>Anthropic</strong> — AI model API (frames and prompts only). <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
+      <li><strong>Meta (Facebook)</strong> — advertising pixel and conversion measurement. <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Privacy policy</a>.</li>
+      <li><strong>Google Ads</strong> — advertising tag and conversion measurement. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
     </ul>
 
     <h2>5. Data Retention</h2>
