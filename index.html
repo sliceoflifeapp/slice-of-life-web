@@ -35,6 +35,140 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/icon.png" />
   <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="canonical" href="https://sliceoflife-app.com/" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Slice of Life",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Video Editor",
+  "operatingSystem": "macOS 13+ (Apple Silicon)",
+  "description": "Slice of Life is a Mac app that automatically edits your vlog. Drop in a day of footage \u2014 it finds your talking-to-camera moments, cuts in matching b-roll, burns captions, and exports a finished video plus an editable Premiere Pro / DaVinci Resolve timeline.",
+  "url": "https://sliceoflife-app.com/",
+  "image": "https://sliceoflife-app.com/assets/og-image.jpg",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "10",
+    "highPrice": "20",
+    "offerCount": "2"
+  },
+  "featureList": [
+    "Automatic a-roll / talking-to-camera detection",
+    "Automatic b-roll matching and cutaways",
+    "Burned-in captions",
+    "Voiceover and b-roll compilation modes",
+    "Vertical / Shorts reframing",
+    "Premiere Pro and DaVinci Resolve XML export",
+    "Runs locally \u2014 your footage never leaves your Mac"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What kind of footage does this work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any video you shoot on your iPhone, DSLR, or action cam. The best results come from a mix of talking-to-camera a-roll and b-roll of what's happening around you \u2014 but even a-roll only works fine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a lot of b-roll?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Even a handful of b-roll clips makes a big difference. Slice will use what you have and fill the rest with your a-roll. The more variety you give it, the better the cuts \u2014 but it works with whatever you filmed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should my clips be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Clips under 2 seconds are skipped automatically. For a-roll, 30 seconds to a few minutes is ideal. For b-roll, 5\u201315 seconds per shot gives the best material to cut with."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What file formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Video: MP4, MOV, M4V, AVI, MKV, MTS, M2TS, and WEBM. You can also drop in photos (JPG, PNG, HEIC, WEBP) \u2014 they become smooth Ken Burns b-roll. If your camera shot it, it almost certainly works."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add captions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Captions are off by default \u2014 flip the toggle in the configure screen to burn them directly into the video so they show on every platform without uploading a separate file. When captions are on, an SRT sidecar also exports alongside, so you can upload it to YouTube or use it in your editor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did some of my clips get cut out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The app scores every clip for quality \u2014 brightness, sharpness, and clarity of speech. Clips that are too dark, blurry, or very short get filtered automatically. Before it builds, the review screen lets you add any clip back, reorder, drop, or rotate clips \u2014 and re-render the same footage later and your changes are remembered."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my footage leave my computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your video files never leave your Mac. Transcription and video assembly run entirely on your device. A small number of image frames (not your full video) are sent to Anthropic's AI for clip analysis and b-roll matching \u2014 the same way a photo editing app might send a thumbnail for analysis. Frames are not stored or used for training."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to render?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A typical daily vlog renders in 3\u20138 minutes on Apple Silicon. 4K is slower than 1080p. Re-edits skip the AI analysis step so they're faster, but still take a few minutes to encode."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I take the edit into Premiere Pro or DaVinci Resolve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 every render exports an XML timeline compatible with both Premiere Pro and DaVinci Resolve. A-roll is on V1, b-roll on V2, all source clips referenced. Open it, refine it, done."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I re-cut after I see it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The re-edit panel on the results screen lets you change pacing, caption style, or orientation and re-render without waiting for the AI to re-analyze your footage. The encode still takes a few minutes but the slow analysis step is skipped."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does pricing work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Slice of Life is a subscription, starting with a 7-day free trial with every feature unlocked. Basic is $10/month (60 credits, 1080p, Vlog mode only), Pro is $20/month (150 credits, 4K, Voiceover and B-roll modes, unlimited Shorts, the YouTube kit, and every caption style). Annual plans get two months free. Cancel anytime \u2014 you keep access through the end of your billing period."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do credits work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Credits cover the cost of AI processing \u2014 analyzing your clips, matching b-roll, and building the edit. Most daily vlogs cost 1\u20132 credits (up to 5 for very large footage batches). Your credits refresh every billing cycle \u2014 60/month on Basic, 150/month on Pro. Need more before your next cycle? Top-up packs are available from $15."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 

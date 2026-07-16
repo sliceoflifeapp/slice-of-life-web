@@ -1,0 +1,29 @@
+# Slice of Life — https://sliceoflife-app.com
+# All crawlers welcome, including AI answer engines.
+# Post-checkout download pages are kept out of the index via a
+# per-page <meta name="robots" content="noindex"> tag (NOT disallowed
+# here on purpose — crawlers must be able to read that tag).
+
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI search / answer engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://sliceoflife-app.com/sitemap.xml
