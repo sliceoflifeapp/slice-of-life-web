@@ -718,12 +718,5 @@
   <!-- Lemon Squeezy — affiliate link attribution -->
   <script>window.lemonSqueezyAffiliateConfig = { store: "sliceoflife" };</script>
   <script src="https://lmsqueezy.com/affiliate.js" defer></script>
-  <!-- Meta Pixel: checkout intent -->
-  <script>
-    document.addEventListener('click', function(e){
-      var a = e.target.closest && e.target.closest('a[href*="lemonsqueezy.com/checkout"]');
-      if (a && window.fbq) fbq('track','InitiateCheckout');
-    });
-  </script>
 </body>
 </html>
