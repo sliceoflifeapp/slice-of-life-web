@@ -785,12 +785,29 @@
     var csClose   = document.getElementById('cs-modal-close');
     var csBackdrop = document.getElementById('cs-modal-backdrop');
 
+    // Force the BTS video pane + collage to be exact squares via JS, not CSS.
+    // Two different pure-CSS techniques (padding-percentage, aspect-ratio)
+    // each hit browser-specific ambiguity resolving a square inside a
+    // flex:1 item — reading the real rendered width and setting an
+    // explicit pixel height sidesteps all of that.
+    function squareCsModalPanes() {
+      ['cs-modal-bts-video', 'cs-modal-thumbs'].forEach(function (id) {
+        document.querySelectorAll('.' + id).forEach(function (el) {
+          el.style.height = el.getBoundingClientRect().width + 'px';
+        });
+      });
+    }
+
     function openCaseStudy() {
       csModal.classList.add('cs-modal--open');
       csModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      squareCsModalPanes();
       if (typeof posthog !== 'undefined') posthog.capture('case_study_open');
     }
+    window.addEventListener('resize', function () {
+      if (csModal.classList.contains('cs-modal--open')) squareCsModalPanes();
+    });
     function closeCaseStudy() {
       csModal.classList.remove('cs-modal--open');
       csModal.setAttribute('aria-hidden', 'true');
