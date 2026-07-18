@@ -256,6 +256,100 @@
   </div>
   -->
 
+  <!-- ── Case study teaser ─────────────────────────────────────────────────── -->
+  <div class="case-study-strip">
+    <div class="case-study-strip-inner">
+      <div class="case-study-item case-study-item--active" id="case-study-open" role="button" tabindex="0" aria-haspopup="dialog">
+        <div class="case-study-thumb">
+          <img src="assets/case-study/cs-vimeo-thumb.jpg" alt="Cycling and paddleboarding case study" loading="lazy" />
+          <span class="case-study-play" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M9 7.5v9l7-4.5z" fill="#fff"/></svg>
+          </span>
+        </div>
+        <div class="case-study-body">
+          <p class="case-study-title">Cycling &amp; paddleboarding</p>
+          <span class="case-study-name">32 clips · GoPro + iPhone</span>
+          <span class="case-study-cta">View case study <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="case-study-divider"></div>
+      <div class="case-study-item case-study-item--placeholder">
+        <div class="case-study-thumb case-study-thumb--ph case-study-thumb--1"></div>
+        <div class="case-study-body">
+          <p class="case-study-title case-study-title--muted">More on the way</p>
+          <span class="case-study-name">Real days, real footage</span>
+        </div>
+      </div>
+      <div class="case-study-divider"></div>
+      <div class="case-study-item case-study-item--placeholder">
+        <div class="case-study-thumb case-study-thumb--ph case-study-thumb--2"></div>
+        <div class="case-study-body">
+          <p class="case-study-title case-study-title--muted">More slices soon</p>
+          <span class="case-study-name">Cut with Slice of Life</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Case study modal ──────────────────────────────────────────────────── -->
+  <div class="cs-modal" id="cs-modal" aria-hidden="true">
+    <div class="cs-modal-backdrop" id="cs-modal-backdrop"></div>
+    <div class="cs-modal-card" role="dialog" aria-modal="true" aria-labelledby="cs-modal-title">
+      <button class="cs-modal-close" id="cs-modal-close" aria-label="Close case study">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="cs-modal-video video-embed-wrapper">
+        <iframe
+          id="vimeo-casestudy"
+          title="Slice of Life case study — Cycling and Paddleboarding"
+          loading="lazy"
+          src="https://player.vimeo.com/video/1211087087?controls=1&title=0&byline=0&portrait=0&dnt=1"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <div class="video-thumb video-thumb--image" id="cs-video-thumb">
+          <img src="assets/case-study/cs-vimeo-thumb.jpg" alt="Watch the case study video" class="vt-image" loading="lazy" />
+          <div class="vt-play-btn vt-play-btn--sm">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M9 7.5v9l7-4.5z" fill="#fff"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-modal-stats">
+        <div class="cs-stat"><span class="cs-stat-num">32</span><span class="cs-stat-label">clips</span></div>
+        <div class="cs-stat"><span class="cs-stat-num">GoPro + iPhone</span><span class="cs-stat-label">two cameras</span></div>
+        <div class="cs-stat"><span class="cs-stat-num">11:35</span><span class="cs-stat-label">raw footage</span></div>
+        <div class="cs-stat"><span class="cs-stat-num">6:19</span><span class="cs-stat-label">time to finished vlog</span></div>
+      </div>
+
+      <h3 id="cs-modal-title" class="cs-modal-title">Cycling and Paddleboarding</h3>
+      <p class="cs-modal-desc">Just a regular Saturday — triathlon training in the morning, then paddleboarding on the lake after lunch. I filmed the whole thing on a GoPro and my phone without really thinking about how any of it would fit together. Dropped the clips in, and this is what came back.</p>
+
+      <p class="cs-modal-bts-label">The whole thing, start to finish</p>
+      <div class="cs-modal-split">
+        <div class="cs-modal-bts-video">
+          <iframe
+            title="Cycling and paddleboarding — behind the scenes"
+            loading="lazy"
+            src="https://player.vimeo.com/video/1211092626?background=1&autoplay=1&loop=1&muted=1&dnt=1"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="cs-modal-thumbs">
+          <img src="assets/case-study/cs-1-loadup.jpg" alt="Loading up the paddleboard" loading="lazy" />
+          <img src="assets/case-study/cs-2-paddle-action.jpg" alt="Paddleboarding on the lake" loading="lazy" />
+          <img src="assets/case-study/cs-3-talking.jpg" alt="Talking to camera" loading="lazy" />
+          <img src="assets/case-study/cs-4-scenic.jpg" alt="Lake in the afternoon sun" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── Video section ─────────────────────────────────────────────────────── -->
   <section class="video-section">
     <div class="video-section-inner">
@@ -681,6 +775,43 @@
     showcaseThumb.addEventListener('click', function () {
       showcaseThumb.classList.add('vt-hidden');
       showcasePlayer.play();
+    });
+
+    // Case study — modal open/close + click-to-play
+    var csPlayer  = new Vimeo.Player('vimeo-casestudy');
+    var csThumb   = document.getElementById('cs-video-thumb');
+    var csModal   = document.getElementById('cs-modal');
+    var csOpenEl  = document.getElementById('case-study-open');
+    var csClose   = document.getElementById('cs-modal-close');
+    var csBackdrop = document.getElementById('cs-modal-backdrop');
+
+    function openCaseStudy() {
+      csModal.classList.add('cs-modal--open');
+      csModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (typeof posthog !== 'undefined') posthog.capture('case_study_open');
+    }
+    function closeCaseStudy() {
+      csModal.classList.remove('cs-modal--open');
+      csModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      csPlayer.pause().catch(function(){});
+      csThumb.classList.remove('vt-hidden');
+    }
+
+    csOpenEl.addEventListener('click', openCaseStudy);
+    csOpenEl.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCaseStudy(); }
+    });
+    csClose.addEventListener('click', closeCaseStudy);
+    csBackdrop.addEventListener('click', closeCaseStudy);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && csModal.classList.contains('cs-modal--open')) closeCaseStudy();
+    });
+    csThumb.addEventListener('click', function () {
+      csThumb.classList.add('vt-hidden');
+      csPlayer.play();
+      if (typeof posthog !== 'undefined') posthog.capture('case_study_video_play');
     });
   </script>
 

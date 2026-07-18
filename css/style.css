@@ -857,6 +857,329 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   .testimonial-divider { width: 100%; height: 1px; }
 }
 
+/* ── Case study teaser ────────────────────────────────────────────────────── */
+
+.case-study-strip {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.018);
+  padding: 28px 48px;
+}
+
+.case-study-strip-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.case-study-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.case-study-item--active {
+  cursor: pointer;
+  border-radius: 12px;
+  margin: -10px;
+  padding: 10px;
+  transition: background 0.2s ease;
+}
+
+.case-study-item--active:hover,
+.case-study-item--active:focus-visible {
+  background: rgba(255,255,255,0.035);
+}
+
+.case-study-item--placeholder {
+  opacity: 0.6;
+}
+
+.case-study-thumb {
+  position: relative;
+  width: 116px;
+  height: 66px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(120,185,255,0.2);
+}
+
+.case-study-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.case-study-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(50,110,225,0.72);
+  border: 1px solid rgba(120,185,255,0.5);
+  box-shadow: 0 4px 16px rgba(30,80,200,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s var(--ease-out), background 0.2s;
+}
+
+.case-study-item--active:hover .case-study-play {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: rgba(60,130,240,0.9);
+}
+
+.case-study-thumb--ph {
+  border-style: dashed;
+  border-color: rgba(120,185,255,0.16);
+}
+
+.case-study-thumb--1 { background: linear-gradient(135deg, rgba(50,110,225,0.16), rgba(20,40,90,0.4)); }
+.case-study-thumb--2 { background: linear-gradient(135deg, rgba(70,100,150,0.14), rgba(20,30,60,0.4)); }
+
+.case-study-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.case-study-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white-80);
+  line-height: 1.4;
+}
+
+.case-study-title--muted {
+  font-weight: 500;
+  color: var(--white-55);
+}
+
+.case-study-name {
+  font-size: 11px;
+  color: var(--white-30);
+  letter-spacing: 0.02em;
+}
+
+.case-study-cta {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue-bright);
+  margin-top: 2px;
+}
+
+.case-study-divider {
+  width: 1px;
+  height: 60px;
+  background: rgba(255,255,255,0.07);
+  flex-shrink: 0;
+}
+
+@media (max-width: 960px) {
+  .case-study-strip { padding: 28px; }
+  .case-study-strip-inner { flex-direction: column; gap: 24px; }
+  .case-study-divider { width: 100%; height: 1px; }
+  .case-study-item { width: 100%; }
+}
+
+/* ── Case study modal ─────────────────────────────────────────────────────── */
+
+.cs-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 60px 20px;
+}
+
+.cs-modal--open { display: flex; }
+
+.cs-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 12, 24, 0.86);
+  backdrop-filter: blur(6px);
+}
+
+.cs-modal-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 760px;
+  background: #061422;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+}
+
+.cs-modal-close {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  z-index: 4;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--blue-glass);
+  border: 1px solid var(--blue-border);
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s var(--ease-out);
+}
+
+.cs-modal-close:hover {
+  background: rgba(60,130,240,0.9);
+  transform: scale(1.08);
+}
+
+.cs-modal-video {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #020C18;
+}
+
+.cs-modal-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Center the play button over the full-bleed thumbnail image */
+#cs-video-thumb .vt-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-left: 0;
+}
+
+#cs-video-thumb .vt-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.07);
+}
+
+.cs-modal-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.cs-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+  padding: 12px 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+}
+
+.cs-stat-num {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.cs-stat-label {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white-30);
+}
+
+.cs-modal-title {
+  margin-top: 22px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.cs-modal-desc {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--white-55);
+}
+
+.cs-modal-bts-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-muted);
+  margin-top: 22px;
+  margin-bottom: 10px;
+}
+
+.cs-modal-split {
+  display: flex;
+  gap: 8px;
+}
+
+.cs-modal-bts-video {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: #020C18;
+}
+
+.cs-modal-bts-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.cs-modal-thumbs {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.cs-modal-thumbs img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+@media (max-width: 640px) {
+  .cs-modal { padding: 24px 12px; }
+  .cs-modal-card { padding: 16px; }
+  .cs-modal-stats { grid-template-columns: repeat(2, 1fr); }
+  .cs-modal-split { flex-direction: column; }
+}
+
 /* ── FAQ ──────────────────────────────────────────────────────────────────── */
 
 .faq-section { padding: 48px 48px 100px; }
