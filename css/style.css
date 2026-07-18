@@ -1138,26 +1138,22 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   gap: 8px;
 }
 
-/* Square via the padding-percentage trick (relative to width) — avoids relying
-   on `aspect-ratio` resolving correctly through a flexed width, which some
-   Safari versions handle inconsistently. */
-.cs-modal-bts-video-wrap,
-.cs-modal-thumbs-wrap {
+/* Square via aspect-ratio directly on each flex item. This resolves against
+   the ITEM'S OWN computed width (not the containing block's width, which is
+   what padding-top:100% would use — a bug for equal-width flex siblings,
+   since each item is only ~half the row's width, so padding-top:100% gives
+   double the intended height). flex-basis:0 (from flex:1) means width is
+   resolved purely by flex-grow distribution, independent of aspect-ratio,
+   so there's no circular dependency for the browser to guess at. */
+.cs-modal-bts-video,
+.cs-modal-thumbs {
   position: relative;
   flex: 1;
   min-width: 0;
-}
-
-.cs-modal-bts-video-wrap::before,
-.cs-modal-thumbs-wrap::before {
-  content: '';
-  display: block;
-  padding-top: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .cs-modal-bts-video {
-  position: absolute;
-  inset: 0;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.07);
@@ -1173,8 +1169,6 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 }
 
 .cs-modal-thumbs {
-  position: absolute;
-  inset: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
