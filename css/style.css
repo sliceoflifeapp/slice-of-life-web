@@ -1875,6 +1875,18 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 }
 
 @media (max-width: 600px) {
+  .hero-mockup { display: none; }
+  .hero { gap: 24px; padding-bottom: 24px; }
+
+  /* Move the cinematic promo video above the case-study strip on mobile only */
+  main#main { display: flex; flex-direction: column; }
+  .hero { order: 1; }
+  .video-section { order: 2; padding-top: 0; }
+  .case-study-strip { order: 3; }
+  .cs-modal { order: 3; }
+  .section, .steps-section, .diff-section, .feature-showcase-section,
+  .pricing-section, .download-section, .faq-section { order: 4; }
+
   .hero-headline { font-size: 34px; }
   .section-title { font-size: 26px; }
   .download-title { font-size: 32px; }
