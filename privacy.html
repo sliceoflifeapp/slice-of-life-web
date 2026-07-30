@@ -114,10 +114,10 @@
     <a class="back" href="/">← sliceoflife-app.com</a>
 
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective date: May 28, 2026 &nbsp;·&nbsp; Slice of Life by Nathan Griffey</p>
+    <p class="meta">Effective date: July 30, 2026 &nbsp;·&nbsp; Slice of Life by Nathan Griffey</p>
 
     <div class="highlight-box">
-      <p><strong>Short version:</strong> Your footage files are never uploaded or stored on any server. To perform AI editing, the app extracts small image frames from your clips and sends them to Anthropic's API — they are not retained. We collect only basic, anonymized usage analytics and purchase information. We do not sell your data to anyone.</p>
+      <p><strong>Short version:</strong> Your footage files are never uploaded or stored on any server, whether from the Mac app or the iPhone companion app. To perform AI editing, the app extracts small image frames from your clips and sends them to Anthropic's API — they are not retained. We collect only basic, anonymized usage analytics, purchase information, and (if you enable notifications on the iPhone app) a push token used solely to deliver that notification. We do not sell your data to anyone.</p>
     </div>
 
     <h2>1. What We Collect</h2>
@@ -134,36 +134,47 @@
 
     <p><strong>Bug reports.</strong> If you use the in-app bug report button, your message is sent directly via your email client to sliceoflifetech@gmail.com. We receive only what you choose to type.</p>
 
-    <h2>2. What We Do Not Collect</h2>
+    <h2>2. The iOS Companion App</h2>
+
+    <p>Slice of Life Companion, the optional iPhone app, lets you send footage from your phone to the Mac app. It has no login or account system of its own — it only uses the same license key already tied to your Mac app purchase, and only if you choose to enter one.</p>
+
     <ul>
-      <li>Your video footage — it never leaves your Mac.</li>
+      <li><strong>Photos and videos.</strong> The app reads video clips from your Photos library only when you choose to pick them for export. These files are copied locally on your phone, then written to the destination folder you choose (typically an iCloud Drive folder you control). They are never uploaded to any server we operate.</li>
+      <li><strong>License key (optional).</strong> If you paste your license key into the app's Settings so you can receive notifications, it is sent to the same Cloudflare proxy described in Section 1 to verify it matches your Mac app's license. No other personal information is sent from the phone.</li>
+      <li><strong>Push notifications (optional).</strong> If you enable notifications, the app obtains a device token from Apple's push notification service and stores it locally alongside your export. The paired Mac app later reads this token and sends it to our Cloudflare proxy, which uses it only to deliver a single notification via Apple Push Notification service (for example, "Your Slice is ready to review"). We do not use this token for any other purpose, and it is never used for advertising or tracking.</li>
+    </ul>
+
+    <h2>3. What We Do Not Collect</h2>
+    <ul>
+      <li>Your video footage — it never leaves your Mac or phone, except to a destination you choose yourself (such as your own iCloud Drive).</li>
       <li>Your exported videos.</li>
       <li>Any personally identifying information beyond your purchase email (held by Lemon Squeezy).</li>
     </ul>
 
-    <h2>3. AI Processing</h2>
+    <h2>4. AI Processing</h2>
     <p>To perform AI editing functions, the app sends small image frames (extracted from your footage) and short text prompts to Anthropic's API via our Cloudflare proxy. For some features — such as narration classification, voiceover sectioning, and the YouTube kit's titles, description, and chapters — this includes excerpts of your transcribed narration text. These requests are used only to generate editing decisions in real time; we do not store this content on our own servers, and Anthropic's data handling is governed by <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's Privacy Policy</a>. We do not instruct Anthropic to retain or use your data for training.</p>
 
-    <h2>4. Third-Party Services</h2>
+    <h2>5. Third-Party Services</h2>
     <ul>
       <li><strong>Lemon Squeezy</strong> — payment processing and license key issuance. <a href="https://www.lemonsqueezy.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
-      <li><strong>Cloudflare</strong> — API proxy, license verification cache, and the credit/subscription ledger (keyed by a hash of your license key, not the key itself). <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Privacy policy</a>.</li>
+      <li><strong>Cloudflare</strong> — API proxy, license verification cache, and the credit/subscription ledger (keyed by a hash of your license key, not the key itself). Also relays push notification tokens from the iPhone app to Apple Push Notification service. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Privacy policy</a>.</li>
+      <li><strong>Apple Push Notification service</strong> — delivers notifications to the iPhone app, if enabled. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Privacy policy</a>.</li>
       <li><strong>PostHog</strong> — anonymized analytics. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
       <li><strong>Anthropic</strong> — AI model API (frames and prompts only). <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
       <li><strong>Meta (Facebook)</strong> — advertising pixel and conversion measurement. <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Privacy policy</a>.</li>
       <li><strong>Google Ads</strong> — advertising tag and conversion measurement. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.</li>
     </ul>
 
-    <h2>5. Data Retention</h2>
-    <p>Local app data (config, a cached credit balance, export history, thumbnails) lives in your Mac's Application Support folder and is entirely under your control. Deleting the app removes this data. Our Cloudflare license-verification cache expires after 24 hours. The server-side credit/subscription ledger (Section 1) persists for as long as your subscription remains active, and is deleted upon request (Section 6). PostHog analytics are retained per PostHog's standard retention policy.</p>
+    <h2>6. Data Retention</h2>
+    <p>Local app data (config, a cached credit balance, export history, thumbnails) lives in your Mac's Application Support folder and is entirely under your control. Deleting either app removes its local data. Our Cloudflare license-verification cache expires after 24 hours. The server-side credit/subscription ledger (Section 1) persists for as long as your subscription remains active, and is deleted upon request (Section 7). A push notification token (Section 2) is retained only as long as notifications remain enabled, and is discarded if you turn them off or delete the iPhone app. PostHog analytics are retained per PostHog's standard retention policy.</p>
 
-    <h2>6. Your Rights</h2>
+    <h2>7. Your Rights</h2>
     <p>You may request deletion of any personal data we hold (your purchase email, as held by Lemon Squeezy) by contacting us. We will forward deletion requests to Lemon Squeezy on your behalf. For analytics data, PostHog anonymizes data such that it cannot be linked back to an individual.</p>
 
-    <h2>7. Children</h2>
+    <h2>8. Children</h2>
     <p>The app is not directed at children under 13. We do not knowingly collect information from children under 13.</p>
 
-    <h2>8. Changes to This Policy</h2>
+    <h2>9. Changes to This Policy</h2>
     <p>Material changes to this policy will be noted in the app's release notes and reflected with an updated effective date above.</p>
 
     <hr>
