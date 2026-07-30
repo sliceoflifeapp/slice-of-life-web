@@ -2101,3 +2101,168 @@ input:focus-visible,
   .pricing-card { width: 100%; }
 }
 .skip-link:focus { top: 12px; }
+
+/* ── iPhone Companion ─────────────────────────────────────────────── */
+.companion-sub {
+  text-align: center;
+  max-width: 700px;
+  margin: 8px auto 22px;
+  color: var(--white-55);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.companion-stage {
+  display: grid;
+  grid-template-columns: 0.62fr 0.5fr 1fr;
+  align-items: center;
+  gap: 0;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.companion-device {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.companion-device img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 34px rgba(0,0,0,0.45));
+}
+.companion-device--phone img { max-width: 330px; margin: 0 auto; }
+.companion-device--mac img { max-width: 620px; margin: 0 auto; }
+
+.companion-track {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.companion-track-line {
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg,
+    rgba(127,184,255,0) 0%,
+    rgba(127,184,255,0.7) 18%,
+    rgba(127,184,255,0.7) 82%,
+    rgba(127,184,255,0) 100%);
+}
+.companion-track-glow {
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 14px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg,
+    rgba(74,143,255,0) 0%,
+    rgba(74,143,255,0.35) 20%,
+    rgba(74,143,255,0.35) 80%,
+    rgba(74,143,255,0) 100%);
+  filter: blur(8px);
+}
+.companion-track-pulse {
+  position: absolute;
+  top: 50%; left: 0;
+  width: 8px; height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--blue-bright);
+  box-shadow: 0 0 12px 3px rgba(127,184,255,0.8);
+  animation: companion-pulse 3s ease-in-out infinite;
+}
+
+@keyframes companion-pulse {
+  0%   { left: 6%;  opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { left: 94%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .companion-track-pulse { animation: none; opacity: 0.9; left: 50%; }
+}
+
+.companion-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  max-width: 1100px;
+  margin: 24px auto 0;
+}
+.companion-step {
+  text-align: left;
+}
+.companion-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--blue-glass);
+  border: 1px solid var(--blue-border);
+  color: var(--blue-bright);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.companion-step h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white-80);
+  margin: 0 0 8px;
+}
+.companion-step p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--white-55);
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .companion-stage { grid-template-columns: 1fr; row-gap: 18px; }
+  .companion-track { transform: rotate(90deg); width: 90px; height: 60px; margin: 8px auto; }
+  .companion-steps { grid-template-columns: 1fr; gap: 28px; margin-top: 40px; }
+  .companion-device--phone img { max-width: 220px; }
+  .companion-device--mac img { max-width: 380px; }
+}
+
+.companion-section { padding-top: 44px; padding-bottom: 48px; }
+.companion-section .section-title { margin-bottom: 8px; }
+
+.companion-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.companion-soon {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--blue-glass);
+  border: 1px solid var(--blue-border);
+  box-shadow: 0 0 10px 2px rgba(106,171,255,0.35);
+  animation: companion-soon-pulse 2.4s ease-in-out infinite;
+}
+@keyframes companion-soon-pulse {
+  0%, 100% { box-shadow: 0 0 8px 1px rgba(106,171,255,0.28); }
+  50%      { box-shadow: 0 0 16px 4px rgba(106,171,255,0.55); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .companion-soon { animation: none; }
+}
+
+@media (max-width: 960px) {
+  .companion-steps { display: none; }
+}
