@@ -482,7 +482,7 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 /* ── Video section ────────────────────────────────────────────────────────── */
 
 .video-section {
-  padding: 24px 48px 80px;
+  padding: 24px 48px 40px;
 }
 
 .video-section-inner {
@@ -1391,7 +1391,7 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
    each side). Scoped to this pairing so other sections keep normal breathing room. */
 .diff-section { padding-top: 24px; padding-bottom: 24px; }
 .steps-section:has(+ .diff-section) { padding-bottom: 40px; }
-.diff-section + .feature-showcase-section { padding-top: 40px; }
+.video-section + .feature-showcase-section { padding-top: 55px; }
 
 .diff-table {
   border: 1px solid var(--white-10);
