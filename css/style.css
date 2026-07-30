@@ -2133,7 +2133,7 @@ input:focus-visible,
   display: block;
   filter: drop-shadow(0 18px 34px rgba(0,0,0,0.45));
 }
-.companion-device--phone img { max-width: 330px; margin: 0 auto; }
+.companion-device--phone img { max-width: 396px; margin: 0 auto; }
 .companion-device--mac img { max-width: 620px; margin: 0 auto; }
 
 .companion-track {
