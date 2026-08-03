@@ -1101,8 +1101,12 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   border: 0;
 }
 
-/* Center the play button over the full-bleed thumbnail image */
-#cs-video-thumb .vt-play-btn {
+/* Center the play button over the full-bleed thumbnail image.
+   Every case-study video-thumb (cs-video-thumb, cs-video-thumb-2, ...) needs
+   this — without it, flex layout stacks the play button below the full-height
+   image instead of centering over it. */
+#cs-video-thumb .vt-play-btn,
+#cs-video-thumb-2 .vt-play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1110,7 +1114,8 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   padding-left: 0;
 }
 
-#cs-video-thumb .vt-play-btn:hover {
+#cs-video-thumb .vt-play-btn:hover,
+#cs-video-thumb-2 .vt-play-btn:hover {
   transform: translate(-50%, -50%) scale(1.07);
 }
 
