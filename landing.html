@@ -258,7 +258,7 @@
 
     document.querySelectorAll('a[href*="buy"], .btn-primary').forEach(function(el) {
       el.addEventListener('click', function() {
-        posthog.capture('buy_click', { label: el.innerText.trim(), source: 'landing-search' });
+        posthog.capture('buy_click', { label: el.innerText.trim(), source: 'landing' });
       });
     });
   </script>
