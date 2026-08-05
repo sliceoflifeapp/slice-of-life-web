@@ -286,13 +286,13 @@
       <div class="case-study-divider"></div>
       <div class="case-study-item case-study-item--active" id="case-study-open-2" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="case-study-thumb">
-          <img src="assets/case-study/cs-alaska-thumb.jpg" alt="Alaska mission trip case study" loading="lazy" />
+          <img src="assets/case-study/cs-alaska-thumb.jpg" alt="Alaskan Plane Ride case study" loading="lazy" />
           <span class="case-study-play" aria-hidden="true">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M9 7.5v9l7-4.5z" fill="#fff"/></svg>
           </span>
         </div>
         <div class="case-study-body">
-          <p class="case-study-title">Alaska mission trip</p>
+          <p class="case-study-title">Alaskan Plane Ride</p>
           <span class="case-study-name">30 clips · iPhone</span>
           <span class="case-study-cta">View case study <span aria-hidden="true">→</span></span>
         </div>
@@ -367,7 +367,7 @@
     </div>
   </div>
 
-  <!-- ── Case study modal 2 (Alaska) ────────────────────────────────────────── -->
+  <!-- ── Case study modal 2 (Alaskan Plane Ride) ────────────────────────────── -->
   <div class="cs-modal" id="cs-modal-2" aria-hidden="true">
     <div class="cs-modal-backdrop" id="cs-modal-backdrop-2"></div>
     <div class="cs-modal-card" role="dialog" aria-modal="true" aria-labelledby="cs-modal-title-2">
@@ -378,7 +378,7 @@
       <div class="cs-modal-video video-embed-wrapper">
         <iframe
           id="vimeo-casestudy-2"
-          title="Slice of Life case study — Alaska Mission Trip"
+          title="Slice of Life case study — Alaskan Plane Ride"
           loading="lazy"
           src="https://player.vimeo.com/video/1214979800?controls=1&title=0&byline=0&portrait=0"
           frameborder="0"
@@ -400,14 +400,14 @@
         <div class="cs-stat"><span class="cs-stat-num">11:17</span><span class="cs-stat-label">time to finished vlog</span></div>
       </div>
 
-      <h3 id="cs-modal-title-2" class="cs-modal-title">Alaska Mission Trip</h3>
+      <h3 id="cs-modal-title-2" class="cs-modal-title">Alaskan Plane Ride</h3>
       <p class="cs-modal-desc">A week of remote Alaska villages, bush planes, and mission work — dozens of clips shot over multiple days on an iPhone. Dropped some of my favorite shots in and this is what came out!</p>
 
       <p class="cs-modal-bts-label">How it was made</p>
       <div class="cs-modal-split">
         <div class="cs-modal-bts-video">
           <iframe
-            title="Alaska mission trip — behind the scenes"
+            title="Alaskan Plane Ride — behind the scenes"
             loading="lazy"
             src="https://player.vimeo.com/video/1214980917?background=1&autoplay=1&loop=1&muted=1"
             frameborder="0"
@@ -917,6 +917,11 @@
         csPlayer.play();
         if (typeof posthog !== 'undefined') posthog.capture('case_study_video_play');
       });
+
+      // Deep link support — /#case-study-open or /#case-study-open-2 opens this modal on load
+      if (window.location.hash === '#' + openId) {
+        openCaseStudy();
+      }
     }
 
     setupCaseStudy(null);
