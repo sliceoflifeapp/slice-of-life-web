@@ -61,6 +61,10 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 
 /* ── Nav ──────────────────────────────────────────────────────────────────── */
 
+#how-it-works, #different, #pricing, #faq {
+  scroll-margin-top: 82px;
+}
+
 .nav {
   position: sticky;
   top: 0;
