@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/icon.png" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
   <style>
     .aff-page {
       max-width: 860px;
@@ -41,6 +41,21 @@
       transition: opacity 0.2s;
     }
     .aff-page .back:hover { opacity: 1; }
+
+    .aff-paused {
+      max-width: 720px;
+      margin: 0 auto 40px;
+      padding: 16px 20px;
+      border: 1px solid rgba(120,185,255,0.28);
+      border-radius: 12px;
+      background: rgba(50,110,225,0.10);
+      color: rgba(255,255,255,0.78);
+      font-size: 14.5px;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .aff-paused strong { color: #fff; display: block; margin-bottom: 4px; }
+    .aff-paused a { color: #7FB8FF; }
 
     .aff-hero { text-align: center; margin-bottom: 56px; }
 
@@ -159,6 +174,10 @@
     }
   </style>
   <link rel="canonical" href="https://sliceoflife-app.com/affiliates" />
+  <!-- Hidden 2026-08-07 while the affiliate program is paused: unlinked from the
+       footer, removed from sitemap.xml, and noindexed. Remove this meta tag to
+       bring the page back into search. -->
+  <meta name="robots" content="noindex, nofollow" />
   <!-- Meta Pixel -->
   <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -171,6 +190,17 @@
 <body>
   <div class="aff-page">
     <a class="back" href="/">← sliceoflife-app.com</a>
+
+    <!-- Shown while the app is free in early access. Remove this block when
+         paid plans come back and the commission figures below are true again. -->
+    <div class="aff-paused">
+      <strong>The affiliate program is paused.</strong>
+      Slice of Life is free while we onboard our first users, so there are no
+      subscription payments to earn commission on yet. The details below describe
+      the program as it will run once paid plans return — if you'd like a heads-up
+      when that happens, email
+      <a href="mailto:sliceoflifetech@gmail.com">sliceoflifetech@gmail.com</a>.
+    </div>
 
     <div class="aff-hero">
       <h1>Promote Slice of Life. Get paid every month.</h1>

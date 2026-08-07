@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/icon.png" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
 
   <style>
     /* Landing-page-only layout — everything else (colors, fonts, buttons) comes from style.css */
@@ -79,6 +79,13 @@
       max-width: 480px;
     }
     .lp-cta-row { margin-bottom: 10px; }
+    .lp-cta-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
     .lp-req {
       display: block;
       margin-top: 12px;
@@ -201,11 +208,14 @@
           </p>
 
           <div class="lp-cta-row">
-            <a href="https://sliceoflife.lemonsqueezy.com/checkout/buy/cc7ad69b-5586-4642-bc15-ba65c8564869" class="btn-primary lp-cta-big">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Try Pro for Free
-            </a>
-            <span class="lp-req">Card required, cancel before day 7 — sample footage included, Apple Silicon</span>
+            <div class="lp-cta-line">
+              <a href="https://sliceoflife.lemonsqueezy.com/checkout/buy/2addd85a-e676-4e84-9aa5-2b305d7d6e1f" class="btn-primary lp-cta-big">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Download Free
+              </a>
+              <span class="sale-tag">Free for first users<span class="sale-tag-extra"> · Limited spots</span></span>
+            </div>
+            <span class="lp-req">No credit card — sample footage included, Apple Silicon</span>
           </div>
 
           <ul class="lp-objections">

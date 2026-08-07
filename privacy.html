@@ -114,17 +114,17 @@
     <a class="back" href="/">← sliceoflife-app.com</a>
 
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective date: July 30, 2026 &nbsp;·&nbsp; Slice of Life by Nathan Griffey</p>
+    <p class="meta">Effective date: August 7, 2026 &nbsp;·&nbsp; Slice of Life by Nathan Griffey</p>
 
     <div class="highlight-box">
-      <p><strong>Short version:</strong> Your footage files are never uploaded or stored on any server, whether from the Mac app or the iPhone companion app. To perform AI editing, the app extracts small image frames from your clips and sends them to Anthropic's API — they are not retained. We collect only basic, anonymized usage analytics, purchase information, and (if you enable notifications on the iPhone app) a push token used solely to deliver that notification. We do not sell your data to anyone.</p>
+      <p><strong>Short version:</strong> Your footage files are never uploaded or stored on any server, whether from the Mac app or the iPhone companion app. To perform AI editing, the app extracts small image frames from your clips and sends them to Anthropic's API — they are not retained. We collect only basic, anonymized usage analytics, account information, and (if you enable notifications on the iPhone app) a push token used solely to deliver that notification. We do not sell your data to anyone.</p>
     </div>
 
     <h2>1. What We Collect</h2>
 
-    <p><strong>Purchase information.</strong> When you buy the app, Lemon Squeezy (our payment processor) collects your name, email address, and payment details. We receive only a license key and a masked record of your purchase — we never see your full payment details.</p>
+    <p><strong>Account information.</strong> When you get a license key, Lemon Squeezy (our payment processor) collects your name and email address. Slice of Life is currently free, so no payment method is requested or collected. If you previously bought a paid plan, Lemon Squeezy also collected your payment details at that time — we received only a license key and a masked record of the order, and never see your full payment details.</p>
 
-    <p><strong>License key.</strong> Your license key is stored locally on your Mac in the app's data directory. It is sent to our Cloudflare proxy server to verify your license when the app makes AI calls and to check your subscription status and credit balance. A one-way hash of your license key (not the key itself) is used to store your credit balance, plan tier, and subscription status server-side, so your balance stays accurate and tamper-resistant across devices — this record persists for as long as your subscription is active, unlike the short-lived 24-hour verification cache described in Section 5.</p>
+    <p><strong>License key.</strong> Your license key is stored locally on your Mac in the app's data directory. It is sent to our Cloudflare proxy server to verify your license when the app makes AI calls and to check your subscription status and credit balance. A one-way hash of your license key (not the key itself) is used to store your credit balance, plan tier, and subscription status server-side, so your balance stays accurate and tamper-resistant across devices — this record persists for as long as your license remains active, unlike the short-lived 24-hour verification cache described in Section 5.</p>
 
     <p><strong>Usage analytics.</strong> The app and website use PostHog to collect anonymized usage events — things like "render started", "render completed", and "credits remaining". These events help us understand how the app is used and where to improve it. Analytics are tied to a random device identifier, not your name or email. Our PostHog analytics use memory-only persistence (no cookies). Our advertising pixels — described under "Advertising and conversion measurement" below — do set cookies.</p>
 
@@ -136,7 +136,7 @@
 
     <h2>2. The iOS Companion App</h2>
 
-    <p>Slice of Life Companion, the optional iPhone app, lets you send footage from your phone to the Mac app. It has no login or account system of its own — it only uses the same license key already tied to your Mac app purchase, and only if you choose to enter one.</p>
+    <p>Slice of Life Companion, the optional iPhone app, lets you send footage from your phone to the Mac app. It has no login or account system of its own — it only uses the same license key already tied to your Mac app, and only if you choose to enter one.</p>
 
     <ul>
       <li><strong>Photos and videos.</strong> The app reads video clips from your Photos library only when you choose to pick them for export. These files are copied locally on your phone, then written to the destination folder you choose (typically an iCloud Drive folder you control). They are never uploaded to any server we operate.</li>
@@ -148,7 +148,7 @@
     <ul>
       <li>Your video footage — it never leaves your Mac or phone, except to a destination you choose yourself (such as your own iCloud Drive).</li>
       <li>Your exported videos.</li>
-      <li>Any personally identifying information beyond your purchase email (held by Lemon Squeezy).</li>
+      <li>Any personally identifying information beyond your signup email (held by Lemon Squeezy).</li>
     </ul>
 
     <h2>4. AI Processing</h2>
@@ -167,10 +167,10 @@
     </ul>
 
     <h2>6. Data Retention</h2>
-    <p>Local app data (config, a cached credit balance, export history, thumbnails) lives in your Mac's Application Support folder and is entirely under your control. Deleting either app removes its local data. Our Cloudflare license-verification cache expires after 24 hours. The server-side credit/subscription ledger (Section 1) persists for as long as your subscription remains active, and is deleted upon request (Section 7). A push notification token (Section 2) is retained only as long as notifications remain enabled, and is discarded if you turn them off or delete the iPhone app. PostHog analytics are retained per PostHog's standard retention policy.</p>
+    <p>Local app data (config, a cached credit balance, export history, thumbnails) lives in your Mac's Application Support folder and is entirely under your control. Deleting either app removes its local data. Our Cloudflare license-verification cache expires after 24 hours. The server-side credit/license ledger (Section 1) persists for as long as your license remains active, and is deleted upon request (Section 7). A push notification token (Section 2) is retained only as long as notifications remain enabled, and is discarded if you turn them off or delete the iPhone app. PostHog analytics are retained per PostHog's standard retention policy.</p>
 
     <h2>7. Your Rights</h2>
-    <p>You may request deletion of any personal data we hold (your purchase email, as held by Lemon Squeezy) by contacting us. We will forward deletion requests to Lemon Squeezy on your behalf. For analytics data, PostHog anonymizes data such that it cannot be linked back to an individual.</p>
+    <p>You may request deletion of any personal data we hold (your signup email, as held by Lemon Squeezy) by contacting us. We will forward deletion requests to Lemon Squeezy on your behalf. For analytics data, PostHog anonymizes data such that it cannot be linked back to an individual.</p>
 
     <h2>8. Children</h2>
     <p>The app is not directed at children under 13. We do not knowingly collect information from children under 13.</p>

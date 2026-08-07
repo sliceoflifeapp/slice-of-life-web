@@ -61,7 +61,7 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 
 /* ── Nav ──────────────────────────────────────────────────────────────────── */
 
-#how-it-works, #different, #pricing, #faq {
+#how-it-works, #different, #pricing, #faq, #download, #case-studies, #companion {
   scroll-margin-top: 82px;
 }
 
@@ -2318,4 +2318,41 @@ input:focus-visible,
 
 @media (max-width: 960px) {
   .companion-steps { display: none; }
+}
+
+/* ── Limited-time free sale tag ───────────────────────────────────────────
+   Added 2026-08-07 for the free early-access push. Scarcity framing ("first
+   users") rather than a price anchor — no dollar figure is shown while free.
+   Remove alongside the hidden pricing section when paid plans return. */
+.sale-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 184, 92, 0.45);
+  background: rgba(255, 168, 56, 0.13);
+  color: #FFC77D;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+  animation: saleGlow 2.8s ease-in-out infinite;
+}
+@keyframes saleGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(255, 168, 56, 0); }
+  50%      { box-shadow: 0 0 18px rgba(255, 168, 56, 0.30); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sale-tag { animation: none; }
+}
+@media (max-width: 700px) {
+  .sale-tag { font-size: 10px; padding: 6px 10px; gap: 5px; }
+}
+/* Nav is tight on phones — drop the second clause there only. The landing
+   page tag wraps onto its own row, so it keeps the full line. */
+@media (max-width: 700px) {
+  .nav-ctas .sale-tag-extra { display: none; }
 }
