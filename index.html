@@ -44,7 +44,7 @@
   "applicationCategory": "MultimediaApplication",
   "applicationSubCategory": "Video Editor",
   "operatingSystem": "macOS 13+ (Apple Silicon)",
-  "description": "Slice of Life is a Mac app that automatically edits your vlog. Drop in a day of footage \u2014 it finds your talking-to-camera moments, cuts in matching b-roll, burns captions, and exports a finished video plus an editable Premiere Pro timeline.",
+  "description": "Slice of Life is a Mac app that automatically edits your vlog. Drop in a day of footage \u2014 it finds your talking-to-camera moments, cuts in matching b-roll, burns captions, and exports a finished video plus an editable timeline for Premiere Pro, Final Cut Pro, or DaVinci Resolve.",
   "url": "https://sliceoflife-app.com/",
   "image": "https://sliceoflife-app.com/assets/og-image.jpg",
   "offers": {
@@ -59,7 +59,7 @@
     "Burned-in captions",
     "Voiceover and b-roll compilation modes",
     "Vertical / Shorts reframing",
-    "Premiere Pro XML export",
+    "Export to Premiere Pro, Final Cut Pro, or DaVinci Resolve",
     "Runs locally \u2014 your footage never leaves your Mac"
   ]
 }
@@ -143,10 +143,10 @@
     },
     {
       "@type": "Question",
-      "name": "Can I take the edit into Premiere Pro?",
+      "name": "Can I take the edit into Premiere, Final Cut, or Resolve?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes \u2014 every render exports an XML timeline compatible with Premiere Pro. A-roll is on V1, b-roll on V2, all source clips referenced. Open it, refine it, done."
+        "text": "Yes \u2014 the done screen's Export XML button offers Premiere Pro, Final Cut Pro, and DaVinci Resolve, each with its own import steps. A-roll and b-roll land on separate tracks, all source clips referenced. Open it, refine it, done."
       }
     },
     {
@@ -602,8 +602,8 @@
               </svg>
             </div>
             <div class="showcase-tag">XML export</div>
-            <h3 class="showcase-title">Take it to Premiere</h3>
-            <p class="showcase-desc">Every vlog exports an XML timeline compatible with Premiere Pro — a-roll on V1, b-roll on V2, all source clips referenced. Open it, refine it, done.</p>
+            <h3 class="showcase-title">Take it to your editor</h3>
+            <p class="showcase-desc">Every vlog exports a timeline for Premiere Pro, Final Cut Pro, or DaVinci Resolve — a-roll and b-roll on separate tracks, all source clips referenced. Open it, refine it, done.</p>
           </div>
         </div>
 
@@ -730,7 +730,7 @@
             <li>Captions, 3 fonts</li>
             <li>Color grading, Dynamic Framing, Voice Enhancement</li>
             <li>Up to 2 auto-generated Shorts / render</li>
-            <li>Premiere Pro XML export</li>
+            <li>Export to Premiere Pro, Final Cut Pro, or DaVinci Resolve</li>
           </ul>
           <a href="https://sliceoflife.lemonsqueezy.com/checkout/buy/be0ecafb-4f0f-4f67-aa1b-150aa562fbb2" class="btn-white pricing-cta">Start with Basic</a>
         </div>
@@ -750,7 +750,7 @@
             <li>Custom color LUTs (.cube)</li>
             <li>Unlimited auto-generated Shorts</li>
             <li>YouTube kit — titles, description, chapters</li>
-            <li>Premiere Pro XML export</li>
+            <li>Export to Premiere Pro, Final Cut Pro, or DaVinci Resolve</li>
           </ul>
           <a href="https://sliceoflife.lemonsqueezy.com/checkout/buy/cc7ad69b-5586-4642-bc15-ba65c8564869" class="btn-primary pricing-cta">Try Pro for Free</a>
         </div>
@@ -808,7 +808,7 @@
 
         <div class="faq-group">
           <div class="faq-group-label">Editing &amp; export</div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Can I take the edit into Premiere Pro?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Yes — every render exports an XML timeline compatible with Premiere Pro. A-roll is on V1, b-roll on V2, all source clips referenced. Open it, refine it, done.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Can I take the edit into Premiere, Final Cut, or Resolve?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Yes — the done screen's Export XML button offers Premiere Pro, Final Cut Pro, and DaVinci Resolve, each with its own import steps. A-roll and b-roll land on separate tracks, all source clips referenced. Open it, refine it, done.</div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Can I re-cut after I see it?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Yes. The re-edit panel on the results screen lets you change pacing, caption style, or orientation and re-render without waiting for the AI to re-analyze your footage. The encode still takes a few minutes but the slow analysis step is skipped.</div></div>
           <div class="faq-group-label" style="margin-top:24px;">Cost &amp; credits</div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How much does it cost?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Nothing right now. Slice of Life is in early access and free to download and use, with every feature unlocked — no credit card, no trial countdown. In exchange, we'd love to hear what you think: what worked, what broke, what you wish it did.</div></div>
