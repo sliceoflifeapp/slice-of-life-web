@@ -577,6 +577,37 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   transform: scale(1.08);
 }
 
+/* Walkthrough variant: top-LEFT. It has to clear Vimeo's control bar along the
+   bottom AND its like / watch-later / share icons stacked at the top right,
+   which the first pass collided with. With title=0 the top left is empty.
+   Labelled, because a bare speaker icon on a muted autoplay reads as "this is
+   muted", not as "there is narration you're missing". */
+.video-mute-btn--top {
+  top: 16px;
+  left: 16px;
+  right: auto;
+  bottom: auto;
+  width: auto;
+  height: 36px;
+  padding: 0 14px;
+  gap: 8px;
+  border-radius: 999px;
+}
+
+.video-mute-btn__label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.video-mute-btn.is-gone {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+}
+
 
 
 

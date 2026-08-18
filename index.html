@@ -36,7 +36,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/style.css?v=7" />
+  <link rel="stylesheet" href="css/style.css?v=8" />
   <link rel="canonical" href="https://sliceoflife-app.com/" />
   <script type="application/ld+json">
 {
@@ -472,14 +472,20 @@
               id="vimeo-showcase"
               title="Slice of Life — app walkthrough video"
               loading="lazy"
-              src="https://player.vimeo.com/video/1198858629?controls=1&title=0&byline=0&portrait=0"
+              src="https://player.vimeo.com/video/1219090305?controls=1&title=0&byline=0&portrait=0&muted=1&playsinline=1"
               frameborder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowfullscreen>
             </iframe>
-            <div class="video-thumb video-thumb--image" id="showcase-video-thumb">
-              <img src="assets/walkthrough-thumb.jpg" alt="Watch the app walkthrough" class="vt-image" loading="lazy" />
-            </div>
+            <!-- Autoplay is necessarily muted, so the narration needs its own
+                 way in. Sits top-right to clear Vimeo's own control bar. -->
+            <button class="video-mute-btn video-mute-btn--top" id="showcase-unmute" title="Turn sound on">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+              </svg>
+              <span class="video-mute-btn__label">Sound</span>
+            </button>
           </div>
         </div>
 
@@ -859,12 +865,59 @@
       videoMuted = !videoMuted;
     });
 
-    // Showcase walkthrough — click thumbnail to play
+    // Showcase walkthrough — autoplays once it scrolls into view.
+    //
+    // Muted is not a stylistic choice: browsers reject an unmuted autoplay
+    // outright rather than playing it silently, so asking for sound here means
+    // the video simply never starts. Hence the unmute button.
+    //
+    // Playing on scroll-into-view rather than on page load matters because the
+    // card sits mid-page and the video runs ~3.5 minutes — autoplaying at load
+    // means it's already minutes deep by the time anyone reaches it.
     var showcasePlayer = new Vimeo.Player('vimeo-showcase');
-    var showcaseThumb  = document.getElementById('showcase-video-thumb');
-    showcaseThumb.addEventListener('click', function () {
-      showcaseThumb.classList.add('vt-hidden');
-      showcasePlayer.play();
+    var showcaseUnmute = document.getElementById('showcase-unmute');
+    var showcaseFrame  = document.getElementById('vimeo-showcase');
+    var showcaseStarted = false;
+    var reduceMotion = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function startShowcase() {
+      if (showcaseStarted) return;
+      showcaseStarted = true;
+      showcasePlayer.setMuted(true);
+      // Rejects if the browser blocks it — leave the poster frame up rather
+      // than throwing an unhandled rejection.
+      showcasePlayer.play().catch(function () {});
+    }
+
+    // WCAG 2.2.2: don't start moving content on someone who asked for less of
+    // it. They still get the video, with controls, just not auto-started.
+    if (!reduceMotion) {
+      if ('IntersectionObserver' in window) {
+        var showcaseObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              startShowcase();
+              showcaseObs.disconnect();
+            }
+          });
+        }, { threshold: 0.5 });
+        showcaseObs.observe(showcaseFrame);
+      } else {
+        startShowcase();
+      }
+    }
+
+    showcaseUnmute.addEventListener('click', function () {
+      showcasePlayer.setMuted(false);
+      showcasePlayer.setVolume(1);
+      startShowcase();
+      showcaseUnmute.classList.add('is-gone');
+    });
+
+    // Also stand down if they unmute using Vimeo's own volume control.
+    showcasePlayer.on('volumechange', function (data) {
+      if (data && data.volume > 0) showcaseUnmute.classList.add('is-gone');
     });
 
     // Case study — modal open/close + click-to-play. Shared setup so any
