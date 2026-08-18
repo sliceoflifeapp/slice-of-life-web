@@ -1654,8 +1654,12 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
     linear-gradient(to bottom, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
           mask-composite: intersect;
 }
-/* Keep every real child above the artwork. */
-.showcase-card > *:not(.card-art) { position: relative; z-index: 1; }
+/* Keep every real child above the artwork. Must NOT match the video card's embed
+   wrapper: .showcase-video-embed relies on position:absolute + inset:0 to fill its
+   aspect-locked card, and this selector out-specifies it — forcing it relative
+   collapses it to zero height and the walkthrough video vanishes entirely. That
+   exact regression shipped once; the exclusion is load-bearing. */
+.showcase-card > *:not(.card-art):not(.video-embed-wrapper) { position: relative; z-index: 1; }
 /* Hold the copy clear of the art column. The title gets more room than the body
    text on purpose — it's short and bold, it reads fine crossing into the feathered
    edge of the image, and clamping it as tightly as the paragraph forces every
