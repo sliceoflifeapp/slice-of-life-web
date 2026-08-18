@@ -1764,6 +1764,29 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   .showcase-card--art-bottom .showcase-desc { max-width: 100%; }
 }
 
+/* PHONES (<=600px) — the Customization card ALONE flips to a bottom strip. Its copy
+   is 8 bullets and its subject a tall control stack; side by side on a ~390px card
+   every bullet wraps and the panel floats beside a ragged list. Same content-shape
+   exception that puts the XML timeline on a strip. B-roll and a-roll keep their
+   right-hand columns — their copy is short enough to share the row. */
+@media (max-width: 600px) {
+  .showcase-card--custom { padding-bottom: 148px; }
+  .showcase-card--custom .showcase-title,
+  .showcase-card--custom .showcase-list { max-width: 100%; }
+  .card-art--custom {
+    top: auto;
+    bottom: 0;
+    transform: none;
+    aspect-ratio: auto;
+    width: 100%;
+    max-width: none;
+    height: 124px;
+    background-image: url(../assets/showcase/custom-wide.jpg?v=21);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.72) 5%, #000 18%);
+            mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.72) 5%, #000 18%);
+  }
+}
+
 
 
 /* Two of the four subjects are inherently LANDSCAPE — an NLE timeline and a row of
