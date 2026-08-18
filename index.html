@@ -36,7 +36,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/style.css?v=8" />
+  <link rel="stylesheet" href="css/style.css?v=9" />
   <link rel="canonical" href="https://sliceoflife-app.com/" />
   <script type="application/ld+json">
 {
@@ -669,7 +669,7 @@
     <div class="section-inner">
       <div class="companion-label-row">
         <p class="section-label" style="margin-bottom:0;">iPhone Companion</p>
-        <span class="companion-soon">Coming soon</span>
+        <span class="companion-soon">Free on iPhone</span>
       </div>
       <h2 class="section-title" style="text-align:center;">Shoot anywhere. Edit anywhere.</h2>
       <p class="companion-sub">A free companion app lets you send footage from your phone straight to your Mac — so Slice of Life can start editing before you've even sat down at your desk.</p>
@@ -706,6 +706,13 @@
           <h3>It's already working</h3>
           <p>The moment clips land, your Mac starts analyzing in the background. Review the cut, or let Slice build it automatically.</p>
         </div>
+      </div>
+
+      <div class="companion-cta">
+        <a href="https://apps.apple.com/us/app/slice-of-life-companion/id6796167613"
+           class="btn-primary companion-appstore-btn"
+           target="_blank" rel="noopener">Download on the App Store</a>
+        <p class="companion-cta-note">Free · Requires Slice of Life for Mac</p>
       </div>
     </div>
   </section>
@@ -1009,10 +1016,20 @@
     // Tag all website events so they're filterable separately from app events
     posthog.register({ platform: 'website' });
 
-    // Track buy button clicks
+    // Track buy button clicks. The companion App Store link is deliberately
+    // excluded — it shares .btn-primary for styling only, and counting an iOS
+    // download as a buy_click would corrupt the purchase funnel.
     document.querySelectorAll('a[href*="buy"], .nav-cta, .btn-primary').forEach(function(el) {
+      if (el.classList.contains('companion-appstore-btn')) return;
       el.addEventListener('click', function() {
         posthog.capture('buy_click', { label: el.innerText.trim() });
+      });
+    });
+
+    // Track companion App Store clicks separately
+    document.querySelectorAll('.companion-appstore-btn').forEach(function(el) {
+      el.addEventListener('click', function() {
+        posthog.capture('companion_appstore_click');
       });
     });
 
