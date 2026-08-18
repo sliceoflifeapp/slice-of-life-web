@@ -4,17 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- License key arrives from Lemon Squeezy as a #key= fragment on the
-       confirmation-button URL. Grab it and scrub the URL IMMEDIATELY — this
-       must run before gtag, Meta Pixel, and PostHog so the key never appears
-       in any analytics page_location/$current_url or in browser history.
-       Stored in localStorage (this machine only) so a return visit to this
-       page still shows the key after the tab was closed. -->
+  <!-- License key arrives from Lemon Squeezy as ?key= on the confirmation /
+       receipt button URL (LS's URL validator rejects #fragments, so query
+       string it is; a #key= fragment is also accepted for manual links).
+       Grab it and scrub the URL IMMEDIATELY — this must run before gtag,
+       Meta Pixel, and PostHog so the key never appears in any analytics
+       page_location/$current_url or in browser history. Stored in
+       localStorage (this machine only) so a return visit to this page
+       still shows the key after the tab was closed. -->
   <script>
     (function () {
       window.__solLicenseKey = null;
       try {
-        var m = (location.hash || '').match(/[#&]key=([^&]+)/);
+        var m = (location.search || '').match(/[?&]key=([^&]+)/) ||
+                (location.hash || '').match(/[#&]key=([^&]+)/);
         var k = m ? decodeURIComponent(m[1]) : '';
         // Guard against an unsubstituted "[license_key]" literal or garbage.
         if (k && /^[0-9A-Za-z-]{20,64}$/.test(k)) {
@@ -23,8 +26,11 @@
         } else {
           window.__solLicenseKey = localStorage.getItem('sol-license-key');
         }
-        if (location.hash) {
-          history.replaceState(null, '', location.pathname + location.search);
+        if (location.hash || /[?&]key=/.test(location.search)) {
+          var sp = new URLSearchParams(location.search);
+          sp.delete('key');
+          var qs = sp.toString();
+          history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
         }
       } catch (e) {}
     })();
