@@ -36,7 +36,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/style.css?v=9" />
+  <link rel="stylesheet" href="css/style.css?v=19" />
   <link rel="canonical" href="https://sliceoflife-app.com/" />
   <script type="application/ld+json">
 {
@@ -490,48 +490,14 @@
         </div>
 
         <div class="showcase-col">
-          <div class="showcase-card">
-            <div class="card-art">
-              <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Camera body -->
-                <rect x="10" y="40" width="180" height="110" rx="16" fill="currentColor" opacity="0.25" stroke="currentColor" stroke-width="6"/>
-                <!-- Lens outer ring -->
-                <circle cx="100" cy="98" r="44" stroke="currentColor" stroke-width="6"/>
-                <!-- Lens middle ring -->
-                <circle cx="100" cy="98" r="30" stroke="currentColor" stroke-width="4" opacity="0.7"/>
-                <!-- Lens inner -->
-                <circle cx="100" cy="98" r="16" fill="currentColor" opacity="0.5"/>
-                <!-- Viewfinder hump -->
-                <path d="M68 40 Q68 16 86 16 L114 16 Q132 16 132 40Z" fill="currentColor" opacity="0.4" stroke="currentColor" stroke-width="4"/>
-                <!-- Shutter button -->
-                <circle cx="162" cy="28" r="10" fill="currentColor" opacity="0.5" stroke="currentColor" stroke-width="3"/>
-                <!-- Flash -->
-                <rect x="22" y="52" width="22" height="14" rx="4" fill="currentColor" opacity="0.4"/>
-              </svg>
-            </div>
+          <div class="showcase-card showcase-card--art-col">
+            <div class="card-art card-art--broll" role="img" aria-label="Slice of Life review screen — a b-roll montage of four cutaways"></div>
             <div class="showcase-tag">Smart b-roll</div>
             <h3 class="showcase-title">B-roll cut in automatically</h3>
             <p class="showcase-desc">Slice cuts in b-roll that matches what you're saying — like you spent an hour editing.</p>
           </div>
-          <div class="showcase-card">
-            <div class="card-art">
-              <svg viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0"   y="42" width="8"  height="16" rx="3" fill="currentColor"/>
-                <rect x="14"  y="30" width="8"  height="40" rx="3" fill="currentColor"/>
-                <rect x="28"  y="18" width="8"  height="64" rx="3" fill="currentColor"/>
-                <rect x="42"  y="8"  width="8"  height="84" rx="3" fill="currentColor"/>
-                <rect x="56"  y="20" width="8"  height="60" rx="3" fill="currentColor"/>
-                <rect x="70"  y="35" width="8"  height="30" rx="3" fill="currentColor"/>
-                <rect x="84"  y="12" width="8"  height="76" rx="3" fill="currentColor"/>
-                <rect x="98"  y="26" width="8"  height="48" rx="3" fill="currentColor"/>
-                <rect x="112" y="38" width="8"  height="24" rx="3" fill="currentColor"/>
-                <rect x="126" y="16" width="8"  height="68" rx="3" fill="currentColor"/>
-                <rect x="140" y="30" width="8"  height="40" rx="3" fill="currentColor"/>
-                <rect x="154" y="10" width="8"  height="80" rx="3" fill="currentColor"/>
-                <rect x="168" y="22" width="8"  height="56" rx="3" fill="currentColor"/>
-                <rect x="182" y="36" width="8"  height="28" rx="3" fill="currentColor"/>
-              </svg>
-            </div>
+          <div class="showcase-card showcase-card--art-col">
+            <div class="card-art card-art--aroll" role="img" aria-label="Slice of Life review screen — a narration section with its transcript and talking-head clip"></div>
             <div class="showcase-tag">A-roll detection</div>
             <h3 class="showcase-title">Your best takes, found automatically</h3>
             <p class="showcase-desc">Slice finds your strongest talking-to-camera moments and builds your a-roll spine automatically.</p>
@@ -539,95 +505,31 @@
         </div>
       </div>
 
-      <!-- Row 2: small left + big right -->
+      <!-- Row 2: Customization (small) + XML export (large).
+           Today's Prompt was removed here; XML export is the payoff of the section,
+           so it takes the large slot and shows a wide crop of the real timeline. -->
       <div class="showcase-row">
-        <div class="showcase-col">
-          <div class="showcase-card">
-            <div class="card-art card-art--fill">
-              <!-- Configure screen UI: pacing toggle + caption toggle -->
-              <svg viewBox="0 -13 260 200" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Label: DURATION -->
-                <rect x="0" y="0" width="52" height="10" rx="2" fill="currentColor" opacity="0.35"/>
-                <!-- Duration pills row -->
-                <rect x="0"  y="16" width="52" height="28" rx="8" fill="currentColor" opacity="0.25" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.4"/>
-                <rect x="58" y="16" width="52" height="28" rx="8" fill="currentColor" opacity="0.55" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.8"/>
-                <rect x="116" y="16" width="52" height="28" rx="8" fill="currentColor" opacity="0.25" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.4"/>
-                <rect x="174" y="16" width="52" height="28" rx="8" fill="currentColor" opacity="0.25" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.4"/>
-                <!-- Pill text placeholders -->
-                <rect x="16"  y="26" width="20" height="8" rx="2" fill="currentColor" opacity="0.5"/>
-                <rect x="74"  y="26" width="20" height="8" rx="2" fill="currentColor" opacity="0.9"/>
-                <rect x="132" y="26" width="20" height="8" rx="2" fill="currentColor" opacity="0.5"/>
-                <rect x="190" y="26" width="20" height="8" rx="2" fill="currentColor" opacity="0.5"/>
-
-                <!-- Label: PACING -->
-                <rect x="0" y="58" width="42" height="10" rx="2" fill="currentColor" opacity="0.35"/>
-                <!-- Pacing toggle — 3 buttons -->
-                <rect x="0"   y="74" width="78" height="32" rx="8" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.3"/>
-                <rect x="84"  y="74" width="78" height="32" rx="8" fill="currentColor" opacity="0.55" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.8"/>
-                <rect x="168" y="74" width="78" height="32" rx="8" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.3"/>
-                <!-- Pacing text placeholders -->
-                <rect x="14"  y="82" width="50" height="7" rx="2" fill="currentColor" opacity="0.45"/>
-                <rect x="14"  y="92" width="38" height="5" rx="2" fill="currentColor" opacity="0.25"/>
-                <rect x="98"  y="82" width="50" height="7" rx="2" fill="currentColor" opacity="0.9"/>
-                <rect x="98"  y="92" width="38" height="5" rx="2" fill="currentColor" opacity="0.5"/>
-                <rect x="182" y="82" width="50" height="7" rx="2" fill="currentColor" opacity="0.45"/>
-                <rect x="182" y="92" width="38" height="5" rx="2" fill="currentColor" opacity="0.25"/>
-
-                <!-- Label: CAPTIONS -->
-                <rect x="0" y="122" width="52" height="10" rx="2" fill="currentColor" opacity="0.35"/>
-                <!-- Toggle row -->
-                <rect x="0" y="138" width="246" height="36" rx="8" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.25"/>
-                <rect x="12" y="148" width="80" height="7" rx="2" fill="currentColor" opacity="0.6"/>
-                <rect x="12" y="158" width="55" height="5" rx="2" fill="currentColor" opacity="0.3"/>
-                <!-- Toggle pill (on state) -->
-                <rect x="200" y="146" width="36" height="20" rx="10" fill="currentColor" opacity="0.6"/>
-                <circle cx="226" cy="156" r="7" fill="currentColor" opacity="0.9"/>
-              </svg>
-            </div>
-            <div class="showcase-tag">Customization</div>
-            <h3 class="showcase-title">Your call. Your pace.</h3>
-            <p class="showcase-desc">Tight, Balanced, or Relaxed — choose how fast you want the cuts. Right in the review screen: add music, grade your color with a preset or your own LUT, add subtle movement to your b-roll, and clean up your audio with Voice Enhancement.</p>
-          </div>
-          <div class="showcase-card">
-            <div class="card-art card-art--fill">
-              <svg viewBox="0 -6 220 140" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2"   y="8"  width="216" height="28" rx="5" stroke="currentColor" stroke-width="3" opacity="0.4"/>
-                <rect x="10"  y="14" width="44"  height="16" rx="3" fill="currentColor" opacity="0.7"/>
-                <rect x="62"  y="14" width="30"  height="16" rx="3" fill="currentColor" opacity="0.5"/>
-                <rect x="100" y="14" width="52"  height="16" rx="3" fill="currentColor" opacity="0.6"/>
-                <rect x="160" y="14" width="24"  height="16" rx="3" fill="currentColor" opacity="0.4"/>
-                <rect x="2"   y="46" width="216" height="28" rx="5" stroke="currentColor" stroke-width="3" opacity="0.4"/>
-                <rect x="10"  y="52" width="22"  height="16" rx="3" fill="currentColor" opacity="0.4"/>
-                <rect x="40"  y="52" width="60"  height="16" rx="3" fill="currentColor" opacity="0.65"/>
-                <rect x="108" y="52" width="36"  height="16" rx="3" fill="currentColor" opacity="0.45"/>
-                <rect x="152" y="52" width="30"  height="16" rx="3" fill="currentColor" opacity="0.5"/>
-                <rect x="2"   y="84" width="216" height="28" rx="5" stroke="currentColor" stroke-width="3" opacity="0.4"/>
-                <rect x="10"  y="90" width="50"  height="16" rx="3" fill="currentColor" opacity="0.35"/>
-                <rect x="68"  y="90" width="28"  height="16" rx="3" fill="currentColor" opacity="0.55"/>
-                <rect x="104" y="90" width="46"  height="16" rx="3" fill="currentColor" opacity="0.4"/>
-                <line x1="108" y1="8" x2="108" y2="120" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                <polygon points="104,5 112,5 108,12" fill="currentColor" opacity="0.9"/>
-              </svg>
-            </div>
-            <div class="showcase-tag">XML export</div>
-            <h3 class="showcase-title">Take it to your editor</h3>
-            <p class="showcase-desc">Every vlog exports a timeline for Premiere Pro, Final Cut Pro, or DaVinci Resolve — a-roll and b-roll on separate tracks, all source clips referenced. Open it, refine it, done.</p>
-          </div>
+        <div class="showcase-card showcase-card--art-col">
+          <div class="card-art card-art--custom" role="img" aria-label="Slice of Life configure screen — orientation, pacing and caption controls"></div>
+          <div class="showcase-tag">Customization</div>
+          <h3 class="showcase-title">Your call. Your pace.</h3>
+          <ul class="showcase-list">
+            <li>Tight, Balanced or Relaxed</li>
+            <li>Reorder or drop any clip</li>
+            <li>Cut filler words and pauses</li>
+            <li>Fix captions before export</li>
+            <li>Speed up your b-roll</li>
+            <li>Add music, grade your color</li>
+            <li>Bring your own LUT</li>
+            <li>Clean up your audio</li>
+          </ul>
         </div>
 
-        <div class="showcase-card showcase-card--large">
-          <div class="showcase-tag">Today's Prompt</div>
-          <h3 class="showcase-title">Never wonder what to film</h3>
-          <p class="showcase-desc">The biggest reason vloggers go dark is not knowing what to say. Every morning, Slice generates a personalized prompt based on your history — so you pick up the camera instead of talking yourself out of it.</p>
-          <div class="showcase-visual showcase-visual--prompt">
-            <div class="showcase-prompt-card">
-              <div class="spc-label">TODAY'S PROMPT</div>
-              <div class="spc-sub">Personalized to your history</div>
-              <div class="spc-divider"></div>
-              <p class="spc-narration">"You've been filming a lot at home lately. What's one thing about your space you've never actually described out loud?"</p>
-              <p class="spc-filming">Slow rack focus from foreground clutter to whatever's in the background.</p>
-            </div>
-          </div>
+        <div class="showcase-card showcase-card--large showcase-card--art-bottom">
+          <div class="card-art card-art--bottom card-art--xml" role="img" aria-label="The exported timeline open in Premiere Pro — a-roll and b-roll on separate tracks"></div>
+          <div class="showcase-tag">XML export</div>
+          <h3 class="showcase-title">Take it to your editor</h3>
+          <p class="showcase-desc">Every vlog exports a timeline for Premiere Pro, Final Cut Pro, or DaVinci Resolve — <span class="nowrap">a-roll</span> and <span class="nowrap">b-roll</span> on separate tracks, all source clips referenced. Open it, refine it, done.</p>
         </div>
       </div>
 

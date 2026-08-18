@@ -1625,34 +1625,168 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
+/* Card artwork is a real crop of the app (or of the exported timeline in an NLE),
+   not an illustration. It sits in a column on the RIGHT of the card, clear of the
+   copy — which is what lets it run at full strength instead of being dimmed into a
+   watermark. Each crop is cut to this column's aspect ratio so nothing is chopped.
+   Deliberately NOT blurred: blurring real UI to hide it just reproduces the
+   watermark look this replaced. */
 .card-art {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 42%;
   pointer-events: none;
-  color: #6AABFF;
-  opacity: 0.18;
-  filter: blur(1.5px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.94;
+  /* Feather is in PIXELS so it stays constant at every card size instead of scaling
+     with the box (a %-based feather ate whole controls on the wide stacked cards).
+     48px across the 177-183px desktop columns reproduces the approved look. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, rgba(0,0,0,0.72) 16px, #000 48px),
+    linear-gradient(to bottom, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(to right, transparent 0, rgba(0,0,0,0.72) 16px, #000 48px),
+    linear-gradient(to bottom, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+          mask-composite: intersect;
+}
+/* Keep every real child above the artwork. */
+.showcase-card > *:not(.card-art) { position: relative; z-index: 1; }
+/* Hold the copy clear of the art column. The title gets more room than the body
+   text on purpose — it's short and bold, it reads fine crossing into the feathered
+   edge of the image, and clamping it as tightly as the paragraph forces every
+   heading onto two lines. */
+.showcase-card .showcase-title { max-width: 78%; }
+.showcase-card .showcase-desc  { max-width: 58%; }
+
+/* Bullet list alternative to .showcase-desc, for cards whose copy is a set of
+   discrete capabilities rather than a sentence. Same width clamp as the paragraph
+   so it stays clear of the art column. */
+.showcase-list {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+  /* Slightly wider than .showcase-desc — a bullet that wraps to two lines reads as
+     wordy, which is the opposite of why you'd use bullets. */
+  max-width: 64%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
+  flex-direction: column;
+  gap: 7px;
+}
+.showcase-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--white-55);
+}
+.nowrap { white-space: nowrap; }
+
+.showcase-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue-muted);
+}
+.showcase-card--art-bottom .showcase-list { max-width: 100%; }
+
+/* The large card is roughly twice as wide, so a 124px strip there works out at 6:1 —
+   far wider than a timeline reads at, and it crops away whole tracks. Give it a
+   proportionally taller strip. */
+.showcase-card--large .card-art--bottom { height: 190px; }
+.showcase-card--large.showcase-card--art-bottom { padding-bottom: 198px; }
+
+/* A small card sitting DIRECTLY in a row (rather than inside a .showcase-col) has no
+   flex basis of its own, so it collapses to its content width and the large card takes
+   everything else — 314px vs 746px instead of the intended 1 : 1.5. Scoped to
+   :not(--large) so the large card keeps its own flex. */
+.showcase-row > .showcase-card:not(.showcase-card--large) { flex: 1; }
+
+/* Image sources live here rather than inline so the mobile media query below can
+   swap in landscape variants. Version suffixes are cache-busters; bump them when a
+   crop is recut. */
+.card-art--broll  { background-image: url(../assets/showcase/broll.jpg?v=7); }
+.card-art--aroll  { background-image: url(../assets/showcase/aroll.jpg?v=8); }
+.card-art--custom { background-image: url(../assets/showcase/custom.jpg?v=15); }
+.card-art--xml    { background-image: url(../assets/showcase/xml.jpg?v=7); }
+
+/* STACKED RANGE (<=960px, where .showcase-row goes column) — image stays on the
+   RIGHT, matching desktop. This must cover the whole stacked range: 700-960px used
+   to fall through to desktop rules, where 42% of a now-full-width card became a
+   ~440px column and `cover` zoomed the crop ~1.2x. The panel is capped and pinned
+   to the -tall crops' shared 0.553 ratio, so its shape — and therefore the zoom —
+   is the same on an 844px card as on a 319px one. */
+@media (max-width: 960px) {
+  .card-art {
+    width: 40%;
+    max-width: 176px;
+    height: auto;
+    aspect-ratio: 0.553;
+    max-height: calc(100% - 32px);
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+  .showcase-card .showcase-title { max-width: 72%; }
+  .showcase-card .showcase-desc,
+  .showcase-list { max-width: 56%; }
+
+  .card-art--broll  { background-image: url(../assets/showcase/broll-tall.jpg?v=12); }
+  .card-art--aroll  { background-image: url(../assets/showcase/aroll-tall.jpg?v=12); }
+  .card-art--custom { background-image: url(../assets/showcase/custom-tall.jpg?v=15); }
+
+  /* XML keeps its bottom strip and full-width copy. Every panel property set above
+     must be undone here or the strip inherits centred-panel geometry. */
+  .card-art--bottom {
+    top: auto;
+    bottom: 0;
+    transform: none;
+    aspect-ratio: auto;
+    width: 100%;
+    max-width: none;
+    height: 124px;
+  }
+  .showcase-card--large .card-art--bottom { height: 124px; }
+  .showcase-card--large.showcase-card--art-bottom { padding-bottom: 132px; }
+  .showcase-card--art-bottom .showcase-title,
+  .showcase-card--art-bottom .showcase-desc { max-width: 100%; }
 }
 
-.card-art svg {
+
+
+/* Two of the four subjects are inherently LANDSCAPE — an NLE timeline and a row of
+   configure-screen controls. Squeezed into the right-hand column they crop to
+   unreadable fragments, so those cards run their art as a full-width strip along the
+   bottom and the copy sits above it instead of beside it.
+   The strip is a fixed height with matching padding-bottom reserved on the card, so
+   the copy can never grow down into the image — a percentage height let long
+   paragraphs collide with it. */
+.card-art--bottom {
+  top: auto;
+  right: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 124px;
+  /* Feather only the top edge. An aggressive fade works for a timeline, whose
+     content is uniform top-to-bottom, but it hides the top of any strip whose
+     subject sits high in the frame — which is most of them. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.72) 5%, #000 18%);
+          mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.72) 5%, #000 18%);
 }
+.showcase-card--art-bottom { padding-bottom: 132px; }
+.showcase-card--art-bottom .showcase-title,
+.showcase-card--art-bottom .showcase-desc { max-width: 100%; }
 
-.card-art--fill {
-  padding: 8px;
-}
 
-.card-art--fill svg {
-  width: 100%;
-  height: 100%;
-}
+
 
 .showcase-tag {
   font-size: 11px;
@@ -1679,7 +1813,6 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 }
 
 /* Timeline visual */
-.showcase-visual { margin-top: 16px; }
 
 .vis-timeline {
   display: flex;
@@ -1754,57 +1887,8 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 .cap-line--2 { font-size: 16px; }
 
 /* Prompt card visual */
-.showcase-visual--prompt { margin-top: 20px; }
 
-.showcase-prompt-card {
-  background: rgba(4, 15, 29, 0.95);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: 14px;
-  padding: 22px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-}
 
-.spc-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-}
-.spc-sub {
-  font-size: 11px;
-  color: var(--blue-muted);
-  opacity: 0.65;
-  margin-bottom: 4px;
-}
-.spc-divider {
-  height: 1px;
-  margin: 6px 0;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255,255,255,0.5) 15%,
-    rgba(255,255,255,0.5) 85%,
-    transparent 100%
-  );
-  box-shadow: 0 0 8px rgba(255,255,255,0.1);
-}
-.spc-narration {
-  font-size: 13px;
-  color: var(--white);
-  line-height: 1.65;
-  font-style: italic;
-}
-.spc-filming {
-  font-size: 12px;
-  color: var(--blue-muted);
-  line-height: 1.6;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  margin-top: 4px;
-}
 
 
 
@@ -2010,13 +2094,6 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
 .mockup-tagline,
 .vt-label,
 .vis-track-label,
-.spc-label,
-.download-version,
-.download-refund,
-.testimonial-disclaimer,
-.footer-name,
-.footer-copy,
-.footer-legal { color: rgba(255, 255, 255, 0.6); }
 .footer-legal a { color: var(--blue-muted); }
 
 /* Visible keyboard focus (2.4.7) — shown only during keyboard nav. */
