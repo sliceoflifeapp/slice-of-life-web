@@ -85,7 +85,8 @@ document.addEventListener('DOMContentLoaded', syncFaqAria);
     '.step',
     '.showcase-card',
     '.privacy-box',
-    '.download-icon', '.download-badge', '.download-title', '.download-sub', '.btn-large'
+    '.download-icon', '.download-badge', '.download-title', '.download-sub', '.btn-large',
+    '[data-reveal]'   // opt-in: pages tag their own elements without touching this list
   ];
 
   const els = document.querySelectorAll(selectors.join(','));
