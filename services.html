@@ -29,47 +29,39 @@
   <link rel="canonical" href="https://sliceoflife-app.com/services" />
 
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Vlog Video Editing Services",
-  "serviceType": "Video editing",
-  "description": "Done-for-you vlog editing on a monthly retainer. Talking-to-camera footage is assembled, matched with b-roll, captioned, and delivered within 24 hours, along with vertical Shorts cut from the same footage.",
-  "url": "https://sliceoflife-app.com/services",
-  "areaServed": "Worldwide",
-  "provider": {
-    "@type": "Organization",
-    "name": "Slice of Life",
-    "url": "https://sliceoflife-app.com/",
-    "email": "sliceoflifetech@gmail.com"
-  },
-  "offers": [
-    {
-      "@type": "Offer",
-      "name": "Starter",
-      "description": "4 finished videos a month, 24-hour turnaround.",
-      "price": "495",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/LimitedAvailability"
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Vlog Video Editing Services",
+    "serviceType": "Video editing",
+    "description": "Done-for-you vlog editing on a monthly retainer. Talking-to-camera footage is assembled, matched with b-roll, captioned, and delivered within 24 hours, along with vertical Shorts cut from the same footage.",
+    "url": "https://sliceoflife-app.com/services",
+    "areaServed": "Worldwide",
+    "provider": {
+      "@type": "Organization",
+      "name": "Slice of Life",
+      "url": "https://sliceoflife-app.com/",
+      "email": "sliceoflifetech@gmail.com"
     },
-    {
-      "@type": "Offer",
-      "name": "Growth",
-      "description": "8 finished videos a month plus vertical Shorts and unlimited revision rounds.",
-      "price": "895",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/LimitedAvailability"
-    },
-    {
-      "@type": "Offer",
-      "name": "Studio",
-      "description": "16 finished videos a month with priority turnaround.",
-      "price": "1495",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/LimitedAvailability"
-    }
-  ]
-}
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Standard",
+        "description": "4 finished videos a month with a 24-hour turnaround, branded motion graphics, captions and vertical Shorts.",
+        "price": "495",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/LimitedAvailability"
+      },
+      {
+        "@type": "Offer",
+        "name": "Priority",
+        "description": "8 finished videos a month with unlimited revision rounds, priority in the queue and same-day replies.",
+        "price": "995",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/LimitedAvailability"
+      }
+    ]
+  }
   </script>
   <script type="application/ld+json">
   {
@@ -105,7 +97,7 @@
         "name": "What if I do not like the edit?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tell us what to change and we re-cut it. Growth and Studio include unlimited revision rounds. Because the software does the assembly, a revision takes minutes on our side rather than another full edit."
+          "text": "Tell us what to change and we re-cut it, usually the same day. Priority includes unlimited rounds within 7 days of delivery; a round is one consolidated set of notes. Swapping a take, moving a cut or fixing a caption are revisions — re-cutting the video around a different story is a new video."
         }
       },
       {
@@ -256,6 +248,8 @@
       margin: 42px auto 0;
       text-align: left;
     }
+    .pricing-cards--two { max-width: 760px; margin-left: auto; margin-right: auto; }
+
     .svc-vsl-section { padding-top: 8px; padding-bottom: 8px; }
     .svc-vsl {
       position: relative;
@@ -536,7 +530,7 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
               </span>
             </button>
-            <p class="svc-reel-cap">Reel — client work before Slice of&nbsp;Life.</p>
+            <p class="svc-reel-cap">Client work before Slice of&nbsp;Life.</p>
           </div>
         </div>
       </div>
@@ -552,9 +546,9 @@
           Comparable services start at <strong>$899/month</strong>.
         </p>
 
-        <div class="pricing-cards">
+        <div class="pricing-cards pricing-cards--two">
           <div class="pricing-card" data-reveal>
-            <p class="pricing-name">Starter</p>
+            <p class="pricing-name">Standard</p>
             <p class="svc-cadence">One video a week</p>
             <div class="pricing-price">
               <span class="pricing-amount">$495</span>
@@ -565,55 +559,35 @@
               <li>4 finished videos a&nbsp;month</li>
               <li>24-hour turnaround on every&nbsp;video</li>
               <li>Captions burned in, styled to your&nbsp;channel</li>
+              <li>Branded motion graphics on every&nbsp;video</li>
+              <li>Vertical Shorts from every&nbsp;video</li>
+              <li>Title, description and chapters written for&nbsp;you</li>
               <li>Two revision rounds per&nbsp;video</li>
-              <li>Delivered ready to&nbsp;upload</li>
             </ul>
-            <a href="mailto:sliceoflifetech@gmail.com?subject=Vlog%20editing%20%E2%80%94%20Starter&amp;body=Channel%20or%20company%3A%0A%0ALink%20to%20a%20recent%20video%3A%0A%0ARoughly%20how%20much%20footage%20per%20video%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A" class="btn-primary pricing-cta" data-cta="starter">Start a project</a>
+            <a href="mailto:sliceoflifetech@gmail.com?subject=Vlog%20editing%20%E2%80%94%20Standard&amp;body=Channel%20or%20company%3A%0A%0ALink%20to%20a%20recent%20video%3A%0A%0ARoughly%20how%20much%20footage%20per%20video%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A" class="btn-primary pricing-cta" data-cta="standard">Start a project</a>
           </div>
 
           <div class="pricing-card pricing-card--featured" data-reveal>
             <span class="pricing-badge">MOST POPULAR</span>
-            <p class="pricing-name">Growth</p>
+            <p class="pricing-name">Priority</p>
             <p class="svc-cadence">Two videos a week</p>
             <div class="pricing-price">
-              <span class="pricing-amount">$895</span>
+              <span class="pricing-amount">$995</span>
               <span class="pricing-period">/month</span>
             </div>
-            <p class="svc-per-video">8 videos a month · about $112&nbsp;each</p>
+            <p class="svc-per-video">8 videos a month · about $124&nbsp;each</p>
             <ul class="pricing-features">
-              <li>Everything in Starter</li>
+              <li>Everything in&nbsp;Standard</li>
               <li>8 finished videos a&nbsp;month</li>
-              <li>A vertical Short or Reel from every&nbsp;video</li>
-              <li>Unlimited revision&nbsp;rounds</li>
+              <li>Unlimited revision rounds for 7&nbsp;days</li>
               <li>Priority position in the&nbsp;queue</li>
-            </ul>
-            <a href="mailto:sliceoflifetech@gmail.com?subject=Vlog%20editing%20%E2%80%94%20Growth&amp;body=Channel%20or%20company%3A%0A%0ALink%20to%20a%20recent%20video%3A%0A%0ARoughly%20how%20much%20footage%20per%20video%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A" class="btn-primary pricing-cta" data-cta="growth">Start a project</a>
-          </div>
-
-          <div class="pricing-card" data-reveal>
-            <p class="pricing-name">Studio</p>
-            <p class="svc-cadence">Four videos a week</p>
-            <div class="pricing-price">
-              <span class="pricing-amount">$1,495</span>
-              <span class="pricing-period">/month</span>
-            </div>
-            <p class="svc-per-video">16 videos a month · about $93&nbsp;each</p>
-            <ul class="pricing-features">
-              <li>Everything in Growth</li>
-              <li>16 finished videos a&nbsp;month</li>
-              <li>Three vertical Shorts from every&nbsp;video</li>
               <li>Same-day replies, direct&nbsp;line</li>
-              <li>A saved look applied across every&nbsp;video</li>
             </ul>
-            <a href="mailto:sliceoflifetech@gmail.com?subject=Vlog%20editing%20%E2%80%94%20Studio&amp;body=Channel%20or%20company%3A%0A%0ALink%20to%20a%20recent%20video%3A%0A%0ARoughly%20how%20much%20footage%20per%20video%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A" class="btn-primary pricing-cta" data-cta="studio">Start a project</a>
+            <a href="mailto:sliceoflifetech@gmail.com?subject=Vlog%20editing%20%E2%80%94%20Priority&amp;body=Channel%20or%20company%3A%0A%0ALink%20to%20a%20recent%20video%3A%0A%0ARoughly%20how%20much%20footage%20per%20video%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A" class="btn-primary pricing-cta" data-cta="priority">Start a project</a>
           </div>
         </div>
 
-        <p class="pricing-footnote">
-          Videos don't roll over month to month, so pick the tier that matches what you actually
-          publish — you can move up or down at any time. Publishing more than four a week?
-          Email us and we'll quote&nbsp;it.
-        </p>
+        <p class="pricing-footnote">Videos don't roll over month to month, so pick the tier that matches what you actually publish — you can move up or down at any time. A one-time $295 brand setup builds your graphics, colours and caption style; after that every video uses&nbsp;them. Publishing more than twice a week? Email us and we'll quote&nbsp;it.</p>
       </div>
     </section>
 
@@ -671,7 +645,7 @@
           <div class="faq-group" data-reveal>
             <p class="faq-group-label">Working&nbsp;together</p>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I send my footage?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Dropbox, Google Drive, WeTransfer, or a shared folder — whatever you already use. No file naming, no folder structure, no organising. Drop the whole day in exactly as it came off the&nbsp;camera.</div></div>
-            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What if I don't like the edit?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Tell us what to change and we re-cut it, usually the same day. Growth and Studio include unlimited revision rounds. Because the software does the assembly, a revision costs us minutes rather than another full edit — so we don't ration&nbsp;them.</div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What if I don't like the edit?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Tell us what to change and we re-cut it, usually the same day. Priority includes unlimited rounds within 7 days of delivery. A round is one set of notes, so send everything you want changed together rather than a message at a time. Swapping a take, moving a cut, fixing a caption — all revisions. Re-cutting the video around a different story is a new&nbsp;video.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Do you write scripts or shoot?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">No — this is editing only. You film, we cut. If you're not sure your footage will work well, send us a link to one recent video and we'll tell you straight before you commit to&nbsp;anything.</div></div>
           </div>
 
