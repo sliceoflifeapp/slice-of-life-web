@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Get Your First Vlog Edited Free | Slice of Life</title>
+  <meta name="description" content="We edit one day of your footage into a finished vlog, free, before you pay anything. Send a link to a recent video and we'll tell you straight whether it's a fit." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sliceoflife-app.com/apply" />
+  <meta property="og:title" content="Your First Vlog, Edited Free" />
+  <meta property="og:description" content="Send a link to a recent video. If your footage is a fit, we edit one day of it into a finished vlog — free, before you pay anything." />
+  <meta property="og:image" content="https://sliceoflife-app.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Your First Vlog, Edited Free" />
+  <meta name="twitter:description" content="Send a link to a recent video. If your footage is a fit, we edit one day of it into a finished vlog — free." />
+  <meta name="twitter:image" content="https://sliceoflife-app.com/assets/og-image.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/style.css?v=21" />
+  <link rel="canonical" href="https://sliceoflife-app.com/apply" />
+
+  <style>
+    /* Apply-page-only layout — colours, fonts and buttons come from style.css */
+
+    /* style.css sets main#main{display:flex} + .section{order:4} on mobile purely to
+       reorder the homepage promo video. Any other page inheriting it has its
+       non-.section children leapfrog every section. Neutralise it here. */
+    @media (max-width: 600px) { main#main { display: block; } }
+
+    .ap-hero { padding: 92px 24px 8px; text-align: center; }
+    .ap-inner { max-width: 720px; margin: 0 auto; }
+    .ap-headline {
+      font-size: clamp(36px, 5.2vw, 56px);
+      line-height: 1.07;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 18px 0 20px;
+    }
+    .ap-headline .gradient-text {
+      background: linear-gradient(135deg, #ffffff 5%, #3F8CFF 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .ap-sub {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--white-80);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .ap-band { padding: 62px 24px 0; }
+    .ap-band .ap-inner { text-align: left; }
+    .ap-h {
+      font-family: Montserrat, sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      margin: 0 0 8px;
+    }
+    .ap-lede {
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.62);
+      margin: 0 0 24px;
+      max-width: 60ch;
+    }
+
+    /* qualifiers */
+    .ap-fit { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    .ap-fit li {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.028);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 15px 17px;
+      font-size: 16px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.72);
+    }
+    .ap-fit strong { color: #fff; font-weight: 600; display: block; margin-bottom: 2px; }
+    .ap-tick { flex: none; margin-top: 3px; color: #3F8CFF; }
+
+    /* steps */
+    .ap-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+    .ap-steps li { display: flex; gap: 16px; align-items: flex-start; }
+    .ap-n {
+      flex: none;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(120,185,255,0.34);
+      background: rgba(50,110,225,0.16);
+      color: #7FB8FF;
+      font-family: Montserrat, sans-serif;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .ap-step-body { font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.68); }
+    .ap-step-body strong { color: #fff; font-weight: 600; display: block; margin-bottom: 3px; }
+
+    /* close */
+    .ap-close { padding: 66px 24px 96px; text-align: center; }
+    .ap-cta-btn { padding: 18px 40px; font-size: 15px; }
+    .ap-or {
+      margin: 18px 0 0;
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+    }
+    .ap-or a { color: #7FB8FF; text-decoration: none; }
+    .ap-or a:hover { text-decoration: underline; }
+    .ap-slots {
+      margin: 30px 0 0;
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+    }
+    .ap-slots strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+
+    @media (max-width: 620px) {
+      .ap-hero { padding: 64px 20px 4px; }
+      .ap-band { padding: 46px 20px 0; }
+      .ap-close { padding: 50px 20px 72px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Get your first vlog edited free",
+    "url": "https://sliceoflife-app.com/apply",
+    "description": "Apply to have one day of your vlog footage edited into a finished video, free, before paying anything.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Slice of Life",
+      "url": "https://sliceoflife-app.com"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+  <canvas id="glow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/services" style="text-decoration:none;color:inherit;">
+        <img src="assets/icon.png" alt="Slice of Life" class="nav-icon" />
+        <span class="nav-logo-text">Slice of Life</span>
+      </a>
+      <div class="nav-ctas">
+        <span class="sale-tag">3 slots open<span class="sale-tag-extra"> · This month</span></span>
+        <a href="/services#pricing" class="nav-cta">Pricing</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main" tabindex="-1">
+
+    <header class="ap-hero">
+      <div class="ap-inner">
+        <p class="section-label">Free first video</p>
+        <h1 class="ap-headline">Your first video, <span class="gradient-text">free</span>.</h1>
+        <p class="ap-sub">
+          Send us a link to something you've already published. If your footage is a fit, we'll edit
+          a day of it into a finished vlog before you pay us&nbsp;anything.
+        </p>
+      </div>
+    </header>
+
+    <section class="section ap-band">
+      <div class="ap-inner">
+        <h2 class="ap-h">Who this works for</h2>
+        <p class="ap-lede">
+          We only take on work the software and the process are actually good at, so it's worth being
+          straight about the shape of it up&nbsp;front.
+        </p>
+        <ul class="ap-fit">
+          <li>
+            <svg class="ap-tick" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>You talk to camera.</strong> This is built for vlogs — a spoken thread with b-roll cut around it. Not event coverage, walkthroughs, or footage with no narration.</span>
+          </li>
+          <li>
+            <svg class="ap-tick" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>You publish at least weekly.</strong> Below that a monthly retainer doesn't make sense for you, and we'd rather say so now than after you've paid for one.</span>
+          </li>
+          <li>
+            <svg class="ap-tick" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>Up to a day's footage per video.</strong> Roughly 300 clips or three hours of source. Mixed cameras are fine — phone, action cam, drone, all in one folder.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section ap-band">
+      <div class="ap-inner">
+        <h2 class="ap-h">What happens next</h2>
+        <p class="ap-lede">
+          Four steps, and you can stop at any of&nbsp;them.
+        </p>
+        <ol class="ap-steps">
+          <li>
+            <span class="ap-n">1</span>
+            <span class="ap-step-body"><strong>You send a link</strong>
+              One video you've already published, plus roughly how often you post. That's the whole application.</span>
+          </li>
+          <li>
+            <span class="ap-n">2</span>
+            <span class="ap-step-body"><strong>We tell you straight, within a day</strong>
+              Whether your footage will work well, and what we'd do with it. If it isn't a fit we'll say so rather than take the money.</span>
+          </li>
+          <li>
+            <span class="ap-n">3</span>
+            <span class="ap-step-body"><strong>You send one day's footage. We edit it, free</strong>
+              Finished video, captions, vertical Shorts — the same thing a paying client gets. We'll match your existing branding for the graphics.</span>
+          </li>
+          <li>
+            <span class="ap-n">4</span>
+            <span class="ap-step-body"><strong>You decide</strong>
+              Like it, pick a plan and we start. Don't, and nothing's owed — keep the video either way.</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="ap-close">
+      <div class="ap-inner">
+        <a href="mailto:sliceoflifetech@gmail.com?subject=Free%20first%20video%20%E2%80%94%20application&amp;body=Channel%20or%20company%3A%0A%0ALink%20to%20a%20recent%20video%3A%0A%0AHow%20often%20you%20publish%3A%0A%0ARoughly%20how%20much%20footage%20per%20video%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A" class="btn-primary ap-cta-btn" data-cta="apply">Send us a video</a>
+        <p class="ap-or">Or email <a href="mailto:sliceoflifetech@gmail.com">sliceoflifetech@gmail.com</a> directly.</p>
+        <p class="ap-slots"><strong>3 client slots open this month.</strong> We keep the number low on purpose — a 24-hour turnaround is only real if we're not&nbsp;overbooked.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="assets/icon.png" alt="" class="footer-icon" loading="lazy" />
+        <span class="footer-name">Slice of Life</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 Slice of Life. Your story. Cut and&nbsp;ready.</p>
+      <p class="footer-legal"><a href="/services">Editing services</a> &nbsp;&middot;&nbsp; <a href="/">The Mac app</a> &nbsp;&middot;&nbsp; <a href="/terms.html">Terms of Service</a> &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=1"></script>
+
+  <!-- PostHog — anonymous page/funnel tracking -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_CPkXBiAaHJCLEoKHgWy9Hiu3m3uPuoH66SQMNUuxLVFr', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'never',
+      capture_pageview: true,
+      capture_pageleave: true,
+      persistence: 'memory',
+      disable_session_recording: false,
+      session_recording: { maskAllInputs: true },
+    });
+    posthog.register({ platform: 'website', page_variant: 'apply' });
+    document.querySelectorAll('a[data-cta]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        posthog.capture('apply_email_click', { source: el.dataset.cta });
+      });
+    });
+    document.querySelectorAll('.ap-or a').forEach(function (el) {
+      el.addEventListener('click', function () {
+        posthog.capture('apply_email_click', { source: 'plain-address' });
+      });
+    });
+  </script>
+</body>
+</html>
