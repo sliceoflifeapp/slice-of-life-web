@@ -235,6 +235,25 @@
       letter-spacing: -0.01em;
       margin-top: 8px;
     }
+    .pricing-incl {
+      margin: 24px 0 0;
+      padding: 11px 13px;
+      border-radius: 10px;
+      background: rgba(50,110,225,0.16);
+      border: 1px solid rgba(120,185,255,0.26);
+      color: #CFE4FF;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    /* The band above carries the separation, so drop the list's own divider. */
+    .pricing-features--after-incl {
+      margin-top: 16px;
+      padding-top: 0;
+      border-top: none;
+    }
     .svc-per-video {
       font-size: 12.5px;
       color: rgba(255,255,255,0.6); /* AA: --white-30 was 2.6:1 on --bg */
@@ -594,7 +613,7 @@
               <span class="pricing-amount">$495</span>
               <span class="pricing-period">/month</span>
             </div>
-            <p class="svc-per-video">One a week &middot; about $124&nbsp;each</p>
+            <p class="svc-per-video">One a week</p>
             <ul class="pricing-features">
               <li>24-hour turnaround on every&nbsp;video</li>
               <li>Branded motion graphics on every&nbsp;video</li>
@@ -612,9 +631,9 @@
               <span class="pricing-amount">$995</span>
               <span class="pricing-period">/month</span>
             </div>
-            <p class="svc-per-video">Two a week &middot; about $124&nbsp;each</p>
-            <ul class="pricing-features">
-              <li>Everything in&nbsp;Standard</li>
+            <p class="svc-per-video">Two a week</p>
+            <p class="pricing-incl">Everything in Standard, plus</p>
+            <ul class="pricing-features pricing-features--after-incl">
               <li>Unlimited revision rounds for 7&nbsp;days</li>
               <li>Priority position in the&nbsp;queue</li>
               <li>Same-day replies, direct&nbsp;line</li>
