@@ -47,16 +47,16 @@
       {
         "@type": "Offer",
         "name": "Standard",
-        "description": "4 finished videos a month with a 24-hour turnaround, branded motion graphics, licensed music and sound design, and vertical Shorts.",
-        "price": "495",
+        "description": "4 finished videos a month, back within one business day, with branded motion graphics, licensed music and sound design, color adjustments and up to 3 vertical Shorts.",
+        "price": "795",
         "priceCurrency": "USD",
         "availability": "https://schema.org/LimitedAvailability"
       },
       {
         "@type": "Offer",
         "name": "Priority",
-        "description": "8 finished videos a month with unlimited revision rounds, priority in the queue and same-day replies.",
-        "price": "995",
+        "description": "8 finished videos a month, back within one business day, with up to 6 vertical Shorts, unlimited revision rounds, priority in the queue and same-day replies.",
+        "price": "1595",
         "priceCurrency": "USD",
         "availability": "https://schema.org/LimitedAvailability"
       }
@@ -73,7 +73,7 @@
         "name": "How is a 24-hour turnaround possible?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We built our own editing software. Slice of Life handles the slow, mechanical part of a vlog edit — finding your talking-to-camera moments, matching b-roll, cutting dead air, burning captions — in minutes rather than hours. That leaves the whole day for the judgment calls a person actually has to make."
+          "text": "We built our own editing software. Slice of Life handles the slow, mechanical part of a vlog edit — finding your talking-to-camera moments, matching b-roll, cutting dead air, burning captions — in minutes rather than hours. That leaves the whole day for the judgment calls a person actually has to make. Turnaround runs on business days, so footage sent on a Friday comes back Monday."
         }
       },
       {
@@ -263,6 +263,18 @@
     /* AA override: shared .pricing-footnote is --white-30 (2.6:1). Page-local so no
        ripple onto other pages; this page is the only live user of the class. */
     .pricing-footnote { color: rgba(255,255,255,0.6); }
+
+    /* Link out to the full plan comparison. */
+    .pricing-compare-link { text-align: center; margin: 26px 0 0; }
+    .pricing-compare-link a {
+      color: var(--blue-light, #7FB8FF);
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      border-bottom: 1px solid rgba(127,184,255,0.32); padding-bottom: 2px;
+      transition: color .2s cubic-bezier(0.23,1,0.32,1), border-color .2s cubic-bezier(0.23,1,0.32,1);
+    }
+    .pricing-compare-link a:hover { color: #A8D0FF; border-color: rgba(168,208,255,0.6); }
+    .pricing-compare-link a span { display: inline-block; transition: transform .2s cubic-bezier(0.23,1,0.32,1); }
+    .pricing-compare-link a:hover span { transform: translateX(3px); }
 
     /* Closing CTA */
 
@@ -602,7 +614,7 @@
         <h2 class="section-title svc-title-tight" style="text-align:center;">Pick the cadence you publish at</h2>
         <p class="svc-lead">
           One flat monthly rate. No per-video invoices, no contracts, cancel whenever.
-          Comparable services start at <strong>$899/month</strong>.
+          A one-business-day turnaround costs <strong>$1,999/month</strong> elsewhere. Here it&rsquo;s the standard on both&nbsp;plans.
         </p>
 
         <div class="pricing-cards pricing-cards--two">
@@ -610,15 +622,16 @@
             <p class="pricing-name">Standard</p>
             <p class="svc-cadence">4 videos a month</p>
             <div class="pricing-price">
-              <span class="pricing-amount">$495</span>
+              <span class="pricing-amount">$795</span>
               <span class="pricing-period">/month</span>
             </div>
             <p class="svc-per-video">One a week</p>
             <ul class="pricing-features">
-              <li>24-hour turnaround on every&nbsp;video</li>
+              <li>24-hour turnaround on business&nbsp;days</li>
               <li>Branded motion graphics on every&nbsp;video</li>
               <li>Licensed music and sound&nbsp;design</li>
-              <li>Vertical Shorts from every&nbsp;video</li>
+              <li>Color adjustments on every&nbsp;video</li>
+              <li>Up to 3 vertical Shorts per&nbsp;video</li>
               <li>Two revision rounds per&nbsp;video</li>
             </ul>
             <a href="/apply?plan=standard" class="btn-primary pricing-cta" data-cta="standard">Start a project</a>
@@ -629,21 +642,24 @@
             <p class="pricing-name">Priority</p>
             <p class="svc-cadence">8 videos a month</p>
             <div class="pricing-price">
-              <span class="pricing-amount">$995</span>
+              <span class="pricing-amount">$1,595</span>
               <span class="pricing-period">/month</span>
             </div>
             <p class="svc-per-video">Two a week</p>
             <p class="pricing-incl">Everything in Standard</p>
             <ul class="pricing-features pricing-features--after-incl">
+              <li>Up to 6 vertical Shorts per&nbsp;video</li>
               <li>Unlimited revision rounds for 7&nbsp;days</li>
               <li>Priority position in the&nbsp;queue</li>
-              <li>Same-day replies, direct&nbsp;line</li>
+              <li>Same-day replies</li>
             </ul>
             <a href="/apply?plan=priority" class="btn-primary pricing-cta" data-cta="priority">Start a project</a>
           </div>
         </div>
 
-        <p class="pricing-footnote">Videos don't roll over month to month, so pick the tier that matches what you actually publish — you can move up or down at any time. We build your graphics from the branding you already use &mdash; your colours, your fonts, your logo &mdash; and adjust it from there if you want something different. Every video after that uses&nbsp;it. A standard video is up to 100 clips or 90 minutes of source footage &mdash; a full day of shooting, with room to spare. Sending more than that regularly, or publishing more than twice a week? Get in touch and we&rsquo;ll quote&nbsp;it.</p>
+        <p class="pricing-compare-link"><a href="/compare-plans">Compare both plans in full <span aria-hidden="true">&rarr;</span></a></p>
+
+        <p class="pricing-footnote">Turnaround runs on business&nbsp;days. A standard video is up to 100 clips or 90 minutes of source footage &mdash; more than that regularly, or publishing more than twice a week, and we&rsquo;ll quote&nbsp;it.</p>
       </div>
     </section>
 
@@ -689,7 +705,7 @@
         <div class="faq-grid">
           <div class="faq-group" data-reveal>
             <p class="faq-group-label">The work</p>
-            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How is a 24-hour turnaround possible?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">We built our own editing software. It handles the slow mechanical half of a vlog edit — finding your talking-to-camera moments, matching b-roll, trimming dead air, burning captions — in minutes rather than hours. That leaves the day for the judgment calls a person actually has to&nbsp;make.</div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How is a 24-hour turnaround possible?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">We built our own editing software. It handles the slow mechanical half of a vlog edit — finding your talking-to-camera moments, matching b-roll, trimming dead air, burning captions — in minutes rather than hours. That leaves the day for the judgment calls a person actually has to&nbsp;make. Turnaround runs on business days, so footage sent on a Friday comes back&nbsp;Monday.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What kind of videos is this for?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Vlogs. Daily vlogs, travel vlogs, and anything else where you talk to camera and b-roll shows what you're describing. It's a narrow focus on purpose — it's what the software was built for, and it's what we're good&nbsp;at.</div></div>
             
           </div>

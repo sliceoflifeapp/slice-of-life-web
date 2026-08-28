@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Compare Plans — Vlog Editing Retainers | Slice of Life</title>
+  <meta name="description" content="Standard and Priority side by side: turnaround, what every video includes, footage limits, revisions and terms. No ambiguity about what you get." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sliceoflife-app.com/compare-plans" />
+  <meta property="og:title" content="Compare Plans — Vlog Editing Retainers" />
+  <meta property="og:description" content="Standard and Priority side by side: turnaround, what every video includes, footage limits, revisions and terms." />
+  <meta property="og:image" content="https://sliceoflife-app.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Compare Plans — Vlog Editing Retainers" />
+  <meta name="twitter:description" content="Standard and Priority side by side. No ambiguity about what you get." />
+  <meta name="twitter:image" content="https://sliceoflife-app.com/assets/og-image.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/style.css?v=21" />
+  <link rel="canonical" href="https://sliceoflife-app.com/compare-plans" />
+
+  <style>
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    .cmp-hero { padding: 64px 0 28px; text-align: center; }
+    .cmp-hero h1 { font-size: 40px; line-height: 1.12; margin: 0 0 14px; }
+    .cmp-lead { color: rgba(255,255,255,0.6); font-size: 17px; line-height: 1.6; max-width: 560px; margin: 0 auto; }
+
+    .cmp-wrap { max-width: 900px; margin: 0 auto; padding: 0 24px 40px; }
+    .cmp-card {
+      background: var(--bg-card, #061422);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      padding: 0 22px 10px;
+    }
+
+    .cmp-table { width: 100%; border-collapse: collapse; text-align: left; }
+    .cmp-table th, .cmp-table td { font-weight: 400; }
+
+    .cmp-head th { position: sticky; top: 62px; z-index: 20;
+      background: var(--bg-card, #061422);
+      border-bottom: 1px solid rgba(255,255,255,0.10); padding: 20px 12px 16px; vertical-align: top; }
+    .cmp-head-kicker { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; color: #7FB8FF; }
+    .cmp-head-note { display: block; font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.6);
+      margin-top: 7px; max-width: 300px; }
+    .cmp-plan-name { display: block; font-size: 17px; font-weight: 700; color: #fff; letter-spacing: 0.01em; }
+    .cmp-plan-price { display: block; font-size: 22px; font-weight: 700; color: #fff; margin-top: 4px; }
+    .cmp-plan-price span { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); }
+    .cmp-plan-sub { display: block; font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 3px; }
+    .cmp-head .cmp-cta { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 600;
+      padding: 8px 16px; border-radius: 9px; text-decoration: none;
+      background: rgba(50,110,225,0.52); color: #fff; border: 1px solid rgba(120,185,255,0.38);
+      transition: transform .2s cubic-bezier(0.23,1,0.32,1), background .2s ease; }
+    .cmp-head .cmp-cta:hover { background: rgba(60,125,240,0.66); transform: translateY(-2px); }
+
+    .cmp-section-row th { padding: 30px 12px 10px; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase; color: #7FB8FF; border: none; }
+
+    .cmp-table tbody tr:not(.cmp-section-row) th,
+    .cmp-table tbody tr:not(.cmp-section-row) td {
+      padding: 15px 12px; border-top: 1px solid rgba(255,255,255,0.07); vertical-align: top; }
+
+    .cmp-name { display: block; font-size: 15px; font-weight: 600; color: #fff; line-height: 1.35; }
+    .cmp-desc { display: block; font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; margin-top: 4px; }
+    .cmp-val { font-size: 14px; color: #fff; font-weight: 500; line-height: 1.4; display: block; }
+
+    .cmp-table td { width: 152px; text-align: center; }
+    .cmp-yes { color: #7FB8FF; }
+    .cmp-no { color: rgba(255,255,255,0.24); }
+
+    .cmp-foot { max-width: 900px; margin: 0 auto; padding: 6px 24px 0; }
+    .cmp-note { color: rgba(255,255,255,0.6); font-size: 13px; line-height: 1.6; text-align: center; }
+
+    .cmp-close { text-align: center; padding: 46px 24px 80px; }
+    .cmp-close h2 { font-size: 26px; margin: 0 0 10px; }
+    .cmp-close p { color: rgba(255,255,255,0.6); font-size: 15px; margin: 0 0 22px; }
+    .cmp-back { display: block; margin-top: 18px; font-size: 14px; color: rgba(255,255,255,0.6); }
+    .cmp-back a { color: #7FB8FF; text-decoration: none; }
+    .cmp-back a:hover { text-decoration: underline; }
+
+    @media (max-width: 700px) {
+      .cmp-hero { padding: 44px 0 20px; }
+      .cmp-hero h1 { font-size: 29px; }
+      .cmp-lead { font-size: 15px; }
+      .cmp-wrap { padding: 0 12px 32px; }
+      .cmp-card { padding: 0 10px 8px; border-radius: 14px; }
+      .cmp-head th { padding: 12px 6px; }
+      .cmp-head-kicker, .cmp-head-note { display: none; }
+      .cmp-plan-name { font-size: 14px; }
+      .cmp-plan-price { font-size: 17px; }
+      .cmp-plan-price span, .cmp-plan-sub { font-size: 11px; }
+      .cmp-head .cmp-cta { font-size: 12px; padding: 7px 10px; }
+      .cmp-table td { width: 76px; }
+      .cmp-table tbody tr:not(.cmp-section-row) th,
+      .cmp-table tbody tr:not(.cmp-section-row) td { padding: 13px 6px; }
+      .cmp-name { font-size: 14px; }
+      .cmp-desc { font-size: 12px; }
+      .cmp-val { font-size: 12.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+  <canvas id="glow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/" style="text-decoration:none;color:inherit;">
+        <img src="assets/icon.png" alt="Slice of Life" class="nav-icon" />
+        <span class="nav-logo-text">Slice of Life</span>
+      </a>
+      <div class="nav-ctas">
+        <span class="sale-tag">3 slots open<span class="sale-tag-extra"> &middot; This month</span></span>
+        <a href="/services#pricing" class="nav-cta">Pricing</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main" tabindex="-1">
+
+    <section class="cmp-hero">
+      <div class="section-inner">
+        <p class="section-label">Monthly retainers</p>
+        <h1>Compare both plans</h1>
+        <p class="cmp-lead">Everything both plans include, line by line.</p>
+      </div>
+    </section>
+
+    <div class="cmp-wrap">
+      <div class="cmp-card">
+      <table class="cmp-table">
+        <caption class="sr-only">Standard and Priority plans compared feature by feature</caption>
+        <thead>
+          <tr class="cmp-head">
+            <th scope="col" class="cmp-head-intro">
+              <span class="sr-only">Feature</span>
+              <span class="cmp-head-kicker">Every plan starts free</span>
+              <span class="cmp-head-note">We cut your first video from your own footage before you pay anything.</span>
+            </th>
+            <th scope="col">
+              <span class="cmp-plan-name">Standard</span>
+              <span class="cmp-plan-price">$795<span>/mo</span></span>
+              <span class="cmp-plan-sub">4 videos &middot; one a&nbsp;week</span>
+              <a href="/apply?plan=standard" class="cmp-cta" data-cta="standard">Start</a>
+            </th>
+            <th scope="col">
+              <span class="cmp-plan-name">Priority</span>
+              <span class="cmp-plan-price">$1,595<span>/mo</span></span>
+              <span class="cmp-plan-sub">8 videos &middot; two a&nbsp;week</span>
+              <a href="/apply?plan=priority" class="cmp-cta" data-cta="priority">Start</a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr class="cmp-section-row"><th colspan="3" scope="colgroup">Turnaround and volume</th></tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Finished video back to you</span><span class="cmp-desc">One business day from upload. Footage in on a Friday comes back&nbsp;Monday.</span></th>
+          <td><span class="cmp-val">24 hours</span></td>
+          <td><span class="cmp-val">24 hours</span></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Videos per month</span><span class="cmp-desc">Unused videos don&rsquo;t roll over month to month.</span></th>
+          <td><span class="cmp-val">4</span></td>
+          <td><span class="cmp-val">8</span></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Priority position in the queue</span><span class="cmp-desc">Your videos go to the front when the schedule is full.</span></th>
+          <td><svg class="cmp-no" width="16" height="16" viewBox="0 0 16 16" fill="none" role="img" aria-label="Not included"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr class="cmp-section-row"><th colspan="3" scope="colgroup">Every video includes</th></tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Full edit from raw footage</span><span class="cmp-desc">Assembled, trimmed and cut from the card you send us.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Branded motion graphics</span><span class="cmp-desc">Built from your colors, fonts and logo, then reused on every video.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Licensed music</span><span class="cmp-desc">Chosen and licensed for you &mdash; nothing to source yourself.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Sound design</span><span class="cmp-desc">Levels balanced, dead air removed, effects where they land.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Color adjustments</span><span class="cmp-desc">White balance and contrast corrected shot to shot.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Captions</span><span class="cmp-desc">Burned in by default, or left off if you&rsquo;d rather keep the frame clear for graphics. Separate .srt file either way.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Vertical Shorts</span><span class="cmp-desc">Cut from the same footage, ready for Reels, Shorts and TikTok.</span></th>
+          <td><span class="cmp-val">up to 3</span></td>
+          <td><span class="cmp-val">up to 6</span></td>
+        </tr>
+        <tr class="cmp-section-row"><th colspan="3" scope="colgroup">Your footage</th></tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Clips per video</span><span class="cmp-desc">Sending more than this regularly? Get in touch and we&rsquo;ll quote it.</span></th>
+          <td><span class="cmp-val">up to 100</span></td>
+          <td><span class="cmp-val">up to 100</span></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Source footage per video</span><span class="cmp-desc">A full day of shooting, with room to spare.</span></th>
+          <td><span class="cmp-val">up to 90 min</span></td>
+          <td><span class="cmp-val">up to 90 min</span></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Private upload folder</span><span class="cmp-desc">Set up on day one. Finished videos come back to the same place.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Any camera, any file names</span><span class="cmp-desc">Drag the card in exactly as it came off. No organizing, no renaming.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr class="cmp-section-row"><th colspan="3" scope="colgroup">Revisions</th></tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Revision rounds per video</span><span class="cmp-desc">A round is one consolidated set of notes.</span></th>
+          <td><span class="cmp-val">2</span></td>
+          <td><span class="cmp-val">Unlimited for 7&nbsp;days</span></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Re-cuts turned around</span><span class="cmp-desc">From the moment you send your notes.</span></th>
+          <td><span class="cmp-val">usually same day</span></td>
+          <td><span class="cmp-val">usually same day</span></td>
+        </tr>
+        <tr class="cmp-section-row"><th colspan="3" scope="colgroup">Working together</th></tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Email support</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Same-day replies</span></th>
+          <td><svg class="cmp-no" width="16" height="16" viewBox="0 0 16 16" fill="none" role="img" aria-label="Not included"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr class="cmp-section-row"><th colspan="3" scope="colgroup">Terms</th></tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Contract</span><span class="cmp-desc">Month to month. Cancel any time.</span></th>
+          <td><span class="cmp-val">None</span></td>
+          <td><span class="cmp-val">None</span></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Free first video before you pay</span><span class="cmp-desc">Cut from your own footage, so you see the work before you commit.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">First month money-back</span><span class="cmp-desc">If the first paid month isn&rsquo;t right, tell us and we&rsquo;ll refund it.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="cmp-name">Full rights to everything delivered</span><span class="cmp-desc">No watermark, no credit required.</span></th>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="cmp-foot">
+      <p class="cmp-note">Turnaround runs on business days, so footage in on a Friday comes back Monday. Publishing more than twice a week, or regularly sending more than a standard video&rsquo;s worth of footage? <a href="/apply" style="color:#7FB8FF;">Get in touch</a> and we&rsquo;ll quote it.</p>
+    </div>
+
+    <section class="cmp-close">
+      <h2>Not sure which one?</h2>
+      <p>Send one recent video and we&rsquo;ll tell you straight &mdash; including if it isn&rsquo;t a fit.</p>
+      <a href="/apply" class="btn-primary" data-cta="compare-footer">Get my first video free</a>
+      <span class="cmp-back"><a href="/services">Back to services</a></span>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="assets/icon.png" alt="" class="footer-icon" loading="lazy" />
+        <span class="footer-name">Slice of Life</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 Slice of Life. Your story. Cut and&nbsp;ready.</p>
+      <p class="footer-legal"><a href="/">The Mac app</a> &nbsp;&middot;&nbsp; <a href="/terms.html">Terms of Service</a> &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=1"></script>
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_CPkXBiAaHJCLEoKHgWy9Hiu3m3uPuoH66SQMNUuxLVFr', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'never',
+      capture_pageview: true,
+      capture_pageleave: true,
+      persistence: 'memory',
+      disable_session_recording: false,
+      session_recording: { maskAllInputs: true },
+    });
+    posthog.register({ platform: 'website', page_variant: 'compare-plans' });
+
+    document.querySelectorAll('a[data-cta]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        posthog.capture('services_inquiry_click', { tier: el.dataset.cta, from: 'compare-plans' });
+      });
+    });
+  </script>
+</body>
+</html>
