@@ -131,10 +131,12 @@
   <style>
     /* Services-page-only layout — colors, fonts and buttons come from style.css */
     .svc-hero {
-      padding: 92px 48px 76px;
+      padding: 92px 48px 38px;
       text-align: center;
     }
     .svc-hero-inner { max-width: 820px; margin: 0 auto; }
+    /* Halved the hero-to-process gap; scoped to #process so other sections keep theirs. */
+    #process { padding-top: 55px; }
     .svc-headline {
       font-size: clamp(38px, 5.4vw, 62px);
       line-height: 1.06;
@@ -457,7 +459,8 @@
     }
 
     @media (max-width: 640px) {
-      .svc-hero { padding: 64px 24px 56px; }
+      .svc-hero { padding: 64px 24px 28px; }
+      #process { padding-top: 38px; }
       .section { padding: 76px 24px; }
         .svc-proc { gap: 44px; }
       .svc-proc-row,
