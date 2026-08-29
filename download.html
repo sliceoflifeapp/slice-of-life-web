@@ -47,8 +47,12 @@
       try {
         var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
         if (!tz) return false;
+        // Tor, Firefox resistFingerprinting and Brave's strict mode all report
+        // UTC rather than a real zone. Treat that as EU: we cannot tell where
+        // they are, and a browser hiding its timezone has already said no.
+        if (/^(UTC|GMT|Etc\/(UTC|GMT|Greenwich|Zulu|Universal))$/i.test(tz)) return false;
         if (/^Europe\//.test(tz)) return false;
-        return !/^(Atlantic\/(Canary|Madeira|Azores|Reykjavik|Faroe)|Asia\/(Nicosia|Famagusta)|Indian\/(Mayotte|Reunion)|America\/(Cayenne|Guadeloupe|Martinique|Miquelon|Marigot|St_Barthelemy))$/.test(tz);
+        return !/^(Atlantic\/(Canary|Madeira|Azores|Reykjavik|Faroe|Faeroe)|Arctic\/Longyearbyen|Africa\/Ceuta|Asia\/(Nicosia|Famagusta)|Indian\/(Mayotte|Reunion)|America\/(Cayenne|Guadeloupe|Martinique|Miquelon|Marigot|St_Barthelemy))$/.test(tz);
       } catch (e) { return false; }
     })();
   </script>
