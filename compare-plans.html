@@ -4,6 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Google tag (gtag.js) -->
+  <!-- Advertising consent gate. Visitors in the EU, UK and EEA are not shown a
+       consent banner, so rather than set advertising cookies without consent we
+       simply do not load the ad tags for them. Region is read from the browser's
+       own timezone: no IP lookup, no third-party call, nothing stored. A timezone
+       we cannot read is treated as EU. -->
+  <script>
+    window.__solAdsAllowed = (function () {
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (!tz) return false;
+        // Tor, Firefox resistFingerprinting and Brave's strict mode all report
+        // UTC rather than a real zone. Treat that as EU: we cannot tell where
+        // they are, and a browser hiding its timezone has already said no.
+        if (/^(UTC|GMT|Etc\/(UTC|GMT|Greenwich|Zulu|Universal))$/i.test(tz)) return false;
+        if (/^Europe\//.test(tz)) return false;
+        return !/^(Atlantic\/(Canary|Madeira|Azores|Reykjavik|Faroe|Faeroe)|Arctic\/Longyearbyen|Africa\/Ceuta|Asia\/(Nicosia|Famagusta)|Indian\/(Mayotte|Reunion)|America\/(Cayenne|Guadeloupe|Martinique|Miquelon|Marigot|St_Barthelemy))$/.test(tz);
+      } catch (e) { return false; }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      if (!window.__solAdsAllowed) {
+        // Keep gtag callable so conversion calls elsewhere are harmless no-ops.
+        window.gtag = function () {};
+        return;
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'AW-18242668467');
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18242668467';
+      document.head.appendChild(s);
+    })();
+  </script>
+
   <title>Compare Plans — Vlog Editing Retainers | Slice of Life</title>
   <meta name="description" content="Standard and Priority side by side: turnaround, what every video includes, footage limits, revisions and terms. No ambiguity about what you get." />
 
