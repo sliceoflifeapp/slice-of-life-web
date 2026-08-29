@@ -5,12 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18242668467"></script>
+  <!-- Advertising consent gate. Visitors in the EU, UK and EEA are not shown a
+       consent banner, so rather than set advertising cookies without consent we
+       simply do not load the ad tags for them. Region is read from the browser's
+       own timezone: no IP lookup, no third-party call, nothing stored. A timezone
+       we cannot read is treated as EU. -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-18242668467');
+    window.__solAdsAllowed = (function () {
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (!tz) return false;
+        if (/^Europe\//.test(tz)) return false;
+        return !/^(Atlantic\/(Canary|Madeira|Azores|Reykjavik|Faroe)|Asia\/(Nicosia|Famagusta)|Indian\/(Mayotte|Reunion)|America\/(Cayenne|Guadeloupe|Martinique|Miquelon|Marigot|St_Barthelemy))$/.test(tz);
+      } catch (e) { return false; }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      if (!window.__solAdsAllowed) {
+        // Keep gtag callable so conversion calls elsewhere are harmless no-ops.
+        window.gtag = function () {};
+        return;
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'AW-18242668467');
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18242668467';
+      document.head.appendChild(s);
+    })();
   </script>
 
 
