@@ -290,13 +290,13 @@
     }
     .pricing-cards--two { max-width: 760px; margin-left: auto; margin-right: auto; }
 
-    .svc-vsl-section { padding-top: 8px; padding-bottom: 8px; }
+    /* Sits inside the hero, directly above the CTA the voiceover points at. */
     .svc-vsl {
       display: block;
       position: relative;
       width: 100%;
       max-width: 880px;
-      margin: 0 auto;
+      margin: 34px auto 30px;
       padding: 0;
       aspect-ratio: 16 / 9;
       border-radius: 16px;
@@ -520,6 +520,13 @@
           Most editing services get faster by hiring more editors. We got faster by writing
           the&nbsp;software.
         </p>
+        <button class="svc-vsl" id="svc-vsl" type="button" data-reveal aria-label="Play the overview video">
+          <img src="assets/showcase/vsl-poster.jpg?v=4" alt="" width="1920" height="1080" loading="lazy">
+          <span class="svc-vsl-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
+          </span>
+        </button>
+
         <div class="svc-cta-row">
           <a href="/apply" class="btn-primary svc-btn-lg" data-cta="hero">
             Get your first video free
@@ -531,18 +538,6 @@
         </p>
       </div>
     </header>
-
-    <!-- ── VSL ─────────────────────────────────────────────────────────── -->
-    <section class="section svc-vsl-section">
-      <div class="section-inner">
-        <button class="svc-vsl" id="svc-vsl" type="button" data-reveal aria-label="Play the overview video">
-          <img src="assets/showcase/vsl-poster.jpg?v=4" alt="" width="1920" height="1080" loading="lazy">
-          <span class="svc-vsl-play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
-          </span>
-        </button>
-      </div>
-    </section>
 
     <!-- ── Our process ──────────────────────────────────────────────────── -->
     <section class="section" id="process">
