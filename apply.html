@@ -433,6 +433,12 @@
                 footage: payload.footage || 'unspecified',
                 plan: payload.plan || 'none',
               });
+              // Google Ads "Services Application". Deliberately fired here rather
+              // than on page load: only applications the Worker actually accepted
+              // should count, not everyone who reached the form.
+              if (typeof gtag === 'function') {
+                gtag('event', 'conversion', { send_to: 'AW-18242668467/W4OiCPDSmOocELOP5PpD' });
+              }
             } else {
               // Only trust d.error if it is actually a string. Any other shape
               // (an error object from a proxy, say) would otherwise render to
