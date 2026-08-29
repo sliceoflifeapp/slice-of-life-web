@@ -321,6 +321,29 @@
     }
     .svc-vsl-play svg { width: 30px; height: 30px; margin-left: 3px; }
     .svc-vsl:hover .svc-vsl-play { transform: translate(-50%, -50%) scale(1.07); background: rgba(60,125,240,0.98); }
+    /* Shown in place of the player once the video finishes, so the end of the
+       pitch is a call to action rather than Vimeo's own recommendations. */
+    .svc-vsl--done {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 22px; cursor: default; padding: 0 24px; text-align: center;
+      background:
+        radial-gradient(120% 110% at 72% 12%, rgba(38,96,190,0.55), transparent 62%),
+        #020C18;
+    }
+    .svc-vsl-done-title { font-size: 38px; font-weight: 800; line-height: 1.15; margin: 0; color: #fff; }
+    .svc-vsl-done-cta { font-size: 16px; padding: 14px 30px; }
+    .svc-vsl-again {
+      background: none; border: 0; padding: 0; cursor: pointer;
+      font-family: inherit; font-size: 13.5px; font-weight: 600;
+      letter-spacing: 0.04em; color: rgba(255,255,255,0.55);
+      transition: color 0.2s var(--ease-out);
+    }
+    .svc-vsl-again:hover { color: #A8CDFF; }
+    @media (max-width: 700px) {
+      .svc-vsl-done-title { font-size: 24px; }
+      .svc-vsl-done-cta { font-size: 14px; padding: 12px 22px; }
+      .svc-vsl--done { gap: 16px; }
+    }
 
     .svc-bio-copy { flex: 1 1 0; min-width: 0; }
     .svc-bio-head { display: flex; align-items: center; gap: 20px; margin-bottom: 22px; }
@@ -777,12 +800,59 @@
 
       var vsl = document.getElementById('svc-vsl');
       if (vsl) {
-        vsl.addEventListener('click', function () {
-          vsl.innerHTML = '<iframe src="https://player.vimeo.com/video/1222341308?badge=0&autopause=0&autoplay=1" ' +
-            'title="Slice of Life — done-for-you vlog editing" allow="autoplay; fullscreen; picture-in-picture" ' +
-            'allowfullscreen></iframe>';
+        var VSL_ORIGIN = 'https://player.vimeo.com';
+        var VSL_SRC = VSL_ORIGIN + '/video/1222341308?badge=0&autopause=0&autoplay=1';
+
+        function vslPlay(el) {
+          el.innerHTML = '<iframe src="' + VSL_SRC + '" ' +
+            'title="Slice of Life \u2014 done-for-you vlog editing" ' +
+            'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+          var frame = el.querySelector('iframe');
+          function post(msg) {
+            try { frame.contentWindow.postMessage(JSON.stringify(msg), VSL_ORIGIN); } catch (e) {}
+          }
+          function onMsg(e) {
+            if (e.origin !== VSL_ORIGIN) return;
+            var d;
+            try { d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data; } catch (err) { return; }
+            if (!d || !d.event) return;
+            if (d.event === 'ready') {
+              // 'ended' is current, 'finish' is the older name -- subscribe to both
+              post({ method: 'addEventListener', value: 'ended' });
+              post({ method: 'addEventListener', value: 'finish' });
+            }
+            if (d.event === 'ended' || d.event === 'finish') {
+              window.removeEventListener('message', onMsg);
+              vslEnd(el);
+            }
+          }
+          window.addEventListener('message', onMsg);
           if (window.posthog) posthog.capture('services_vsl_play');
-        }, { once: true });
+        }
+
+        function vslEnd(el) {
+          // a <button> cannot contain a link, so swap the element itself
+          var done = document.createElement('div');
+          done.className = 'svc-vsl svc-vsl--done';
+          done.innerHTML =
+            '<p class="svc-vsl-done-title">Your first video, <span class="gradient-text">free</span></p>' +
+            '<a href="/apply" class="btn-primary svc-vsl-done-cta">Get my first video free</a>' +
+            '<button type="button" class="svc-vsl-again">Watch again</button>';
+          el.replaceWith(done);
+          done.querySelector('.svc-vsl-done-cta').addEventListener('click', function () {
+            if (window.posthog) posthog.capture('services_inquiry_click', { tier: 'vsl-end' });
+          });
+          done.querySelector('.svc-vsl-again').addEventListener('click', function () {
+            var again = document.createElement('button');
+            again.className = 'svc-vsl'; again.id = 'svc-vsl'; again.type = 'button';
+            again.setAttribute('aria-label', 'Play the overview video');
+            done.replaceWith(again);
+            vslPlay(again);
+          });
+          if (window.posthog) posthog.capture('services_vsl_completed');
+        }
+
+        vsl.addEventListener('click', function () { vslPlay(vsl); }, { once: true });
       }
 
       var reel = document.getElementById('svc-reel');
