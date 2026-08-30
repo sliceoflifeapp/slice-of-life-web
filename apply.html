@@ -45,18 +45,18 @@
 
 
   <title>Get Your First Vlog Edited Free | Slice of Life</title>
-  <meta name="description" content="We edit one day of your footage into a finished vlog, free, before you pay anything. Send a link to a recent video and we'll tell you straight whether it's a fit." />
+  <meta name="description" content="We edit one day of your footage into a finished vlog, free, before you pay anything. Tell us where to find your channel and we'll tell you straight whether it's a fit." />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sliceoflife-app.com/apply" />
   <meta property="og:title" content="Your First Vlog, Edited Free" />
-  <meta property="og:description" content="Send a link to a recent video. If your footage is a fit, we edit one day of it into a finished vlog — free, before you pay anything." />
+  <meta property="og:description" content="Tell us where to find your channel. If your footage is a fit, we edit one day of it into a finished vlog — free, before you pay anything." />
   <meta property="og:image" content="https://sliceoflife-app.com/assets/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Your First Vlog, Edited Free" />
-  <meta name="twitter:description" content="Send a link to a recent video. If your footage is a fit, we edit one day of it into a finished vlog — free." />
+  <meta name="twitter:description" content="Tell us where to find your channel. If your footage is a fit, we edit one day of it into a finished vlog — free." />
   <meta name="twitter:image" content="https://sliceoflife-app.com/assets/og-image.jpg" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
@@ -261,7 +261,7 @@
         <p class="section-label">Free first video</p>
         <h1 class="ap-headline">Your first video, <span class="gradient-text">free</span>.</h1>
         <p class="ap-sub">
-          Send us a link to something you've already published. If you talk to camera and your
+          Tell us where to find your channel. If you talk to camera and your
           footage is a fit, we'll edit a day of it into a finished vlog before you pay
           us&nbsp;anything.
         </p>
@@ -283,8 +283,8 @@
             </div>
 
             <div class="ap-field">
-              <label class="ap-label" for="ap-video">Channel or video link <span class="ap-tag">&mdash; required</span></label>
-              <input class="ap-input" type="text" inputmode="url" id="ap-video" name="videoUrl" maxlength="500" required placeholder="youtube.com/@yourchannel">
+              <label class="ap-label" for="ap-video">Your channel <span class="ap-tag">&mdash; required</span></label>
+              <input class="ap-input" type="text" id="ap-video" name="videoUrl" maxlength="500" required placeholder="@yourchannel">
             </div>
 
             <!-- Honeypot. Hidden from people, irresistible to bots. Deliberately
@@ -390,7 +390,7 @@
         // Mirror the server's required set so a mistake is caught before a
         // round trip. The server re-checks all of it regardless.
         if (!val('ap-email')) return fail('Enter your email so we can reply.');
-        if (!val('ap-video')) return fail('Add a link to your channel or a video.');
+        if (!val('ap-video')) return fail('Add your channel handle or a link.');
 
         var payload = {
           name:     val('ap-name'),
