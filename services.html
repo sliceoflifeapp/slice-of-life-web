@@ -423,6 +423,12 @@
       .svc-bio { flex-direction: column; align-items: flex-start; gap: 22px; }
       .svc-bio-face { width: 108px; height: 108px; }
 
+      /* Step bodies run full length on desktop and shed their least load-bearing
+         clauses on a phone. Hidden rather than duplicated: one copy in the DOM, the
+         full text still crawlable, and display:none takes it out of the a11y tree
+         at the widths where it is not shown. */
+      .svc-mobcut { display: none; }
+
       /* The bio is a row on desktop, so .svc-bio-reel carries flex: 1 1 0 with the
          basis on the WIDTH axis. Stacked to a column that basis lands on the height
          axis instead and the width collapses to content — a 199px player marooned in
@@ -596,7 +602,7 @@
               <div class="svc-proc-rule"></div>
               <p class="svc-proc-num">STEP 01</p>
               <h3>Our proprietary software does the heavy&nbsp;lifting</h3>
-              <p><strong>Slice of Life</strong> — our own Mac app — finds your talking-to-camera moments, matches cutaways to what you're saying, trims dead air and burns in&nbsp;captions.</p>
+              <p><strong>Slice of Life</strong> — our own Mac app — <span class="svc-mobcut">watches the whole day. It </span>finds your talking-to-camera moments, matches cutaways to what you're saying, trims dead air and burns in captions.<span class="svc-mobcut"> The mechanical half of the edit, done before a person touches&nbsp;it.</span></p>
               <a href="/" class="nav-cta svc-proc-cta">See the software &rarr;</a>
             </div>
             <div class="svc-proc-shot">
@@ -608,7 +614,7 @@
               <div class="svc-proc-rule"></div>
               <p class="svc-proc-num">STEP 02</p>
               <h3>Then a person actually edits it</h3>
-              <p>A first pass isn't a finished video. Someone still has to find the story — which take carries it, what to cut even though the footage is&nbsp;good.</p>
+              <p>A first pass isn't a finished video. Someone has to find the story — which take carries it, <span class="svc-mobcut">what's funny, </span>what to cut even though the footage is good.<span class="svc-mobcut"> That's taste, and no tool has&nbsp;it.</span></p>
             </div>
             <div class="svc-proc-shot">
               <img src="assets/showcase/premiere.jpg?v=2" alt="The edit being finished by hand on a Premiere Pro timeline, a-roll and b-roll on separate video and audio tracks" loading="lazy" width="1250" height="684">
@@ -619,7 +625,7 @@
               <div class="svc-proc-rule"></div>
               <p class="svc-proc-num">STEP 03</p>
               <h3>You review, then it's yours</h3>
-              <p>One link, within 24 hours. Comment on anything and we re-cut, usually the same day. You get the finished video, your vertical Shorts and the caption&nbsp;file.</p>
+              <p>One link, within 24 hours. Comment on anything<span class="svc-mobcut"> you want changed</span> and we re-cut — usually the same day. Then it lands ready to upload: the finished video, your vertical Shorts and the caption file.<span class="svc-mobcut"> Nothing left for you to&nbsp;do.</span></p>
             </div>
             <div class="svc-proc-shot">
               <img src="assets/showcase/delivery.jpg?v=7" alt="What gets delivered: the finished vlog with a client note on a shot, alongside a vertical Short cut from the same footage" loading="lazy" width="1050" height="620">
