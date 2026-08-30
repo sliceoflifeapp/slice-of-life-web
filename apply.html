@@ -142,7 +142,7 @@
       text-transform: none;
       letter-spacing: 0;
     }
-    .ap-input, .ap-select, .ap-textarea {
+    .ap-input {
       width: 100%;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.12);
@@ -154,23 +154,11 @@
       outline: none;
       transition: border-color 0.2s ease, background 0.2s ease;
     }
-    .ap-input::placeholder, .ap-textarea::placeholder { color: rgba(255,255,255,0.3); }
-    .ap-input:focus, .ap-select:focus, .ap-textarea:focus {
+    .ap-input::placeholder { color: rgba(255,255,255,0.3); }
+    .ap-input:focus {
       border-color: rgba(120,185,255,0.55);
       background: rgba(255,255,255,0.07);
     }
-    .ap-textarea { resize: vertical; min-height: 84px; line-height: 1.5; }
-    /* Native dark selects render inconsistently, so draw our own chevron. */
-    .ap-select {
-      appearance: none;
-      -webkit-appearance: none;
-      padding-right: 40px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M3 5l4 4 4-4' stroke='%237FB8FF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 15px center;
-      cursor: pointer;
-    }
-    .ap-select option { background: #061422; color: #fff; }
     /* Honeypot: off-screen rather than display:none, since some bots skip
        hidden inputs but happily fill anything still in the layout. */
     .ap-hp {
@@ -295,36 +283,8 @@
             </div>
 
             <div class="ap-field">
-              <label class="ap-label" for="ap-video">Link to a recent video <span class="ap-tag">&mdash; required</span></label>
-              <input class="ap-input" type="text" inputmode="url" id="ap-video" name="videoUrl" maxlength="500" required placeholder="youtube.com/watch?v=&hellip;">
-            </div>
-
-            <div class="ap-field">
-              <label class="ap-label" for="ap-cadence">How often you publish <span class="ap-tag">&mdash; required</span></label>
-              <select class="ap-select" id="ap-cadence" name="cadence" required>
-                <option value="" selected disabled>Pick one</option>
-                <option value="weekly">About once a week</option>
-                <option value="twice">About twice a week</option>
-                <option value="more">More than twice a week</option>
-                <option value="less">Less than weekly</option>
-                <option value="not-yet">Not publishing yet</option>
-              </select>
-            </div>
-
-            <div class="ap-field">
-              <label class="ap-label" for="ap-footage">Raw footage per video</label>
-              <select class="ap-select" id="ap-footage" name="footage">
-                <option value="" selected>Not sure</option>
-                <option value="lt30">Under 30 minutes</option>
-                <option value="30-90">30&ndash;90 minutes</option>
-                <option value="90-180">90 minutes &ndash; 3 hours</option>
-                <option value="gt180">More than 3 hours</option>
-              </select>
-            </div>
-
-            <div class="ap-field">
-              <label class="ap-label" for="ap-notes">Anything else</label>
-              <textarea class="ap-textarea" id="ap-notes" name="notes" maxlength="2000" placeholder="Anything about your channel or your footage we should know."></textarea>
+              <label class="ap-label" for="ap-video">Channel or video link <span class="ap-tag">&mdash; required</span></label>
+              <input class="ap-input" type="text" inputmode="url" id="ap-video" name="videoUrl" maxlength="500" required placeholder="youtube.com/@yourchannel">
             </div>
 
             <!-- Honeypot. Hidden from people, irresistible to bots. Deliberately
@@ -337,7 +297,7 @@
             </div>
 
             <button type="submit" class="btn-primary ap-submit" id="ap-submit">Get my first video free</button>
-            <p class="ap-fine">Free first video for clients we take on &mdash; we&rsquo;ll tell you either way within a&nbsp;day.</p>
+            <p class="ap-fine">We&rsquo;ll watch it and get back to you within a&nbsp;day.</p>
             <p class="ap-err" id="ap-err" role="alert"></p>
           </form>
 
@@ -346,7 +306,7 @@
               <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="ap-done-h">Got it.</h3>
-            <p class="ap-done-p">We&rsquo;ll watch your video and reply within a day &mdash; straight about whether your footage is a&nbsp;fit.</p>
+            <p class="ap-done-p">We&rsquo;ll take a look and reply within a day &mdash; straight about whether your footage is a&nbsp;fit.</p>
           </div>
         </div>
 
@@ -430,16 +390,12 @@
         // Mirror the server's required set so a mistake is caught before a
         // round trip. The server re-checks all of it regardless.
         if (!val('ap-email')) return fail('Enter your email so we can reply.');
-        if (!val('ap-video')) return fail('Add a link to one of your videos.');
-        if (!val('ap-cadence')) return fail('Let us know how often you publish.');
+        if (!val('ap-video')) return fail('Add a link to your channel or a video.');
 
         var payload = {
           name:     val('ap-name'),
           email:    val('ap-email'),
           videoUrl: val('ap-video'),
-          cadence:  val('ap-cadence'),
-          footage:  val('ap-footage'),
-          notes:    val('ap-notes'),
           ap_hp:    val('ap-hp'),
           plan:     new URLSearchParams(window.location.search).get('plan') || '',
           source:   context(),
@@ -458,11 +414,7 @@
             if (d && d.ok) {
               form.style.display = 'none';
               doneEl.classList.add('show');
-              posthog.capture('apply_submitted', {
-                cadence: payload.cadence,
-                footage: payload.footage || 'unspecified',
-                plan: payload.plan || 'none',
-              });
+              posthog.capture('apply_submitted', { plan: payload.plan || 'none' });
               // Google Ads "Services Application". Deliberately fired here rather
               // than on page load: only applications the Worker actually accepted
               // should count, not everyone who reached the form.
