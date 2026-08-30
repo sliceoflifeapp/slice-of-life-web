@@ -422,6 +422,33 @@
     @media (max-width: 640px) {
       .svc-bio { flex-direction: column; align-items: flex-start; gap: 22px; }
       .svc-bio-face { width: 108px; height: 108px; }
+
+      /* The bio is a row on desktop, so .svc-bio-reel carries flex: 1 1 0 with the
+         basis on the WIDTH axis. Stacked to a column that basis lands on the height
+         axis instead and the width collapses to content — a 199px player marooned in
+         a 354px column. Give it a real width and match the example videos in the
+         proof strip below (the section column minus that strip's 24px padding), so
+         the two players read as the same component rather than two sizes. */
+      .svc-bio-reel { flex: 0 0 auto; width: calc(100% - 48px); align-self: center; }
+
+      /* The play button is a fixed 76px sitting at left: 82.7% — a desktop
+         composition that drops it into the clear space beside the poster's baked-in
+         title. The frame scales with the viewport but the button does not, so at
+         402px it is 21% of the frame (8.6% on desktop) and overruns the right edge,
+         where the frame's radius clips it. Scaling the button restores the intended
+         composition; moving it would put it on top of the title. */
+      .svc-vsl-play {
+        width: 54px; height: 54px;
+        box-shadow: 0 8px 26px rgba(0,0,0,0.5), 0 0 0 9px rgba(50,110,225,0.14);
+      }
+      .svc-vsl-play svg { width: 22px; height: 22px; }
+
+      /* .case-study-item--active carries margin: -10px in the shared sheet so its
+         padded content lines up with the strip edge. Mobile then sets width: 100%,
+         which measures the container and ignores the negative margins, leaving the
+         card 10px left of centre and 20px short on the right. Widening it by the two
+         margins makes the card symmetric and the thumbnail span the full strip. */
+      .svc-proof .case-study-item--active { width: calc(100% + 20px); }
     }
 
     .svc-proof { padding-top: 20px; }
@@ -563,19 +590,13 @@
     <section class="section" id="process">
       <div class="section-inner">
         <p class="section-label" style="text-align:center;">Our process</p>
-        <h2 class="section-title svc-title-tight" style="text-align:center;">How your vlog gets made</h2>
-        <p class="svc-lead" style="text-align:center;">
-          You drop the whole day into a private folder we set up for you — no renaming, no sorting,
-          nothing to install. Here's what happens&nbsp;next.
-        </p>
-
         <div class="svc-proc">
           <div class="svc-proc-row" data-reveal>
             <div class="svc-proc-copy">
               <div class="svc-proc-rule"></div>
               <p class="svc-proc-num">STEP 01</p>
               <h3>Our proprietary software does the heavy&nbsp;lifting</h3>
-              <p><strong>Slice of Life</strong> — our own Mac app — watches the whole day. It finds your talking-to-camera moments, matches cutaways to what you're saying, trims dead air and burns in captions. The mechanical half of the edit, done before a person touches&nbsp;it.</p>
+              <p><strong>Slice of Life</strong> — our own Mac app — finds your talking-to-camera moments, matches cutaways to what you're saying, trims dead air and burns in&nbsp;captions.</p>
               <a href="/" class="nav-cta svc-proc-cta">See the software &rarr;</a>
             </div>
             <div class="svc-proc-shot">
@@ -587,7 +608,7 @@
               <div class="svc-proc-rule"></div>
               <p class="svc-proc-num">STEP 02</p>
               <h3>Then a person actually edits it</h3>
-              <p>A first pass isn't a finished video. Someone has to find the story — which take carries it, what's funny, what to cut even though the footage is good. That's taste, and no tool has&nbsp;it.</p>
+              <p>A first pass isn't a finished video. Someone still has to find the story — which take carries it, what to cut even though the footage is&nbsp;good.</p>
             </div>
             <div class="svc-proc-shot">
               <img src="assets/showcase/premiere.jpg?v=2" alt="The edit being finished by hand on a Premiere Pro timeline, a-roll and b-roll on separate video and audio tracks" loading="lazy" width="1250" height="684">
@@ -598,7 +619,7 @@
               <div class="svc-proc-rule"></div>
               <p class="svc-proc-num">STEP 03</p>
               <h3>You review, then it's yours</h3>
-              <p>One link, within 24 hours. Comment on anything you want changed and we re-cut — usually the same day. Then it lands ready to upload: the finished video, your vertical Shorts and the caption file. Nothing left for you to&nbsp;do.</p>
+              <p>One link, within 24 hours. Comment on anything and we re-cut, usually the same day. You get the finished video, your vertical Shorts and the caption&nbsp;file.</p>
             </div>
             <div class="svc-proc-shot">
               <img src="assets/showcase/delivery.jpg?v=7" alt="What gets delivered: the finished vlog with a client note on a shot, alongside a vertical Short cut from the same footage" loading="lazy" width="1050" height="620">
@@ -623,10 +644,9 @@
               <p class="section-label svc-bio-role">Video editor for over a&nbsp;decade</p>
             </div>
             <p>
-              I'm Nathan. I've been editing video professionally for over 10 years — film,
-              documentaries, real estate, weddings, commercials — long before I wrote a line of this
-              software. That's exactly why the app automates the mechanical half of an edit and
-              leaves the rest alone: it does the parts I'd already done a few thousand&nbsp;times.
+              I'm Nathan. I've edited professionally for over 10 years — film, documentaries,
+              weddings, commercials — long before I wrote a line of this software. It automates
+              the parts I'd already done a few thousand&nbsp;times.
             </p>
           </div>
 
