@@ -330,10 +330,13 @@
               <textarea class="ap-textarea" id="ap-notes" name="notes" maxlength="2000" placeholder="Anything about your channel or your footage we should know."></textarea>
             </div>
 
-            <!-- Honeypot. Hidden from people, irresistible to bots. -->
+            <!-- Honeypot. Hidden from people, irresistible to bots. Deliberately
+                 named nothing a password manager recognises: it used to be
+                 name="website" with a "Website" label, which is exactly what
+                 autofill looks for, and a filled honeypot silently discards the
+                 application. No label, no semantic name, no autocomplete. -->
             <div class="ap-hp" aria-hidden="true">
-              <label for="ap-website">Website</label>
-              <input type="text" id="ap-website" name="website" tabindex="-1" autocomplete="off">
+              <input type="text" id="ap-hp" name="ap_hp" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore data-form-type="other">
             </div>
 
             <button type="submit" class="btn-primary ap-submit" id="ap-submit">Get my first video free</button>
@@ -440,7 +443,7 @@
           cadence:  val('ap-cadence'),
           footage:  val('ap-footage'),
           notes:    val('ap-notes'),
-          website:  val('ap-website'),
+          ap_hp:    val('ap-hp'),
           plan:     new URLSearchParams(window.location.search).get('plan') || '',
           source:   context(),
         };
