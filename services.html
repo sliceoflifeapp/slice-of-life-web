@@ -529,6 +529,15 @@
        makes `order` inert, so children lay out in DOM order. Page-local: no ripple. */
     @media (max-width: 600px) {
       main#main { display: block; }
+
+      /* The shared 82px offset is sized for the 63px desktop nav. At <=600px the
+         nav wraps to two rows and measures 103.4px, so an anchor jump parked the
+         section ~21px behind a translucent blurred bar with the eyebrow flush
+         against it. That is where the Google Ads sitelinks land (#pricing,
+         #process, #examples, #faq) and it is WCAG 2.4.11. #process and #examples
+         are named explicitly because services.html sets them to 82px at all
+         widths further up. */
+      #pricing, #faq, #process, #examples { scroll-margin-top: 118px; }
     }
 
     @media (max-width: 640px) {
@@ -557,7 +566,7 @@
       </a>
       <div class="nav-ctas">
         <span class="sale-tag">3 slots open<span class="sale-tag-extra"> · This month</span></span>
-        <a href="#pricing" class="nav-cta">Pricing</a>
+        <a href="/apply" class="nav-cta" data-cta="nav">Free edit</a>
       </div>
     </div>
   </nav>
