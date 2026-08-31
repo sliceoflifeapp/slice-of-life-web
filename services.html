@@ -81,24 +81,19 @@
       "url": "https://sliceoflife-app.com/",
       "email": "sliceoflifetech@gmail.com"
     },
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Standard",
-        "description": "4 finished videos a month, back within one business day, with branded motion graphics, licensed music and sound design, color adjustments and up to 3 vertical Shorts.",
-        "price": "795",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/LimitedAvailability"
+    "offers": {
+      "@type": "Offer",
+      "name": "Per finished video",
+      "description": "One finished vlog, back within one business day, with branded motion graphics, licensed music and sound design, color adjustments and up to 6 vertical Shorts. Priced per video from $1,200 - no retainer, no minimum. A video is up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts.",
+      "price": "1200",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": "1200",
+        "priceCurrency": "USD"
       },
-      {
-        "@type": "Offer",
-        "name": "Priority",
-        "description": "8 finished videos a month, back within one business day, with up to 6 vertical Shorts, unlimited revision rounds, priority in the queue and same-day replies.",
-        "price": "1595",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/LimitedAvailability"
-      }
-    ]
+      "availability": "https://schema.org/LimitedAvailability"
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -143,7 +138,7 @@
         "name": "What if I do not like the edit?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tell us what to change and we re-cut it - usually the same day, always within one business day. Priority includes unlimited rounds within 7 days of delivery; a round is one consolidated set of notes. Swapping a take, moving a cut or fixing a caption are revisions — re-cutting the video around a different story is a new video."
+          "text": "Tell us what to change and we re-cut it - usually the same day, always within one business day. Every video includes unlimited rounds within 7 days of delivery; a round is one consolidated set of notes. Swapping a take, moving a cut or fixing a caption are revisions — re-cutting the video around a different story is a new video."
         }
       },
       {
@@ -151,15 +146,15 @@
         "name": "Is there a contract?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Retainers are month to month and you can cancel any time. Unused videos do not roll over, so pick the tier that matches what you actually publish."
+          "text": "No. You book videos one at a time and stop whenever you like. There is no retainer, no minimum and nothing to use up."
         }
       },
       {
         "@type": "Question",
-        "name": "What if the first month isn't right?",
+        "name": "What if the first video isn't right?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tell us and we will refund it. You get a free video cut from your own footage before you pay anything, so you have already seen the work - but if the first paid month still misses, you should not be out the money."
+          "text": "Tell us and we will refund it. Your first video is free and cut from your own footage, so you have already seen the work before you pay for anything - but if the first paid video still misses, you should not be out the money."
         }
       },
       {
@@ -339,6 +334,7 @@
       text-align: left;
     }
     .pricing-cards--two { max-width: 760px; margin-left: auto; margin-right: auto; }
+    .pricing-cards--one { max-width: 380px; margin-left: auto; margin-right: auto; }
 
     /* Sits inside the hero, directly above the CTA the voiceover points at. */
     .svc-vsl {
@@ -689,55 +685,34 @@
     <!-- ── Pricing ──────────────────────────────────────────────────────── -->
     <section class="section" id="pricing" style="padding-top:20px;">
       <div class="section-inner">
-        <p class="section-label" style="text-align:center;">Monthly retainers</p>
-        <h2 class="section-title svc-title-tight" style="text-align:center;">Pick the cadence you publish at</h2>
+        <p class="section-label" style="text-align:center;">Pricing</p>
+        <h2 class="section-title svc-title-tight" style="text-align:center;">One price, per finished video</h2>
         <p class="svc-lead">
-          One flat monthly rate. No per-video invoices, no contracts, cancel&nbsp;whenever.
+          No retainer, no minimum, nothing to use up. You see a finished video before you pay for&nbsp;one.
         </p>
 
-        <div class="pricing-cards pricing-cards--two">
-          <div class="pricing-card" data-reveal>
-            <p class="pricing-name">Standard</p>
-            <p class="svc-cadence">4 videos a month</p>
+        <div class="pricing-cards pricing-cards--one">
+          <div class="pricing-card pricing-card--featured" data-reveal>
+            <p class="pricing-name">Per finished video</p>
             <div class="pricing-price">
-              <span class="pricing-amount">$795</span>
-              <span class="pricing-period">/month</span>
+              <span class="pricing-period">From</span>
+              <span class="pricing-amount">$1,200</span>
             </div>
-            <p class="svc-per-video">One a week</p>
+            <p class="svc-per-video">Back in 24 hours on business&nbsp;days</p>
             <ul class="pricing-features">
-              <li>24-hour turnaround on business&nbsp;days</li>
               <li>Branded motion graphics on every&nbsp;video</li>
               <li>Licensed music and sound&nbsp;design</li>
               <li>Color adjustments on every&nbsp;video</li>
-              <li>Up to 3 vertical Shorts per&nbsp;video</li>
-              <li>Two revision rounds per&nbsp;video</li>
-            </ul>
-            <a href="/apply?plan=standard" class="btn-primary pricing-cta" data-cta="standard">Start a project</a>
-          </div>
-
-          <div class="pricing-card pricing-card--featured" data-reveal>
-            <span class="pricing-badge">MOST POPULAR</span>
-            <p class="pricing-name">Priority</p>
-            <p class="svc-cadence">8 videos a month</p>
-            <div class="pricing-price">
-              <span class="pricing-amount">$1,595</span>
-              <span class="pricing-period">/month</span>
-            </div>
-            <p class="svc-per-video">Two a week</p>
-            <p class="pricing-incl">Everything in Standard</p>
-            <ul class="pricing-features pricing-features--after-incl">
               <li>Up to 6 vertical Shorts per&nbsp;video</li>
               <li>Unlimited revision rounds for 7&nbsp;days</li>
-              <li>Priority position in the&nbsp;queue</li>
-              <li>Same-day replies</li>
             </ul>
-            <a href="/apply?plan=priority" class="btn-primary pricing-cta" data-cta="priority">Start a project</a>
+            <a href="/apply?plan=project" class="btn-primary pricing-cta" data-cta="project">Start a project</a>
           </div>
         </div>
 
-        <p class="pricing-compare-link"><a href="/compare-plans">Compare both plans in full <span aria-hidden="true">&rarr;</span></a></p>
+        <p class="pricing-compare-link"><a href="/compare-plans">See everything that&rsquo;s included <span aria-hidden="true">&rarr;</span></a></p>
 
-        <p class="pricing-footnote">Turnaround runs on business&nbsp;days. A standard video is up to 100 clips or 90 minutes of source footage &mdash; more than that regularly, or publishing more than twice a week, and we&rsquo;ll quote&nbsp;it.</p>
+        <p class="pricing-footnote">Turnaround runs on business&nbsp;days. $1,200 covers a video built from up to 100 clips or 90 minutes of source footage &mdash; bigger shoots are quoted before we&nbsp;start. Publishing on a schedule? Reserve a standing slot for a lower per-video&nbsp;rate.</p>
       </div>
     </section>
 
@@ -792,14 +767,14 @@
             <p class="faq-group-label">Working&nbsp;together</p>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Which video do you edit for free?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Your next upload, not old footage. That way it actually goes live and you&rsquo;re judging it on a real video instead of a demo. No card, no contract &mdash; if it works, we pick up with the one after&nbsp;it.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I send my footage?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">We set up a private upload folder for you on day one. Drag the whole card in exactly as it came off the camera — no file naming, no folder structure, no organizing. It's the same place your finished videos come&nbsp;back to.</div></div>
-            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What if I don't like the edit?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Tell us what to change and we re-cut it &mdash; usually the same day, always within one business&nbsp;day. Priority includes unlimited rounds within 7 days of delivery. A round is one set of notes, so send everything you want changed together rather than a message at a time. Swapping a take, moving a cut, fixing a caption — all revisions. Re-cutting the video around a different story is a new&nbsp;video.</div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What if I don't like the edit?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Tell us what to change and we re-cut it &mdash; usually the same day, always within one business&nbsp;day. Every video includes unlimited rounds within 7 days of delivery. A round is one set of notes, so send everything you want changed together rather than a message at a time. Swapping a take, moving a cut, fixing a caption — all revisions. Re-cutting the video around a different story is a new&nbsp;video.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Do you write scripts or shoot?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">No — this is editing only. You film, we cut. If you're not sure your footage will work well, send us your channel or one recent video and we'll tell you straight before you commit to&nbsp;anything.</div></div>
           </div>
 
           <div class="faq-group" data-reveal>
             <p class="faq-group-label">Money &amp;&nbsp;terms</p>
-            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is there a contract?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">No. Retainers run month to month and you can cancel any time. Unused videos don't roll over, so pick the tier that matches what you actually publish — you can move up or down&nbsp;whenever.</div></div>
-            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What if the first month isn't right?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Tell us and we'll refund it. You get a free video cut from your own footage before you pay anything, so you've already seen the work &mdash; but if the first paid month still misses, you shouldn't be out the&nbsp;money.</div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is there a contract?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">No. You book videos one at a time and stop whenever you like — no retainer, no minimum, nothing to use&nbsp;up.</div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What if the first video isn't right?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Tell us and we'll refund it. Your first video is free and cut from your own footage, so you've already seen the work before you pay for anything &mdash; but if the first paid video still misses, you shouldn't be out the&nbsp;money.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Who owns the finished videos?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">You do. Full rights to everything we deliver — no watermark, no credit required. Publish them wherever you like. The one thing we keep is the right to show the work in our own portfolio — if you&rsquo;d rather we didn&rsquo;t, say so and we&nbsp;won&rsquo;t.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Why only three slots?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Because a 24-hour turnaround is only real if we're not overbooked. We take on a limited number of retainers at a time and hold the rest for a waitlist rather than quietly slipping to three&nbsp;days.</div></div>
           </div>
