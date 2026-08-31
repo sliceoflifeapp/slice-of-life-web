@@ -594,17 +594,12 @@
           Most editing services get faster by hiring more editors. We got faster by writing
           the&nbsp;software.
         </p>
-        <!-- VSL pulled 2026-08-31: the recorded VO still promises a 24 hour
-             turnaround, which the rest of the page no longer does. The player JS
-             below is guarded by `if (vsl)` so it no-ops while this is hidden.
-             To restore: delete this comment marker and the closing one.
         <button class="svc-vsl" id="svc-vsl" type="button" data-reveal aria-label="Play the overview video">
           <img src="assets/showcase/vsl-poster.jpg?v=4" alt="" width="1920" height="1080" loading="lazy">
           <span class="svc-vsl-play" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
           </span>
         </button>
-        -->
 
         <div class="svc-cta-row">
           <a href="/apply" class="btn-primary svc-btn-lg" data-cta="hero">
@@ -840,7 +835,7 @@
       var vsl = document.getElementById('svc-vsl');
       if (vsl) {
         var VSL_ORIGIN = 'https://player.vimeo.com';
-        var VSL_SRC = VSL_ORIGIN + '/video/1222341308?badge=0&autopause=0&autoplay=1';
+        var VSL_SRC = VSL_ORIGIN + '/video/1222839107?badge=0&autopause=0&autoplay=1';
         var VSL_IDLE = vsl.innerHTML;   // poster + play button, captured as authored
 
         function vslArm(el) {
