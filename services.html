@@ -84,7 +84,7 @@
     "offers": {
       "@type": "Offer",
       "name": "Per finished video",
-      "description": "One finished vlog, back within a week, with branded motion graphics, licensed music and sound design, color adjustments and up to 6 vertical Shorts. Quoted per project - no retainer, no minimum. The first video is free. A video is up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts.",
+      "description": "One finished vlog, back within a week, with branded motion graphics, licensed music and sound design, color adjustments and up to 10 vertical Shorts. Quoted per project - no retainer, no minimum. The first video is free. A video is up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts.",
       "availability": "https://schema.org/LimitedAvailability"
     }
   }
@@ -329,6 +329,8 @@
     .pricing-cards--two { max-width: 760px; margin-left: auto; margin-right: auto; }
     /* "What it costs" — the included list stands on its own; the old pricing
        card shell was built around a price and reads orphaned without one. */
+    /* Forced two-line headline on desktop only; below 640 it orphans a word. */
+    @media (max-width: 640px) { .svc-brk { display: none; } }
     .svc-incl { max-width: 720px; margin: 30px auto 0; }
     .svc-incl ul { list-style: none; margin: 0; padding: 0;
       display: grid; grid-template-columns: 1fr 1fr; column-gap: 34px; row-gap: 16px; }
@@ -694,9 +696,9 @@
     <section class="section" id="pricing" style="padding-top:20px;">
       <div class="section-inner">
         <p class="section-label" style="text-align:center;">What it costs</p>
-        <h2 class="section-title svc-title-tight" style="text-align:center;">Every video is quoted before we start</h2>
+        <h2 class="section-title svc-title-tight" style="text-align:center;">Every video is quoted<br class="svc-brk"> before we&nbsp;start</h2>
         <p class="svc-lead">
-          What a video costs comes down to how much footage there is and how long the finished piece runs, so we price each one rather than guess. You&rsquo;ll have the number before anything begins &mdash; and your first video is free, so you see the work before the number&nbsp;matters.
+          Price comes down to how much footage there is and how long the finished piece&nbsp;runs. You&rsquo;ll have the number before anything begins &mdash; and your first video is&nbsp;free.
         </p>
 
         <div class="svc-incl" data-reveal>
@@ -705,7 +707,7 @@
             <li>Branded motion graphics on every&nbsp;video</li>
             <li>Licensed music and sound&nbsp;design</li>
             <li>Color adjustments on every&nbsp;video</li>
-            <li>Up to 6 vertical Shorts per&nbsp;video</li>
+            <li>Up to 10 vertical Shorts, cut from the moments that stand&nbsp;alone</li>
             <li>Unlimited revision rounds for 7&nbsp;days</li>
           </ul>
           <p class="svc-incl-cta"><a href="/apply?plan=quote" class="btn-primary" data-cta="quote">Get your first video free</a></p>
