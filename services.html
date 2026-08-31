@@ -327,7 +327,22 @@
       text-align: left;
     }
     .pricing-cards--two { max-width: 760px; margin-left: auto; margin-right: auto; }
-    .pricing-cards--one { max-width: 380px; margin-left: auto; margin-right: auto; }
+    /* "What it costs" — the included list stands on its own; the old pricing
+       card shell was built around a price and reads orphaned without one. */
+    .svc-incl { max-width: 720px; margin: 30px auto 0; }
+    .svc-incl ul { list-style: none; margin: 0; padding: 0;
+      display: grid; grid-template-columns: 1fr 1fr; column-gap: 34px; row-gap: 16px; }
+    .svc-incl li { display: flex; align-items: flex-start; gap: 11px;
+      font-size: 15px; line-height: 1.45; color: rgba(255,255,255,0.82); }
+    .svc-incl li::before { content: ''; flex-shrink: 0; width: 17px; height: 17px; margin-top: 1px;
+      background: var(--blue-muted);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+    .svc-incl-cta { text-align: center; margin: 34px 0 0; }
+    @media (max-width: 640px) {
+      .svc-incl ul { grid-template-columns: 1fr; row-gap: 14px; }
+      .svc-incl { margin-top: 24px; }
+    }
 
     /* Sits inside the hero, directly above the CTA the voiceover points at. */
     .svc-vsl {
@@ -684,19 +699,16 @@
           What a video costs comes down to how much footage there is and how long the finished piece runs, so we price each one rather than guess. You&rsquo;ll have the number before anything begins &mdash; and your first video is free, so you see the work before the number&nbsp;matters.
         </p>
 
-        <div class="pricing-cards pricing-cards--one">
-          <div class="pricing-card pricing-card--featured" data-reveal>
-            <p class="pricing-name">Every video includes</p>
-            <ul class="pricing-features">
-              <li>A full edit from your raw&nbsp;footage</li>
-              <li>Branded motion graphics on every&nbsp;video</li>
-              <li>Licensed music and sound&nbsp;design</li>
-              <li>Color adjustments on every&nbsp;video</li>
-              <li>Up to 6 vertical Shorts per&nbsp;video</li>
-              <li>Unlimited revision rounds for 7&nbsp;days</li>
-            </ul>
-            <a href="/apply?plan=quote" class="btn-primary pricing-cta" data-cta="quote">Get your first video free</a>
-          </div>
+        <div class="svc-incl" data-reveal>
+          <ul>
+            <li>A full edit from your raw&nbsp;footage</li>
+            <li>Branded motion graphics on every&nbsp;video</li>
+            <li>Licensed music and sound&nbsp;design</li>
+            <li>Color adjustments on every&nbsp;video</li>
+            <li>Up to 6 vertical Shorts per&nbsp;video</li>
+            <li>Unlimited revision rounds for 7&nbsp;days</li>
+          </ul>
+          <p class="svc-incl-cta"><a href="/apply?plan=quote" class="btn-primary" data-cta="quote">Get your first video free</a></p>
         </div>
 
         <p class="pricing-compare-link"><a href="/compare-plans">See everything that&rsquo;s included <span aria-hidden="true">&rarr;</span></a></p>
