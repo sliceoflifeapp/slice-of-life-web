@@ -69,12 +69,14 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
+  "@id": "https://sliceoflife-app.com/#app",
   "name": "Slice of Life",
   "applicationCategory": "MultimediaApplication",
   "applicationSubCategory": "Video Editor",
   "operatingSystem": "macOS 13+ (Apple Silicon)",
   "description": "Slice of Life is a Mac app that automatically edits your vlog. Drop in a day of footage \u2014 it finds your talking-to-camera moments, cuts in matching b-roll, burns captions, and exports a finished video plus an editable timeline for Premiere Pro, Final Cut Pro, or DaVinci Resolve.",
   "url": "https://sliceoflife-app.com/",
+  "provider": { "@id": "https://sliceoflife-app.com/#org" },
   "image": "https://sliceoflife-app.com/assets/og-image.jpg",
   "offers": {
     "@type": "Offer",
@@ -94,6 +96,19 @@
 }
   </script>
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://sliceoflife-app.com/#org",
+  "name": "Slice of Life",
+  "url": "https://sliceoflife-app.com/",
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@id": "https://sliceoflife-app.com/#app" } },
+    { "@type": "Offer", "itemOffered": { "@id": "https://sliceoflife-app.com/services#service" } }
+  ]
+}
+</script>
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -136,6 +151,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Not yet \u2014 Slice of Life is Mac only for now (Apple Silicon, macOS 13+). Visit sliceoflife-app.com/waitlist to join the waitlist and get notified when a Windows version is ready."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can someone edit my vlog for me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Alongside the app we run a done-for-you editing service \u2014 you send us the footage, a videographer edits it, and the finished vlog comes back in about a week. It\u2019s quoted per video. See sliceoflife-app.com/services."
       }
     },
     {
@@ -739,7 +762,7 @@
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Do I need a lot of b-roll?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">No. Even a handful of b-roll clips makes a big difference. Slice will use what you have and fill the rest with your a-roll. The more variety you give it, the better the cuts — but it works with whatever you filmed.</div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How long should my clips be?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Clips under 2 seconds are skipped automatically. For a-roll, 30 seconds to a few minutes is ideal. For b-roll, 5–15 seconds per shot gives the best material to cut with.</div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What file formats are supported?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Video: MP4, MOV, M4V, AVI, MKV, MTS, M2TS, and WEBM. You can also drop in photos (JPG, PNG, HEIC, WEBP) — they become smooth Ken Burns b-roll. If your camera shot it, it almost certainly works.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is there a Windows version?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Not yet — Slice of Life is Mac only for now (Apple Silicon, macOS 13+). <a href="/waitlist.html">Join the waitlist</a> and we'll email you the moment a Windows version is ready.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is there a Windows version?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Not yet — Slice of Life is Mac only for now (Apple Silicon, macOS 13+). <a href="/waitlist.html">Join the waitlist</a> and we'll email you the moment a Windows version is ready.</div></div><div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Can someone edit my vlog for me?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Yes. Alongside the app we run a done-for-you editing service — you send us the footage, a videographer edits it, and the finished vlog comes back in about a week. It’s quoted per video. <a href="/services">See how it works</a>.</div></div>
         </div>
 
         <div class="faq-group">
