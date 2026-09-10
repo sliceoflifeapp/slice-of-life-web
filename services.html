@@ -45,12 +45,12 @@
 
 
   <title>Vlog Video Editing Services — Done For You | Slice of Life</title>
-  <meta name="description" content="Done-for-you vlog editing, priced per finished video. For creators who talk to camera — finished videos and vertical Shorts, ready to publish." />
+  <meta name="description" content="Done-for-you vlog editing on a monthly plan, from $995. For creators who talk to camera — finished videos and vertical Shorts, ready to publish. First video free." />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sliceoflife-app.com/services" />
   <meta property="og:title" content="Vlog Video Editing Services — Done For You" />
-  <meta property="og:description" content="Send us the footage. Get back a finished, captioned vlog with the vertical Shorts to go with it. Priced per video, no retainer." />
+  <meta property="og:description" content="Send us the footage. Get back a finished, captioned vlog with the vertical Shorts to go with it. Monthly plans from $995, first video free." />
   <meta property="og:image" content="https://sliceoflife-app.com/assets/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -72,7 +72,7 @@
     "@id": "https://sliceoflife-app.com/services#service",
     "name": "Vlog Video Editing Services",
     "serviceType": "Video editing",
-    "description": "Done-for-you vlog editing, quoted per finished video with no retainer. Talking-to-camera footage is assembled, matched with b-roll, captioned, and delivered within a week, along with vertical Shorts cut from the same footage.",
+    "description": "Done-for-you vlog editing on a monthly plan, offered in three cadences. Talking-to-camera footage is assembled, matched with b-roll, captioned, and delivered within a week, along with vertical Shorts cut from the same footage.",
     "url": "https://sliceoflife-app.com/services",
     "areaServed": "Worldwide",
     "provider": {
@@ -82,12 +82,54 @@
       "url": "https://sliceoflife-app.com/",
       "email": "sliceoflifetech@gmail.com"
     },
-    "offers": {
-      "@type": "Offer",
-      "name": "Per finished video",
-      "description": "One finished vlog, back within a week, with branded motion graphics, licensed music and sound design, color adjustments and up to 10 vertical Shorts. Quoted per project - no retainer, no minimum. The first video is free. A video is up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts.",
-      "availability": "https://schema.org/LimitedAvailability"
-    }
+    "termsOfService": "https://sliceoflife-app.com/terms",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Starter",
+        "url": "https://sliceoflife-app.com/apply?plan=starter",
+        "description": "One finished vlog a month, back within a week, with branded motion graphics, licensed music and sound design, color adjustments, captions and up to 10 vertical Shorts. Month to month. The first video is free.",
+        "price": "995",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/LimitedAvailability",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "995",
+          "priceCurrency": "USD",
+          "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "MON" }
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Standard",
+        "url": "https://sliceoflife-app.com/apply?plan=standard",
+        "description": "Three finished vlogs a month, everything in Starter plus priority position in the queue and same-day replies. Month to month. The first video is free.",
+        "price": "2700",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/LimitedAvailability",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "2700",
+          "priceCurrency": "USD",
+          "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "MON" }
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium",
+        "url": "https://sliceoflife-app.com/apply?plan=premium",
+        "description": "Six finished vlogs a month, everything in Standard plus a standing slot held each week and bigger shoots included - up to 200 clips or 3 hours of source footage. Month to month. The first video is free.",
+        "price": "5200",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/LimitedAvailability",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "5200",
+          "priceCurrency": "USD",
+          "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "MON" }
+        }
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -140,7 +182,7 @@
         "name": "Is there a contract?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. You book videos one at a time and stop whenever you like. There is no retainer, no minimum and nothing to use up."
+          "text": "Not a fixed-term one. Plans run month to month and you can stop at the end of any month. Unused videos roll over one month, so a quiet week does not cost you a video."
         }
       },
       {
@@ -148,7 +190,7 @@
         "name": "What if the first video isn't right?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tell us and we will refund it. Your first video is free and cut from your own footage, so you have already seen the work before you pay for anything - but if the first paid video still misses, you should not be out the money."
+          "text": "Tell us and we will refund that month. Your first video is free and cut from your own footage, so you have already seen the work before you pay for anything - but if the first paid video still misses, you should not be out the money."
         }
       },
       {
@@ -288,6 +330,31 @@
     }
 
     /* Pricing extras */
+    .svc-cadence {
+      font-size: 16px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.92);
+      letter-spacing: -0.01em;
+      margin-top: 8px;
+    }
+    .svc-per-video {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.6); /* AA: --white-30 was 2.6:1 on --bg */
+      margin-top: 8px;
+    }
+    .pricing-incl {
+      margin: 24px 0 0;
+      padding: 11px 13px;
+      border-radius: 10px;
+      background: rgba(50,110,225,0.16);
+      border: 1px solid rgba(120,185,255,0.26);
+      color: #CFE4FF;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+    }
     /* The band above carries the separation, so drop the list's own divider. */
     .pricing-features--after-incl {
       margin-top: 16px;
@@ -323,25 +390,10 @@
       margin: 42px auto 0;
       text-align: left;
     }
-    .pricing-cards--two { max-width: 760px; margin-left: auto; margin-right: auto; }
     /* "What it costs" — the included list stands on its own; the old pricing
        card shell was built around a price and reads orphaned without one. */
     /* Forced two-line headline on desktop only; below 640 it orphans a word. */
     @media (max-width: 640px) { .svc-brk { display: none; } }
-    .svc-incl { max-width: 720px; margin: 30px auto 0; }
-    .svc-incl ul { list-style: none; margin: 0; padding: 0;
-      display: grid; grid-template-columns: 1fr 1fr; column-gap: 34px; row-gap: 16px; }
-    .svc-incl li { display: flex; align-items: flex-start; gap: 11px;
-      font-size: 15px; line-height: 1.45; color: rgba(255,255,255,0.82); }
-    .svc-incl li::before { content: ''; flex-shrink: 0; width: 17px; height: 17px; margin-top: 1px;
-      background: var(--blue-muted);
-      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
-      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
-    .svc-incl-cta { text-align: center; margin: 34px 0 0; }
-    @media (max-width: 640px) {
-      .svc-incl ul { grid-template-columns: 1fr; row-gap: 14px; }
-      .svc-incl { margin-top: 24px; }
-    }
 
     /* Sits inside the hero, directly above the CTA the voiceover points at. */
     .svc-vsl {
@@ -607,7 +659,7 @@
           <a href="#pricing" class="btn-white svc-btn-lg">See what&rsquo;s included</a>
         </div>
         <p class="svc-meta">
-          <strong>3 client slots open this month</strong> &nbsp;·&nbsp; Free first video for qualified&nbsp;clients &nbsp;·&nbsp; No retainer, no&nbsp;minimum
+          <strong>3 client slots open this month</strong> &nbsp;·&nbsp; Free first video for qualified&nbsp;clients &nbsp;·&nbsp; Month to month, cancel&nbsp;anytime
         </p>
       </div>
     </header>
@@ -691,27 +743,67 @@
     <!-- ── Pricing ──────────────────────────────────────────────────────── -->
     <section class="section" id="pricing" style="padding-top:20px;">
       <div class="section-inner">
-        <p class="section-label" style="text-align:center;">What it costs</p>
-        <h2 class="section-title svc-title-tight" style="text-align:center;">Every video is quoted<br class="svc-brk"> before we&nbsp;start</h2>
+        <p class="section-label" style="text-align:center;">Monthly plans</p>
+        <h2 class="section-title svc-title-tight" style="text-align:center;">Pick the cadence you publish&nbsp;at</h2>
         <p class="svc-lead">
-          Price comes down to how much footage there is and how long the finished piece&nbsp;runs. You&rsquo;ll have the number before anything begins &mdash; and your first video is&nbsp;free.
+          One flat monthly rate, month to month, cancel&nbsp;whenever. Your first video is free on any of&nbsp;them.
         </p>
 
-        <div class="svc-incl" data-reveal>
-          <ul>
-            <li>A full edit from your raw&nbsp;footage</li>
-            <li>Branded motion graphics on every&nbsp;video</li>
-            <li>Licensed music and sound&nbsp;design</li>
-            <li>Color adjustments on every&nbsp;video</li>
-            <li>Up to 10 vertical Shorts, cut from the moments that stand&nbsp;alone</li>
+        <div class="pricing-cards">
+          <div class="pricing-card" data-reveal>
+            <p class="pricing-name">Starter</p>
+            <p class="svc-cadence">1 video a month</p>
+            <div class="pricing-price">
+              <span class="pricing-amount">$995</span>
+              <span class="pricing-period">/month</span>
+            </div>
+            <p class="svc-per-video">For a monthly upload</p>
+            <ul class="pricing-features">
+            <li>Finished video back within a&nbsp;week</li>
+            <li>Branded motion graphics, licensed music and&nbsp;color</li>
+            <li>Up to 10 vertical Shorts per&nbsp;video</li>
             <li>Unlimited revision rounds for 7&nbsp;days</li>
-          </ul>
-          <p class="svc-incl-cta"><a href="/apply?plan=quote" class="btn-primary" data-cta="quote">Get your first video free</a></p>
+            </ul>
+            <a href="/apply?plan=starter" class="btn-primary pricing-cta" data-cta="starter">Start free</a>
+          </div>
+
+          <div class="pricing-card pricing-card--featured" data-reveal>
+            <span class="pricing-badge">MOST POPULAR</span>
+            <p class="pricing-name">Standard</p>
+            <p class="svc-cadence">3 videos a month</p>
+            <div class="pricing-price">
+              <span class="pricing-amount">$2,700</span>
+              <span class="pricing-period">/month</span>
+            </div>
+            <p class="svc-per-video">Where most creators land</p>
+            <p class="pricing-incl">Everything in Starter</p>
+            <ul class="pricing-features pricing-features--after-incl">
+              <li>Priority position in the&nbsp;queue</li>
+              <li>Same-day replies</li>
+            </ul>
+            <a href="/apply?plan=standard" class="btn-primary pricing-cta" data-cta="standard">Start free</a>
+          </div>
+
+          <div class="pricing-card" data-reveal>
+            <p class="pricing-name">Premium</p>
+            <p class="svc-cadence">6 videos a month</p>
+            <div class="pricing-price">
+              <span class="pricing-amount">$5,200</span>
+              <span class="pricing-period">/month</span>
+            </div>
+            <p class="svc-per-video">For twice-weekly publishing</p>
+            <p class="pricing-incl">Everything in Standard</p>
+            <ul class="pricing-features pricing-features--after-incl">
+              <li>A standing slot held for you each&nbsp;week</li>
+              <li>Bigger shoots included &mdash; up to 200 clips or 3&nbsp;hours of source&nbsp;footage</li>
+            </ul>
+            <a href="/apply?plan=premium" class="btn-primary pricing-cta" data-cta="premium">Start free</a>
+          </div>
         </div>
 
-        <p class="pricing-compare-link"><a href="/compare-plans">See everything that&rsquo;s included <span aria-hidden="true">&rarr;</span></a></p>
+        <p class="pricing-compare-link"><a href="/compare-plans">Compare all three plans in full <span aria-hidden="true">&rarr;</span></a></p>
 
-        <p class="pricing-footnote">Turnaround runs on business&nbsp;days. Bigger shoots and faster turnarounds are quoted&nbsp;accordingly. Publishing on a schedule? Ask about a standing&nbsp;slot.</p>
+        <p class="pricing-footnote">Turnaround runs on business&nbsp;days. Unused videos roll over one&nbsp;month. A standard video is up to 100 clips or 90 minutes of source footage &mdash; bigger shoots are quoted, or included on&nbsp;Premium.</p>
       </div>
     </section>
 
@@ -772,8 +864,8 @@
 
           <div class="faq-group" data-reveal>
             <p class="faq-group-label">Money &amp;&nbsp;terms</p>
-            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is there a contract?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">No. You book videos one at a time and stop whenever you like — no retainer, no minimum, nothing to use&nbsp;up.</div></div>
-            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What if the first video isn't right?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Tell us and we'll refund it. Your first video is free and cut from your own footage, so you've already seen the work before you pay for anything &mdash; but if the first paid video still misses, you shouldn't be out the&nbsp;money.</div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is there a contract?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Not a fixed-term one. Plans run month to month and you can stop at the end of any&nbsp;month. Unused videos roll over one month, so a quiet week doesn’t cost you a&nbsp;video.</div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What if the first video isn't right?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Tell us and we'll refund that month. Your first video is free and cut from your own footage, so you've already seen the work before you pay for anything &mdash; but if the first paid video still misses, you shouldn't be out the&nbsp;money.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Who owns the finished videos?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">You do. Full rights to everything we deliver — no watermark, no credit required. Publish them wherever you like. The one thing we keep is the right to show the work in our own portfolio — if you&rsquo;d rather we didn&rsquo;t, say so and we&nbsp;won&rsquo;t.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Why only three slots?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Because the work only stays this good if we're not overbooked. We take on a limited number of videos at a time and hold the rest for a waitlist rather than quietly letting the week&nbsp;slip.</div></div>
           </div>
