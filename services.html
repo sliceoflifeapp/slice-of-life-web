@@ -70,14 +70,14 @@
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": "https://sliceoflife-app.com/services#service",
-  "provider": { "@id": "https://sliceoflife-app.com/#org" },
     "name": "Vlog Video Editing Services",
     "serviceType": "Video editing",
-    "description": "Done-for-you vlog editing on a monthly retainer. Talking-to-camera footage is assembled, matched with b-roll, captioned, and delivered within a week, along with vertical Shorts cut from the same footage.",
+    "description": "Done-for-you vlog editing, quoted per finished video with no retainer. Talking-to-camera footage is assembled, matched with b-roll, captioned, and delivered within a week, along with vertical Shorts cut from the same footage.",
     "url": "https://sliceoflife-app.com/services",
     "areaServed": "Worldwide",
     "provider": {
       "@type": "Organization",
+      "@id": "https://sliceoflife-app.com/#org",
       "name": "Slice of Life",
       "url": "https://sliceoflife-app.com/",
       "email": "sliceoflifetech@gmail.com"
@@ -265,6 +265,27 @@
       border-radius: 7px;
     }
     .svc-proc-cta { display: inline-flex; margin-top: 20px; }
+
+    /* Leave-behind: deliberately quieter than anything above it. */
+    .svc-diy { padding-top: 0; }
+    .svc-diy-card {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 30px 34px;
+      text-align: center;
+      background: #061422;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+    }
+    .svc-diy-card h2 {
+      font-size: 21px; font-weight: 700; line-height: 1.25;
+      margin: 6px 0 10px;
+    }
+    .svc-diy-card p { font-size: 14.5px; line-height: 1.7; color: var(--white-55); margin: 0; }
+    .svc-diy-cta { display: inline-flex; margin-top: 20px; }
+    @media (max-width: 600px) {
+      .svc-diy-card { padding: 26px 22px; }
+    }
 
     /* Pricing extras */
     /* The band above carries the separation, so drop the list's own divider. */
@@ -600,20 +621,19 @@
             <div class="svc-proc-copy">
               <div class="svc-proc-rule"></div>
               <p class="svc-proc-num">STEP 01</p>
-              <h3>Our proprietary software does the heavy&nbsp;lifting</h3>
-              <p><strong>Slice of Life</strong> — our own Mac app — <span class="svc-mobcut">watches the whole day. It </span>finds your talking-to-camera moments, matches cutaways to what you're saying, trims dead air and burns in captions.<span class="svc-mobcut"> The mechanical half of the edit, done before a person touches&nbsp;it.</span></p>
-              <a href="/" class="nav-cta svc-proc-cta">See the software &rarr;</a>
+              <h3>Send it exactly as you shot&nbsp;it</h3>
+              <p>A private upload folder goes up on day&nbsp;one. Drag the whole card in as it came off the camera<span class="svc-mobcut"> — no naming files, no trimming, no folder structure</span>.<span class="svc-mobcut"> Whatever you shot that day is all we&nbsp;need.</span></p>
             </div>
             <div class="svc-proc-shot">
-              <img src="assets/showcase/aroll-proc.jpg?v=1" alt="A numbered narration section in Slice of Life showing the transcribed line and the talking-to-camera clip it came from" loading="lazy" width="642" height="367">
+              <img src="assets/showcase/footage.jpg?v=1" alt="A private upload folder holding a day of raw clips straight off the camera, still under their original filenames" loading="lazy" width="976" height="536">
             </div>
           </div>
           <div class="svc-proc-row" data-reveal>
             <div class="svc-proc-copy">
               <div class="svc-proc-rule"></div>
               <p class="svc-proc-num">STEP 02</p>
-              <h3>Then a person actually edits it</h3>
-              <p>A first pass isn't a finished video. Someone has to find the story — which take carries it, <span class="svc-mobcut">what's funny, </span>what to cut even though the footage is good.<span class="svc-mobcut"> That's taste, and no tool has&nbsp;it.</span></p>
+              <h3>Then someone finds the story in&nbsp;it</h3>
+              <p>Which take carries the video, <span class="svc-mobcut">what's funny, </span>what to cut even though the footage is good.<span class="svc-mobcut"> That's the half that needs judgment, and it's the half you're paying&nbsp;for.</span> A decade of doing it, on your&nbsp;footage.</p>
             </div>
             <div class="svc-proc-shot">
               <img src="assets/showcase/premiere.jpg?v=2" alt="The edit being finished by hand on a Premiere Pro timeline, a-roll and b-roll on separate video and audio tracks" loading="lazy" width="1250" height="684">
@@ -755,12 +775,27 @@
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is there a contract?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">No. You book videos one at a time and stop whenever you like — no retainer, no minimum, nothing to use&nbsp;up.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What if the first video isn't right?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Tell us and we'll refund it. Your first video is free and cut from your own footage, so you've already seen the work before you pay for anything &mdash; but if the first paid video still misses, you shouldn't be out the&nbsp;money.</div></div>
             <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Who owns the finished videos?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">You do. Full rights to everything we deliver — no watermark, no credit required. Publish them wherever you like. The one thing we keep is the right to show the work in our own portfolio — if you&rsquo;d rather we didn&rsquo;t, say so and we&nbsp;won&rsquo;t.</div></div>
-            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Why only three slots?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Because the work only stays this good if we're not overbooked. We take on a limited number of retainers at a time and hold the rest for a waitlist rather than quietly slipping to three&nbsp;days.</div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Why only three slots?</span><svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-a">Because the work only stays this good if we're not overbooked. We take on a limited number of videos at a time and hold the rest for a waitlist rather than quietly letting the week&nbsp;slip.</div></div>
           </div>
         </div>
       </div>
     </section>
 
+
+    <!-- ── Leave-behind: the app, for anyone who would rather do it themselves ── -->
+    <section class="section svc-diy">
+      <div class="section-inner">
+        <div class="svc-diy-card" data-reveal>
+          <p class="section-label">The software</p>
+          <h2>Rather cut them yourself?</h2>
+          <p>
+            A decade of editing vlogs by hand is what it took to write&nbsp;it. It's the same Mac app
+            we run on client work, and it's yours to use if you'd rather do the edit&nbsp;yourself.
+          </p>
+          <a href="/" class="nav-cta svc-diy-cta" id="svc-diy-cta">See the Mac app &rarr;</a>
+        </div>
+      </div>
+    </section>
 
     <div class="svc-lb" id="svc-lb" role="dialog" aria-modal="true" aria-label="Finished edit">
       <div class="svc-lb-inner">
@@ -893,6 +928,8 @@
         posthog.capture('services_inquiry_click', { tier: el.dataset.cta });
       });
     });
+    var diy = document.getElementById('svc-diy-cta');
+    if (diy) diy.addEventListener('click', function () { posthog.capture('services_diy_click'); });
     document.querySelectorAll('.faq-q').forEach(function (el) {
       el.addEventListener('click', function () {
         posthog.capture('services_faq_open', { question: el.innerText.trim() });
