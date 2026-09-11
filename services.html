@@ -311,7 +311,10 @@
     .svc-diy { padding-top: 0; }
     /* Copy left, app right -- the homepage hero's shape. */
     .svc-diy-row { display: flex; align-items: center; gap: 56px; }
-    .svc-diy-copy { flex: 1 1 0; min-width: 0; text-align: left; }
+    /* The art sits 92/1240 = 7.42% in from the video's edge, and both columns
+       are (row - gap) / 2, so matching that inset is 3.71% of the row. A fixed
+       px value would only balance at one viewport width. */
+    .svc-diy-copy { flex: 1 1 0; min-width: 0; text-align: left; padding-left: calc(3.71% - 2px); }
     .svc-diy-copy h2 {
       font-size: 25px; font-weight: 700; line-height: 1.25;
       margin: 6px 0 12px;
@@ -327,6 +330,8 @@
       /* Same trap as .svc-bio-reel: once the row stacks, flex-basis follows the
          new main axis and a flex child collapses without an explicit width. */
       .svc-diy-row { flex-direction: column; align-items: flex-start; gap: 30px; }
+      /* Stacked, there is no facing edge to balance against. */
+      .svc-diy-copy { padding-left: 0; }
       .svc-diy-shot { flex: 0 0 auto; width: 100%; max-width: 100%; }
       .svc-diy-copy h2 { font-size: 22px; }
     }
