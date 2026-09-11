@@ -311,18 +311,32 @@
     .svc-diy { padding-top: 0; }
     /* Copy left, app right -- the homepage hero's shape. */
     .svc-diy-row { display: flex; align-items: center; gap: 56px; }
-    /* The art sits 92/1240 = 7.42% in from the video's edge, and both columns
-       are (row - gap) / 2, so matching that inset is 3.71% of the row. A fixed
-       px value would only balance at one viewport width. */
-    .svc-diy-copy { flex: 1 1 0; min-width: 0; text-align: left; padding-left: calc(3.71% - 2px); }
+    .svc-diy-copy { flex: 1 1 0; min-width: 0; text-align: left; }
     .svc-diy-copy h2 {
       font-size: 25px; font-weight: 700; line-height: 1.25;
       margin: 6px 0 12px;
     }
     .svc-diy-copy p { font-size: 15px; line-height: 1.7; color: var(--white-55); margin: 0; }
     .svc-diy-cta { display: inline-flex; margin-top: 22px; }
-    .svc-diy-shot { flex: 1 1 0; min-width: 0; max-width: 520px; }
-    .svc-diy-loop { width: 100%; height: auto; display: block; }
+    .svc-diy-shot { flex: 1 1 0; min-width: 0; max-width: 430px; }
+    /* Real screenshots, same as the paid landing page. The shots are square,
+       so the frame is too -- object-fit never has to crop. */
+    .svc-diy-slides {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(120,185,255,0.15);
+    }
+    .svc-diy-slide {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s var(--ease-out);
+    }
+    .svc-diy-slide.is-active { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) { .svc-diy-slide { transition: none; } }
     @media (max-width: 960px) {
       .svc-diy-row { gap: 36px; }
     }
@@ -871,13 +885,14 @@
             <a href="/" class="nav-cta svc-diy-cta" id="svc-diy-cta">See the Mac app &rarr;</a>
           </div>
           <div class="svc-diy-shot">
-            <!-- Poster only until it scrolls into view; the sources are ~8-22MB and
-                 this is the last section on a page that carries paid traffic. -->
-            <video class="svc-diy-loop" id="svc-diy-loop" loop muted playsinline preload="none"
-                   poster="assets/sol_loop_poster.png?v=2"
-                   aria-label="Slice of Life turning a day of footage into a finished vlog">
-              <img src="assets/sol_loop_poster.png?v=2" alt="The Slice of Life app turning a day of footage into a finished vlog" />
-            </video>
+            <div class="svc-diy-slides" id="svc-diy-slides">
+              <img class="svc-diy-slide is-active" src="assets/hero-shot-home.jpg" width="1300" height="1298" loading="lazy"
+                   alt="The Slice of Life home screen, ready to build a Slice from a day of footage" />
+              <img class="svc-diy-slide" src="assets/hero-shot-configure.jpg" width="1295" height="1300" loading="lazy"
+                   alt="The Slice of Life configure screen, setting pacing, captions and orientation" />
+              <img class="svc-diy-slide" src="assets/hero-shot-review.jpg" width="1296" height="1300" loading="lazy"
+                   alt="The Slice of Life review screen, fine-tuning the cut before it renders" />
+            </div>
           </div>
         </div>
       </div>
@@ -1052,27 +1067,30 @@
     var diy = document.getElementById('svc-diy-cta');
     if (diy) diy.addEventListener('click', function () { posthog.capture('services_diy_click'); });
 
-    // The app loop is 8MB of webm / 22MB of mov. It sits near the bottom of a
-    // page that carries paid traffic, so nothing is fetched until it is nearly
-    // on screen -- the poster alone stands in until then.
+    // The slideshow sits near the bottom of the page, so it only starts once it
+    // is actually on screen -- no timer running against images the browser has
+    // not lazily fetched yet.
     (function () {
-      var v = document.getElementById('svc-diy-loop');
-      if (!v || !('IntersectionObserver' in window)) return;
+      var wrap = document.getElementById('svc-diy-slides');
+      if (!wrap) return;
+      var slides = wrap.querySelectorAll('.svc-diy-slide');
+      if (slides.length < 2) return;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      function rotate() {
+        var i = 0;
+        setInterval(function () {
+          slides[i].classList.remove('is-active');
+          i = (i + 1) % slides.length;
+          slides[i].classList.add('is-active');
+        }, 3500);
+      }
+      if (!('IntersectionObserver' in window)) { rotate(); return; }
       var io = new IntersectionObserver(function (entries) {
         if (!entries.some(function (e) { return e.isIntersecting; })) return;
         io.disconnect();
-        [['assets/sol_loop.mov?v=2', 'video/quicktime; codecs=hvc1'],
-         ['assets/sol_loop.webm?v=2', 'video/webm']].forEach(function (pair) {
-          var src = document.createElement('source');
-          src.src = pair[0]; src.type = pair[1];
-          v.appendChild(src);
-        });
-        v.load();
-        var p = v.play();
-        if (p && p.catch) p.catch(function () {});
-      }, { rootMargin: '300px' });
-      io.observe(v);
+        rotate();
+      }, { rootMargin: '200px' });
+      io.observe(wrap);
     })();
     document.querySelectorAll('.faq-q').forEach(function (el) {
       el.addEventListener('click', function () {
