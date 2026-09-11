@@ -72,7 +72,7 @@
     "@id": "https://sliceoflife-app.com/services#service",
     "name": "Vlog Video Editing Services",
     "serviceType": "Video editing",
-    "description": "Done-for-you vlog editing on a monthly plan, offered in three cadences. Talking-to-camera footage is assembled, matched with b-roll, captioned, and delivered within a week, along with vertical Shorts cut from the same footage.",
+    "description": "Done-for-you vlog editing on a monthly plan, offered in three cadences that differ only in how many videos a month. Talking-to-camera footage is assembled, matched with b-roll, captioned, and delivered within a week, along with vertical Shorts cut from the same footage.",
     "url": "https://sliceoflife-app.com/services",
     "areaServed": "Worldwide",
     "provider": {
@@ -88,7 +88,7 @@
         "@type": "Offer",
         "name": "Starter",
         "url": "https://sliceoflife-app.com/apply?plan=starter",
-        "description": "One finished video a month. Branded motion graphics, licensed music, sound design, color adjustments, captions and up to 10 vertical Shorts, back within a week. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
+        "description": "One finished video a month. The plans differ only in how many videos a month; every video gets a full edit from raw footage, branded motion graphics, licensed music, sound design, color adjustments, captions and up to 10 vertical Shorts, back within a week. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
         "price": "995",
         "priceCurrency": "USD",
         "availability": "https://schema.org/LimitedAvailability",
@@ -103,7 +103,7 @@
         "@type": "Offer",
         "name": "Standard",
         "url": "https://sliceoflife-app.com/apply?plan=standard",
-        "description": "Three finished videos a month. Everything in Starter plus priority position in the queue and same-day replies. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
+        "description": "Three finished videos a month. The plans differ only in how many videos a month; every video gets a full edit from raw footage, branded motion graphics, licensed music, sound design, color adjustments, captions and up to 10 vertical Shorts, back within a week. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
         "price": "2700",
         "priceCurrency": "USD",
         "availability": "https://schema.org/LimitedAvailability",
@@ -118,7 +118,7 @@
         "@type": "Offer",
         "name": "Premium",
         "url": "https://sliceoflife-app.com/apply?plan=premium",
-        "description": "Six finished videos a month. Everything in Standard; the difference is the volume. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
+        "description": "Six finished videos a month. The plans differ only in how many videos a month; every video gets a full edit from raw footage, branded motion graphics, licensed music, sound design, color adjustments, captions and up to 10 vertical Shorts, back within a week. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
         "price": "5200",
         "priceCurrency": "USD",
         "availability": "https://schema.org/LimitedAvailability",
@@ -344,39 +344,30 @@
     }
     /* What the headline rate actually buys, said where the rate is. */
     .svc-scope {
-      margin-top: 10px;
+      /* The cards are short now, so .pricing-cta's auto top margin resolves to
+         zero and the button crowds this line. Space it here instead. */
+      margin: 10px 0 24px;
       padding-top: 10px;
       border-top: 1px solid rgba(255,255,255,0.07);
       font-size: 12.5px;
       line-height: 1.5;
       color: rgba(255,255,255,0.6);
     }
-    /* Premium adds nothing to Standard but volume, so the card says so
-       rather than dressing a non-difference up as a feature. */
-    .svc-same {
-      margin: 16px 0 0;
-      font-size: 14px;
-      line-height: 1.5;
-      color: rgba(255,255,255,0.8);
-    }
-    .pricing-incl {
-      margin: 24px 0 0;
-      padding: 11px 13px;
-      border-radius: 10px;
-      background: rgba(50,110,225,0.16);
-      border: 1px solid rgba(120,185,255,0.26);
-      color: #CFE4FF;
-      font-size: 12.5px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-align: center;
-    }
-    /* The band above carries the separation, so drop the list's own divider. */
-    .pricing-features--after-incl {
-      margin-top: 16px;
-      padding-top: 0;
-      border-top: none;
+    /* Volume is the only difference between plans, so the feature list is
+       stated once below the cards rather than three identical times. */
+    .svc-incl { max-width: 720px; margin: 46px auto 0; }
+    .svc-incl .section-label { margin-bottom: 20px; }
+    .svc-incl ul { list-style: none; margin: 0; padding: 0;
+      display: grid; grid-template-columns: 1fr 1fr; column-gap: 34px; row-gap: 16px; }
+    .svc-incl li { display: flex; align-items: flex-start; gap: 11px;
+      font-size: 15px; line-height: 1.45; color: rgba(255,255,255,0.82); }
+    .svc-incl li::before { content: ''; flex-shrink: 0; width: 17px; height: 17px; margin-top: 1px;
+      background: var(--blue-muted);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+    @media (max-width: 620px) {
+      .svc-incl ul { grid-template-columns: 1fr; row-gap: 14px; }
+      .svc-incl { margin-top: 32px; }
     }
 
     /* AA override: shared .pricing-footnote is --white-30 (2.6:1). Page-local so no
@@ -776,12 +767,6 @@
             </div>
             <p class="svc-per-video">For a monthly upload</p>
             <p class="svc-scope">Up to 100 clips or 90 min per&nbsp;video</p>
-            <ul class="pricing-features">
-            <li>Finished video back within a&nbsp;week</li>
-            <li>Branded motion graphics, licensed music and&nbsp;color</li>
-            <li>Up to 10 vertical Shorts per&nbsp;video</li>
-            <li>Unlimited revision rounds for 7&nbsp;days</li>
-            </ul>
             <a href="/apply?plan=starter" class="btn-primary pricing-cta" data-cta="starter">Start free</a>
           </div>
 
@@ -795,11 +780,6 @@
             </div>
             <p class="svc-per-video">For a few videos a month</p>
             <p class="svc-scope">Up to 100 clips or 90 min per&nbsp;video</p>
-            <p class="pricing-incl">Everything in Starter</p>
-            <ul class="pricing-features pricing-features--after-incl">
-              <li>Priority position in the&nbsp;queue</li>
-              <li>Same-day replies</li>
-            </ul>
             <a href="/apply?plan=standard" class="btn-primary pricing-cta" data-cta="standard">Start free</a>
           </div>
 
@@ -812,10 +792,22 @@
             </div>
             <p class="svc-per-video">For weekly, with room to spare</p>
             <p class="svc-scope">Up to 100 clips or 90 min per&nbsp;video</p>
-            <p class="pricing-incl">Everything in Standard</p>
-            <p class="svc-same">Twice the output. Nothing else&nbsp;changes.</p>
             <a href="/apply?plan=premium" class="btn-primary pricing-cta" data-cta="premium">Start free</a>
           </div>
+        </div>
+
+        <div class="svc-incl" data-reveal>
+          <p class="section-label" style="text-align:center;">Every plan includes</p>
+          <ul>
+            <li>A full edit from your raw&nbsp;footage</li>
+            <li>Finished video back within a&nbsp;week</li>
+            <li>Branded motion graphics on every&nbsp;video</li>
+            <li>Licensed music and sound&nbsp;design</li>
+            <li>Color adjustments on every&nbsp;video</li>
+            <li>Up to 10 vertical Shorts per&nbsp;video</li>
+            <li>Unlimited revision rounds for 7&nbsp;days</li>
+            <li>Same-day replies while we&rsquo;re working on&nbsp;it</li>
+          </ul>
         </div>
 
         <p class="pricing-compare-link"><a href="/compare-plans">Compare all three plans in full <span aria-hidden="true">&rarr;</span></a></p>
