@@ -310,15 +310,15 @@
     /* Leave-behind: deliberately quieter than anything above it. */
     .svc-diy { padding-top: 0; }
     /* Copy left, app right -- the homepage hero's shape. */
-    .svc-diy-row { display: flex; align-items: center; gap: 56px; }
-    .svc-diy-copy { flex: 1 1 0; min-width: 0; text-align: left; }
+    .svc-diy-row { display: flex; align-items: center; justify-content: space-between; gap: 56px; }
+    .svc-diy-copy { flex: 1 1 0; min-width: 0; max-width: 600px; text-align: left; }
     .svc-diy-copy h2 {
       font-size: 25px; font-weight: 700; line-height: 1.25;
       margin: 6px 0 12px;
     }
     .svc-diy-copy p { font-size: 15px; line-height: 1.7; color: var(--white-55); margin: 0; }
     .svc-diy-cta { display: inline-flex; margin-top: 22px; }
-    .svc-diy-shot { flex: 1 1 0; min-width: 0; max-width: 430px; }
+    .svc-diy-shot { flex: 1 1 0; min-width: 0; max-width: 344px; }
     /* Real screenshots, same as the paid landing page. The shots are square,
        so the frame is too -- object-fit never has to crop. */
     .svc-diy-slides {
