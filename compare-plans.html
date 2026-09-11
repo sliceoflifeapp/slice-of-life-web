@@ -86,7 +86,7 @@
         "@type": "Offer",
         "name": "Starter",
         "url": "https://sliceoflife-app.com/apply?plan=starter",
-        "description": "One finished video a month, up to 100 clips or 90 minutes of source footage per video. Branded motion graphics, licensed music, sound design, color adjustments, captions and up to 10 vertical Shorts, back within a week. Month to month, unused videos roll over one month. The first video is free.",
+        "description": "One finished video a month. Branded motion graphics, licensed music, sound design, color adjustments, captions and up to 10 vertical Shorts, back within a week. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
         "price": "995",
         "priceCurrency": "USD",
         "availability": "https://schema.org/LimitedAvailability",
@@ -99,24 +99,9 @@
       },
       {
         "@type": "Offer",
-        "name": "Starter (big shoots)",
-        "url": "https://sliceoflife-app.com/apply?plan=starter",
-        "description": "One finished video a month, up to 250 clips or 2.5 hours of source footage per video. Branded motion graphics, licensed music, sound design, color adjustments, captions and up to 10 vertical Shorts, back within a week. Month to month, unused videos roll over one month. The first video is free.",
-        "price": "1495",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/LimitedAvailability",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "1495",
-          "priceCurrency": "USD",
-          "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "MON" }
-        }
-      },
-      {
-        "@type": "Offer",
         "name": "Standard",
         "url": "https://sliceoflife-app.com/apply?plan=standard",
-        "description": "Three finished videos a month, up to 100 clips or 90 minutes of source footage per video. Everything in Starter plus priority position in the queue and same-day replies. Month to month, unused videos roll over one month. The first video is free.",
+        "description": "Three finished videos a month. Everything in Starter plus priority position in the queue and same-day replies. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
         "price": "2700",
         "priceCurrency": "USD",
         "availability": "https://schema.org/LimitedAvailability",
@@ -129,45 +114,15 @@
       },
       {
         "@type": "Offer",
-        "name": "Standard (big shoots)",
-        "url": "https://sliceoflife-app.com/apply?plan=standard",
-        "description": "Three finished videos a month, up to 250 clips or 2.5 hours of source footage per video. Everything in Starter plus priority position in the queue and same-day replies. Month to month, unused videos roll over one month. The first video is free.",
-        "price": "4050",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/LimitedAvailability",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "4050",
-          "priceCurrency": "USD",
-          "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "MON" }
-        }
-      },
-      {
-        "@type": "Offer",
         "name": "Premium",
         "url": "https://sliceoflife-app.com/apply?plan=premium",
-        "description": "Six finished videos a month, up to 100 clips or 90 minutes of source footage per video. Everything in Standard plus a slot reserved for you every week. Month to month, unused videos roll over one month. The first video is free.",
+        "description": "Six finished videos a month. Everything in Standard; the difference is the volume. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
         "price": "5200",
         "priceCurrency": "USD",
         "availability": "https://schema.org/LimitedAvailability",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "5200",
-          "priceCurrency": "USD",
-          "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "MON" }
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "Premium (big shoots)",
-        "url": "https://sliceoflife-app.com/apply?plan=premium",
-        "description": "Six finished videos a month, up to 250 clips or 2.5 hours of source footage per video. Everything in Standard plus a slot reserved for you every week. Month to month, unused videos roll over one month. The first video is free.",
-        "price": "7800",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/LimitedAvailability",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "7800",
           "priceCurrency": "USD",
           "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "MON" }
         }
@@ -238,7 +193,6 @@
     .cmp-plan-name { display: block; font-size: 17px; font-weight: 700; color: #fff; letter-spacing: 0.01em; }
     .cmp-plan-price { display: block; font-size: 22px; font-weight: 700; color: #fff; margin-top: 4px; }
     .cmp-plan-price span { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); }
-    .cmp-plan-lf { display: block; font-size: 11.5px; color: rgba(255,255,255,0.55); margin-top: 3px; }
     .cmp-plan-sub { display: block; font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 3px; }
     .cmp-head .cmp-cta { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 600;
       padding: 8px 16px; border-radius: 9px; text-decoration: none;
@@ -279,7 +233,7 @@
       .cmp-card { padding: 0 10px 8px; border-radius: 14px; }
       .cmp-head th { padding: 12px 6px; }
       .cmp-head-kicker, .cmp-head-note { display: none; }
-      .cmp-plan-sub, .cmp-plan-lf { font-size: 10px; }
+      .cmp-plan-sub { font-size: 10px; }
       .cmp-head .cmp-cta { font-size: 12px; padding: 7px 10px; }
       .cmp-table { table-layout: fixed; }
       /* Under fixed layout the first row sets the columns, so the feature
@@ -343,21 +297,18 @@
               <span class="cmp-plan-name">Starter</span>
               <span class="cmp-plan-price">$995<span>/mo</span></span>
               <span class="cmp-plan-sub">1 video a&nbsp;month</span>
-              <span class="cmp-plan-lf">$1,495 big shoots</span>
               <a href="/apply?plan=starter" class="cmp-cta" data-cta="starter">Start</a>
             </th>
             <th scope="col">
               <span class="cmp-plan-name">Standard</span>
               <span class="cmp-plan-price">$2,700<span>/mo</span></span>
               <span class="cmp-plan-sub">3 videos a&nbsp;month</span>
-              <span class="cmp-plan-lf">$4,050 big shoots</span>
               <a href="/apply?plan=standard" class="cmp-cta" data-cta="standard">Start</a>
             </th>
             <th scope="col">
               <span class="cmp-plan-name">Premium</span>
               <span class="cmp-plan-price">$5,200<span>/mo</span></span>
               <span class="cmp-plan-sub">6 videos a&nbsp;month</span>
-              <span class="cmp-plan-lf">$7,800 big shoots</span>
               <a href="/apply?plan=premium" class="cmp-cta" data-cta="premium">Start</a>
             </th>
           </tr>
@@ -403,15 +354,11 @@
         </tr>
         <tr class="cmp-section-row"><th colspan="4" scope="colgroup">Your footage</th></tr>
         <tr>
-          <th scope="row"><span class="cmp-name">Clips per video</span><span class="cmp-desc">Past this it&rsquo;s a big shoot, priced&nbsp;below.</span></th>
+          <th scope="row"><span class="cmp-name">Clips per video</span><span class="cmp-desc">More than this and we&rsquo;ll quote it before we&nbsp;start.</span></th>
           <td><span class="cmp-val">up to 100</span></td><td><span class="cmp-val">up to 100</span></td><td><span class="cmp-val">up to 100</span></td></tr>
         <tr>
-          <th scope="row"><span class="cmp-name">Source footage per video</span><span class="cmp-desc">A full day of shooting, with room to spare.</span></th>
+          <th scope="row"><span class="cmp-name">Source footage per video</span><span class="cmp-desc">A full day of shooting, with room to&nbsp;spare. Bigger is quoted&nbsp;first.</span></th>
           <td><span class="cmp-val">up to 90 min</span></td><td><span class="cmp-val">up to 90 min</span></td><td><span class="cmp-val">up to 90 min</span></td></tr>
-        <tr>
-          <th scope="row"><span class="cmp-name">Big shoots</span><span class="cmp-desc">Up to 250 clips or 2&frac12; hours of source. Half again on the monthly&nbsp;rate.</span></th>
-          <td><span class="cmp-val">$1,495</span></td><td><span class="cmp-val">$4,050</span></td><td><span class="cmp-val">$7,800</span></td>
-        </tr>
         <tr>
           <th scope="row"><span class="cmp-name">Private upload folder</span><span class="cmp-desc">Set up on day one. Finished videos come back to the same place.</span></th>
           <td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
@@ -433,10 +380,6 @@
         <tr>
           <th scope="row"><span class="cmp-name">Priority position in the queue</span><span class="cmp-desc">Your videos go to the front when the schedule is&nbsp;full.</span></th>
           <td><svg class="cmp-no" width="16" height="16" viewBox="0 0 16 16" fill="none" role="img" aria-label="Not included"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></td><td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
-        </tr>
-        <tr>
-          <th scope="row"><span class="cmp-name">A slot reserved every week</span><span class="cmp-desc">Held for you whether or not you send footage that&nbsp;week.</span></th>
-          <td><svg class="cmp-no" width="16" height="16" viewBox="0 0 16 16" fill="none" role="img" aria-label="Not included"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></td><td><svg class="cmp-no" width="16" height="16" viewBox="0 0 16 16" fill="none" role="img" aria-label="Not included"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></td><td><svg class="cmp-yes" width="18" height="18" viewBox="0 0 18 18" fill="none" role="img" aria-label="Included"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
         </tr>
         <tr>
           <th scope="row"><span class="cmp-name">Email support</span></th>
@@ -471,7 +414,7 @@
     </div>
 
     <div class="cmp-foot">
-      <p class="cmp-note">Turnaround runs on business days. Which rate you&rsquo;re on is confirmed after the free first video, before anything is billed. Publishing more than six a month, or regularly sending more than a big shoot&rsquo;s worth of footage? <a href="/apply" style="color:#7FB8FF;">Get in touch</a> and we&rsquo;ll quote it.</p>
+      <p class="cmp-note">Turnaround runs on business days. Which rate you&rsquo;re on is confirmed after the free first video, before anything is billed. Publishing more than six a month, or regularly sending more footage than a video covers? <a href="/apply" style="color:#7FB8FF;">Get in touch</a> and we&rsquo;ll quote it.</p>
     </div>
 
     <section class="cmp-close">
