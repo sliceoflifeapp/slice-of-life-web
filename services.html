@@ -310,7 +310,9 @@
     /* Leave-behind: deliberately quieter than anything above it. */
     .svc-diy { padding-top: 0; }
     /* Copy left, app right -- the homepage hero's shape. */
-    .svc-diy-row { display: flex; align-items: center; justify-content: space-between; gap: 56px; }
+    /* Centred as a pair rather than pushed to the outer edges: the slack goes
+       outside the two blocks instead of between them. */
+    .svc-diy-row { display: flex; align-items: center; justify-content: center; gap: 56px; }
     .svc-diy-copy { flex: 1 1 0; min-width: 0; max-width: 600px; text-align: left; }
     .svc-diy-copy h2 {
       font-size: 25px; font-weight: 700; line-height: 1.25;
