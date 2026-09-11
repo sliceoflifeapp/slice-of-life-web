@@ -350,6 +350,9 @@
       .svc-diy-copy { padding-left: 0; }
       .svc-diy-shot { flex: 0 0 auto; width: 100%; max-width: 100%; }
       .svc-diy-copy h2 { font-size: 22px; }
+      /* The button is inline-flex inside a block, so text-align cannot reach
+         it -- centre the box itself. */
+      .svc-diy-cta { display: flex; width: fit-content; margin-left: auto; margin-right: auto; }
     }
 
     /* Pricing extras */
