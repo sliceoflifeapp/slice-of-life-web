@@ -116,8 +116,8 @@
       },
       {
         "@type": "Offer",
-        "name": "Premium",
-        "url": "https://sliceoflife-app.com/apply?plan=premium",
+        "name": "Professional",
+        "url": "https://sliceoflife-app.com/apply?plan=professional",
         "description": "Six finished videos a month. The plans differ only in how many videos a month; every video gets a full edit from raw footage, branded motion graphics, licensed music, sound design, color adjustments, captions and up to 10 vertical Shorts, back within a week. Each video covers up to 100 clips or 90 minutes of source footage; bigger shoots are quoted before work starts. Month to month, unused videos roll over one month. The first video is free.",
         "price": "5200",
         "priceCurrency": "USD",
@@ -350,9 +350,12 @@
       padding-top: 10px;
       border-top: 1px solid rgba(255,255,255,0.07);
       font-size: 12.5px;
-      line-height: 1.5;
+      line-height: 1.55;
       color: rgba(255,255,255,0.6);
     }
+    /* The number is a guide, not a gate -- someone whose videos run longer
+       should not read the line above and leave. */
+    .svc-scope span { color: var(--blue-muted); }
     /* Volume is the only difference between plans, so the feature list is
        stated once below the cards rather than three identical times. */
     .svc-incl { max-width: 720px; margin: 46px auto 0; }
@@ -766,7 +769,7 @@
               <span class="pricing-period">/month</span>
             </div>
             <p class="svc-per-video">For a monthly upload</p>
-            <p class="svc-scope">Up to 100 clips or 90 min per&nbsp;video</p>
+            <p class="svc-scope">Up to 100 clips or 90 min of footage a&nbsp;video<br><span>Bigger shoots just get quoted&nbsp;first</span></p>
             <a href="/apply?plan=starter" class="btn-primary pricing-cta" data-cta="starter">Start free</a>
           </div>
 
@@ -779,20 +782,20 @@
               <span class="pricing-period">/month</span>
             </div>
             <p class="svc-per-video">For a few videos a month</p>
-            <p class="svc-scope">Up to 100 clips or 90 min per&nbsp;video</p>
+            <p class="svc-scope">Up to 100 clips or 90 min of footage a&nbsp;video<br><span>Bigger shoots just get quoted&nbsp;first</span></p>
             <a href="/apply?plan=standard" class="btn-primary pricing-cta" data-cta="standard">Start free</a>
           </div>
 
           <div class="pricing-card" data-reveal>
-            <p class="pricing-name">Premium</p>
+            <p class="pricing-name">Professional</p>
             <p class="svc-cadence">6 videos a month</p>
             <div class="pricing-price">
               <span class="pricing-amount">$5,200</span>
               <span class="pricing-period">/month</span>
             </div>
             <p class="svc-per-video">For weekly, with room to spare</p>
-            <p class="svc-scope">Up to 100 clips or 90 min per&nbsp;video</p>
-            <a href="/apply?plan=premium" class="btn-primary pricing-cta" data-cta="premium">Start free</a>
+            <p class="svc-scope">Up to 100 clips or 90 min of footage a&nbsp;video<br><span>Bigger shoots just get quoted&nbsp;first</span></p>
+            <a href="/apply?plan=professional" class="btn-primary pricing-cta" data-cta="professional">Start free</a>
           </div>
         </div>
 
@@ -810,9 +813,9 @@
           </ul>
         </div>
 
-        <p class="pricing-compare-link"><a href="/compare-plans">Compare all three plans in full <span aria-hidden="true">&rarr;</span></a></p>
+        <p class="pricing-compare-link"><a href="/compare-plans">What&rsquo;s included, in detail <span aria-hidden="true">&rarr;</span></a></p>
 
-        <p class="pricing-footnote">These prices cover a video of up to 100 clips or 90 minutes of source&nbsp;footage &mdash; a full day of shooting with room to&nbsp;spare. Bigger shoots are quoted before we&nbsp;start, and you&rsquo;ll know after the free first&nbsp;video. Turnaround runs on business&nbsp;days, and unused videos roll over one&nbsp;month.</p>
+        <p class="pricing-footnote">A video of 100 clips or 90 minutes of footage is a full day of shooting with room to&nbsp;spare. Send more than that and we price it before we&nbsp;start &mdash; you&rsquo;ll know after the free first&nbsp;video, never&nbsp;after. Turnaround runs on business&nbsp;days, and unused videos roll over one&nbsp;month.</p>
       </div>
     </section>
 
