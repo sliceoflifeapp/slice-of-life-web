@@ -182,13 +182,6 @@
       font-family: 'Montserrat', sans-serif;
     }
     .ap-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
-    .ap-fine {
-      margin: 12px 0 0;
-      font-size: 12px;
-      line-height: 1.5;
-      color: rgba(255,255,255,0.4);
-      text-align: center;
-    }
     .ap-err {
       margin: 12px 0 0;
       font-size: 13px;
@@ -294,8 +287,8 @@
             </div>
 
             <div class="ap-field">
-              <label class="ap-label" for="ap-video">Your channel or a video <span class="ap-tag">&mdash; required</span></label>
-              <input class="ap-input" type="text" id="ap-video" name="videoUrl" maxlength="500" required placeholder="an example of your vlogs">
+              <label class="ap-label" for="ap-video">Your channel or a video</label>
+              <input class="ap-input" type="text" id="ap-video" name="videoUrl" maxlength="500" placeholder="an example of your vlogs">
             </div>
 
             <!-- Honeypot. Hidden from people, irresistible to bots. Deliberately
@@ -308,7 +301,6 @@
             </div>
 
             <button type="submit" class="btn-primary ap-submit" id="ap-submit">Get my first video free</button>
-            <p class="ap-fine">We&rsquo;ll watch it and come back within a&nbsp;day. Any submissions may be used as a portfolio video on our&nbsp;site.</p>
             <p class="ap-err" id="ap-err" role="alert"></p>
           </form>
 
@@ -401,7 +393,6 @@
         // Mirror the server's required set so a mistake is caught before a
         // round trip. The server re-checks all of it regardless.
         if (!val('ap-email')) return fail('Enter your email so we can reply.');
-        if (!val('ap-video')) return fail('Add your channel or a video link.');
 
         var payload = {
           name:     val('ap-name'),
