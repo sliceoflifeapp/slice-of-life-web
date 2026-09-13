@@ -287,7 +287,7 @@
         <source src="assets/sol_loop.webm?v=2" type="video/webm" />
         <img src="assets/sol_loop_poster.png?v=2" alt="Slice of Life app demo — drop in footage, customize, export your vlog" />
       </video>
-      <p class="hero-stat"><span class="hero-stat-num">12,393</span> clips sorted into a finished vlog</p>
+      <p class="hero-stat" data-reveal><span class="hero-stat-num">12,393</span> clips sorted into a finished vlog</p>
     </div>
   </section>
 
@@ -1000,5 +1000,54 @@
        <script>window.lemonSqueezyAffiliateConfig = { store: "sliceoflife" };</script>
        <script src="https://lmsqueezy.com/affiliate.js" defer></script>
   -->
+  <!-- Hero counter: count up in step with its fade. The literal number stays in
+       the markup so it's correct with JS off, for crawlers, and under reduced motion. -->
+  <script>
+  (function () {
+    var num = document.querySelector('.hero-stat-num');
+    if (!num || !('IntersectionObserver' in window)) return;
+
+    var target = parseInt((num.textContent || '').replace(/\D/g, ''), 10);
+    if (!target) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var fmt = function (n) { return n.toLocaleString('en-US'); };
+
+    var run = function () {
+      // Reserve the final width first, or the line re-centres as digits appear.
+      // Measured after fonts settle so we don't size against a fallback face.
+      num.style.display = 'inline-block';
+      num.style.minWidth = num.getBoundingClientRect().width + 'px';
+
+      var host = num.closest('.hero-stat');
+      // Start with the element's own reveal delay so the count rides the fade.
+      var delay = host ? (parseFloat(getComputedStyle(host).transitionDelay) || 0) * 1000 : 0;
+      num.textContent = fmt(0);
+
+      setTimeout(function () {
+        var DUR = 1400, t0 = performance.now();
+        (function tick(now) {
+          var p = Math.min((now - t0) / DUR, 1);
+          // easeOutCubic, not expo — expo reaches 97% by the halfway point and
+          // then crawls the last 3%, which reads as stuck rather than settling.
+          var eased = 1 - Math.pow(1 - p, 3);
+          num.textContent = fmt(Math.round(target * eased));
+          if (p < 1) requestAnimationFrame(tick);
+        })(performance.now());
+      }, delay);
+    };
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        var fonts = (document.fonts && document.fonts.ready) || Promise.resolve();
+        fonts.then(run, run);
+      });
+    }, { threshold: 0.12 });
+    io.observe(num);
+  })();
+  </script>
+
 </body>
 </html>
