@@ -424,6 +424,22 @@ nav, section, footer, .proof-strip { position: relative; z-index: 1; }
   display: block;
 }
 
+/* Usage counter under the hero widget. Muted, but at --white-55 not --white-30:
+   0.30 white on the navy measures 2.6:1 and would break the AA pass. */
+.hero-stat {
+  margin: 18px 0 0;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--white-55);
+}
+
+.hero-stat-num {
+  color: var(--white-80);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-7px); }
