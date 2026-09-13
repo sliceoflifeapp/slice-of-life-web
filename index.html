@@ -288,6 +288,68 @@
         <img src="assets/sol_loop_poster.png?v=2" alt="Slice of Life app demo — drop in footage, customize, export your vlog" />
       </video>
       <p class="hero-stat" data-reveal><span class="hero-stat-num">12,393</span> clips sorted into a finished vlog</p>
+      <!-- Counter. Sits here, not at end of body: main.js (which applies the
+           opacity-0 .reveal) is ~500 lines below, so anything later leaves a
+           window where the real number paints at full opacity and then snaps
+           to zero. Zeroing happens synchronously, before this element can be
+           painted, and is never gated on fonts or the observer. -->
+      <script>
+      (function () {
+        var num = document.querySelector('.hero-stat-num');
+        if (!num || !('IntersectionObserver' in window)) return;
+
+        var target = parseInt((num.textContent || '').replace(/\D/g, ''), 10);
+        if (!target) return;
+        // Reduced motion returns before touching the DOM: the literal stays put.
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var fmt = function (n) { return n.toLocaleString('en-US'); };
+        var host = num.closest('.hero-stat');
+
+        num.style.display = 'inline-block';
+        num.textContent = fmt(0);
+
+        // Reserve the final width so the line doesn't re-centre as digits
+        // appear. Measured off a hidden clone — putting the real text back to
+        // measure it would reintroduce the flash this script exists to avoid.
+        var reserve = function () {
+          var probe = num.cloneNode(false);
+          probe.textContent = fmt(target);
+          probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;min-width:0';
+          num.parentNode.appendChild(probe);
+          num.style.minWidth = probe.getBoundingClientRect().width + 'px';
+          probe.parentNode.removeChild(probe);
+        };
+        ((document.fonts && document.fonts.ready) || Promise.resolve()).then(reserve, reserve);
+
+        var started = false;
+        var count = function () {
+          if (started) return;
+          started = true;
+          var DUR = 1400, t0 = performance.now();
+          (function tick(now) {
+            var p = Math.min((now - t0) / DUR, 1);
+            // easeOutCubic, not expo — expo is at 97% by the halfway point and
+            // then crawls the last 3%, which reads as stuck rather than settling.
+            num.textContent = fmt(Math.round(target * (1 - Math.pow(1 - p, 3))));
+            if (p < 1) requestAnimationFrame(tick);
+          })(performance.now());
+        };
+
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting || started) return;
+            io.disconnect();
+            // Ride the element's own reveal delay so the count tracks the fade.
+            setTimeout(count, host ? (parseFloat(getComputedStyle(host).transitionDelay) || 0) * 1000 : 0);
+          });
+        }, { threshold: 0.12 });
+        io.observe(num);
+
+        // Never strand it at zero if the observer can't fire (hidden tab, etc).
+        setTimeout(function () { if (!started) { started = true; num.textContent = fmt(target); } }, 4000);
+      })();
+      </script>
     </div>
   </section>
 
@@ -1000,54 +1062,6 @@
        <script>window.lemonSqueezyAffiliateConfig = { store: "sliceoflife" };</script>
        <script src="https://lmsqueezy.com/affiliate.js" defer></script>
   -->
-  <!-- Hero counter: count up in step with its fade. The literal number stays in
-       the markup so it's correct with JS off, for crawlers, and under reduced motion. -->
-  <script>
-  (function () {
-    var num = document.querySelector('.hero-stat-num');
-    if (!num || !('IntersectionObserver' in window)) return;
-
-    var target = parseInt((num.textContent || '').replace(/\D/g, ''), 10);
-    if (!target) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var fmt = function (n) { return n.toLocaleString('en-US'); };
-
-    var run = function () {
-      // Reserve the final width first, or the line re-centres as digits appear.
-      // Measured after fonts settle so we don't size against a fallback face.
-      num.style.display = 'inline-block';
-      num.style.minWidth = num.getBoundingClientRect().width + 'px';
-
-      var host = num.closest('.hero-stat');
-      // Start with the element's own reveal delay so the count rides the fade.
-      var delay = host ? (parseFloat(getComputedStyle(host).transitionDelay) || 0) * 1000 : 0;
-      num.textContent = fmt(0);
-
-      setTimeout(function () {
-        var DUR = 1400, t0 = performance.now();
-        (function tick(now) {
-          var p = Math.min((now - t0) / DUR, 1);
-          // easeOutCubic, not expo — expo reaches 97% by the halfway point and
-          // then crawls the last 3%, which reads as stuck rather than settling.
-          var eased = 1 - Math.pow(1 - p, 3);
-          num.textContent = fmt(Math.round(target * eased));
-          if (p < 1) requestAnimationFrame(tick);
-        })(performance.now());
-      }, delay);
-    };
-
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        io.disconnect();
-        var fonts = (document.fonts && document.fonts.ready) || Promise.resolve();
-        fonts.then(run, run);
-      });
-    }, { threshold: 0.12 });
-    io.observe(num);
-  })();
-  </script>
 
 </body>
 </html>
