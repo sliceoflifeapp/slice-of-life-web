@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) -->
+  <!-- Advertising consent gate. Visitors in the EU, UK and EEA are not shown a
+       consent banner, so rather than set advertising cookies without consent we
+       simply do not load the ad tags for them. Region is read from the browser's
+       own timezone: no IP lookup, no third-party call, nothing stored. A timezone
+       we cannot read is treated as EU. -->
+  <script>
+    window.__solAdsAllowed = (function () {
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (!tz) return false;
+        // Tor, Firefox resistFingerprinting and Brave's strict mode all report
+        // UTC rather than a real zone. Treat that as EU: we cannot tell where
+        // they are, and a browser hiding its timezone has already said no.
+        if (/^(UTC|GMT|Etc\/(UTC|GMT|Greenwich|Zulu|Universal))$/i.test(tz)) return false;
+        if (/^Europe\//.test(tz)) return false;
+        return !/^(Atlantic\/(Canary|Madeira|Azores|Reykjavik|Faroe|Faeroe)|Arctic\/Longyearbyen|Africa\/Ceuta|Asia\/(Nicosia|Famagusta)|Indian\/(Mayotte|Reunion)|America\/(Cayenne|Guadeloupe|Martinique|Miquelon|Marigot|St_Barthelemy))$/.test(tz);
+      } catch (e) { return false; }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      if (!window.__solAdsAllowed) {
+        // Keep gtag callable so conversion calls elsewhere are harmless no-ops.
+        window.gtag = function () {};
+        return;
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'AW-18242668467');
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18242668467';
+      document.head.appendChild(s);
+    })();
+  </script>
+
+
+  <title>Free Vlog Edit | Slice of Life</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="I'll edit your next vlog free. Ten years editing documentaries, commercials and films — Slice of Life is new, so I'm looking for a few creators to feature as case studies." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sliceoflife-app.com/free-vlog-edit" />
+  <meta property="og:title" content="I’ll Edit Your Next Vlog. Free." />
+  <meta property="og:description" content="For vloggers in outdoor, travel and day-in-the-life. Slice of Life is new, so I’m looking for a few creators to feature as case studies." />
+  <meta property="og:image" content="https://sliceoflife-app.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="I’ll Edit Your Next Vlog. Free." />
+  <meta name="twitter:description" content="For vloggers in outdoor, travel and day-in-the-life. Slice of Life is new, so I’m looking for a few creators to feature as case studies." />
+  <meta name="twitter:image" content="https://sliceoflife-app.com/assets/og-image.jpg" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/style.css?v=23" />
+  <link rel="canonical" href="https://sliceoflife-app.com/free-vlog-edit" />
+
+  <style>
+    /* Apply-page-only layout — colours, fonts and buttons come from style.css */
+
+    /* style.css sets main#main{display:flex} + .section{order:4} on mobile purely to
+       reorder the homepage promo video. Any other page inheriting it has its
+       non-.section children leapfrog every section. Neutralise it here. */
+    @media (max-width: 600px) { main#main { display: block; } }
+    .ap-sub {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--white-80);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* qualifiers */
+
+    /* steps */
+
+    /* close */
+
+    /* ── Intake form ─────────────────────────────────────────── */
+    .ap-form-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: left;
+      background: #061422;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 26px 28px 26px;
+    }
+    .ap-field { margin-bottom: 16px; }
+    .ap-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #7FB8FF;
+      margin-bottom: 7px;
+    }
+    .ap-tag {
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .ap-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 13px 15px;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .ap-input::placeholder { color: rgba(255,255,255,0.3); }
+    .ap-input:focus {
+      border-color: rgba(120,185,255,0.55);
+      background: rgba(255,255,255,0.07);
+    }
+    /* Honeypot: off-screen rather than display:none, since some bots skip
+       hidden inputs but happily fill anything still in the layout. */
+    .ap-hp {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+    .ap-submit {
+      width: 100%;
+      /* .btn-primary is inline-flex with no justify-content, which left-aligns
+         the label once we stretch it to full width. */
+      justify-content: center;
+      text-align: center;
+      margin-top: 6px;
+      padding: 15px 28px;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .ap-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+    .ap-err {
+      margin: 12px 0 0;
+      font-size: 13px;
+      color: #FF9A9A;
+      text-align: center;
+      display: none;
+    }
+    .ap-err.show { display: block; }
+    .ap-done { display: none; text-align: center; padding: 8px 0 4px; }
+    .ap-done.show { display: block; }
+    .ap-done-tick {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(50,110,225,0.2);
+      border: 1px solid rgba(120,185,255,0.38);
+      color: #7FB8FF;
+    }
+    .ap-done-h { font-size: 18px; font-weight: 700; margin: 0 0 8px; }
+    .ap-done-p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.6); margin: 0; }
+
+    @media (max-width: 620px) {
+      .ap-form-wrap { padding: 26px 20px 22px; }
+    }
+  
+    /* --- ad-landing layout, lifted from landing.html so the two stay consistent --- */
+
+    /* Landing-page-only layout — everything else (colors, fonts, buttons) comes from style.css */
+    .lp-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 56px 24px 0;
+    }
+    .lp-hero {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      min-height: 74vh;
+    }
+    .lp-hero-copy { flex: 1 1 480px; max-width: 560px; text-align: center; }
+    .lp-hero-mockup { flex: 1 1 420px; max-width: 656px; }
+    .lp-slideshow {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(120, 185, 255, 0.15);
+    }
+    .lp-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s var(--ease-out);
+    }
+    .lp-slide.lp-slide--active { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .lp-slide { transition: none; }
+    }
+    .lp-headline {
+      font-size: 61px;
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 18px;
+      color: var(--white);
+    }
+    .lp-headline .gradient-text {
+      background: linear-gradient(135deg, #ffffff 5%, #3F8CFF 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .lp-sub {
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--white-80);
+      margin: 0 auto 30px;
+      max-width: 480px;
+    }
+    .lp-cta-row { margin-bottom: 10px; }
+    .lp-cta-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .lp-req {
+      display: block;
+      margin-top: 12px;
+      font-size: 12.5px;
+      color: var(--white-55);
+    }
+    .lp-cta-big {
+      position: relative;
+      overflow: hidden;
+      padding: 18px 40px;
+      border-radius: 16px;
+      font-size: 17px;
+      gap: 11.5px;
+    }
+    .lp-cta-big svg { width: 21px; height: 21px; }
+
+    /* Light streak — same technique as the walkthrough video thumbnail, looping instead of hover-gated */
+    .lp-cta-big::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -75%;
+      width: 45%;
+      height: 200%;
+      pointer-events: none;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-22deg);
+      animation: lp-shine-sweep 3.2s ease-in-out infinite;
+    }
+    @keyframes lp-shine-sweep {
+      0%   { left: -75%; }
+      35%  { left: 135%; }
+      100% { left: 135%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .lp-cta-big::after { animation: none; opacity: 0; }
+    }
+    .lp-objections {
+      list-style: none;
+      margin: 30px 0 0;
+      padding: 22px 0 0;
+      border-top: 1px solid var(--white-10);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+    .lp-objections li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--white-80);
+    }
+    .lp-objections li::before {
+      content: '';
+      flex: 0 0 auto;
+      width: 7px;
+      height: 7px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: var(--blue-muted);
+    }
+    .lp-objections strong { color: var(--white); font-weight: 700; }
+    .lp-proof-strip { margin-top: 40px; }
+    .lp-proof-tag { display: block; margin-bottom: 0; }
+    .lp-proof-strip .case-study-strip-inner { flex-wrap: wrap; }
+    .lp-proof-strip a.case-study-item { text-decoration: none; color: inherit; }
+    .lp-learn-link {
+      flex: 1;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--white-55);
+      text-decoration: none;
+      transition: color 0.2s var(--ease-out);
+      white-space: nowrap;
+    }
+    .lp-learn-link:hover { color: var(--blue-muted); }
+    @media (max-width: 700px) {
+      .lp-proof-strip .case-study-strip-inner { flex-direction: column; gap: 20px; }
+      .lp-proof-strip .case-study-divider { display: none; }
+      .lp-proof-strip .lp-learn-link { order: 3; }
+    }
+    .lp-footer {
+      text-align: center;
+      padding: 28px 24px 40px;
+      font-size: 12px;
+      color: var(--white-30);
+    }
+    .lp-footer a { color: var(--white-55); text-decoration: none; }
+    .lp-footer a:hover { color: var(--blue-muted); }
+    .lp-footer-sep { margin: 0 8px; }
+
+    @media (max-width: 900px) {
+      .lp-hero { flex-direction: column; gap: 32px; min-height: 0; padding-top: 24px; }
+      .lp-hero-copy, .lp-hero-mockup { max-width: 100%; }
+      .lp-hero-mockup { flex: none; width: 100%; }
+      .lp-headline { font-size: 43px; }
+    }
+  
+    /* Form sits in the hero's right column here instead of its own section. */
+    .fv-form-col { flex: 1 1 430px; max-width: 520px; }
+    .fv-form-col .ap-form-wrap { max-width: none; margin: 0; }
+    .fv-form-label { display: block; margin-bottom: 12px; text-align: left; }
+    .fv-note { margin: 14px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--white-30); text-align: center; }
+    .fv-note a { color: var(--white-55); text-decoration: none; }
+    .fv-note a:hover { color: var(--blue-muted); }
+    .lp-hero-copy { text-align: left; }
+    .lp-sub { margin-left: 0; margin-right: 0; }
+    @media (max-width: 900px) {
+      .fv-form-col { max-width: 100%; width: 100%; flex: none; }
+      .lp-hero-copy { text-align: left; }
+      /* Stacked, the form should come before the objections: this page is only
+         reached from the ad, so the visitor has already heard the pitch and the
+         objections read better as reassurance after the ask than as a preamble
+         to it. display:contents lifts the copy block's children into the hero
+         flex container so they can be ordered independently. */
+      .lp-hero-copy { display: contents; }
+      .lp-headline   { order: 1; }
+      .lp-sub        { order: 2; }
+      .fv-form-col   { order: 3; }
+      .lp-objections { order: 4; margin-top: 4px; }
+    }
+  </style>
+  <!-- Meta Pixel -->
+  <script>
+  if (window.__solAdsAllowed) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1044905178498684');
+    fbq('track','PageView');
+  } else {
+    window.fbq = function () {};
+  }
+  </script>
+  <!-- End Meta Pixel -->
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="glow-canvas"></canvas>
+
+  <main id="main" tabindex="-1">
+    <div class="lp-wrap">
+
+      <section class="lp-hero">
+        <div class="lp-hero-copy">
+          <h1 class="lp-headline">I&rsquo;ll edit your next vlog. <span class="gradient-text">Free</span>.</h1>
+          <p class="lp-sub">
+            For vloggers in outdoor, travel and day-in-the-life. I&rsquo;ve been editing for over ten
+            years &mdash; documentaries, commercials,&nbsp;films.
+          </p>
+          <ul class="lp-objections">
+            <li><span><strong>Why it&rsquo;s free.</strong> Slice of Life is a brand new company, so I&rsquo;m looking for a few talented creators to feature as case studies on my site.</span></li>
+            <li><span><strong>What you get.</strong> A finished vlog, and I&rsquo;ll even throw in some Shorts cut from the same footage.</span></li>
+            <li><span><strong>Who it&rsquo;s for.</strong> If editing is the thing keeping you from posting more, that&rsquo;s exactly who I want to hear from.</span></li>
+          </ul>
+        </div>
+
+        <div class="fv-form-col">
+          <span class="section-label fv-form-label">Send your channel</span>
+          <div class="ap-form-wrap">
+            <form id="ap-form" novalidate>
+            <div class="ap-field">
+              <label class="ap-label" for="ap-name">Name</label>
+              <input class="ap-input" type="text" id="ap-name" name="name" autocomplete="name" maxlength="120" placeholder="What should we call you?">
+            </div>
+
+            <div class="ap-field">
+              <label class="ap-label" for="ap-email">Email <span class="ap-tag">&mdash; required</span></label>
+              <input class="ap-input" type="email" id="ap-email" name="email" autocomplete="email" maxlength="254" required placeholder="you@email.com">
+            </div>
+
+            <div class="ap-field">
+              <label class="ap-label" for="ap-video">Your channel or a video</label>
+              <input class="ap-input" type="text" id="ap-video" name="videoUrl" maxlength="500" placeholder="an example of your vlogs">
+            </div>
+
+            <!-- Honeypot. Hidden from people, irresistible to bots. Deliberately
+                 named nothing a password manager recognises: it used to be
+                 name="website" with a "Website" label, which is exactly what
+                 autofill looks for, and a filled honeypot silently discards the
+                 application. No label, no semantic name, no autocomplete. -->
+            <div class="ap-hp" aria-hidden="true">
+              <input type="text" id="ap-hp" name="ap_hp" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore data-form-type="other">
+            </div>
+
+            <button type="submit" class="btn-primary ap-submit" id="ap-submit">Get my first video free</button>
+            <p class="ap-err" id="ap-err" role="alert"></p>
+          </form>
+            <div class="ap-done" id="ap-done" role="status">
+            <div class="ap-done-tick">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="ap-done-h">Got it.</h3>
+            <p class="ap-done-p">We&rsquo;ll take a look and reply within a day. If it&rsquo;s a fit, we&rsquo;ll set up your upload folder and cut your next&nbsp;video.</p>
+          </div>
+          </div>
+          <p class="fv-note">Or email <a href="mailto:sliceoflifetech@gmail.com">sliceoflifetech@gmail.com</a> directly.</p>
+        </div>
+      </section>
+
+      <div class="case-study-strip lp-proof-strip">
+      <div class="case-study-strip-inner">
+        <a class="case-study-item case-study-item--active" href="/#case-study-open">
+          <div class="case-study-thumb">
+            <img src="assets/case-study/cs-vimeo-thumb.jpg" alt="Cycling and paddleboarding case study" loading="lazy" />
+          </div>        <div class="case-study-body">
+            <span class="section-label lp-proof-tag">Real example</span>
+            <p class="case-study-title">Cycling &amp; paddleboarding</p>
+            <span class="case-study-name">32 clips · 6:19 to finished edit</span>
+          </div>      </a>
+        <div class="case-study-divider"></div>      <a href="/services" class="lp-learn-link">Learn more</a>
+        <div class="case-study-divider"></div>      <a class="case-study-item case-study-item--active" href="/#case-study-open-2">
+          <div class="case-study-thumb">
+            <img src="assets/case-study/cs-alaska-thumb.jpg" alt="Alaskan Plane Ride case study" loading="lazy" />
+          </div>        <div class="case-study-body">
+            <span class="section-label lp-proof-tag">Real example</span>
+            <p class="case-study-title">Alaskan Plane Ride</p>
+            <span class="case-study-name">30 clips · 11:17 to finished edit</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <footer class="lp-footer">
+    <a href="/terms.html">Terms</a><span class="lp-footer-sep">&middot;</span><a href="/privacy.html">Privacy</a>
+    <span class="lp-footer-sep">&middot;</span>
+    &copy; 2026 Slice of Life
+  </footer>
+
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_CPkXBiAaHJCLEoKHgWy9Hiu3m3uPuoH66SQMNUuxLVFr', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'never',
+      capture_pageview: true,
+      capture_pageleave: true,
+      persistence: 'memory',
+      disable_session_recording: false,
+      session_recording: { maskAllInputs: true },
+    });
+    posthog.register({ platform: 'website', page_variant: 'free-vlog-edit' });
+    document.querySelectorAll('a[data-cta]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        posthog.capture('apply_email_click', { source: el.dataset.cta });
+      });
+    });
+    document.querySelectorAll('.fv-note a').forEach(function (el) {
+      el.addEventListener('click', function () {
+        posthog.capture('apply_email_click', { source: 'plain-address' });
+      });
+    });
+
+    // ── Intake form ──────────────────────────────────────────────────────────
+    (function () {
+      var INQUIRY_URL = 'https://gather-proxy.sliceoflifeapp.workers.dev/inquiry';
+      var form   = document.getElementById('ap-form');
+      var errEl  = document.getElementById('ap-err');
+      var doneEl = document.getElementById('ap-done');
+      var btn    = document.getElementById('ap-submit');
+      if (!form) return;
+
+      function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+      function fail(msg) {
+        errEl.textContent = msg;
+        errEl.classList.add('show');
+        btn.disabled = false;
+        btn.textContent = 'Get my first video free';
+      }
+
+      // Where they came from, captured silently so a paid-traffic inquiry is
+      // attributable without asking them a "how did you hear about us" question
+      // that PostHog already answers better.
+      function context() {
+        var q = new URLSearchParams(window.location.search);
+        var bits = [window.location.pathname];
+        ['utm_source', 'utm_medium', 'utm_campaign', 'gclid'].forEach(function (k) {
+          if (q.get(k)) bits.push(k + '=' + q.get(k));
+        });
+        return bits.join(' | ').slice(0, 300);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errEl.classList.remove('show');
+
+        // Mirror the server's required set so a mistake is caught before a
+        // round trip. The server re-checks all of it regardless.
+        if (!val('ap-email')) return fail('Enter your email so we can reply.');
+
+        var payload = {
+          name:     val('ap-name'),
+          email:    val('ap-email'),
+          videoUrl: val('ap-video'),
+          ap_hp:    val('ap-hp'),
+          plan:     new URLSearchParams(window.location.search).get('plan') || '',
+          source:   context(),
+        };
+
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        fetch(INQUIRY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (d && d.ok) {
+              form.style.display = 'none';
+              doneEl.classList.add('show');
+              posthog.capture('apply_submitted', { plan: payload.plan || 'none' });
+              // Google Ads "Services Application". Deliberately fired here rather
+              // than on page load: only applications the Worker actually accepted
+              // should count, not everyone who reached the form.
+              if (typeof gtag === 'function') {
+                gtag('event', 'conversion', { send_to: 'AW-18242668467/W4OiCPDSmOocELOP5PpD' });
+              }
+              // Meta, same reasoning: only accepted applications count. fbq is a
+              // no-op stub when the consent gate blocked the pixel, so this is
+              // safe to call unconditionally.
+              if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+              }
+            } else {
+              // Only trust d.error if it is actually a string. Any other shape
+              // (an error object from a proxy, say) would otherwise render to
+              // the user as "[object Object]".
+              var msg = (d && typeof d.error === 'string') ? d.error : '';
+              fail(msg || 'Something went wrong — email us directly instead.');
+              posthog.capture('apply_submit_failed', { reason: msg || 'unknown' });
+            }
+          })
+          .catch(function () {
+            fail('Could not reach us just now — email sliceoflifetech@gmail.com instead.');
+            posthog.capture('apply_submit_failed', { reason: 'network' });
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
