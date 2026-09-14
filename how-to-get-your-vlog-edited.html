@@ -181,8 +181,7 @@
         <span class="nav-logo-text">Slice of Life</span>
       </a>
       <div class="nav-ctas">
-        <span class="sale-tag">3 slots open<span class="sale-tag-extra"> &middot; This month</span></span>
-        <a href="/apply" class="nav-cta">Free edit</a>
+        <a href="/apply" class="nav-cta" data-cta="nav">Free edit</a>
       </div>
     </div>
   </nav>
@@ -330,7 +329,13 @@
       disable_session_recording: false,
       session_recording: { maskAllInputs: true },
     });
-    posthog.register({ platform: 'website' });
+    posthog.register({ platform: 'website', page_variant: 'editing-options' });
+
+    document.querySelectorAll('a[data-cta]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        posthog.capture('services_inquiry_click', { tier: el.dataset.cta, from: 'editing-options' });
+      });
+    });
   </script>
 
   <!-- Meta Pixel -->
