@@ -188,7 +188,9 @@
     .lp-wrap {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 56px 24px 0;
+      /* 48px matches the site's own .section padding on desktop; clamp keeps a
+         phone at 24px rather than crushing the form to 279px. */
+      padding: 56px clamp(24px, 4vw, 48px) 0;
     }
     .lp-hero {
       display: flex;
