@@ -392,6 +392,7 @@
          flex container so they can be ordered independently. */
       .lp-hero-copy { display: contents; }
       .lp-headline   { order: 1; }
+      .lp-sub        { order: 2; }
       .fv-form-col   { order: 3; }
       .lp-objections { order: 4; margin-top: 4px; }
     }
@@ -420,6 +421,7 @@
       <section class="lp-hero">
         <div class="lp-hero-copy">
           <h1 class="lp-headline">I&rsquo;ll edit your next vlog. <span class="gradient-text">Free</span>.</h1>
+          <p class="lp-sub">10 years of professional video editing&nbsp;experience.</p>
           <ul class="lp-objections">
             <li><span><strong>A video you can actually post.</strong> We cut your next upload, not old footage &mdash; yours to keep, no&nbsp;watermark.</span></li>
             <li><span><strong>Send it exactly as you shot it.</strong> Drag the whole card in as it came off the camera &mdash; no naming, no trimming, no&nbsp;folders.</span></li>
@@ -455,7 +457,7 @@
               <input type="text" id="ap-hp" name="ap_hp" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore data-form-type="other">
             </div>
 
-            <button type="submit" class="btn-primary ap-submit" id="ap-submit">Get my first video free</button>
+            <button type="submit" class="btn-primary ap-submit" id="ap-submit">Get my video free</button>
             <p class="ap-err" id="ap-err" role="alert"></p>
           </form>
             <div class="ap-done" id="ap-done" role="status">
@@ -543,7 +545,7 @@
         errEl.textContent = msg;
         errEl.classList.add('show');
         btn.disabled = false;
-        btn.textContent = 'Get my first video free';
+        btn.textContent = 'Get my video free';
       }
 
       // Where they came from, captured silently so a paid-traffic inquiry is
