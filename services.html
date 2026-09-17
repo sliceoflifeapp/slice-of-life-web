@@ -316,11 +316,18 @@
     }
 
     /* Last-chance mention, for anyone who scrolled past the one under the
-       plans. A footer line, not a section: no heading, no screenshots. Link
-       styled to match .pricing-compare-link, the page's other quiet link. */
+       plans. Copy left, app right -- the same shape the section had before it
+       was trimmed, just one line of text instead of a heading and paragraph.
+       Link styled to match .pricing-compare-link, the page's other quiet link. */
     .svc-diy { padding-top: 0; }
+    /* Centred as a pair rather than pushed to the outer edges: the slack goes
+       outside the two blocks instead of between them. */
+    .svc-diy-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; max-width: 840px; margin: 0 auto;
+    }
     .svc-diy-line {
-      max-width: 720px; margin: 0 auto; text-align: center;
+      flex: 1 1 0; min-width: 0; margin: 0; text-align: left;
       font-size: 15px; line-height: 1.7; color: var(--white-55);
     }
     .svc-diy-cta {
@@ -330,14 +337,15 @@
       transition: color .2s cubic-bezier(0.23,1,0.32,1), border-color .2s cubic-bezier(0.23,1,0.32,1);
     }
     .svc-diy-cta:hover { color: #A8D0FF; border-color: rgba(168,208,255,0.6); }
-    /* Restored under the line rather than beside it -- the copy is one sentence
-       now, so a two-column row would leave the text stranded next to a tall
-       image. Square frame, square shots, so object-fit never crops. */
+    /* Square frame, square shots, so object-fit never crops. Sized with an
+       explicit width rather than flex-basis: once the row stacks, flex-basis
+       follows the new main axis and a flex child collapses. Same trap as
+       .svc-bio-reel. */
     .svc-diy-slides {
       position: relative;
+      flex: 0 0 auto;
+      width: 260px;
       aspect-ratio: 1 / 1;
-      width: 100%; max-width: 280px;
-      margin: 26px auto 0;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(120,185,255,0.15);
@@ -351,6 +359,11 @@
     }
     .svc-diy-slide.is-active { opacity: 1; }
     @media (prefers-reduced-motion: reduce) { .svc-diy-slide { transition: none; } }
+    @media (max-width: 760px) {
+      .svc-diy-row { flex-direction: column; gap: 26px; }
+      .svc-diy-line { text-align: center; }
+      .svc-diy-slides { width: 100%; max-width: 280px; }
+    }
 
     /* Price-objection catch, directly under the three plans. Deliberately
        quieter than the cards above so it reads as a different kind of option
@@ -921,17 +934,19 @@
          under the plans ── -->
     <section class="section svc-diy">
       <div class="section-inner">
-        <p class="svc-diy-line" data-reveal>
+        <div class="svc-diy-row" data-reveal>
+        <p class="svc-diy-line">
           Rather cut them yourself? It&rsquo;s the same Mac app we run on client&nbsp;work &mdash; $99 a&nbsp;month.
           <a href="/" class="svc-diy-cta" id="svc-diy-cta">See the Mac app <span aria-hidden="true">&rarr;</span></a>
         </p>
-        <div class="svc-diy-slides" id="svc-diy-slides" data-reveal>
+        <div class="svc-diy-slides" id="svc-diy-slides">
           <img class="svc-diy-slide is-active" src="assets/hero-shot-home.jpg" width="1300" height="1298" loading="lazy"
                alt="The Slice of Life home screen, ready to build a Slice from a day of footage" />
           <img class="svc-diy-slide" src="assets/hero-shot-configure.jpg" width="1295" height="1300" loading="lazy"
                alt="The Slice of Life configure screen, setting pacing, captions and orientation" />
           <img class="svc-diy-slide" src="assets/hero-shot-review.jpg" width="1296" height="1300" loading="lazy"
                alt="The Slice of Life review screen, fine-tuning the cut before it renders" />
+        </div>
         </div>
       </div>
     </section>
