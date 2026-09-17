@@ -315,53 +315,21 @@
       border-radius: 7px;
     }
 
-    /* Leave-behind: deliberately quieter than anything above it. */
+    /* Last-chance mention, for anyone who scrolled past the one under the
+       plans. A footer line, not a section: no heading, no screenshots. Link
+       styled to match .pricing-compare-link, the page's other quiet link. */
     .svc-diy { padding-top: 0; }
-    /* Copy left, app right -- the homepage hero's shape. */
-    /* Centred as a pair rather than pushed to the outer edges: the slack goes
-       outside the two blocks instead of between them. */
-    .svc-diy-row { display: flex; align-items: center; justify-content: center; gap: 56px; }
-    .svc-diy-copy { flex: 1 1 0; min-width: 0; max-width: 600px; text-align: left; }
-    .svc-diy-copy h2 {
-      font-size: 25px; font-weight: 700; line-height: 1.25;
-      margin: 6px 0 12px;
+    .svc-diy-line {
+      max-width: 720px; margin: 0 auto; text-align: center;
+      font-size: 15px; line-height: 1.7; color: var(--white-55);
     }
-    .svc-diy-copy p { font-size: 15px; line-height: 1.7; color: var(--white-55); margin: 0; }
-    .svc-diy-cta { display: inline-flex; margin-top: 22px; }
-    .svc-diy-shot { flex: 1 1 0; min-width: 0; max-width: 344px; }
-    /* Real screenshots, same as the paid landing page. The shots are square,
-       so the frame is too -- object-fit never has to crop. */
-    .svc-diy-slides {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(120,185,255,0.15);
+    .svc-diy-cta {
+      color: var(--blue-light, #7FB8FF);
+      font-weight: 600; text-decoration: none; white-space: nowrap;
+      border-bottom: 1px solid rgba(127,184,255,0.32); padding-bottom: 2px;
+      transition: color .2s cubic-bezier(0.23,1,0.32,1), border-color .2s cubic-bezier(0.23,1,0.32,1);
     }
-    .svc-diy-slide {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 1s var(--ease-out);
-    }
-    .svc-diy-slide.is-active { opacity: 1; }
-    @media (prefers-reduced-motion: reduce) { .svc-diy-slide { transition: none; } }
-    @media (max-width: 960px) {
-      .svc-diy-row { gap: 36px; }
-    }
-    @media (max-width: 760px) {
-      /* Same trap as .svc-bio-reel: once the row stacks, flex-basis follows the
-         new main axis and a flex child collapses without an explicit width. */
-      .svc-diy-row { flex-direction: column; align-items: flex-start; gap: 30px; }
-      /* Stacked, there is no facing edge to balance against. */
-      .svc-diy-copy { padding-left: 0; }
-      .svc-diy-shot { flex: 0 0 auto; width: 100%; max-width: 100%; }
-      .svc-diy-copy h2 { font-size: 22px; }
-      /* The button is inline-flex inside a block, so text-align cannot reach
-         it -- centre the box itself. */
-      .svc-diy-cta { display: flex; width: fit-content; margin-left: auto; margin-right: auto; }
-    }
+    .svc-diy-cta:hover { color: #A8D0FF; border-color: rgba(168,208,255,0.6); }
 
     /* Price-objection catch, directly under the three plans. Deliberately
        quieter than the cards above so it reads as a different kind of option
@@ -928,30 +896,14 @@
       </div>
     </section>
 
-    <!-- ── Leave-behind: the app, for anyone who would rather do it themselves ── -->
+    <!-- ── Last-chance mention of the app, in case they scrolled past the one
+         under the plans ── -->
     <section class="section svc-diy">
       <div class="section-inner">
-        <div class="svc-diy-row" data-reveal>
-          <div class="svc-diy-copy">
-            <p class="section-label">The software</p>
-            <h2>Rather cut them yourself?</h2>
-            <p>
-              A decade of editing videos by hand is what it took to write&nbsp;it. It&rsquo;s the same Mac app
-              we run on client work, and it&rsquo;s yours to use if you&rsquo;d rather do the edit&nbsp;yourself.
-            </p>
-            <a href="/" class="nav-cta svc-diy-cta" id="svc-diy-cta">See the Mac app &rarr;</a>
-          </div>
-          <div class="svc-diy-shot">
-            <div class="svc-diy-slides" id="svc-diy-slides">
-              <img class="svc-diy-slide is-active" src="assets/hero-shot-home.jpg" width="1300" height="1298" loading="lazy"
-                   alt="The Slice of Life home screen, ready to build a Slice from a day of footage" />
-              <img class="svc-diy-slide" src="assets/hero-shot-configure.jpg" width="1295" height="1300" loading="lazy"
-                   alt="The Slice of Life configure screen, setting pacing, captions and orientation" />
-              <img class="svc-diy-slide" src="assets/hero-shot-review.jpg" width="1296" height="1300" loading="lazy"
-                   alt="The Slice of Life review screen, fine-tuning the cut before it renders" />
-            </div>
-          </div>
-        </div>
+        <p class="svc-diy-line" data-reveal>
+          Rather cut them yourself? It&rsquo;s the same Mac app we run on client&nbsp;work &mdash; $99 a&nbsp;month.
+          <a href="/" class="svc-diy-cta" id="svc-diy-cta">See the Mac app <span aria-hidden="true">&rarr;</span></a>
+        </p>
       </div>
     </section>
 
@@ -1124,31 +1076,6 @@
     var diy = document.getElementById('svc-diy-cta');
     if (diy) diy.addEventListener('click', function () { posthog.capture('services_diy_click'); });
 
-    // The slideshow sits near the bottom of the page, so it only starts once it
-    // is actually on screen -- no timer running against images the browser has
-    // not lazily fetched yet.
-    (function () {
-      var wrap = document.getElementById('svc-diy-slides');
-      if (!wrap) return;
-      var slides = wrap.querySelectorAll('.svc-diy-slide');
-      if (slides.length < 2) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      function rotate() {
-        var i = 0;
-        setInterval(function () {
-          slides[i].classList.remove('is-active');
-          i = (i + 1) % slides.length;
-          slides[i].classList.add('is-active');
-        }, 3500);
-      }
-      if (!('IntersectionObserver' in window)) { rotate(); return; }
-      var io = new IntersectionObserver(function (entries) {
-        if (!entries.some(function (e) { return e.isIntersecting; })) return;
-        io.disconnect();
-        rotate();
-      }, { rootMargin: '200px' });
-      io.observe(wrap);
-    })();
     document.querySelectorAll('.faq-q').forEach(function (el) {
       el.addEventListener('click', function () {
         posthog.capture('services_faq_open', { question: el.innerText.trim() });
