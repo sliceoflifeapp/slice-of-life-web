@@ -365,19 +365,101 @@
     .fv-note a { color: var(--white-55); text-decoration: none; }
     .fv-note a:hover { color: var(--blue-muted); }
     .lp-hero-copy { text-align: left; }
-    .lp-sub { margin-left: 0; margin-right: 0; }
+    /* 540px is the headline block's own width, so the sub breaks with the
+       headline instead of orphaning "of experience." onto a second line. */
+    .lp-sub { margin-left: 0; margin-right: 0; max-width: 540px; }
     @media (max-width: 900px) {
       .fv-form-col { max-width: 100%; width: 100%; flex: none; }
       .lp-hero-copy { text-align: left; }
-      /* Stacked, the form should come before the objections: this page is only
-         reached from the ad, so the visitor has already heard the pitch and the
-         objections read better as reassurance after the ask than as a preamble
-         to it. display:contents lifts the copy block's children into the hero
-         flex container so they can be ordered independently. */
+      /* Stacked, the reasons come before the ask. A Search ad is a headline and
+         90 characters, so a visitor arriving from one has not already heard the
+         pitch; with the form first, every reason to fill it sat below the fold on
+         a phone, which is where this page's traffic lands. display:contents lifts
+         the copy block's children into the hero flex container so they can be
+         ordered independently. The hero's 32px gap does the spacing, so the
+         stacked margins are zeroed. */
       .lp-hero-copy { display: contents; }
       .lp-headline   { order: 1; }
-      .fv-form-col   { order: 3; }
-      .lp-objections { order: 4; margin-top: 4px; }
+      .lp-sub        { order: 2; margin-bottom: 0; }
+      .lp-objections { order: 3; margin-top: 0; }
+      .fv-form-col   { order: 4; }
+    }
+
+    /* ── Who's behind the edits — same component as /services ──────────────
+       Copied rather than shared: style.css carries no .svc-* rules, so each
+       page keeps its own copy and neither can break the other. */
+    .fv-editor { margin-top: 64px; }
+    .fv-editor-tag { display: block; text-align: center; }
+    .svc-bio {
+      display: flex;
+      align-items: center;
+      gap: 52px;
+      max-width: 1040px;
+      margin: 28px auto 0;
+      text-align: left;
+    }
+    .svc-bio-copy { flex: 1 1 0; min-width: 0; }
+    .svc-bio-head { display: flex; align-items: center; gap: 20px; margin-bottom: 22px; }
+    .svc-bio-role { margin: 0; text-align: left; }
+    .svc-bio-reel { flex: 1 1 0; min-width: 0; }
+    .svc-bio-face {
+      flex: 0 0 auto;
+      width: 104px; height: 104px;
+      border-radius: 50%;
+      background: #0B1E33;
+      border: 1px solid rgba(120,185,255,0.22);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .svc-bio-copy p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--white-70, rgba(255,255,255,0.72));
+    }
+    .svc-reel {
+      display: block;
+      position: relative;
+      width: 100%;
+      padding: 0;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #061422;
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.36);
+      -webkit-appearance: none; appearance: none;
+    }
+    .svc-reel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .svc-reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .svc-reel-play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 68px; height: 68px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(50,110,225,0.92);
+      border: 1px solid rgba(160,205,255,0.5);
+      box-shadow: 0 10px 34px rgba(0,0,0,0.5), 0 0 0 10px rgba(50,110,225,0.14);
+      color: #fff;
+      transition: transform 0.25s var(--ease-out), background 0.25s var(--ease-out);
+    }
+    .svc-reel-play svg { width: 26px; height: 26px; margin-left: 3px; }
+    .svc-reel:hover .svc-reel-play { transform: translate(-50%, -50%) scale(1.07); background: rgba(60,125,240,0.98); }
+    .svc-reel-cap {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 12.5px;
+      letter-spacing: 0.02em;
+      color: var(--white-55);
+    }
+    @media (max-width: 860px) {
+      .svc-bio { flex-direction: column; align-items: stretch; gap: 30px; }
+    }
+    @media (max-width: 640px) {
+      .fv-editor { margin-top: 44px; }
+      .svc-bio { flex-direction: column; align-items: flex-start; gap: 22px; }
+      .svc-bio-face { width: 108px; height: 108px; }
+      /* Stacked, .svc-bio-reel's flex-basis lands on the height axis instead of
+         the width and the player collapses to its content width. */
+      .svc-bio-reel { flex: 0 0 auto; width: 100%; align-self: center; }
     }
   </style>
   <!-- Meta Pixel -->
@@ -404,9 +486,10 @@
       <section class="lp-hero">
         <div class="lp-hero-copy">
           <h1 class="lp-headline">I&rsquo;ll edit your next vlog. <span class="gradient-text">Free</span>.</h1>
+          <p class="lp-sub">A vlog editing agency founded after 10 years of&nbsp;experience.</p>
           <ul class="lp-objections">
-            <li><span><strong>Why it&rsquo;s free.</strong> Slice of Life is a brand new company, so I&rsquo;m looking for a few talented creators to feature as case studies on my site.</span></li>
-            <li><span><strong>What you get.</strong> A finished vlog, and I&rsquo;ll even throw in some Shorts cut from the same footage.</span></li>
+            <li><span><strong>Why it&rsquo;s free.</strong> I&rsquo;m looking for a few creators to feature as case studies &mdash; and I&rsquo;d rather you judge the work than take my word for&nbsp;it.</span></li>
+            <li><span><strong>What you get.</strong> Not a 90-second test clip &mdash; a finished vlog, plus Shorts cut from the same&nbsp;footage.</span></li>
             <li><span><strong>Who it&rsquo;s for.</strong> If editing is the thing keeping you from posting more, that&rsquo;s exactly who I want to hear from.</span></li>
           </ul>
         </div>
@@ -451,6 +534,37 @@
           </div>
           </div>
           <p class="fv-note">Or email <a href="mailto:sliceoflifetech@gmail.com">sliceoflifetech@gmail.com</a> directly.</p>
+        </div>
+      </section>
+
+      <!-- ── Who's behind the edits ─────────────────────────────────────
+           No data-reveal here: this page does not load js/main.js, so there is
+           no observer to un-hide anything it tagged. -->
+      <section class="fv-editor">
+        <span class="section-label fv-editor-tag">Who&rsquo;s behind the edits</span>
+        <div class="svc-bio">
+          <div class="svc-bio-copy">
+            <div class="svc-bio-head">
+              <img class="svc-bio-face" src="assets/showcase/nathan.png?v=1"
+                   alt="Nathan Griffey, founder and editor at Slice of Life" width="560" height="560" loading="lazy">
+              <p class="section-label svc-bio-role">Video editor for over a&nbsp;decade</p>
+            </div>
+            <p>
+              I&rsquo;m Nathan. I&rsquo;ve edited professionally for over 10 years &mdash; film, documentaries,
+              weddings, commercials &mdash; long before I wrote a line of this software. It automates
+              the parts I&rsquo;d already done a few thousand&nbsp;times.
+            </p>
+          </div>
+
+          <div class="svc-bio-reel">
+            <button class="svc-reel" id="svc-reel" type="button" aria-label="Play the reel">
+              <img src="assets/showcase/reel-poster.jpg?v=1" alt="" width="1280" height="720" loading="lazy">
+              <span class="svc-reel-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
+              </span>
+            </button>
+            <p class="svc-reel-cap">Client work before Slice of&nbsp;Life.</p>
+          </div>
         </div>
       </section>
 
@@ -594,6 +708,22 @@
             posthog.capture('apply_submit_failed', { reason: 'network' });
           });
       });
+    })();
+
+    // ── Reel ────────────────────────────────────────────────────────────────
+    // The iframe is injected on click, so the page makes no Vimeo request on
+    // load and the poster stays a plain image until someone asks for it.
+    (function () {
+      var reel = document.getElementById('svc-reel');
+      if (!reel) return;
+      reel.addEventListener('click', function () {
+        reel.innerHTML = '<iframe src="https://player.vimeo.com/video/1220975504?badge=0&autopause=0&autoplay=1" ' +
+          'title="Nathan Griffey — video editing reel" allow="autoplay; fullscreen; picture-in-picture" ' +
+          'allowfullscreen></iframe>';
+        // Same event name as /services; posthog.register already stamps every
+        // event on this page with page_variant, so the two stay distinguishable.
+        if (window.posthog) posthog.capture('services_reel_play');
+      }, { once: true });
     })();
   </script>
 </body>
