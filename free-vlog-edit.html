@@ -355,22 +355,29 @@
       .lp-hero-copy { display: contents; }
       .lp-headline { order: 1; }
       .lp-sub      { order: 2; margin-bottom: 0; }
-      .fv-bio      { order: 3; margin-top: 0; padding-top: 18px; }
+      /* Ordering only. .fv-bio's base rule is declared further down the
+         sheet, so spacing overrides lose to it from here and live at the
+         bottom instead. */
+      .fv-bio      { order: 3; }
       .fv-form-col { order: 4; }
     }
 
     /* ── The editor, in the hero's left column ──────────────────────────────
        Headshot, one line, and the reel — the slot the bullets used to hold. */
     .fv-bio {
+      display: flex;
+      align-items: center;
+      gap: 24px;
       margin-top: 28px;
       padding-top: 22px;
       border-top: 1px solid var(--white-10);
       text-align: left;
     }
-    .fv-bio-head { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
+    .fv-bio-head { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 15px; }
+    .fv-reel-col { flex: 0 0 auto; width: 190px; }
     .fv-bio-face {
       flex: 0 0 auto;
-      width: 60px; height: 60px;
+      width: 54px; height: 54px;
       border-radius: 50%;
       background: #0B1E33;
       border: 1px solid rgba(120,185,255,0.22);
@@ -410,7 +417,7 @@
     .fv-reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .fv-reel-play {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 42px; height: 42px; border-radius: 50%;
+      width: 36px; height: 36px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       background: rgba(50,110,225,0.92);
       border: 1px solid rgba(160,205,255,0.5);
@@ -418,15 +425,29 @@
       color: #fff;
       transition: transform 0.25s var(--ease-out), background 0.25s var(--ease-out);
     }
-    .fv-reel-play svg { width: 17px; height: 17px; margin-left: 2px; }
+    .fv-reel-play svg { width: 15px; height: 15px; margin-left: 2px; }
     .fv-reel:hover .fv-reel-play { transform: translate(-50%, -50%) scale(1.07); background: rgba(60,125,240,0.98); }
     .fv-reel-cap {
       max-width: 250px;
       margin-top: 9px;
       text-align: left;
-      font-size: 12.5px;
+      /* 11.5px, not the site's usual 12.5: the full wording needs 199px and the
+         reel is 190. "before Slice of Life" is the part that says this is prior
+         client work rather than vlog samples, so the type gives way, not it. */
+      font-size: 11.5px;
       letter-spacing: 0.02em;
       color: var(--white-55);
+    }
+    /* These have to sit after .fv-bio's base rule to win it -- same specificity,
+       so it comes down to source order. */
+    @media (max-width: 900px) {
+      /* Stacked, the hero's own gap does this spacing. */
+      .fv-bio { margin-top: 0; }
+    }
+    @media (max-width: 640px) {
+      /* Three columns in ~330px leaves the bio line about 100px wide. Stack. */
+      .fv-bio { flex-direction: column; align-items: stretch; gap: 18px; padding-top: 18px; }
+      .fv-reel-col { width: 100%; }
     }
   </style>
   <!-- Meta Pixel -->
@@ -460,13 +481,15 @@
                    alt="Nathan Griffey, founder and editor at Slice of Life" width="560" height="560" loading="lazy">
               <p class="fv-bio-text">I&rsquo;m Nathan. Documentaries, weddings and commercials before this &mdash; now I cut&nbsp;vlogs.</p>
             </div>
-            <button class="fv-reel" id="fv-reel" type="button" aria-label="Play the reel">
-              <img src="assets/showcase/reel-poster.jpg?v=1" alt="" width="1280" height="720" loading="lazy">
-              <span class="fv-reel-play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
-              </span>
-            </button>
-            <p class="fv-reel-cap">Client work before Slice of&nbsp;Life.</p>
+            <div class="fv-reel-col">
+              <button class="fv-reel" id="fv-reel" type="button" aria-label="Play the reel">
+                <img src="assets/showcase/reel-poster.jpg?v=1" alt="" width="1280" height="720" loading="lazy">
+                <span class="fv-reel-play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
+                </span>
+              </button>
+              <p class="fv-reel-cap">Client work before Slice of&nbsp;Life.</p>
+            </div>
           </div>
         </div>
 
