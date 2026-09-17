@@ -367,7 +367,7 @@
       border-top: 1px solid var(--white-10);
       text-align: left;
     }
-    .fv-bio-head { display: flex; align-items: center; gap: 15px; margin-bottom: 13px; }
+    .fv-bio-head { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
     .fv-bio-face {
       flex: 0 0 auto;
       width: 60px; height: 60px;
@@ -376,12 +376,11 @@
       border: 1px solid rgba(120,185,255,0.22);
       box-shadow: 0 8px 22px rgba(0,0,0,0.4);
     }
-    .fv-bio-role { margin: 0; text-align: left; }
     .fv-bio-text {
       font-size: 14.5px;
       line-height: 1.6;
       color: var(--white-80);
-      margin: 0 0 18px;
+      margin: 0;
     }
     .fv-offer {
       margin: 14px 0 0;
@@ -394,6 +393,9 @@
       display: block;
       position: relative;
       width: 100%;
+      /* Supporting evidence, not the offer: at full column width this was wider
+         than the form beside it and read as the main event. */
+      max-width: 250px;
       padding: 0;
       aspect-ratio: 16 / 9;
       border-radius: 14px;
@@ -408,7 +410,7 @@
     .fv-reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .fv-reel-play {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 62px; height: 62px; border-radius: 50%;
+      width: 42px; height: 42px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       background: rgba(50,110,225,0.92);
       border: 1px solid rgba(160,205,255,0.5);
@@ -416,11 +418,12 @@
       color: #fff;
       transition: transform 0.25s var(--ease-out), background 0.25s var(--ease-out);
     }
-    .fv-reel-play svg { width: 24px; height: 24px; margin-left: 3px; }
+    .fv-reel-play svg { width: 17px; height: 17px; margin-left: 2px; }
     .fv-reel:hover .fv-reel-play { transform: translate(-50%, -50%) scale(1.07); background: rgba(60,125,240,0.98); }
     .fv-reel-cap {
-      margin-top: 11px;
-      text-align: center;
+      max-width: 250px;
+      margin-top: 9px;
+      text-align: left;
       font-size: 12.5px;
       letter-spacing: 0.02em;
       color: var(--white-55);
@@ -455,9 +458,8 @@
             <div class="fv-bio-head">
               <img class="fv-bio-face" src="assets/showcase/nathan.png?v=1"
                    alt="Nathan Griffey, founder and editor at Slice of Life" width="560" height="560" loading="lazy">
-              <p class="section-label fv-bio-role">Video editor for over a&nbsp;decade</p>
+              <p class="fv-bio-text">I&rsquo;m Nathan. Documentaries, weddings and commercials before this &mdash; now I cut&nbsp;vlogs.</p>
             </div>
-            <p class="fv-bio-text">I&rsquo;m Nathan. Documentaries, weddings and commercials before this &mdash; now I cut vlogs, and I&rsquo;d like to cut&nbsp;yours.</p>
             <button class="fv-reel" id="fv-reel" type="button" aria-label="Play the reel">
               <img src="assets/showcase/reel-poster.jpg?v=1" alt="" width="1280" height="720" loading="lazy">
               <span class="fv-reel-play" aria-hidden="true">
