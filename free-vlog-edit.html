@@ -401,6 +401,12 @@
       .lp-sub        { order: 2; }
       .fv-form-col   { order: 3; }
       .lp-objections { order: 4; margin-top: 4px; }
+      /* display:contents lifts the headline and sub into .lp-hero's flex
+         container, so their own bottom margins stack on top of its 32px gap --
+         50px above the sub and 62px below it, for a line only 56px tall. Let
+         the gap alone do the spacing. */
+      .lp-headline { margin-bottom: 0; }
+      .lp-sub { margin-bottom: 0; }
     }
 
     /* The fixed 43px above wraps to three lines once the content column drops
