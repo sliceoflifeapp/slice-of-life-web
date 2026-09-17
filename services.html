@@ -326,10 +326,21 @@
       display: flex; align-items: center; justify-content: center;
       gap: 48px; max-width: 840px; margin: 0 auto;
     }
+    .svc-diy-copy { flex: 1 1 0; min-width: 0; text-align: left; }
     .svc-diy-line {
-      flex: 1 1 0; min-width: 0; margin: 0; text-align: left;
+      margin: 0 0 16px;
       font-size: 15px; line-height: 1.7; color: var(--white-55);
     }
+    /* Same tick as .svc-incl, single column and a shade smaller. */
+    .svc-diy-list { list-style: none; margin: 0 0 18px; padding: 0;
+      display: grid; row-gap: 11px; }
+    .svc-diy-list li { display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; line-height: 1.45; color: rgba(255,255,255,0.82); }
+    .svc-diy-list li::before { content: ''; flex-shrink: 0; width: 15px; height: 15px; margin-top: 2px;
+      background: var(--blue-muted);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+    .svc-diy-foot { margin: 0; font-size: 15px; line-height: 1.7; color: var(--white-55); }
     .svc-diy-cta {
       color: var(--blue-light, #7FB8FF);
       font-weight: 600; text-decoration: none; white-space: nowrap;
@@ -361,7 +372,7 @@
     @media (prefers-reduced-motion: reduce) { .svc-diy-slide { transition: none; } }
     @media (max-width: 760px) {
       .svc-diy-row { flex-direction: column; gap: 26px; }
-      .svc-diy-line { text-align: center; }
+      .svc-diy-copy { flex: 0 0 auto; width: 100%; }
       .svc-diy-slides { width: 100%; max-width: 280px; }
     }
 
@@ -935,10 +946,19 @@
     <section class="section svc-diy">
       <div class="section-inner">
         <div class="svc-diy-row" data-reveal>
-        <p class="svc-diy-line">
-          Rather cut them yourself? It&rsquo;s the same Mac app we run on client&nbsp;work &mdash; $99 a&nbsp;month.
-          <a href="/" class="svc-diy-cta" id="svc-diy-cta">See the Mac app <span aria-hidden="true">&rarr;</span></a>
-        </p>
+        <div class="svc-diy-copy">
+          <p class="svc-diy-line">Rather cut them yourself? It&rsquo;s the same Mac app we run on client&nbsp;work.</p>
+          <ul class="svc-diy-list">
+            <li>Finds your talking-to-camera moments and builds the cut around&nbsp;them</li>
+            <li>Cuts in the b-roll that matches what you&rsquo;re&nbsp;saying</li>
+            <li>Captions, color grading and vertical&nbsp;Shorts</li>
+            <li>Exports to Premiere, Final Cut or&nbsp;Resolve</li>
+            <li>Runs on your Mac &mdash; your footage never leaves&nbsp;it</li>
+          </ul>
+          <p class="svc-diy-foot">$99 a&nbsp;month.
+            <a href="/" class="svc-diy-cta" id="svc-diy-cta">See the Mac app <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
         <div class="svc-diy-slides" id="svc-diy-slides">
           <img class="svc-diy-slide is-active" src="assets/hero-shot-home.jpg" width="1300" height="1298" loading="lazy"
                alt="The Slice of Life home screen, ready to build a Slice from a day of footage" />
