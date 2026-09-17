@@ -141,10 +141,14 @@
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 10px;
-      padding: 13px 15px;
+      /* 16px is load-bearing: iOS Safari and WKWebView (the Instagram and
+         Facebook in-app browsers) zoom the whole page when you focus an input
+         whose font-size is under 16px. Do not lower this. Padding is 12px so
+         the field keeps its 45px height at the larger type. */
+      padding: 12px 15px;
       color: #fff;
       font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       outline: none;
       transition: border-color 0.2s ease, background 0.2s ease;
     }
@@ -281,7 +285,7 @@
 
             <div class="ap-field">
               <label class="ap-label" for="ap-video">Your channel or a video</label>
-              <input class="ap-input" type="text" id="ap-video" name="videoUrl" maxlength="500" placeholder="an example of your vlogs">
+              <input class="ap-input" type="text" id="ap-video" name="videoUrl" maxlength="500" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="an example of your vlogs">
             </div>
 
             <!-- Honeypot. Hidden from people, irresistible to bots. Deliberately
