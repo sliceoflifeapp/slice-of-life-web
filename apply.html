@@ -120,7 +120,7 @@
       border-radius: 16px;
       padding: 26px 28px 26px;
     }
-    .ap-field { margin-bottom: 16px; }
+    .ap-field { margin-bottom: 10px; }
     .ap-label {
       display: block;
       font-size: 12px;
@@ -128,7 +128,7 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: #7FB8FF;
-      margin-bottom: 7px;
+      margin-bottom: 4px;
     }
     .ap-tag {
       color: rgba(255,255,255,0.35);
@@ -207,8 +207,13 @@
 
     @media (max-width: 620px) {
       .ap-form-wrap { padding: 26px 20px 22px; }
-      .ap-hero { padding: 64px 20px 4px; }
-      .ap-close { padding: 50px 20px 72px; }
+      .ap-hero { padding: 28px 20px 4px; }
+      .ap-close { padding: 24px 20px 72px; }
+      /* .nav-ctas stretches to the full row by default, so the logo and the
+         button wrap onto separate lines and the nav costs ~103px of a short
+         in-app-browser viewport. Sizing it to its content fits both on one
+         row. Page-local on purpose: .nav lives in the shared style.css. */
+      .nav-ctas { flex: 0 0 auto; width: auto; }
     }
   </style>
 
@@ -259,7 +264,6 @@
 
     <header class="ap-hero">
       <div class="ap-inner">
-        <p class="section-label">Free first video</p>
         <h1 class="ap-headline">Your first video, <span class="gradient-text">free</span>.</h1>
         <p class="ap-sub">
           Tell us where to find your channel, or link a recent video. If you talk to camera and your
