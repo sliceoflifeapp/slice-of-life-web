@@ -290,6 +290,34 @@
     @media (prefers-reduced-motion: reduce) {
       .lp-cta-big::after { animation: none; opacity: 0; }
     }
+    .lp-objections {
+      list-style: none;
+      margin: 30px 0 0;
+      padding: 22px 0 0;
+      border-top: 1px solid var(--white-10);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+    .lp-objections li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--white-80);
+    }
+    .lp-objections li::before {
+      content: '';
+      flex: 0 0 auto;
+      width: 7px;
+      height: 7px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: var(--blue-muted);
+    }
+    .lp-objections strong { color: var(--white); font-weight: 700; }
     .lp-proof-strip { margin-top: 40px; }
     .lp-proof-tag { display: block; margin-bottom: 0; }
     .lp-proof-strip .case-study-strip-inner { flex-wrap: wrap; }
@@ -323,9 +351,7 @@
     .lp-footer-sep { margin: 0 8px; }
 
     @media (max-width: 900px) {
-      /* 26px, not 32: enough to lift the form label into the last sliver of a
-         375x812 screen, so the first screen is not all credibility and no ask. */
-      .lp-hero { flex-direction: column; gap: 26px; min-height: 0; padding-top: 24px; }
+      .lp-hero { flex-direction: column; gap: 32px; min-height: 0; padding-top: 24px; }
       .lp-hero-copy, .lp-hero-mockup { max-width: 100%; }
       .lp-hero-mockup { flex: none; width: 100%; }
       .lp-headline { font-size: 43px; }
@@ -339,115 +365,19 @@
     .fv-note a { color: var(--white-55); text-decoration: none; }
     .fv-note a:hover { color: var(--blue-muted); }
     .lp-hero-copy { text-align: left; }
-    /* 540px is the headline block's own width, so the sub breaks with the
-       headline instead of orphaning "of experience." onto a second line. */
-    .lp-sub { margin-left: 0; margin-right: 0; max-width: 540px; }
+    .lp-sub { margin-left: 0; margin-right: 0; }
     @media (max-width: 900px) {
       .fv-form-col { max-width: 100%; width: 100%; flex: none; }
       .lp-hero-copy { text-align: left; }
-      /* Stacked: headline, the credential line, who is doing the work, then the
-         ask. A Search ad is a headline and 90 characters, so a visitor arriving
-         from one has not already heard the pitch; with the form first it was the
-         very first thing on screen. display:contents lifts the copy block's
-         children into the hero flex container so they can be ordered
-         independently. The hero's 32px gap does the spacing, so the stacked
-         margins are zeroed. */
+      /* Stacked, the form should come before the objections: this page is only
+         reached from the ad, so the visitor has already heard the pitch and the
+         objections read better as reassurance after the ask than as a preamble
+         to it. display:contents lifts the copy block's children into the hero
+         flex container so they can be ordered independently. */
       .lp-hero-copy { display: contents; }
-      .lp-headline { order: 1; }
-      .lp-sub      { order: 2; margin-bottom: 0; }
-      /* Ordering only. .fv-bio's base rule is declared further down the
-         sheet, so spacing overrides lose to it from here and live at the
-         bottom instead. */
-      .fv-bio      { order: 3; }
-      .fv-form-col { order: 4; }
-    }
-
-    /* ── The editor, in the hero's left column ──────────────────────────────
-       Headshot, one line, and the reel — the slot the bullets used to hold. */
-    .fv-bio {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-top: 28px;
-      padding-top: 22px;
-      border-top: 1px solid var(--white-10);
-      text-align: left;
-    }
-    .fv-bio-head { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 15px; }
-    .fv-reel-col { flex: 0 0 auto; width: 190px; }
-    .fv-bio-face {
-      flex: 0 0 auto;
-      width: 54px; height: 54px;
-      border-radius: 50%;
-      background: #0B1E33;
-      border: 1px solid rgba(120,185,255,0.22);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.4);
-    }
-    .fv-bio-text {
-      font-size: 14.5px;
-      line-height: 1.6;
-      color: var(--white-80);
-      margin: 0;
-    }
-    .fv-offer {
-      margin: 14px 0 0;
-      font-size: 13px;
-      line-height: 1.55;
-      color: var(--white-80);
-      text-align: center;
-    }
-    .fv-reel {
-      display: block;
-      position: relative;
-      width: 100%;
-      /* Supporting evidence, not the offer: at full column width this was wider
-         than the form beside it and read as the main event. */
-      max-width: 250px;
-      padding: 0;
-      aspect-ratio: 16 / 9;
-      border-radius: 14px;
-      overflow: hidden;
-      cursor: pointer;
-      background: #061422;
-      border: 1px solid rgba(255,255,255,0.09);
-      box-shadow: 0 18px 44px rgba(0,0,0,0.36);
-      -webkit-appearance: none; appearance: none;
-    }
-    .fv-reel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .fv-reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    .fv-reel-play {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 36px; height: 36px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(50,110,225,0.92);
-      border: 1px solid rgba(160,205,255,0.5);
-      box-shadow: 0 10px 34px rgba(0,0,0,0.5), 0 0 0 10px rgba(50,110,225,0.14);
-      color: #fff;
-      transition: transform 0.25s var(--ease-out), background 0.25s var(--ease-out);
-    }
-    .fv-reel-play svg { width: 15px; height: 15px; margin-left: 2px; }
-    .fv-reel:hover .fv-reel-play { transform: translate(-50%, -50%) scale(1.07); background: rgba(60,125,240,0.98); }
-    .fv-reel-cap {
-      max-width: 250px;
-      margin-top: 9px;
-      text-align: left;
-      /* 11.5px, not the site's usual 12.5: the full wording needs 199px and the
-         reel is 190. "before Slice of Life" is the part that says this is prior
-         client work rather than vlog samples, so the type gives way, not it. */
-      font-size: 11.5px;
-      letter-spacing: 0.02em;
-      color: var(--white-55);
-    }
-    /* These have to sit after .fv-bio's base rule to win it -- same specificity,
-       so it comes down to source order. */
-    @media (max-width: 900px) {
-      /* Stacked, the hero's own gap does this spacing. */
-      .fv-bio { margin-top: 0; }
-    }
-    @media (max-width: 640px) {
-      /* Three columns in ~330px leaves the bio line about 100px wide. Stack. */
-      .fv-bio { flex-direction: column; align-items: stretch; gap: 18px; padding-top: 18px; }
-      .fv-reel-col { width: 100%; }
+      .lp-headline   { order: 1; }
+      .fv-form-col   { order: 3; }
+      .lp-objections { order: 4; margin-top: 4px; }
     }
   </style>
   <!-- Meta Pixel -->
@@ -474,23 +404,11 @@
       <section class="lp-hero">
         <div class="lp-hero-copy">
           <h1 class="lp-headline">I&rsquo;ll edit your next vlog. <span class="gradient-text">Free</span>.</h1>
-          <p class="lp-sub">A vlog editing agency founded after 10 years of&nbsp;experience.</p>
-          <div class="fv-bio">
-            <div class="fv-bio-head">
-              <img class="fv-bio-face" src="assets/showcase/nathan.png?v=1"
-                   alt="Nathan Griffey, founder and editor at Slice of Life" width="560" height="560" loading="lazy">
-              <p class="fv-bio-text">I&rsquo;m Nathan. Documentaries, weddings and commercials before this &mdash; now I cut&nbsp;vlogs.</p>
-            </div>
-            <div class="fv-reel-col">
-              <button class="fv-reel" id="fv-reel" type="button" aria-label="Play the reel">
-                <img src="assets/showcase/reel-poster.jpg?v=1" alt="" width="1280" height="720" loading="lazy">
-                <span class="fv-reel-play" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
-                </span>
-              </button>
-              <p class="fv-reel-cap">Client work before Slice of&nbsp;Life.</p>
-            </div>
-          </div>
+          <ul class="lp-objections">
+            <li><span><strong>Why it&rsquo;s free.</strong> Slice of Life is a brand new company, so I&rsquo;m looking for a few talented creators to feature as case studies on my site.</span></li>
+            <li><span><strong>What you get.</strong> A finished vlog, and I&rsquo;ll even throw in some Shorts cut from the same footage.</span></li>
+            <li><span><strong>Who it&rsquo;s for.</strong> If editing is the thing keeping you from posting more, that&rsquo;s exactly who I want to hear from.</span></li>
+          </ul>
         </div>
 
         <div class="fv-form-col">
@@ -532,7 +450,6 @@
             <p class="ap-done-p">We&rsquo;ll take a look and reply within a day. If it&rsquo;s a fit, we&rsquo;ll set up your upload folder and cut your next&nbsp;video.</p>
           </div>
           </div>
-          <p class="fv-offer">A finished vlog and Shorts &mdash; not a sample. Free, because I&rsquo;m building case&nbsp;studies.</p>
           <p class="fv-note">Or email <a href="mailto:sliceoflifetech@gmail.com">sliceoflifetech@gmail.com</a> directly.</p>
         </div>
       </section>
@@ -677,22 +594,6 @@
             posthog.capture('apply_submit_failed', { reason: 'network' });
           });
       });
-    })();
-
-    // ── Reel ────────────────────────────────────────────────────────────────
-    // The iframe is injected on click, so the page makes no Vimeo request on
-    // load and the poster stays a plain image until someone asks for it.
-    (function () {
-      var reel = document.getElementById('fv-reel');
-      if (!reel) return;
-      reel.addEventListener('click', function () {
-        reel.innerHTML = '<iframe src="https://player.vimeo.com/video/1220975504?badge=0&autopause=0&autoplay=1" ' +
-          'title="Nathan Griffey — video editing reel" allow="autoplay; fullscreen; picture-in-picture" ' +
-          'allowfullscreen></iframe>';
-        // Same event name as /services; posthog.register already stamps every
-        // event on this page with page_variant, so the two stay distinguishable.
-        if (window.posthog) posthog.capture('services_reel_play');
-      }, { once: true });
     })();
   </script>
 </body>
