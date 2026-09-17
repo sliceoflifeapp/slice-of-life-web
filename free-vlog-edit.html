@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Resource hints. This page is reached from a paid ad and is ~91% mobile, so
+       a cold cellular connection is the common case. Preconnect warms the DNS +
+       TCP + TLS handshake for the tag origins below before they ask for it; the
+       font is otherwise only discovered once style.css has been parsed. Only the
+       latin subset is preloaded -- latin-ext never matches English copy. -->
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="preload" href="/assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
+
   <!-- Google tag (gtag.js) -->
   <!-- Advertising consent gate. Visitors in the EU, UK and EEA are not shown a
        consent banner, so rather than set advertising cookies without consent we
