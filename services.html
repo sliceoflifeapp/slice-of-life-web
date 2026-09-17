@@ -330,6 +330,27 @@
       transition: color .2s cubic-bezier(0.23,1,0.32,1), border-color .2s cubic-bezier(0.23,1,0.32,1);
     }
     .svc-diy-cta:hover { color: #A8D0FF; border-color: rgba(168,208,255,0.6); }
+    /* Restored under the line rather than beside it -- the copy is one sentence
+       now, so a two-column row would leave the text stranded next to a tall
+       image. Square frame, square shots, so object-fit never crops. */
+    .svc-diy-slides {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      width: 100%; max-width: 280px;
+      margin: 26px auto 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(120,185,255,0.15);
+    }
+    .svc-diy-slide {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s var(--ease-out);
+    }
+    .svc-diy-slide.is-active { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) { .svc-diy-slide { transition: none; } }
 
     /* Price-objection catch, directly under the three plans. Deliberately
        quieter than the cards above so it reads as a different kind of option
@@ -904,6 +925,14 @@
           Rather cut them yourself? It&rsquo;s the same Mac app we run on client&nbsp;work &mdash; $99 a&nbsp;month.
           <a href="/" class="svc-diy-cta" id="svc-diy-cta">See the Mac app <span aria-hidden="true">&rarr;</span></a>
         </p>
+        <div class="svc-diy-slides" id="svc-diy-slides" data-reveal>
+          <img class="svc-diy-slide is-active" src="assets/hero-shot-home.jpg" width="1300" height="1298" loading="lazy"
+               alt="The Slice of Life home screen, ready to build a Slice from a day of footage" />
+          <img class="svc-diy-slide" src="assets/hero-shot-configure.jpg" width="1295" height="1300" loading="lazy"
+               alt="The Slice of Life configure screen, setting pacing, captions and orientation" />
+          <img class="svc-diy-slide" src="assets/hero-shot-review.jpg" width="1296" height="1300" loading="lazy"
+               alt="The Slice of Life review screen, fine-tuning the cut before it renders" />
+        </div>
       </div>
     </section>
 
@@ -1073,6 +1102,31 @@
         posthog.capture('services_inquiry_click', { tier: el.dataset.cta });
       });
     });
+    // The slideshow sits near the bottom of the page, so it only starts once it
+    // is actually on screen -- no timer running against images the browser has
+    // not lazily fetched yet.
+    (function () {
+      var wrap = document.getElementById('svc-diy-slides');
+      if (!wrap) return;
+      var slides = wrap.querySelectorAll('.svc-diy-slide');
+      if (slides.length < 2) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      function rotate() {
+        var i = 0;
+        setInterval(function () {
+          slides[i].classList.remove('is-active');
+          i = (i + 1) % slides.length;
+          slides[i].classList.add('is-active');
+        }, 3500);
+      }
+      if (!('IntersectionObserver' in window)) { rotate(); return; }
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (e) { return e.isIntersecting; })) return;
+        io.disconnect();
+        rotate();
+      }, { rootMargin: '200px' });
+      io.observe(wrap);
+    })();
     var diy = document.getElementById('svc-diy-cta');
     if (diy) diy.addEventListener('click', function () { posthog.capture('services_diy_click'); });
 

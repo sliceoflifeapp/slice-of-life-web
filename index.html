@@ -246,6 +246,29 @@
   }
   </script>
   <!-- End Meta Pixel -->
+  <style>
+    /* Services upsell under the plan. The mirror of the $99 app block on
+       /services -- each side catches the person the other cannot serve.
+       Deliberately quieter than the pricing card above it. */
+    .app-alt {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; max-width: 760px; margin: 30px auto 0;
+      padding: 22px 26px; border-radius: 14px;
+      background: #061422; border: 1px solid rgba(255,255,255,0.07);
+      text-align: left;
+    }
+    .app-alt-q { font-size: 17px; font-weight: 700; margin: 0 0 6px; }
+    .app-alt-p { font-size: 14px; line-height: 1.65; color: var(--white-55); margin: 0; }
+    .app-alt-buy { flex: 0 0 auto; text-align: right; }
+    .app-alt-hook { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+    .app-alt-from { display: block; font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .app-alt-cta { display: inline-flex; margin-top: 12px; }
+    @media (max-width: 700px) {
+      /* Stacked, there is no facing edge to right-align against. */
+      .app-alt { flex-direction: column; align-items: flex-start; gap: 18px; }
+      .app-alt-buy { text-align: left; }
+    }
+  </style>
 </head>
 <body>
 
@@ -780,6 +803,17 @@
       </div>
 
       <p class="pricing-footnote">Cancel anytime — you keep access to the end of your billing period. Annual billing is available at checkout: $990 a year, two months free. Requires a Mac with Apple Silicon (M1 or later) running macOS 13 or newer.</p>
+
+      <div class="app-alt" data-reveal>
+        <div class="app-alt-copy">
+          <p class="app-alt-q">Rather not edit at all?</p>
+          <p class="app-alt-p">Send us the footage and a videographer cuts it for you &mdash; finished vlog back in about a&nbsp;week.</p>
+        </div>
+        <div class="app-alt-buy">
+          <div><span class="app-alt-hook">First video free</span><span class="app-alt-from">Plans from $595/month</span></div>
+          <a href="/services" class="nav-cta app-alt-cta">See editing services &rarr;</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1030,6 +1064,13 @@
       if (el.classList.contains('companion-appstore-btn')) return;
       el.addEventListener('click', function() {
         posthog.capture('buy_click', { label: el.innerText.trim() });
+      });
+    });
+
+    // Track the services upsell under the pricing card
+    document.querySelectorAll('.app-alt-cta').forEach(function(el) {
+      el.addEventListener('click', function() {
+        posthog.capture('services_upsell_click');
       });
     });
 
