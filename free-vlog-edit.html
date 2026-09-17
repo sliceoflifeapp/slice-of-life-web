@@ -361,7 +361,23 @@
     .fv-form-col { flex: 1 1 430px; max-width: 520px; }
     .fv-form-col .ap-form-wrap { max-width: none; margin: 0; }
     .fv-form-label { display: block; margin-bottom: 12px; text-align: left; }
-    .fv-note { margin: 14px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--white-30); text-align: center; }
+    .fv-sig {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 16px 0 0;
+      font-size: 13px;
+      color: var(--white-80);
+    }
+    .fv-sig-face {
+      flex: 0 0 auto;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #0B1E33;
+      border: 1px solid rgba(120,185,255,0.22);
+    }
+    .fv-note { margin: 10px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--white-30); text-align: center; }
     .fv-note a { color: var(--white-55); text-decoration: none; }
     .fv-note a:hover { color: var(--blue-muted); }
     .lp-hero-copy { text-align: left; }
@@ -450,6 +466,11 @@
             <p class="ap-done-p">We&rsquo;ll take a look and reply within a day. If it&rsquo;s a fit, we&rsquo;ll set up your upload folder and cut your next&nbsp;video.</p>
           </div>
           </div>
+          <p class="fv-sig">
+            <!-- alt="" on purpose: the name is in the text beside it. -->
+            <img class="fv-sig-face" src="assets/showcase/nathan.png?v=1" alt="" width="560" height="560" loading="lazy">
+            <span>I&rsquo;ll watch it myself. &mdash;&nbsp;Nathan</span>
+          </p>
           <p class="fv-note">Or email <a href="mailto:sliceoflifetech@gmail.com">sliceoflifetech@gmail.com</a> directly.</p>
         </div>
       </section>
