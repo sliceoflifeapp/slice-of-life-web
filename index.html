@@ -78,6 +78,16 @@
     .lp-cta-row[hidden],
     .handoff[hidden],
     .handoff-row[hidden] { display: none; }
+
+    .handoff-toggle { margin: 14px 0 0; }
+    .handoff-toggle-btn {
+      background: none; border: 0; padding: 0;
+      font-family: 'Montserrat', sans-serif; font-size: 14px;
+      color: var(--blue-muted); text-decoration: underline;
+      text-underline-offset: 3px; cursor: pointer;
+    }
+    .handoff-toggle-btn:hover { color: var(--blue-bright); }
+    .handoff-toggle[hidden] { display: none; }
     .handoff { max-width: 440px; }
     .handoff-lead { margin: 0 0 14px; font-size: 15px; line-height: 1.5; color: var(--white-55); }
     .handoff-row { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -349,6 +359,10 @@
         <span class="hero-req">7-day free trial, then $99/mo · Card required · Apple Silicon, macOS 13+</span>
       </div>
 
+
+        <p class="handoff-toggle" id="handoff-toggle" hidden>
+          <button type="button" class="handoff-toggle-btn" id="handoff-toggle-btn">Not at your Mac? Email yourself the link.</button>
+        </p>
         <!-- Mac handoff. Hidden by default; the script reveals it only where the
              app cannot be installed. -->
         <form class="handoff" id="handoff" hidden>
@@ -364,39 +378,47 @@
 
       <script>
       // ── Mac handoff ──────────────────────────────────────────────────────
-      // Every Meta ad visitor so far has been on mobile, and the app is Apple
-      // Silicon only. Sending them to checkout sells a $99 licence they cannot
-      // install, which is the documented refund risk. So on a device that
-      // cannot run it, swap the trial CTA for an email handoff instead.
+      // A phone visitor can still buy: /download is what tells them to finish
+      // on their Mac. So the trial CTA STAYS on mobile, and this is only the
+      // fallback for someone who is not buying today. Never let it replace the
+      // primary action — a subscription is worth more than an email address.
       (function () {
-        var form = document.getElementById('handoff');
-        var cta  = document.getElementById('hero-actions');
-        if (!form || !cta) return;
+        var form   = document.getElementById('handoff');
+        var toggle = document.getElementById('handoff-toggle');
+        var cta    = document.getElementById('hero-actions');
+        if (!form || !toggle || !cta) return;
 
         // iPadOS reports itself as MacIntel, so the touch-point check is the
-        // only thing that catches an iPad. Without it an iPad gets the Mac CTA.
+        // only thing that catches an iPad.
         var ua = navigator.userAgent || '';
         var iPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
         if (!/iPhone|iPod|iPad|Android/i.test(ua) && !iPadOS) return;
 
-        cta.hidden = true;
-        form.hidden = false;
-        if (typeof posthog !== 'undefined') posthog.capture('mac_handoff_shown');
+        var input  = document.getElementById('handoff-email');
+        var btn    = document.getElementById('handoff-submit');
+        var msg    = document.getElementById('handoff-msg');
+        var row    = document.getElementById('handoff-row');
+        var lead   = form.querySelector('.handoff-lead');
+        var tbtn   = document.getElementById('handoff-toggle-btn');
 
-        var input = document.getElementById('handoff-email');
-        var btn   = document.getElementById('handoff-submit');
-        var msg   = document.getElementById('handoff-msg');
-        var row   = document.getElementById('handoff-row');
-        var lead  = form.querySelector('.handoff-lead');
+        toggle.hidden = false;
+        if (typeof posthog !== 'undefined') posthog.capture('mac_handoff_offered');
+
+        tbtn.addEventListener('click', function () {
+          toggle.hidden = true;
+          form.hidden = false;
+          input.focus();
+          if (typeof posthog !== 'undefined') posthog.capture('mac_handoff_opened');
+        });
 
         function say(text, ok) {
-          msg.textContent = text;                       // textContent, never innerHTML — this interpolates an address
+          msg.textContent = text;                  // textContent, never innerHTML — this interpolates an address
           msg.className = 'handoff-msg ' + (ok ? 'is-ok' : 'is-err');
         }
         function fail(text, reason) {
           say(text, false);
           btn.disabled = false;
-          btn.textContent = 'Send it to my Mac';        // must match the markup label above
+          btn.textContent = 'Send it to my Mac';   // must match the markup label
           if (typeof posthog !== 'undefined') posthog.capture('mac_handoff_failed', { reason: reason || 'unknown' });
         }
 
@@ -404,10 +426,8 @@
           e.preventDefault();
           var email = (input.value || '').trim();
           if (!email) return fail('Enter your email and we will send the link.', 'validation:email-empty');
-
           btn.disabled = true;
           btn.textContent = 'Sending…';
-
           fetch('https://gather-proxy.sliceoflifeapp.workers.dev/waitlist', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -416,8 +436,7 @@
             .then(function (r) { return r.json(); })
             .then(function (d) {
               if (d && d.ok) {
-                row.hidden = true;
-                lead.hidden = true;
+                row.hidden = true; lead.hidden = true;
                 say('Got it. We will email the link to ' + email + ' — open it on your Mac.', true);
                 if (typeof posthog !== 'undefined') posthog.capture('mac_handoff_submitted');
               } else {
@@ -425,9 +444,7 @@
                 fail(m || 'Something went wrong — email sliceoflifetech@gmail.com instead.', m || 'server');
               }
             })
-            .catch(function () {
-              fail('Could not reach us just now — email sliceoflifetech@gmail.com instead.', 'network');
-            });
+            .catch(function () { fail('Could not reach us just now — email sliceoflifetech@gmail.com instead.', 'network'); });
         });
       })();
       </script>

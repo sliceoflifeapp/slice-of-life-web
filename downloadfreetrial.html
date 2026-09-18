@@ -306,6 +306,27 @@
     .back-link:hover {
       color: rgba(255,255,255,0.60);
     }
+    /* ── Phone visitor ────────────────────────────────────────────────────
+       Revealed by the script at the end of the body. A .dmg button and four
+       "drag it to Applications" steps are useless on a phone, and this page
+       is the first thing someone sees after paying. */
+    .mac-note {
+      text-align: left;
+      background: rgba(74,143,255,0.09);
+      border: 1px solid var(--blue-border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 0 0 22px;
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--white-80);
+    }
+    .mac-note strong { display: block; color: var(--white); margin-bottom: 5px; font-size: 15.5px; }
+    .mac-note-url { color: var(--blue-muted); white-space: nowrap; }
+    .mac-note[hidden] { display: none; }
+    /* Hidden on a phone: both are actively misleading there. */
+    .download-btn[hidden], .download-version[hidden] { display: none; }
+
   </style>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href="https://sliceoflife-app.com/downloadfreetrial" />
@@ -342,6 +363,11 @@
         </button>
       </div>
 
+      <div class="mac-note" id="mac-note" hidden>
+        <strong>Finish this on your Mac.</strong>
+        Slice of Life installs on an Apple&nbsp;Silicon Mac, so there is nothing to download here.
+        Your licence key and this link are both in your email — open <span class="mac-note-url">sliceoflife-app.com/download</span> on your Mac when you get to it.
+      </div>
       <a href="https://github.com/sliceoflifeapp/slice-of-life-releases/releases/latest/download/Slice-of-Life.dmg" class="download-btn">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Download Slice of Life
@@ -469,5 +495,27 @@
        <script>window.lemonSqueezyAffiliateConfig = { store: "sliceoflife" };</script>
        <script src="https://lmsqueezy.com/affiliate.js" defer></script>
   -->
+  <script>
+    // A phone buyer lands here straight after paying. The DMG button does
+    // nothing useful on a phone and the setup steps are all Mac steps, so swap
+    // in a note pointing at their email instead. The licence card stays — it is
+    // genuinely useful to copy the key somewhere before switching devices.
+    (function () {
+      var note = document.getElementById('mac-note');
+      if (!note) return;
+      var ua = navigator.userAgent || '';
+      var iPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+      if (!/iPhone|iPod|iPad|Android/i.test(ua) && !iPadOS) return;
+
+      note.hidden = false;
+      var btn = document.querySelector('.download-btn');
+      var ver = document.querySelector('.download-version');
+      if (btn) btn.hidden = true;
+      if (ver) ver.hidden = true;
+      var sub = document.getElementById('dl-sub');
+      if (sub) sub.textContent = 'Your license key is in your email.';
+      if (typeof posthog !== 'undefined') posthog.capture('download_mobile_gate_shown');
+    })();
+  </script>
 </body>
 </html>
