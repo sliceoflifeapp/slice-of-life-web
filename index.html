@@ -98,9 +98,12 @@
     }
     .handoff-toggle-btn:hover { color: var(--blue-bright); }
     .handoff-toggle[hidden] { display: none; }
-    .handoff { max-width: 440px; }
+    .handoff { max-width: 440px; margin-inline: auto; }
     .handoff-lead { margin: 0 0 14px; font-size: 15px; line-height: 1.5; color: var(--white-55); }
-    .handoff-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    /* Centred to match the hero, which centres everything at phone width. Once
+       the row wraps, the button sizes to its content and would otherwise sit
+       hard left under a full-width input. */
+    .handoff-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
     .handoff-input {
       /* 16px is load-bearing: iOS Safari and WKWebView zoom the whole page when
          you focus an input under 16px. Same rule as .ap-input. Do not lower it. */
