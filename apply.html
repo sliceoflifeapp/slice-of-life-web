@@ -367,11 +367,21 @@
       if (!form) return;
 
       function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
-      function fail(msg) {
+      // Every failed submit goes through here, and every call passes a reason.
+      // A validation bounce used to return before any capture ran, so the most
+      // common failure -- tapping the button with an empty field -- was the one
+      // failure PostHog never saw. Do not add a fail path that skips this.
+      function fail(msg, reason) {
         errEl.textContent = msg;
         errEl.classList.add('show');
         btn.disabled = false;
         btn.textContent = 'Get my first video free';
+        // Guarded like gtag/fbq below: an ad blocker can strip posthog, and this
+        // runs inside the form's error path, where a throw would swallow the
+        // message the person needs to see.
+        if (typeof posthog !== 'undefined') {
+          posthog.capture('apply_submit_failed', { reason: reason || 'unknown' });
+        }
       }
 
       // Where they came from, captured silently so a paid-traffic inquiry is
@@ -392,7 +402,7 @@
 
         // Mirror the server's required set so a mistake is caught before a
         // round trip. The server re-checks all of it regardless.
-        if (!val('ap-email')) return fail('Enter your email so we can reply.');
+        if (!val('ap-email')) return fail('Enter your email so we can reply.', 'validation:email-empty');
 
         var payload = {
           name:     val('ap-name'),
@@ -434,13 +444,11 @@
               // (an error object from a proxy, say) would otherwise render to
               // the user as "[object Object]".
               var msg = (d && typeof d.error === 'string') ? d.error : '';
-              fail(msg || 'Something went wrong — email us directly instead.');
-              posthog.capture('apply_submit_failed', { reason: msg || 'unknown' });
+              fail(msg || 'Something went wrong — email us directly instead.', msg || 'server');
             }
           })
           .catch(function () {
-            fail('Could not reach us just now — email sliceoflifetech@gmail.com instead.');
-            posthog.capture('apply_submit_failed', { reason: 'network' });
+            fail('Could not reach us just now — email sliceoflifetech@gmail.com instead.', 'network');
           });
       });
     })();
