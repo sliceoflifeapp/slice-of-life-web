@@ -227,6 +227,14 @@
        Revealed by the script below ONLY on a device that cannot install the
        app. Default state is hidden, so a Mac visitor — or anyone with JS off —
        always gets the trial button instead. Never make this the default. */
+
+    /* The hidden attribute loses to any explicit display rule, and each of
+       these sets one, so hiding them by attribute alone leaves them on screen.
+       Found by looking: the trial button rendered right next to the handoff. */
+    .hero-actions[hidden],
+    .lp-cta-row[hidden],
+    .handoff[hidden],
+    .handoff-row[hidden] { display: none; }
     .handoff { max-width: 440px; }
     .handoff-lead { margin: 0 0 14px; font-size: 15px; line-height: 1.5; color: var(--white-55); }
     .handoff-row { display: flex; gap: 10px; flex-wrap: wrap; }
