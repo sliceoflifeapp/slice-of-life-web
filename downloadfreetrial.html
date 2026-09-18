@@ -323,6 +323,9 @@
     }
     .mac-note strong { display: block; color: var(--white); margin-bottom: 5px; font-size: 15.5px; }
     .mac-note[hidden] { display: none; }
+    .mac-note-link { color: var(--blue-muted); text-decoration: underline; text-underline-offset: 2px; }
+    #win-note[hidden] { display: none; }
+
     /* Hidden on a phone: both are actively misleading there. */
     .download-btn[hidden], .download-version[hidden] { display: none; }
 
@@ -362,6 +365,10 @@
         </button>
       </div>
 
+      <div class="mac-note" id="win-note" hidden>
+        <strong>Slice of Life is Mac only.</strong>
+        There&rsquo;s no Windows version yet. <a href="/waitlist" class="mac-note-link">Join the waitlist</a> and we&rsquo;ll email you the moment there is.
+      </div>
       <div class="mac-note" id="mac-note" hidden>
         <strong>Finish this on your Mac.</strong>
         Slice of Life doesn&rsquo;t run on a phone. Your license key and the download link are in your email.
@@ -513,6 +520,24 @@
       var sub = document.getElementById('dl-sub');
       if (sub) sub.textContent = 'Your license key is in your email.';
       if (typeof posthog !== 'undefined') posthog.capture('download_mobile_gate_shown');
+    })();
+  </script>
+  <script>
+    // Windows visitor on the post-purchase page. Different from the phone note:
+    // they cannot finish later on a Mac because they do not have one.
+    (function () {
+      var note = document.getElementById('win-note');
+      if (!note) return;
+      var ua = navigator.userAgent || '';
+      var iPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+      if (/iPhone|iPod|iPad|Android/i.test(ua) || iPadOS) return;
+      if (!/Windows|Win32|Win64|CrOS|Linux/i.test(ua)) return;
+      note.hidden = false;
+      var btn = document.querySelector('.download-btn');
+      var ver = document.querySelector('.download-version');
+      if (btn) btn.hidden = true;
+      if (ver) ver.hidden = true;
+      if (typeof posthog !== 'undefined') posthog.capture('download_windows_gate_shown');
     })();
   </script>
 </body>

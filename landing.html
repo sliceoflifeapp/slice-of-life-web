@@ -236,6 +236,16 @@
     .handoff[hidden],
     .handoff-row[hidden] { display: none; }
 
+
+    /* ── Windows / Linux visitor ──────────────────────────────────────────
+       Opposite treatment to the phone handoff, deliberately. A phone visitor
+       has the wrong MOMENT and almost certainly owns a Mac, so they keep the
+       CTA. A Windows visitor has the wrong MACHINE and never will, so selling
+       them a subscription is a guaranteed refund. They lose the CTA. */
+    .winnote { max-width: 460px; }
+    .winnote-lead { margin: 0 0 16px; font-size: 15.5px; line-height: 1.55; color: var(--white-80); }
+    .winnote-lead strong { color: var(--white); display: block; margin-bottom: 4px; }
+    .winnote[hidden] { display: none; }
     .handoff-toggle { margin: 14px 0 0; }
     .handoff-toggle-btn {
       background: none; border: 0; padding: 0;
@@ -307,6 +317,11 @@
           </div>
 
 
+
+        <div class="winnote" id="winnote" hidden>
+          <p class="winnote-lead"><strong>Slice of Life is Mac only.</strong>There&rsquo;s no Windows version yet. Join the waitlist and we&rsquo;ll email you the moment there is.</p>
+          <a href="/waitlist" class="btn-primary winnote-btn" id="winnote-btn">Join the Windows waitlist</a>
+        </div>
         <p class="handoff-toggle" id="handoff-toggle" hidden>
           <button type="button" class="handoff-toggle-btn" id="handoff-toggle-btn">Not at your Mac? Email yourself the link.</button>
         </p>
@@ -392,6 +407,48 @@
               }
             })
             .catch(function () { fail('Could not reach us just now — email sliceoflifetech@gmail.com instead.', 'network'); });
+        });
+      })();
+      </script>
+      <script>
+      // ── Windows / Linux gate ─────────────────────────────────────────────
+      // Not the same problem as the phone handoff, and not the same answer.
+      // A phone visitor is at the wrong moment and keeps the trial CTA. A
+      // Windows visitor is on a machine that will never run this, so a sale is
+      // a refund waiting to happen. Send them to the waitlist instead.
+      //
+      // Intel Macs are NOT detectable: Safari on Apple Silicon reports
+      // "Macintosh; Intel Mac OS X" for compatibility, so an M1 and a 2018
+      // MacBook look identical here. That stays a copy problem.
+      (function () {
+        var note = document.getElementById('winnote');
+        var cta  = document.getElementById('lp-cta-row');
+        if (!note || !cta) return;
+
+        var ua = navigator.userAgent || '';
+        // Mobile first: an Android userAgent contains "Linux", so this order
+        // matters. Phones are handled by the handoff, not by this.
+        var iPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+        if (/iPhone|iPod|iPad|Android/i.test(ua) || iPadOS) return;
+        if (!/Windows|Win32|Win64|CrOS|Linux/i.test(ua)) return;   // Mac, and anything unrecognised, keeps the CTA
+
+        cta.hidden = true;
+        note.hidden = false;
+
+        // Every other checkout link on the page leaks past the hero, so point
+        // them all at the waitlist too. Replace the label text only — these
+        // buttons carry an inline SVG that must survive.
+        Array.prototype.forEach.call(document.querySelectorAll('a[href*="lemonsqueezy"]'), function (a) {
+          a.setAttribute('href', '/waitlist');
+          Array.prototype.forEach.call(a.childNodes, function (n) {
+            if (n.nodeType === 3 && n.textContent.trim()) n.textContent = ' Join the Windows waitlist ';
+          });
+        });
+
+        if (typeof posthog !== 'undefined') posthog.capture('windows_gate_shown');
+        var wb = document.getElementById('winnote-btn');
+        if (wb) wb.addEventListener('click', function () {
+          if (typeof posthog !== 'undefined') posthog.capture('windows_waitlist_click');
         });
       })();
       </script>
