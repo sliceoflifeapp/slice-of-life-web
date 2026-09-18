@@ -64,6 +64,39 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="stylesheet" href="css/style.css?v=23" />
+
+  <style>
+    /* ── Mac handoff ──────────────────────────────────────────────────────
+       Revealed by the script below ONLY on a device that cannot install the
+       app. Default state is hidden, so a Mac visitor — or anyone with JS off —
+       always gets the trial button instead. Never make this the default. */
+    .handoff { max-width: 440px; }
+    .handoff-lead { margin: 0 0 14px; font-size: 15px; line-height: 1.5; color: var(--white-55); }
+    .handoff-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .handoff-input {
+      /* 16px is load-bearing: iOS Safari and WKWebView zoom the whole page when
+         you focus an input under 16px. Same rule as .ap-input. Do not lower it. */
+      font-size: 16px;
+      /* Explicit basis, never 0 — a 0 basis collapses to nothing once the row
+         wraps to a column. This has bitten this codebase three times. */
+      flex: 1 1 210px;
+      min-width: 0;
+      padding: 12px 15px;
+      background: var(--white-06);
+      border: 1px solid var(--white-10);
+      border-radius: 10px;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .handoff-input::placeholder { color: var(--white-30); }
+    .handoff-input:focus { border-color: var(--blue-border); background: var(--white-10); }
+    .handoff-btn { flex: 0 0 auto; }
+    .handoff-msg { margin: 10px 0 0; font-size: 13.5px; line-height: 1.5; }
+    .handoff-msg.is-err { color: #FF9A8B; }
+    .handoff-msg.is-ok  { color: var(--blue-muted); }
+  </style>
   <link rel="canonical" href="https://sliceoflife-app.com/" />
   <script type="application/ld+json">
 {
@@ -300,13 +333,96 @@
       <p class="hero-sub">
         Vlog editing software for Mac, for people who'd rather be filming than editing. Drop in a day of footage: it finds every moment you talked to camera, cuts your b-roll in around it, and hands you a vlog ready to upload.
       </p>
-      <div class="hero-actions">
+      <div class="hero-actions" id="hero-actions">
         <a href="https://sliceoflife.lemonsqueezy.com/checkout/buy/cc7ad69b-5586-4642-bc15-ba65c8564869" class="btn-primary">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Start free trial
         </a>
         <span class="hero-req">7-day free trial, then $99/mo · Card required · Apple Silicon, macOS 13+</span>
       </div>
+
+        <!-- Mac handoff. Hidden by default; the script reveals it only where the
+             app cannot be installed. -->
+        <form class="handoff" id="handoff" hidden>
+          <p class="handoff-lead">Slice of Life runs on an Apple&nbsp;Silicon Mac. Send yourself the link and pick it up there.</p>
+          <div class="handoff-row" id="handoff-row">
+            <input class="handoff-input" id="handoff-email" type="email" name="email" placeholder="you@email.com"
+                   required autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off"
+                   spellcheck="false" maxlength="254" />
+            <button class="btn-primary handoff-btn" id="handoff-submit" type="submit">Send it to my Mac</button>
+          </div>
+          <p class="handoff-msg" id="handoff-msg" role="status"></p>
+        </form>
+
+      <script>
+      // ── Mac handoff ──────────────────────────────────────────────────────
+      // Every Meta ad visitor so far has been on mobile, and the app is Apple
+      // Silicon only. Sending them to checkout sells a $99 licence they cannot
+      // install, which is the documented refund risk. So on a device that
+      // cannot run it, swap the trial CTA for an email handoff instead.
+      (function () {
+        var form = document.getElementById('handoff');
+        var cta  = document.getElementById('hero-actions');
+        if (!form || !cta) return;
+
+        // iPadOS reports itself as MacIntel, so the touch-point check is the
+        // only thing that catches an iPad. Without it an iPad gets the Mac CTA.
+        var ua = navigator.userAgent || '';
+        var iPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+        if (!/iPhone|iPod|iPad|Android/i.test(ua) && !iPadOS) return;
+
+        cta.hidden = true;
+        form.hidden = false;
+        if (typeof posthog !== 'undefined') posthog.capture('mac_handoff_shown');
+
+        var input = document.getElementById('handoff-email');
+        var btn   = document.getElementById('handoff-submit');
+        var msg   = document.getElementById('handoff-msg');
+        var row   = document.getElementById('handoff-row');
+        var lead  = form.querySelector('.handoff-lead');
+
+        function say(text, ok) {
+          msg.textContent = text;                       // textContent, never innerHTML — this interpolates an address
+          msg.className = 'handoff-msg ' + (ok ? 'is-ok' : 'is-err');
+        }
+        function fail(text, reason) {
+          say(text, false);
+          btn.disabled = false;
+          btn.textContent = 'Send it to my Mac';        // must match the markup label above
+          if (typeof posthog !== 'undefined') posthog.capture('mac_handoff_failed', { reason: reason || 'unknown' });
+        }
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = (input.value || '').trim();
+          if (!email) return fail('Enter your email and we will send the link.', 'validation:email-empty');
+
+          btn.disabled = true;
+          btn.textContent = 'Sending…';
+
+          fetch('https://gather-proxy.sliceoflifeapp.workers.dev/waitlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, source: 'mac-handoff' })
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+              if (d && d.ok) {
+                row.hidden = true;
+                lead.hidden = true;
+                say('Got it. We will email the link to ' + email + ' — open it on your Mac.', true);
+                if (typeof posthog !== 'undefined') posthog.capture('mac_handoff_submitted');
+              } else {
+                var m = (d && typeof d.error === 'string') ? d.error : '';
+                fail(m || 'Something went wrong — email sliceoflifetech@gmail.com instead.', m || 'server');
+              }
+            })
+            .catch(function () {
+              fail('Could not reach us just now — email sliceoflifetech@gmail.com instead.', 'network');
+            });
+        });
+      })();
+      </script>
     </div>
 
     <!-- App mockup -->
