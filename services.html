@@ -386,7 +386,18 @@
       background: #061422; border: 1px solid rgba(255,255,255,0.07);
     }
     .svc-alt-copy { min-width: 0; text-align: left; }
-    .svc-alt-q { font-size: 17px; font-weight: 700; margin: 0 0 6px; }
+    /* The one visual cue that this is a product, not another tier. The plan
+     cards above carry no imagery at all, so an icon marks the difference
+     without adding the weight a louder background or bigger type would. */
+  .svc-alt-icon {
+    flex: 0 0 auto;
+    width: 54px;
+    height: 54px;
+    border-radius: 13px;
+    align-self: center;
+    filter: drop-shadow(0 8px 20px rgba(74,143,255,0.28));
+  }
+  .svc-alt-q { font-size: 17px; font-weight: 700; margin: 0 0 6px; }
     .svc-alt-p { font-size: 14px; line-height: 1.65; color: var(--white-55); margin: 0; }
     .svc-alt-buy { flex: 0 0 auto; text-align: right; }
     .svc-alt-amount { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
@@ -878,6 +889,7 @@
         </div>
 
         <div class="svc-alt" data-reveal>
+          <img class="svc-alt-icon" src="assets/icon.png" alt="" width="128" height="128" loading="lazy">
           <div class="svc-alt-copy">
             <p class="svc-alt-q">Out of your price range?</p>
             <p class="svc-alt-p">Use the same software we use on client work. It runs on your Mac and builds the first cut for&nbsp;you.</p>
@@ -892,7 +904,7 @@
           <p class="section-label" style="text-align:center;">Every plan includes</p>
           <ul>
             <li>A full edit from your raw&nbsp;footage</li>
-            <li>Finished video back within a&nbsp;week</li>
+            <li>Finished video back in 24&nbsp;hours</li>
             <li>Branded motion graphics on every&nbsp;video</li>
             <li>Licensed music and sound&nbsp;design</li>
             <li>Color adjustments on every&nbsp;video</li>
