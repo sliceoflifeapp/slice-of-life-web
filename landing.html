@@ -548,5 +548,54 @@
       });
     });
   </script>
+  <script>
+    // ── Visible-time milestones ──────────────────────────────────────────────
+    // Measures how long the page was actually ON SCREEN, which is the one thing
+    // none of our other numbers can see:
+    //   $pageleave duration is wall-clock. It counts a tab left open in the
+    //   background — one visitor logged 26 minutes with 4 seconds of activity.
+    //   Session replay's active_seconds needs a client event, and on desktop an
+    //   idle mouse supplies one. A phone held still while someone reads produces
+    //   nothing at all, so a careful reader and an instant bounce both land on 0.
+    //   Scroll depth says nothing here either: the whole offer and the form sit
+    //   above the fold at 390x664, so not scrolling is the expected behaviour.
+    //
+    // Milestones fire as they are reached rather than on unload, because iOS
+    // Safari does not reliably fire unload or beforeunload — an end-of-visit
+    // event would go missing on exactly the traffic this exists to measure.
+    (function () {
+      if (typeof document.hidden === 'undefined') return;   // no Page Visibility API
+      var MILESTONES = [3, 10, 30];   // seconds of visible time
+      var visible = 0, since = null, hit = 0, timer = null;
+
+      function tally() {
+        if (since === null) return;
+        var now = Date.now();
+        visible += (now - since) / 1000;
+        since = now;
+        while (hit < MILESTONES.length && visible >= MILESTONES[hit]) {
+          var s = MILESTONES[hit];
+          hit++;
+          if (typeof posthog !== 'undefined') posthog.capture('page_visible', { seconds: s });
+        }
+        // Nothing left to reach — stop the timer rather than tick all session.
+        if (hit >= MILESTONES.length && timer) { clearInterval(timer); timer = null; }
+      }
+
+      function resume() {
+        if (since !== null || hit >= MILESTONES.length) return;
+        since = Date.now();
+        if (!timer) timer = setInterval(tally, 1000);
+      }
+      function pause() { tally(); since = null; }
+
+      if (!document.hidden) resume();
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) pause(); else resume();
+      });
+      // iOS fires pagehide where other browsers fire unload; harmless elsewhere.
+      window.addEventListener('pagehide', pause);
+    })();
+  </script>
 </body>
 </html>
