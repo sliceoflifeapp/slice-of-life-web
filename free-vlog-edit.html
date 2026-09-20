@@ -381,7 +381,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      margin: 16px 0 0;
+      margin: 10px 0 0;
       font-size: 13px;
       color: var(--white-80);
     }
@@ -392,6 +392,38 @@
       background: #0B1E33;
       border: 1px solid rgba(120,185,255,0.22);
     }
+    .fv-sig-text { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+    /* Google rating badge. Rating only, never the quotes: the 14 reviews are for
+       Nathan Griffey Videography (weddings, a non-profit, commercial work, all
+       3 years old), so they prove HE delivers, not that this service does. That
+       is why it sits with his bio and says "client reviews".
+       Deliberately hand-built, not a third-party widget: every Google-reviews
+       widget loads remote JS that sets its own cookies, which would sit outside
+       the __solAdsAllowed gate. Same reason Google Fonts was removed.
+       No aggregateRating JSON-LD anywhere for this - Google has treated
+       self-serving review markup under Organization/LocalBusiness as ineligible
+       since 2019, so it would be a policy hit for zero gain.
+       The count is hand-maintained. Update it here and in free-vlog-edit.html. */
+    .g-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 11px;
+      border: 1px solid rgba(120,185,255,0.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      font-size: 12.5px;
+      line-height: 1;
+      color: var(--white-80);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: border-color 0.25s var(--ease-out), background 0.25s var(--ease-out);
+    }
+    .g-rating:hover { border-color: var(--blue-border); background: rgba(255,255,255,0.06); }
+    .g-rating-g { width: 13px; height: 13px; flex: 0 0 auto; }
+    .g-rating-stars { width: 62px; height: 12px; flex: 0 0 auto; fill: #FBBC05; }
+    .g-rating-score { font-weight: 700; color: var(--white); }
+    .g-rating-count { color: var(--white-55); }
     .fv-note { margin: 10px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--white-30); text-align: center; }
     .fv-note a { color: var(--white-55); text-decoration: none; display: inline-block; padding: 6px 3px; margin: -6px -3px; }
     .fv-note a:hover { color: var(--blue-muted); }
@@ -497,7 +529,21 @@
           <p class="fv-sig">
             <!-- alt="" on purpose: the name is in the text beside it. -->
             <img class="fv-sig-face" src="assets/showcase/nathan.png?v=1" alt="" width="560" height="560" loading="lazy">
-            <span>I&rsquo;ll watch it myself. &mdash;&nbsp;Nathan</span>
+            <span class="fv-sig-text">
+              <span>I&rsquo;ll watch it myself. &mdash;&nbsp;Nathan</span>
+              <a class="g-rating" href="https://share.google/bpPltZjTbtoeILKQZ" target="_blank" rel="noopener noreferrer"
+                 aria-label="Rated 5.0 out of 5 from 14 client reviews on Google. Opens in a new tab.">
+                <svg class="g-rating-g" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                  <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.1z"/>
+                  <path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.5 2.1-5.8 0-10.6-3.9-12.4-9.1H4.3v5.7C7.9 41 15.4 46 24 46z"/>
+                  <path fill="#FBBC05" d="M11.6 28.1c-.5-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1v-5.7H4.3C2.8 17.1 2 20.4 2 24s.8 6.9 2.3 9.8l7.3-5.7z"/>
+                  <path fill="#EA4335" d="M24 10.8c3.3 0 6.2 1.1 8.5 3.3l6.3-6.3C35 4.3 30 2 24 2 15.4 2 7.9 7 4.3 14.2l7.3 5.7c1.8-5.2 6.6-9.1 12.4-9.1z"/>
+                </svg>
+                <span class="g-rating-score">5.0</span>
+                <svg class="g-rating-stars" viewBox="0 0 74 14" aria-hidden="true" focusable="false"><path d="M7 .8l1.9 3.85 4.25.62-3.07 3 .72 4.23L7 10.5l-3.8 2 .72-4.23-3.07-3 4.25-.62z"/><path d="M7 .8l1.9 3.85 4.25.62-3.07 3 .72 4.23L7 10.5l-3.8 2 .72-4.23-3.07-3 4.25-.62z" transform="translate(15,0)"/><path d="M7 .8l1.9 3.85 4.25.62-3.07 3 .72 4.23L7 10.5l-3.8 2 .72-4.23-3.07-3 4.25-.62z" transform="translate(30,0)"/><path d="M7 .8l1.9 3.85 4.25.62-3.07 3 .72 4.23L7 10.5l-3.8 2 .72-4.23-3.07-3 4.25-.62z" transform="translate(45,0)"/><path d="M7 .8l1.9 3.85 4.25.62-3.07 3 .72 4.23L7 10.5l-3.8 2 .72-4.23-3.07-3 4.25-.62z" transform="translate(60,0)"/></svg>
+                <span class="g-rating-count">14 client reviews</span>
+              </a>
+            </span>
           </p>
           <p class="fv-note">Or email <a href="mailto:sliceoflifetech@gmail.com">sliceoflifetech@gmail.com</a> directly.</p>
         </div>
