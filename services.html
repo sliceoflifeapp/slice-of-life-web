@@ -62,7 +62,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/style.css?v=23" />
+  <link rel="stylesheet" href="css/style.css?v=24" />
   <link rel="canonical" href="https://sliceoflife-app.com/services" />
 
   <script type="application/ld+json">
@@ -558,7 +558,11 @@
       line-height: 1;
       color: var(--white-80);
       text-decoration: none;
-      white-space: nowrap;
+      /* Wraps only when there is no room. Beside the 104px headshot on
+         services at 360px wide there are just 188px left, and a nowrap pill
+         overflowed the page by 32px. It stays one line everywhere it fits. */
+      flex-wrap: wrap;
+      row-gap: 5px;
       transition: border-color 0.25s var(--ease-out), background 0.25s var(--ease-out);
     }
     .g-rating:hover { border-color: var(--blue-border); background: rgba(255,255,255,0.06); }
@@ -776,6 +780,7 @@
         <span class="nav-logo-text">Slice of Life</span>
       </a>
       <div class="nav-ctas">
+        <a href="/how-to-get-your-vlog-edited" class="nav-alt">Rather cut it yourself?</a>
         <a href="/apply" class="nav-cta" data-cta="nav">Free edit</a>
       </div>
     </div>
