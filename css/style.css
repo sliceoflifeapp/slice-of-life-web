@@ -2340,6 +2340,22 @@ input:focus-visible,
   justify-content: center;
 }
 
+/* Quiet link to /how-to-get-your-vlog-edited, sitting directly under the
+   price. The nav "Rather hire an editor?" link serves someone who has already
+   decided; this one serves someone who cannot, and the price is where that
+   hesitation actually happens. Deliberately quieter than the primary CTA. */
+.pricing-alt-link { text-align: center; margin: 26px 0 0; }
+.pricing-alt-link a {
+  color: var(--white-55);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 2px;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+.pricing-alt-link a:hover { color: var(--blue-muted); border-color: var(--blue-border); }
+
 .pricing-footnote {
   text-align: center;
   color: var(--white-30);

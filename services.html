@@ -62,7 +62,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/style.css?v=24" />
+  <link rel="stylesheet" href="css/style.css?v=25" />
   <link rel="canonical" href="https://sliceoflife-app.com/services" />
 
   <script type="application/ld+json">
@@ -483,6 +483,11 @@
     .pricing-compare-link a:hover { color: #A8D0FF; border-color: rgba(168,208,255,0.6); }
     .pricing-compare-link a span { display: inline-block; transition: transform .2s cubic-bezier(0.23,1,0.32,1); }
     .pricing-compare-link a:hover span { transform: translateX(3px); }
+    /* Second, quieter link: the tier detail above is the primary next step;
+       this one is for someone still choosing between the app and the service. */
+    .pricing-compare-link--alt { margin-top: 12px; }
+    .pricing-compare-link--alt a { font-size: 13.5px; color: rgba(255,255,255,0.55); border-bottom-color: rgba(255,255,255,0.2); }
+    .pricing-compare-link--alt a:hover { color: #A8D0FF; border-color: rgba(168,208,255,0.6); }
 
     /* Closing CTA */
 
@@ -987,6 +992,7 @@
         </div>
 
         <p class="pricing-compare-link"><a href="/compare-plans">What&rsquo;s included, in detail <span aria-hidden="true">&rarr;</span></a></p>
+        <p class="pricing-compare-link pricing-compare-link--alt"><a href="/how-to-get-your-vlog-edited">Not sure? Compare all four options <span aria-hidden="true">&rarr;</span></a></p>
 
         <p class="pricing-footnote">Turnaround runs on business&nbsp;days, and unused videos roll over one&nbsp;month. A different cadence, or more than 100 clips or 90 minutes of&nbsp;footage? Custom packages&nbsp;available.</p>
       </div>
