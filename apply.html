@@ -301,7 +301,7 @@
               <input type="text" id="ap-hp" name="ap_hp" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore data-form-type="other">
             </div>
 
-            <button type="submit" class="btn-primary ap-submit" id="ap-submit">Get my first video free</button>
+            <button type="submit" class="btn-primary ap-submit" id="ap-submit">Get my video free</button>
             <p class="ap-err" id="ap-err" role="alert"></p>
           </form>
 
@@ -375,7 +375,7 @@
         errEl.textContent = msg;
         errEl.classList.add('show');
         btn.disabled = false;
-        btn.textContent = 'Get my first video free';
+        btn.textContent = 'Get my video free';
         // Guarded like gtag/fbq below: an ad blocker can strip posthog, and this
         // runs inside the form's error path, where a throw would swallow the
         // message the person needs to see.
