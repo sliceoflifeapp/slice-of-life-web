@@ -393,6 +393,10 @@
       border: 1px solid rgba(120,185,255,0.22);
     }
     .fv-sig-text { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+    /* One field now, so the page has to say what happens after it. The channel
+       question moved into the reply: asking for a URL on a phone meant leaving
+       the page to go find one, which is a cost you can see without tapping. */
+    .ap-reply { margin: 12px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--white-55); text-align: center; }
     /* Google rating badge. Rating only, never the quotes: the 14 reviews are for
        Nathan Griffey Videography (weddings, a non-profit, commercial work, all
        3 years old), so they prove HE delivers, not that this service does. That
@@ -496,18 +500,8 @@
           <div class="ap-form-wrap">
             <form id="ap-form" novalidate>
             <div class="ap-field">
-              <label class="ap-label" for="ap-name">Name</label>
-              <input class="ap-input" type="text" id="ap-name" name="name" autocomplete="name" maxlength="120" placeholder="What should we call you?">
-            </div>
-
-            <div class="ap-field">
-              <label class="ap-label" for="ap-email">Email <span class="ap-tag">&mdash; required</span></label>
+              <label class="ap-label" for="ap-email">Your email</label>
               <input class="ap-input" type="email" id="ap-email" name="email" autocomplete="email" maxlength="254" required placeholder="you@email.com">
-            </div>
-
-            <div class="ap-field">
-              <label class="ap-label" for="ap-video">Your channel or a video</label>
-              <input class="ap-input" type="text" id="ap-video" name="videoUrl" maxlength="500" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="an example of your vlogs">
             </div>
 
             <!-- Honeypot. Hidden from people, irresistible to bots. Deliberately
@@ -521,20 +515,21 @@
 
             <button type="submit" class="btn-primary ap-submit" id="ap-submit">Get my video free</button>
             <p class="ap-err" id="ap-err" role="alert"></p>
+            <p class="ap-reply">I&rsquo;ll reply within a day and ask about your channel. Nothing else to fill&nbsp;in.</p>
           </form>
             <div class="ap-done" id="ap-done" role="status">
             <div class="ap-done-tick">
               <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="ap-done-h">Got it.</h3>
-            <p class="ap-done-p">We&rsquo;ll take a look and reply within a day. If it&rsquo;s a fit, we&rsquo;ll set up your upload folder and cut your next&nbsp;video.</p>
+            <p class="ap-done-p">I&rsquo;ll reply within a day to ask what you&rsquo;re filming. If it&rsquo;s a fit, we&rsquo;ll set up your upload folder and cut your next&nbsp;video.</p>
           </div>
           </div>
           <p class="fv-sig">
             <!-- alt="" on purpose: the name is in the text beside it. -->
             <img class="fv-sig-face" src="assets/showcase/nathan.png?v=1" alt="" width="560" height="560" loading="lazy">
             <span class="fv-sig-text">
-              <span>I&rsquo;ll watch it myself. &mdash;&nbsp;Nathan</span>
+              <span>I reply to these myself. &mdash;&nbsp;Nathan</span>
               <a class="g-rating" href="https://share.google/bpPltZjTbtoeILKQZ" target="_blank" rel="noopener noreferrer"
                  aria-label="Rated 5.0 out of 5 from 14 client reviews on Google. Opens in a new tab.">
                 <svg class="g-rating-g" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
@@ -655,9 +650,14 @@
         if (!val('ap-email')) return fail('Enter your email so we can reply.', 'validation:email-empty');
 
         var payload = {
-          name:     val('ap-name'),
+          // This page asks for the email and nothing else, so name and videoUrl
+          // go up empty. The Worker has treated videoUrl as optional since
+          // 2026-09-13 and stores '' cleanly; /apply still sends both. The
+          // channel question moved into the reply. Keep the keys: the Worker
+          // reads them and the two pages share one endpoint.
+          name:     '',
           email:    val('ap-email'),
-          videoUrl: val('ap-video'),
+          videoUrl: '',
           ap_hp:    val('ap-hp'),
           plan:     new URLSearchParams(window.location.search).get('plan') || '',
           source:   context(),
