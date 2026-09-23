@@ -727,6 +727,11 @@
           var s = MILESTONES[hit];
           hit++;
           if (typeof posthog !== 'undefined') posthog.capture('page_visible', { seconds: s });
+          // Ten seconds on screen is what the Meta campaign optimizes for. A page load
+          // is not a useful target: about 1 in 5 loads becomes someone who reads, and
+          // counting loads teaches Meta to find people who tap. fbq is the real pixel
+          // or the no-op stub from the ad-consent gate in <head>, so this is safe anywhere.
+          if (s === 10 && typeof fbq === 'function') fbq('trackCustom', 'Read10Seconds');
         }
         // Nothing left to reach — stop the timer rather than tick all session.
         if (hit >= MILESTONES.length && timer) { clearInterval(timer); timer = null; }
