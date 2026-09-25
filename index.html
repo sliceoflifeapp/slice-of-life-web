@@ -312,6 +312,10 @@
   </script>
   <!-- End Meta Pixel -->
   <style>
+    /* On a phone the hero subhead stops at its first sentence; the rest is
+       still in the page for search and screen readers on every other width. */
+    @media (max-width: 700px) { .hero-sub-more { display: none; } }
+
     /* Services upsell under the plan. The mirror of the $99 app block on
        /services -- each side catches the person the other cannot serve.
        Deliberately quieter than the pricing card above it. */
@@ -503,7 +507,7 @@
       </div>
       <h1 class="hero-headline">Edit your entire vlog in <span class="gradient-text">3&nbsp;clicks</span>.<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> — the AI vlog editor for Mac that turns a day of footage into a finished, captioned vlog automatically.</span></h1>
       <p class="hero-sub">
-        Vlog editing software for Mac, for people who'd rather be filming than editing. Drop in a day of footage: it finds every moment you talked to camera, cuts your b-roll in around it, and hands you a vlog ready to upload.
+        Vlog editing software for Mac, for people who'd rather be filming than editing.<span class="hero-sub-more"> Drop in a day of footage: it finds every moment you talked to camera, cuts your b-roll in around it, and hands you a vlog ready to upload.</span>
       </p>
       <div class="hero-actions" id="hero-actions">
         <a href="https://sliceoflife.lemonsqueezy.com/checkout/buy/cc7ad69b-5586-4642-bc15-ba65c8564869" class="btn-primary">
