@@ -400,7 +400,9 @@
       color: #fff;
       transition: transform 0.25s var(--ease-out), background 0.25s var(--ease-out);
     }
-    .svc-vsl-play svg { width: 30px; height: 30px; margin-left: 3px; }
+    /* No margin nudge: the path itself is drawn optically centred (its centroid sits
+       on the viewBox centre), so an extra margin-left pushed it visibly right. */
+    .svc-vsl-play svg { width: 30px; height: 30px; }
     .svc-vsl:hover .svc-vsl-play { transform: translate(-50%, -50%) scale(1.07); background: rgba(60,125,240,0.98); }
 
     .svc-bio-copy { flex: 1 1 0; min-width: 0; }
