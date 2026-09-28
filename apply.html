@@ -427,16 +427,24 @@
               form.style.display = 'none';
               doneEl.classList.add('show');
               posthog.capture('apply_submitted', { plan: payload.plan || 'none' });
-              // Google Ads "Services Application". Deliberately fired here rather
-              // than on page load: only applications the Worker actually accepted
-              // should count, not everyone who reached the form.
-              if (typeof gtag === 'function') {
-                gtag('event', 'conversion', { send_to: 'AW-18242668467/W4OiCPDSmOocELOP5PpD' });
+              // A filled honeypot means a bot: the Worker answers ok but stores
+              // nothing (worker.js /inquiry), so no ad platform may count it.
+              var isBot = !!payload.ap_hp;
+              // Google Ads "Services Application V2 (accepted)", created
+              // 2026-09-28 to replace W4OiCPDSmOocELOP5PpD, which never recorded
+              // the 2026-08-30 application. Deliberately fired here rather than
+              // on page load: only applications the Worker actually accepted
+              // should count, not everyone who reached the form. transaction_id
+              // stops a reload or resubmit from counting twice.
+              if (!isBot && typeof gtag === 'function') {
+                var txId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+                  : 'ap-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+                gtag('event', 'conversion', { send_to: 'AW-18242668467/tsb0CLrj54kdELOP5PpD', transaction_id: txId });
               }
               // Meta, same reasoning: only accepted applications count. fbq is a
               // no-op stub when the consent gate blocked the pixel, so this is
               // safe to call unconditionally.
-              if (typeof fbq === 'function') {
+              if (!isBot && typeof fbq === 'function') {
                 fbq('track', 'Lead');
               }
             } else {
