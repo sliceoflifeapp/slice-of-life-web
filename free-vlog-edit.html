@@ -948,7 +948,21 @@
   </style>
   <!-- Meta Pixel -->
   <script>
-  if (window.__solAdsAllowed) {
+  // Google Ads also lands here. A visitor who arrived from a Google ad (auto-tagging
+  // adds gclid/gbraid/wbraid; the campaign's URL suffix adds utm_source=google) gets
+  // no Meta pixel at all: otherwise every Google applicant and 10-second reader
+  // would be counted as a Meta Lead / Read10Seconds and train the Meta campaign.
+  // Remembered for the tab so a reload or anchor jump keeps the same answer.
+  window.__solFromGoogle = (function () {
+    var q = new URLSearchParams(location.search), g = false;
+    try { g = sessionStorage.getItem('sol_from_google') === '1'; } catch (e) {}
+    if (q.get('gclid') || q.get('gbraid') || q.get('wbraid') || q.get('utm_source') === 'google') {
+      g = true;
+      try { sessionStorage.setItem('sol_from_google', '1'); } catch (e) {}
+    }
+    return g;
+  })();
+  if (window.__solAdsAllowed && !window.__solFromGoogle) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init','1044905178498684');
     fbq('track','PageView');
@@ -1437,7 +1451,8 @@
     });
     else window.posthog = { capture: function () {}, register: function () {} };
     // The ad landing page, rebuilt from /services on 2026-09-23.
-    posthog.register({ platform: 'website', page_variant: 'free-vlog-edit-v2' });
+    posthog.register({ platform: 'website', page_variant: 'free-vlog-edit-v2',
+                       ad_source: window.__solFromGoogle ? 'google' : 'other' });
 
     document.querySelectorAll('a[data-cta]').forEach(function (el) {
       el.addEventListener('click', function () {
@@ -1517,7 +1532,7 @@
       function context() {
         var q = new URLSearchParams(window.location.search);
         var bits = [window.location.pathname];
-        ['utm_source', 'utm_medium', 'utm_campaign', 'gclid'].forEach(function (k) {
+        ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'gbraid', 'wbraid'].forEach(function (k) {
           if (q.get(k)) bits.push(k + '=' + q.get(k));
         });
         return bits.join(' | ').slice(0, 300);
