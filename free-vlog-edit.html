@@ -1538,6 +1538,17 @@
         return bits.join(' | ').slice(0, 300);
       }
 
+      // form_focus: someone tapped into the form. Separates "never considered it"
+      // from "started, then backed out". Once per page load, whichever field first.
+      (function () {
+        var sent = false;
+        form.addEventListener('focusin', function (ev) {
+          if (sent || !ev.target || ev.target.id === 'ap-hp') return;
+          sent = true;
+          if (window.posthog) posthog.capture('form_focus', { field: ev.target.id || ev.target.name || '' });
+        });
+      })();
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         errEl.classList.remove('show');
