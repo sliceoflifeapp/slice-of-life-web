@@ -748,8 +748,71 @@
     .ap-done-h { font-size: 18px; font-weight: 700; margin: 0 0 8px; }
     .ap-done-p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.6); margin: 0; }
     /* Optional second step: shown only after the email was accepted. */
-    .ap-more { display: none; }
-    .ap-more.show { display: block; }
+    /* Step 2 opens as a window over the page (a full-screen sheet on phones).
+       JS moves it to <body> so no transformed ancestor can trap position:fixed. */
+    .ap-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(2,12,24,0.74);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    .ap-modal.show { display: flex; animation: apFade 0.2s ease-out; }
+    .ap-more {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      max-height: calc(100vh - 48px);
+      max-height: calc(100dvh - 48px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      text-align: left;
+      background: #061422;
+      border: 1px solid rgba(120,185,255,0.22);
+      border-radius: 16px;
+      padding: 32px 28px 26px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+      outline: none;
+    }
+    .ap-modal.show .ap-more { animation: apRise 0.25s cubic-bezier(0.23, 1, 0.32, 1); }
+    @keyframes apFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes apRise { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .ap-modal.show, .ap-modal.show .ap-more { animation: none; }
+    }
+    .ap-modal-x {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .ap-modal-x:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    @media (max-width: 620px) {
+      .ap-modal { padding: 0; align-items: stretch; }
+      .ap-more {
+        max-width: none;
+        max-height: none;
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+        padding: 60px 20px 32px;
+      }
+    }
     .ap-more-head { text-align: center; margin-bottom: 18px; }
     .ap-more-head .ap-done-tick { margin-bottom: 12px; }
     .ap-more textarea.ap-input { resize: vertical; min-height: 72px; line-height: 1.45; }
@@ -773,17 +836,6 @@
       color: #fff;
     }
     .ap-pill input:focus-visible + span { outline: 2px solid rgba(120,185,255,0.7); outline-offset: 2px; }
-    .ap-skip {
-      display: block;
-      margin: 12px auto 0;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.5);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      text-decoration: underline;
-      cursor: pointer;
-    }
 
     @media (max-width: 620px) {
       .ap-form-wrap { padding: 26px 20px 22px; }
@@ -1086,12 +1138,15 @@
                 <p class="ap-fine">Free video: up to 50 clips or 45 minutes of&nbsp;footage.</p>
                 <p class="ap-err" id="ap-err" role="alert"></p>
               </form>
-                <form class="ap-more" id="ap-more" novalidate>
+                <form class="ap-more" id="ap-more" novalidate tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="ap-more-h">
+                  <button type="button" class="ap-modal-x" id="ap-more-x" aria-label="Close">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  </button>
                   <div class="ap-more-head">
                     <div class="ap-done-tick">
                       <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
-                    <h3 class="ap-done-h">Got it. What are you working&nbsp;on?</h3>
+                    <h3 class="ap-done-h" id="ap-more-h">Got it. What are you working&nbsp;on?</h3>
                     <p class="ap-done-p">Drop your channel and I&rsquo;ll take a look before I write&nbsp;back.</p>
                   </div>
                   <div class="ap-field ap-field-gap">
@@ -1125,7 +1180,6 @@
                   </div>
                   <button type="submit" class="btn-primary ap-submit" id="ap-more-submit">Send</button>
                   <p class="ap-err" id="ap-more-err" role="alert"></p>
-                  <button type="button" class="ap-skip" id="ap-skip">Skip</button>
                 </form>
                 <div class="ap-done" id="ap-done" role="status">
                 <div class="ap-done-tick">
@@ -1740,27 +1794,45 @@
       var errEl  = document.getElementById('ap-more-err');
       if (!more) return;
       var ref = null;
+      // Lift the form out of the page into an overlay on <body>.
+      var modal = document.createElement('div');
+      modal.className = 'ap-modal';
+      modal.id = 'ap-modal';
+      document.body.appendChild(modal);
+      modal.appendChild(more);
 
       function cap(ev, props) { if (typeof posthog !== 'undefined') posthog.capture(ev, props || {}); }
       function v(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
       function picked(name) { var el = more.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
       function finish(sent) {
-        more.classList.remove('show');
+        modal.classList.remove('show');
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', onKey);
         if (sent) document.getElementById('ap-done-p').innerHTML =
           'Thanks. I&rsquo;ll take a look and reply within a day. If it&rsquo;s a fit, I&rsquo;ll set up your upload folder and cut your next&nbsp;video.';
         doneEl.classList.add('show');
       }
+      // The X, Escape and a click on the dimmed backdrop all close it, which
+      // counts as a skip: the application is already in.
+      function close(via) { cap('details_skipped', { via: via }); finish(false); }
+      function onKey(e) { if (e.key === 'Escape') close('escape'); }
 
       window.__apMore = function (id, token) {
         ref = { id: id, token: token };
-        more.classList.add('show');
+        modal.classList.add('show');
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        document.addEventListener('keydown', onKey);
+        more.scrollTop = 0;
+        // Focus the window, not a field: focusing a field would pop the keyboard
+        // over the questions on a phone.
+        try { more.focus({ preventScroll: true }); } catch (e) { more.focus(); }
         cap('details_shown');
       };
 
-      document.getElementById('ap-skip').addEventListener('click', function () {
-        cap('details_skipped');
-        finish(false);
-      });
+      document.getElementById('ap-more-x').addEventListener('click', function () { close('x'); });
+      modal.addEventListener('click', function (e) { if (e.target === modal) close('backdrop'); });
 
       more.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -1804,8 +1876,7 @@
           var input = document.getElementById('ap-email');
           if (!form || !input) return;
           if (form.style.display === 'none') {
-            var shown = document.getElementById('ap-more');
-            (shown && shown.classList.contains('show') ? shown : document.getElementById('ap-done')).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+            document.getElementById('ap-done').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
             return;
           }
           form.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
