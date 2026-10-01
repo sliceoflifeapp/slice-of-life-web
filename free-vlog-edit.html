@@ -21,8 +21,21 @@
        own timezone: no IP lookup, no third-party call, nothing stored. A timezone
        we cannot read is treated as EU. -->
   <script>
+    // Test mode: ?test=1 (remembered for the tab, so reloads and anchor jumps keep
+    // it) loads no ad tags at all, so Nathan can submit the real form without
+    // Meta or Google counting a lead. Everything else runs for real.
+    window.__solTest = (function () {
+      var t = false;
+      try { t = sessionStorage.getItem('sol_test') === '1'; } catch (e) {}
+      if (new URLSearchParams(location.search).get('test') === '1') {
+        t = true;
+        try { sessionStorage.setItem('sol_test', '1'); } catch (e) {}
+      }
+      return t;
+    })();
     window.__solAdsAllowed = (function () {
       try {
+        if (window.__solTest) return false;
         // Local previews and staging copies must not send PageViews or leads to
         // the real pixel. Only the live domain loads ad tags.
         if (!/(^|\.)sliceoflife-app\.com$/.test(location.hostname)) return false;
@@ -1019,6 +1032,10 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
+  <script>
+    // Visible proof that test mode is on, so a real submit is never mistaken for one.
+    if (window.__solTest) document.write('<div style="position:fixed;left:12px;bottom:12px;z-index:9999;background:#B7791F;color:#fff;font:600 12px/1 Montserrat,sans-serif;padding:7px 10px;border-radius:8px;letter-spacing:.04em">TEST MODE · no ad tracking</div>');
+  </script>
   <canvas id="glow-canvas" aria-hidden="true"></canvas>
 
   <nav class="nav">
@@ -1538,7 +1555,8 @@
     else window.posthog = { capture: function () {}, register: function () {} };
     // The ad landing page, rebuilt from /services on 2026-09-23.
     posthog.register({ platform: 'website', page_variant: 'free-vlog-edit-v2',
-                       ad_source: window.__solFromGoogle ? 'google' : 'other' });
+                       ad_source: window.__solFromGoogle ? 'google' : 'other',
+                       test_mode: !!window.__solTest });
 
     document.querySelectorAll('a[data-cta]').forEach(function (el) {
       el.addEventListener('click', function () {
@@ -1621,6 +1639,7 @@
         ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'gbraid', 'wbraid'].forEach(function (k) {
           if (q.get(k)) bits.push(k + '=' + q.get(k));
         });
+        if (window.__solTest) bits.push('TEST');
         return bits.join(' | ').slice(0, 300);
       }
 
