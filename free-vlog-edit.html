@@ -734,6 +734,43 @@
     }
     .ap-done-h { font-size: 18px; font-weight: 700; margin: 0 0 8px; }
     .ap-done-p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.6); margin: 0; }
+    /* Optional second step: shown only after the email was accepted. */
+    .ap-more { display: none; }
+    .ap-more.show { display: block; }
+    .ap-more-head { text-align: center; margin-bottom: 18px; }
+    .ap-more-head .ap-done-tick { margin-bottom: 12px; }
+    .ap-more textarea.ap-input { resize: vertical; min-height: 72px; line-height: 1.45; }
+    .ap-field-gap { margin-bottom: 14px; }
+    .ap-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ap-pill input { position: absolute; opacity: 0; pointer-events: none; }
+    .ap-pill span {
+      display: inline-block;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .ap-pill input:checked + span {
+      border-color: rgba(120,185,255,0.7);
+      background: rgba(50,110,225,0.28);
+      color: #fff;
+    }
+    .ap-pill input:focus-visible + span { outline: 2px solid rgba(120,185,255,0.7); outline-offset: 2px; }
+    .ap-skip {
+      display: block;
+      margin: 12px auto 0;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
 
     @media (max-width: 620px) {
       .ap-form-wrap { padding: 26px 20px 22px; }
@@ -1032,12 +1069,53 @@
                 <p class="ap-fine">Free video: up to 50 clips or 45 minutes of&nbsp;footage.</p>
                 <p class="ap-err" id="ap-err" role="alert"></p>
               </form>
+                <form class="ap-more" id="ap-more" novalidate>
+                  <div class="ap-more-head">
+                    <div class="ap-done-tick">
+                      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="ap-done-h">Got it. What are you working&nbsp;on?</h3>
+                    <p class="ap-done-p">Drop your channel and I&rsquo;ll take a look before I write&nbsp;back.</p>
+                  </div>
+                  <div class="ap-field ap-field-gap">
+                    <label class="ap-label" for="ap-channel">Your channel</label>
+                    <input class="ap-input" type="text" id="ap-channel" maxlength="500" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="youtube.com/@you or @handle">
+                  </div>
+                  <fieldset class="ap-field ap-field-gap" style="border:0;padding:0;margin-left:0;margin-right:0">
+                    <legend class="ap-label">How do you edit now?</legend>
+                    <div class="ap-pills">
+                      <label class="ap-pill"><input type="radio" name="ap-setup" value="self"><span>I edit it myself</span></label>
+                      <label class="ap-pill"><input type="radio" name="ap-setup" value="editor"><span>I pay an editor</span></label>
+                      <label class="ap-pill"><input type="radio" name="ap-setup" value="not-yet"><span>Not posting yet</span></label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="ap-field ap-field-gap" style="border:0;padding:0;margin-left:0;margin-right:0">
+                    <legend class="ap-label">How often do you post?</legend>
+                    <div class="ap-pills">
+                      <label class="ap-pill"><input type="radio" name="ap-cadence" value="less"><span>Less than weekly</span></label>
+                      <label class="ap-pill"><input type="radio" name="ap-cadence" value="weekly"><span>Weekly</span></label>
+                      <label class="ap-pill"><input type="radio" name="ap-cadence" value="twice"><span>Twice a week</span></label>
+                      <label class="ap-pill"><input type="radio" name="ap-cadence" value="more"><span>More often</span></label>
+                    </div>
+                  </fieldset>
+                  <div class="ap-field ap-field-gap">
+                    <label class="ap-label" for="ap-socials">Other socials <span class="ap-tag">Instagram, TikTok&hellip;</span></label>
+                    <input class="ap-input" type="text" id="ap-socials" maxlength="300" autocapitalize="off" spellcheck="false" placeholder="@handle">
+                  </div>
+                  <div class="ap-field">
+                    <label class="ap-label" for="ap-notes">Anything I should know?</label>
+                    <textarea class="ap-input" id="ap-notes" maxlength="1500" rows="2" placeholder="What you film, what bugs you about editing&hellip;"></textarea>
+                  </div>
+                  <button type="submit" class="btn-primary ap-submit" id="ap-more-submit">Send</button>
+                  <p class="ap-err" id="ap-more-err" role="alert"></p>
+                  <button type="button" class="ap-skip" id="ap-skip">Skip</button>
+                </form>
                 <div class="ap-done" id="ap-done" role="status">
                 <div class="ap-done-tick">
                   <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
                 <h3 class="ap-done-h">Got it.</h3>
-                <p class="ap-done-p">I&rsquo;ll reply within a day to ask what you&rsquo;re filming. If it&rsquo;s a fit, I&rsquo;ll set up your upload folder and cut your next&nbsp;video.</p>
+                <p class="ap-done-p" id="ap-done-p">I&rsquo;ll reply within a day to ask what you&rsquo;re filming. If it&rsquo;s a fit, I&rsquo;ll set up your upload folder and cut your next&nbsp;video.</p>
               </div>
               <ul class="lp-objections">
                 <li><span><strong>A video you can actually post.</strong> I cut your next upload. Yours to keep, no&nbsp;watermark.</span></li>
@@ -1591,7 +1669,10 @@
           .then(function (d) {
             if (d && d.ok) {
               form.style.display = 'none';
-              doneEl.classList.add('show');
+              // Optional second step, only when the Worker handed back a token
+              // for this row (older Worker or a honeypot answer: straight to done).
+              if (d.token && d.id && window.__apMore) window.__apMore(d.id, d.token);
+              else doneEl.classList.add('show');
               posthog.capture('apply_submitted', { plan: payload.plan || 'none' });
               // A filled honeypot means a bot: the Worker answers ok but stores
               // nothing (worker.js /inquiry), so no ad platform may count it.
@@ -1627,6 +1708,69 @@
       });
     })();
 
+    // ── Optional details after the email is in ──────────────────────────────
+    // The application (and the Lead / Google conversion) already happened on
+    // the email alone. This only fills in the same row, so a skip costs nothing.
+    (function () {
+      var DETAILS_URL = 'https://gather-proxy.sliceoflifeapp.workers.dev/inquiry/details';
+      // The button label lives here AND in the markup: the error path restores it.
+      var SEND_LABEL = 'Send';
+      var more   = document.getElementById('ap-more');
+      var doneEl = document.getElementById('ap-done');
+      var btn    = document.getElementById('ap-more-submit');
+      var errEl  = document.getElementById('ap-more-err');
+      if (!more) return;
+      var ref = null;
+
+      function cap(ev, props) { if (typeof posthog !== 'undefined') posthog.capture(ev, props || {}); }
+      function v(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+      function picked(name) { var el = more.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
+      function finish(sent) {
+        more.classList.remove('show');
+        if (sent) document.getElementById('ap-done-p').innerHTML =
+          'Thanks. I&rsquo;ll take a look and reply within a day. If it&rsquo;s a fit, I&rsquo;ll set up your upload folder and cut your next&nbsp;video.';
+        doneEl.classList.add('show');
+      }
+
+      window.__apMore = function (id, token) {
+        ref = { id: id, token: token };
+        more.classList.add('show');
+        cap('details_shown');
+      };
+
+      document.getElementById('ap-skip').addEventListener('click', function () {
+        cap('details_skipped');
+        finish(false);
+      });
+
+      more.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errEl.classList.remove('show');
+        var body = {
+          id: ref && ref.id, token: ref && ref.token,
+          channel: v('ap-channel'), setup: picked('ap-setup'), cadence: picked('ap-cadence'),
+          socials: v('ap-socials'), notes: v('ap-notes'),
+        };
+        var filled = ['channel', 'setup', 'cadence', 'socials', 'notes'].filter(function (k) { return body[k]; });
+        if (!filled.length) { cap('details_skipped', { via: 'empty_send' }); return finish(false); }
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        fetch(DETAILS_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (d && d.ok) { cap('details_submitted', { fields: filled.join(',') }); finish(true); return; }
+            throw new Error((d && typeof d.error === 'string') ? d.error : 'server');
+          })
+          .catch(function (err) {
+            cap('details_failed', { reason: String(err && err.message || 'network').slice(0, 80) });
+            btn.disabled = false;
+            btn.textContent = SEND_LABEL;
+            errEl.textContent = 'That didn’t send, but your application is in. You can skip this, or email sliceoflifetech@gmail.com.';
+            errEl.classList.add('show');
+          });
+      });
+    })();
+
     // ── Every "free edit" button goes to the form on this page ──────────────
     // A plan card also records its plan, which the intake form sends with the
     // application. Focus happens inside the tap so iOS will open the keyboard.
@@ -1641,7 +1785,8 @@
           var input = document.getElementById('ap-email');
           if (!form || !input) return;
           if (form.style.display === 'none') {
-            document.getElementById('ap-done').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+            var shown = document.getElementById('ap-more');
+            (shown && shown.classList.contains('show') ? shown : document.getElementById('ap-done')).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
             return;
           }
           form.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
