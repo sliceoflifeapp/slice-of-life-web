@@ -762,6 +762,129 @@
       .svc-proc-shot { height: 224px; padding: 14px; }
       .svc-proc-copy h3 { font-size: 19px; }
       }
+    /* ── Backgrounds from Marketing/Elements (2026-09-23) ─────────────────────
+       Used sparingly, the frame.io way: one real image per break, no CSS glow
+       standing in for it. Videos are 1080p loops WITH AN ALPHA CHANNEL (HEVC
+       for Safari, VP9 WebM for the rest), because Safari will not blend a
+       <video> with what is behind it: mix-blend-mode showed their black
+       backgrounds as boxes. They load near the screen, on a computer, without
+       reduced motion; everyone else gets a transparent still. */
+
+    /* Hero: the spotlight still (#6), graded from purple to the site's navy.
+       A still rather than video because ~99% of ad visitors are on phones. */
+    /* On a pseudo-element so it can fade to TRANSPARENT at the bottom: faded
+       to --bg instead, it left a hard seam against the ambient glow behind the
+       next section. isolation keeps z-index -1 inside the hero. */
+    .svc-hero { position: relative; overflow: clip; isolation: isolate; }
+    /* Room under the video for the viewfinder's bottom glow before the clip. */
+    @media (min-width: 901px) { .svc-hero { padding-bottom: 72px; } }
+    .svc-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(2,12,24,0.35) 0%, rgba(2,12,24,0.5) 100%),
+        url("assets/bg/hero-spotlight-2000.webp") center 35% / cover no-repeat;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+    }
+
+    /* Viewfinder brackets (#5) around the hero video. In the source frame the
+       brackets span 12.2-87.7% across and 16.1-83.7% down, so the layer is
+       scaled until that rectangle lands 14px outside the video. */
+    .fv-vsl-wrap { position: relative; max-width: 880px; margin: 34px auto 30px; }
+    .fv-vsl-wrap .svc-vsl { position: relative; z-index: 1; margin: 0; max-width: none; }
+    .fv-vsl-frame {
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+      width: calc((100% + 28px) / 0.755);
+      height: calc((100% + 28px) / 0.676);
+      left: calc(-14px - 0.122 * (100% + 28px) / 0.755);
+      top: calc(-14px - 0.161 * (100% + 28px) / 0.676);
+      object-fit: fill;
+    }
+
+
+    /* App banner: the prism light (#3) marks the app as a different kind of
+       option from the plans above it. Dark on the copy side, open on the right. */
+    .svc-alt {
+      background:
+        linear-gradient(90deg, rgba(6,20,34,0.97) 0%, rgba(6,20,34,0.9) 45%, rgba(6,20,34,0.5) 100%),
+        url("assets/bg/prism-1600.webp") right center / cover no-repeat,
+        #061422;
+      border-color: rgba(120,185,255,0.16);
+    }
+
+
+    @media (max-width: 900px) {
+      .svc-hero::before {
+        background:
+          linear-gradient(180deg, rgba(2,12,24,0.4) 0%, rgba(2,12,24,0.55) 100%),
+          url("assets/bg/hero-spotlight-1100.webp") 70% 20% / cover no-repeat;
+      }
+      .fv-vsl-frame { display: none; }
+      .svc-alt {
+        background:
+          linear-gradient(180deg, rgba(6,20,34,0.96) 0%, rgba(6,20,34,0.85) 60%, rgba(6,20,34,0.55) 100%),
+          url("assets/bg/prism-1600.webp") 80% center / cover no-repeat,
+          #061422;
+      }
+    }
+    /* Waveform transition (#1) into the plans: full width, no copy. Sized in
+       vw so its tapered ends sit past both edges of the screen. */
+    .fv-wave { position: relative; overflow: clip; height: 240px; margin: 0; pointer-events: none; }
+    .fv-wave-media {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 128vw;
+      height: 72vw;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      /* Dimmed so it reads as a transition, not a feature. Applies to the phone still too. */
+      opacity: 0.65;
+    }
+
+    /* "Our process" on the deep-blue lines texture (#2), faded in and out. */
+    #process { position: relative; isolation: isolate; }
+    #process::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: url("assets/bg/process-lines-2000.webp") center / cover no-repeat;
+      opacity: 0.6;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    }
+
+    /* The app mention and FAQ share one light beam (#7, desaturated),
+       faint behind the heading and building to full strength at the bottom. */
+    .fv-tail { position: relative; overflow: clip; }
+    .fv-tail > section { position: relative; z-index: 1; }
+    .fv-tail-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.75;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.06) 12%, rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.42) 42%, rgba(0,0,0,0.7) 64%, #000 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.06) 12%, rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.42) 42%, rgba(0,0,0,0.7) 64%, #000 100%);
+    }
+    
+    @media (max-width: 900px) {
+      .fv-wave { height: 150px; }
+      .fv-wave-media { width: 190vw; height: 106.9vw; }
+      #process::before { background-image: url("assets/bg/process-lines-1100.webp"); }
+      .fv-tail-media { opacity: 0.55; }
+    }
   </style>
   <!-- Meta Pixel -->
   <script>
@@ -804,12 +927,16 @@
           Most editing services get faster by hiring more editors. We got faster by writing
           the&nbsp;software.
         </p>
-        <button class="svc-vsl" id="svc-vsl" type="button" data-reveal aria-label="Play the overview video">
-          <img src="assets/showcase/vsl-poster.jpg?v=5" alt="" width="1920" height="1080" loading="lazy">
-          <span class="svc-vsl-play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
-          </span>
-        </button>
+        <div class="fv-vsl-wrap">
+          <video class="fv-vsl-frame" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
+                 data-src="assets/bg/viewfinder"></video>
+          <button class="svc-vsl" id="svc-vsl" type="button" data-reveal aria-label="Play the overview video">
+            <img src="assets/showcase/vsl-poster.jpg?v=5" alt="" width="1920" height="1080" loading="lazy">
+            <span class="svc-vsl-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12 8 5.2z"/></svg>
+            </span>
+          </button>
+        </div>
 
         <div class="svc-cta-row">
           <a href="/apply" class="btn-primary svc-btn-lg" data-cta="hero">
@@ -913,6 +1040,13 @@
       </div>
     </section>
 
+
+    <!-- ── Waveform transition into the plans (#1): no copy, the line runs
+         past both edges of the screen ── -->
+    <div class="fv-wave" aria-hidden="true">
+      <video class="fv-wave-media" muted loop playsinline preload="none" tabindex="-1"
+             data-src="assets/bg/waveform" data-poster="assets/bg/waveform-still.webp"></video>
+    </div>
 
     <!-- ── Pricing ──────────────────────────────────────────────────────── -->
     <section class="section" id="pricing" style="padding-top:20px;">
@@ -1033,6 +1167,11 @@
       </div>
     </section>
 
+    <!-- ── Tail: app mention and FAQ on one light beam (#7); the footer sits outside it ── -->
+    <div class="fv-tail">
+      <video class="fv-tail-media" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
+             data-src="assets/bg/streaks" data-poster="assets/bg/streaks-still.webp"></video>
+
     <!-- ── Last-chance mention of the app, in case they scrolled past the one
          under the plans ── -->
     <section class="section svc-diy">
@@ -1095,8 +1234,7 @@
         </div>
       </div>
     </section>
-
-
+    </div>
 
     <div class="svc-lb" id="svc-lb" role="dialog" aria-modal="true" aria-label="Finished edit">
       <div class="svc-lb-inner">
@@ -1268,6 +1406,40 @@
         posthog.capture('services_faq_open', { question: el.innerText.trim() });
       });
     });
+  </script>
+  <script>
+    // ── Background videos ────────────────────────────────────────────────────
+    // Each loads only when its section nears the screen. Phones and anyone who
+    // asked for reduced motion get the still frame and never download a video.
+    (function () {
+      var vids = document.querySelectorAll('video[data-src]');
+      if (!vids.length) return;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var narrow = window.matchMedia('(max-width: 900px)').matches;
+      // Safari plays HEVC with alpha; Chrome and Firefox play VP9 WebM with
+      // alpha. Chrome on a Mac can claim HEVC support without drawing its
+      // alpha, so the choice is by browser, not by canPlayType alone.
+      var isSafari = /^((?!chrome|chromium|crios|fxios|edg|android).)*safari/i.test(navigator.userAgent);
+      var probe = document.createElement('video');
+      var ext = isSafari && probe.canPlayType('video/mp4; codecs="hvc1"') ? '.hevc.mp4'
+              : probe.canPlayType('video/webm; codecs="vp9"') ? '.webm' : '';
+      function start(v) {
+        if (v.dataset.poster) v.poster = v.dataset.poster;
+        if (reduce || narrow || !ext) return;
+        v.src = v.dataset.src + ext;
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      }
+      if (!('IntersectionObserver' in window)) { Array.prototype.forEach.call(vids, start); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          io.unobserve(e.target);
+          start(e.target);
+        });
+      }, { rootMargin: '300px' });
+      Array.prototype.forEach.call(vids, function (v) { io.observe(v); });
+    })();
   </script>
 </body>
 </html>
