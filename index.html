@@ -479,6 +479,44 @@
     .card-art--words  { background-image: url(assets/showcase/words.jpg?v=1); background-position: center top; }
     /* Its title is longer than the art column allows on one line; break it clear of the picture. */
     .showcase-card--words .showcase-title { max-width: 58%; }
+    /* Feature loops: a long hover or a click dissolves the card into a few seconds of
+       the app doing that thing (cut from the October tutorials; source + build script in
+       Marketing/Feature loops). The video only shows once it is actually playing, so a
+       slow load never blanks the card. The :not() chain out-ranks style.css's
+       `.showcase-card > *:not(.card-art):not(.video-embed-wrapper)`, which would
+       otherwise make these position: relative. */
+    .showcase-card > .card-loop:not(.card-art):not(.video-embed-wrapper),
+    .showcase-card > .card-loop-hint:not(.card-art):not(.video-embed-wrapper) { position: absolute; }
+    .showcase-card > .card-loop:not(.card-art):not(.video-embed-wrapper) {
+      inset: 0; width: 100%; height: 100%; z-index: 3;
+      object-fit: cover; background: var(--bg-card);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.6s var(--ease-out);
+    }
+    .showcase-card > :not(.card-loop) { transition: opacity 0.45s var(--ease-out); }
+    .showcase-card.is-looping > :not(.card-loop) { opacity: 0; }
+    .showcase-card.is-looping > .card-loop:not(.card-art):not(.video-embed-wrapper) { opacity: 1; }
+    .showcase-card .card-loop[data-loop*="editor"] { object-position: 62% center; }
+    /* Stacked cards are taller than the clips, so cover would zoom in on a fragment of
+       the UI. Fit the whole clip instead; its dark ground blends into the card. */
+    @media (max-width: 960px) {
+      .showcase-card > .card-loop:not(.card-art):not(.video-embed-wrapper) { object-fit: contain; object-position: center; }
+    }
+    .showcase-card:has(.card-loop) { cursor: pointer; }
+    .showcase-card:has(.card-loop):focus-visible { outline: 2px solid var(--blue-bright); outline-offset: 3px; }
+    .showcase-card > .card-loop-hint:not(.card-art):not(.video-embed-wrapper) {
+      right: 14px; bottom: 14px; z-index: 2;
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; padding-left: 2px;
+      color: #fff; background: var(--blue-glass);
+      border: 1px solid var(--blue-border);
+      box-shadow: 0 4px 16px rgba(30,80,200,0.35);
+      opacity: 0.85;
+      transition: opacity 0.45s var(--ease-out), transform 0.3s var(--ease-out);
+    }
+    .showcase-card:hover > .card-loop-hint { transform: scale(1.12); opacity: 1; }
+    /* The XML card's timeline strip runs along the bottom; sit the hint above it. */
+    .showcase-card--art-bottom > .card-loop-hint:not(.card-art):not(.video-embed-wrapper) { bottom: auto; top: 14px; }
     @media (max-width: 960px) {
       .card-art--editor { background-image: url(assets/showcase/editor-tall.jpg?v=1); }
       .card-art--words  { background-image: url(assets/showcase/words-tall.jpg?v=1); }
@@ -996,12 +1034,16 @@
         <div class="showcase-col">
           <div class="showcase-card showcase-card--art-col">
             <div class="card-art card-art--broll" role="img" aria-label="Slice of Life review screen — a b-roll montage of four cutaways"></div>
+            <video class="card-loop" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-loop="assets/showcase/loops/broll.mp4?v=1"></video>
+            <span class="card-loop-hint" aria-hidden="true"><svg width="11" height="12" viewBox="0 0 11 12"><path d="M1 1.2v9.6c0 .6.7 1 1.2.7l7.7-4.8c.5-.3.5-1.1 0-1.4L2.2.5C1.7.2 1 .6 1 1.2z" fill="currentColor"/></svg></span>
             <div class="showcase-tag">Smart b-roll</div>
             <h3 class="showcase-title">B-roll cut in automatically</h3>
             <p class="showcase-desc">Slice cuts in b-roll that matches what you're saying — like you spent an hour editing.</p>
           </div>
           <div class="showcase-card showcase-card--art-col">
             <div class="card-art card-art--aroll" role="img" aria-label="Slice of Life review screen — a narration section with its transcript and talking-head clip"></div>
+            <video class="card-loop" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-loop="assets/showcase/loops/aroll.mp4?v=1"></video>
+            <span class="card-loop-hint" aria-hidden="true"><svg width="11" height="12" viewBox="0 0 11 12"><path d="M1 1.2v9.6c0 .6.7 1 1.2.7l7.7-4.8c.5-.3.5-1.1 0-1.4L2.2.5C1.7.2 1 .6 1 1.2z" fill="currentColor"/></svg></span>
             <div class="showcase-tag">A-roll detection</div>
             <h3 class="showcase-title">Your best takes, found automatically</h3>
             <p class="showcase-desc">Slice finds your strongest talking-to-camera moments and builds your a-roll spine automatically.</p>
@@ -1015,6 +1057,8 @@
       <div class="showcase-row">
         <div class="showcase-card showcase-card--art-col showcase-card--custom">
           <div class="card-art card-art--custom" role="img" aria-label="Slice of Life configure screen — orientation, pacing and caption controls"></div>
+            <video class="card-loop" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-loop="assets/showcase/loops/custom.mp4?v=1"></video>
+            <span class="card-loop-hint" aria-hidden="true"><svg width="11" height="12" viewBox="0 0 11 12"><path d="M1 1.2v9.6c0 .6.7 1 1.2.7l7.7-4.8c.5-.3.5-1.1 0-1.4L2.2.5C1.7.2 1 .6 1 1.2z" fill="currentColor"/></svg></span>
           <div class="showcase-tag">Customization</div>
           <h3 class="showcase-title">Your call. Your pace.</h3>
           <ul class="showcase-list">
@@ -1030,6 +1074,8 @@
 
         <div class="showcase-card showcase-card--large showcase-card--art-bottom">
           <div class="card-art card-art--bottom card-art--xml" role="img" aria-label="The exported timeline open in Premiere Pro — a-roll and b-roll on separate tracks"></div>
+            <video class="card-loop" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-loop="assets/showcase/loops/xml.mp4?v=1"></video>
+            <span class="card-loop-hint" aria-hidden="true"><svg width="11" height="12" viewBox="0 0 11 12"><path d="M1 1.2v9.6c0 .6.7 1 1.2.7l7.7-4.8c.5-.3.5-1.1 0-1.4L2.2.5C1.7.2 1 .6 1 1.2z" fill="currentColor"/></svg></span>
           <div class="showcase-tag">XML export</div>
           <h3 class="showcase-title">Take it to your editor</h3>
           <p class="showcase-desc">Every vlog exports a timeline for Premiere Pro, Final Cut Pro, or DaVinci Resolve — <span class="nowrap">a-roll</span> and <span class="nowrap">b-roll</span> on separate tracks, all source clips referenced. Open it, refine it, done.</p>
@@ -1042,6 +1088,8 @@
       <div class="showcase-row">
         <div class="showcase-card showcase-card--large showcase-card--art-col">
           <div class="card-art card-art--editor" role="img" aria-label="The Editor tab in Slice of Life's chat: suggested cuts with the time each saves, ticked and ready to apply"></div>
+            <video class="card-loop" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-loop="assets/showcase/loops/editor.mp4?v=2"></video>
+            <span class="card-loop-hint" aria-hidden="true"><svg width="11" height="12" viewBox="0 0 11 12"><path d="M1 1.2v9.6c0 .6.7 1 1.2.7l7.7-4.8c.5-.3.5-1.1 0-1.4L2.2.5C1.7.2 1 .6 1 1.2z" fill="currentColor"/></svg></span>
           <div class="showcase-tag">Edit by chatting</div>
           <h3 class="showcase-title">Just ask for the edit you want</h3>
           <p class="showcase-desc">&ldquo;Get this to about 10 minutes.&rdquo; &ldquo;Cut the long pauses.&rdquo; &ldquo;Any blurry shots?&rdquo; The Editor comes back with changes you tick and apply, each showing the time it saves.</p>
@@ -1049,6 +1097,8 @@
 
         <div class="showcase-card showcase-card--art-col showcase-card--words">
           <div class="card-art card-art--words" role="img" aria-label="Text-based editing under Slice of Life's live preview: cut words struck through, the spoken word lit up"></div>
+            <video class="card-loop" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-loop="assets/showcase/loops/words.mp4?v=1"></video>
+            <span class="card-loop-hint" aria-hidden="true"><svg width="11" height="12" viewBox="0 0 11 12"><path d="M1 1.2v9.6c0 .6.7 1 1.2.7l7.7-4.8c.5-.3.5-1.1 0-1.4L2.2.5C1.7.2 1 .6 1 1.2z" fill="currentColor"/></svg></span>
           <div class="showcase-tag">Text-based editing</div>
           <h3 class="showcase-title">Delete a word, delete the footage</h3>
           <p class="showcase-desc">Edit your vlog like a document. The words sit under a live preview that plays every change, with the spoken word lit&nbsp;up.</p>
@@ -1523,6 +1573,69 @@
       });
       // iOS fires pagehide where other browsers fire unload; harmless elsewhere.
       window.addEventListener('pagehide', pause);
+    })();
+  </script>
+  <script>
+    // ── Feature loops ("What it does") ───────────────────────────────────────
+    // A hover that lingers (or a click / tap / Enter) dissolves the card into its
+    // loop; leaving or clicking again dissolves back. One plays at a time. Nothing
+    // downloads until someone points at a card.
+    (function () {
+      var cards = Array.prototype.filter.call(document.querySelectorAll('.showcase-card'),
+        function (c) { return c.querySelector('.card-loop'); });
+      if (!cards.length) return;
+      var HOVER_MS = 700;
+      var hoverOK = window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+                    !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var current = null;
+      function vid(card) { return card.querySelector('.card-loop'); }
+      function load(card) { var v = vid(card); if (!v.getAttribute('src')) { v.src = v.dataset.loop; v.preload = 'auto'; } return v; }
+      function play(card, trigger) {
+        if (current && current !== card) stop(current);
+        current = card;
+        var v = load(card);
+        card.setAttribute('aria-pressed', 'true');
+        var show = function () { if (current === card) card.classList.add('is-looping'); };
+        if (!v.paused && v.readyState > 2) show(); else v.addEventListener('playing', show, { once: true });
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+        if (typeof posthog !== 'undefined') posthog.capture('feature_loop_played', { feature: v.dataset.loop.split('/').pop().split('.')[0], trigger: trigger });
+      }
+      function stop(card) {
+        clearTimeout(card._loopTimer);
+        card.classList.remove('is-looping');
+        card.setAttribute('aria-pressed', 'false');
+        if (current === card) current = null;
+        var v = vid(card);
+        setTimeout(function () { if (!card.classList.contains('is-looping')) { v.pause(); try { v.currentTime = 0; } catch (e) {} } }, 650);
+      }
+      function toggle(card, trigger) { card.classList.contains('is-looping') || current === card ? stop(card) : play(card, trigger); }
+      cards.forEach(function (card) {
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-pressed', 'false');
+        if (hoverOK) {
+          card.addEventListener('mouseenter', function () {
+            load(card);
+            card._loopTimer = setTimeout(function () { play(card, 'hover'); }, HOVER_MS);
+          });
+          card.addEventListener('mouseleave', function () { stop(card); });
+        }
+        card.addEventListener('click', function () { clearTimeout(card._loopTimer); toggle(card, 'click'); });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(card, 'key'); }
+        });
+      });
+      // Scrolled away → stop, so a tapped card doesn't keep playing off screen.
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            // The first report for each card is its starting state, not a scroll.
+            if (e.isIntersecting) e.target._wasSeen = true;
+            else if (e.target._wasSeen && e.target === current) stop(e.target);
+          });
+        });
+        cards.forEach(function (c) { io.observe(c); });
+      }
     })();
   </script>
   <script>
