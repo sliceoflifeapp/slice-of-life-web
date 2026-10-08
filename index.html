@@ -473,6 +473,16 @@
       #pricing::before { background-image: url("assets/bg/hero-spotlight-1100.webp"); }
       .hb-hero-media { opacity: 0.24; }
     }
+    /* Row 3 art (0.6.0 / 0.7.0): frames from the October tutorial videos. Page-local
+       so a new crop doesn't need a style.css cache-buster sweep; bump ?v= on recut. */
+    .card-art--editor { background-image: url(assets/showcase/editor.jpg?v=1); background-position: center top; }
+    .card-art--words  { background-image: url(assets/showcase/words.jpg?v=1); background-position: center top; }
+    /* Its title is longer than the art column allows on one line; break it clear of the picture. */
+    .showcase-card--words .showcase-title { max-width: 58%; }
+    @media (max-width: 960px) {
+      .card-art--editor { background-image: url(assets/showcase/editor-tall.jpg?v=1); }
+      .card-art--words  { background-image: url(assets/showcase/words-tall.jpg?v=1); }
+    }
   </style>
 </head>
 <body>
@@ -1010,7 +1020,6 @@
           <ul class="showcase-list">
             <li>Tight, Balanced or Relaxed</li>
             <li>Reorder or drop any clip</li>
-            <li>Cut filler words and pauses</li>
             <li>Fix captions before export</li>
             <li>Speed up your b-roll</li>
             <li>Add music, grade your color</li>
@@ -1024,6 +1033,25 @@
           <div class="showcase-tag">XML export</div>
           <h3 class="showcase-title">Take it to your editor</h3>
           <p class="showcase-desc">Every vlog exports a timeline for Premiere Pro, Final Cut Pro, or DaVinci Resolve — <span class="nowrap">a-roll</span> and <span class="nowrap">b-roll</span> on separate tracks, all source clips referenced. Open it, refine it, done.</p>
+        </div>
+      </div>
+
+      <!-- Row 3: the two review-screen features from 0.6.0 / 0.7.0. Editing by
+           chatting takes the large slot; text-based editing leads the small card,
+           with the live preview as what it sits under. -->
+      <div class="showcase-row">
+        <div class="showcase-card showcase-card--large showcase-card--art-col">
+          <div class="card-art card-art--editor" role="img" aria-label="The Editor tab in Slice of Life's chat: suggested cuts with the time each saves, ticked and ready to apply"></div>
+          <div class="showcase-tag">Edit by chatting</div>
+          <h3 class="showcase-title">Just ask for the edit you want</h3>
+          <p class="showcase-desc">&ldquo;Get this to about 10 minutes.&rdquo; &ldquo;Cut the long pauses.&rdquo; &ldquo;Any blurry shots?&rdquo; The Editor comes back with changes you tick and apply, each showing the time it saves. Nothing changes until you click, and &#8984;Z undoes&nbsp;it.</p>
+        </div>
+
+        <div class="showcase-card showcase-card--art-col showcase-card--words">
+          <div class="card-art card-art--words" role="img" aria-label="Text-based editing under Slice of Life's live preview: cut words struck through, the spoken word lit up"></div>
+          <div class="showcase-tag">Text-based editing</div>
+          <h3 class="showcase-title">Delete a word, delete the footage</h3>
+          <p class="showcase-desc">Edit your vlog like a document. The words sit under a live preview that plays every change, with the spoken word lit&nbsp;up.</p>
         </div>
       </div>
 
