@@ -974,9 +974,9 @@
       <div class="video-embed-wrapper">
         <iframe
           id="vimeo-player"
-          title="Slice of Life — cinematic promo video"
+          title="Slice of Life App Promo"
           loading="lazy"
-          src="https://player.vimeo.com/video/1197808806?autoplay=1&loop=1&background=1"
+          src="https://player.vimeo.com/video/1247759637?autoplay=1&loop=1&background=1"
           frameborder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen>
@@ -1332,7 +1332,7 @@
 
     document.getElementById('video-mute-btn').addEventListener('click', function() {
       if (videoMuted) {
-        vimeoPlayer.setVolume(0.18);
+        vimeoPlayer.setVolume(0.8); // the video has a voiceover now (the old promo was music only, which sat at 0.18)
         vimeoPlayer.setMuted(false);
         document.getElementById('icon-muted').style.display = 'none';
         document.getElementById('icon-unmuted').style.display = 'block';
