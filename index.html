@@ -405,6 +405,11 @@
       }
     }
 
+    /* style.css still labels the stacked freelancer cell "Typical SaaS", from an older table. */
+    @media (max-width: 800px) {
+      .diff-table-them::before { content: 'A freelancer: '; }
+    }
+
     /* "The other option is hiring someone": deep-blue lines texture (#2), faint. */
     #different { isolation: isolate; }
     #different::before {
@@ -1015,7 +1020,7 @@
               id="vimeo-showcase"
               title="Slice of Life — app walkthrough video"
               loading="lazy"
-              src="https://player.vimeo.com/video/1247785790?controls=1&title=0&byline=0&portrait=0&muted=1&playsinline=1"
+              src="https://player.vimeo.com/video/1249789541?controls=1&title=0&byline=0&portrait=0&muted=1&playsinline=1"
               frameborder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowfullscreen>
